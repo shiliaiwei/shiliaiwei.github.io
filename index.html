@@ -1,540 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Responsive Calculator</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: #1c2526;
-            padding: 20px;
-        }
-
-        .calculator {
-            background: #2a2f32;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .display {
-            background: #1c2526;
-            color: white;
-            font-size: 2rem;
-            padding: 20px;
-            text-align: right;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            overflow-x: auto;
-        }
-
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .btn {
-            background: #3a4042;
-            color: white;
-            font-size: 1.5rem;
-            padding: 20px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn:hover {
-            background: #4a5052;
-        }
-
-        .operator {
-            background: #5a6062;
-        }
-
-        .operator:hover {
-            background: #6a7072;
-        }
-
-        .equal {
-            background: #007bff;
-        }
-
-        .equal:hover {
-            background: #0056b3;
-        }
-
-        /* General Section Styling */
-        .section {
-            margin-top: 20px;
-            padding: 15px;
-            background: #2a2f32;
-            border-radius: 10px;
-        }
-
-        .section h3 {
-            color: white;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .section-input {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .section-input input,
-        .section-input select {
-            background: #1c2526;
-            color: white;
-            border: none;
-            padding: 10px;
-            font-size: 1rem;
-            border-radius: 5px;
-            text-align: right;
-        }
-
-        .section-input select {
-            background: #3a4042;
-            cursor: pointer;
-        }
-
-        .section-result {
-            margin-top: 10px;
-            color: white;
-            font-size: 1rem;
-            text-align: center;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 500px) {
-            .calculator {
-                max-width: 300px;
-            }
-
-            .display {
-                font-size: 1.5rem;
-                padding: 15px;
-            }
-
-            .btn {
-                font-size: 1.2rem;
-                padding: 15px;
-            }
-
-            .section h3 {
-                font-size: 1rem;
-            }
-
-            .section-input input,
-            .section-input select {
-                font-size: 0.9rem;
-                padding: 8px;
-            }
-
-            .section-result {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 350px) {
-            .calculator {
-                max-width: 250px;
-            }
-
-            .display {
-                font-size: 1.2rem;
-                padding: 10px;
-            }
-
-            .btn {
-                font-size: 1rem;
-                padding: 10px;
-            }
-
-            .section h3 {
-                font-size: 0.9rem;
-            }
-
-            .section-input input,
-            .section-input select {
-                font-size: 0.8rem;
-                padding: 6px;
-            }
-
-            .section-result {
-                font-size: 0.8rem;
-            }
-        }
-    </style>
+<head>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>EIRSVi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </head>
 <body>
-    <div class="calculator">
-        <!-- Arithmetic Calculator Section -->
-        <div class="display" id="display">0</div>
-        <div class="buttons">
-            <button class="btn" onclick="clearDisplay()">C</button>
-            <button class="btn" onclick="appendToDisplay('(')">(</button>
-            <button class="btn" onclick="appendToDisplay(')')">)</button>
-            <button class="btn operator" onclick="appendToDisplay('%')">%</button>
-
-            <button class="btn" onclick="appendToDisplay('7')">7</button>
-            <button class="btn" onclick="appendToDisplay('8')">8</button>
-            <button class="btn" onclick="appendToDisplay('9')">9</button>
-            <button class="btn operator" onclick="appendToDisplay('/')">/</button>
-
-            <button class="btn" onclick="appendToDisplay('4')">4</button>
-            <button class="btn" onclick="appendToDisplay('5')">5</button>
-            <button class="btn" onclick="appendToDisplay('6')">6</button>
-            <button class="btn operator" onclick="appendToDisplay('*')">×</button>
-
-            <button class="btn" onclick="appendToDisplay('1')">1</button>
-            <button class="btn" onclick="appendToDisplay('2')">2</button>
-            <button class="btn" onclick="appendToDisplay('3')">3</button>
-            <button class="btn operator" onclick="appendToDisplay('-')">-</button>
-
-            <button class="btn" onclick="appendToDisplay('0')">0</button>
-            <button class="btn" onclick="appendToDisplay('.')">.</button>
-            <button class="btn equal" onclick="calculate()">=</button>
-            <button class="btn operator" onclick="appendToDisplay('+')">+</button>
+    <div class="container">
+        <div class="header">                <div class="status-bar">
+                <div class="status-left">ALIAS DEV 2.4.00</div>
+                <div class="status-right">PERSONAL PROFILE</div>
+                <div id="fullscreen-btn" class="fullscreen-btn" title="TOGGLE FULLSCREEN">⛶</div>
+            </div>
         </div>
 
-        <!-- Data Size Converter Section -->
-        <div class="section">
-            <h3>Data Size Converter</h3>
-            <div class="section-input">
-                <input type="number" id="dataValue" placeholder="Enter value" oninput="convertDataSize()">
-                <select id="fromUnit" onchange="convertDataSize()">
-                    <option value="B">Bytes (B)</option>
-                    <option value="KB">Kilobytes (KB)</option>
-                    <option value="MB">Megabytes (MB)</option>
-                    <option value="GB">Gigabytes (GB)</option>
-                </select>
-                <select id="toUnit" onchange="convertDataSize()">
-                    <option value="B">Bytes (B)</option>
-                    <option value="KB">Kilobytes (KB)</option>
-                    <option value="MB">Megabytes (MB)</option>
-                    <option value="GB">Gigabytes (GB)</option>
-                </select>
-            </div>
-            <div class="section-result" id="dataResult">Result: 0 B</div>
-        </div>
+        <div class="main-content">
+            <div class="left-panel">                <div class="menu-bar">
+                    <div class="menu-item active" data-section="chat">CHAT</div>
+                    <div class="menu-item" data-section="contacts">PROJECTS</div>
+                    <div class="menu-item" data-section="log">SKILLS</div>
+                    <div class="menu-item" data-section="documents">TEACHINGS</div>
+                    <div class="menu-item" data-section="orders">EXPERIENCE</div>
+                    <div class="menu-item" data-section="recordings">MEDITATIONS</div>
+                    <div class="menu-item" data-section="map">LOCATION</div>
+                </div><div class="chat-section visible" id="chat-section">                    <div class="chat-message">
+                        <div class="message-sender">SYSTEM: WELCOME TO ALIAS'S TERMINAL INTERFACE</div>
+                    </div>
+                    <div class="chat-message">
+                        <div class="message-sender">VISITOR: TELL ME ABOUT YOUR DEVELOPMENT EXPERIENCE</div>
+                    </div>                    <div class="chat-message">
+                        <div class="message-sender">ALIAS: I SPECIALIZE IN CREATING FUTURISTIC INTERFACES USING HTML, CSS, AND JAVASCRIPT</div>
+                    </div>
+                    <div class="chat-message">
+                        <div class="message-sender">VISITOR: HOW DOES BUDDHISM INFLUENCE YOUR CODE?</div>
+                    </div>                    <div class="chat-message">
+                        <div class="message-sender">ALIAS: MINDFULNESS LEADS TO CLEANER CODE. PATIENCE SOLVES THE MOST COMPLEX BUGS.</div>
+                    </div>
 
-        <!-- Unit Converter Section (Length, Weight, Temperature) -->
-        <div class="section">
-            <h3>Unit Converter</h3>
-            <div class="section-input">
-                <select id="unitType" onchange="updateUnitOptions()">
-                    <option value="length">Length</option>
-                    <option value="weight">Weight</option>
-                    <option value="temperature">Temperature</option>
-                </select>
-                <input type="number" id="unitValue" placeholder="Enter value" oninput="convertUnit()">
-                <select id="unitFrom" onchange="convertUnit()"></select>
-                <select id="unitTo" onchange="convertUnit()"></select>
-            </div>
-            <div class="section-result" id="unitResult">Result: 0</div>
-        </div>
+                    <div class="input-area">
+                        <textarea placeholder="DON'T THINK TOO MUCH ABOUT IT"></textarea>
+                        <div class="keypad">
+                            <div class="key">A</div>
+                            <div class="key">B</div>
+                            <div class="key">C</div>
+                            <div class="key">1</div>
+                            <div class="key">2</div>
+                            <div class="key">3</div>
+                            <div class="key">4</div>
+                            <div class="key">5</div>
+                            <div class="key">6</div>
+                            <div class="key">7</div>
+                            <div class="key">8</div>
+                            <div class="key">9</div>
+                            <div class="key">0</div>
+                            <div class="key">*</div>
+                            <button class="send-btn">SEND</button>
+                        </div>
+                    </div>
+                </div>                <div class="section hidden" id="contacts-section">
+                    <h2 data-text="PROJECTS DATABASE">PROJECTS DATABASE</h2>
+                    <div class="data-list">
+                        <div class="data-item">
+                            <div class="data-name">FUTURISTIC INTERFACE</div>
+                            <div class="data-details">INTERACTIVE WEB EXPERIENCE</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-name">MEDITATION TRACKER</div>
+                            <div class="data-details">MOBILE APP FOR MINDFULNESS</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-name">KHMER SCRIPT CONVERTER</div>
+                            <div class="data-details">LANGUAGE PRESERVATION TOOL</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-name">TEMPLE DATABASE</div>
+                            <div class="data-details">INTERACTIVE MAP OF CAMBODIAN TEMPLES</div>
+                        </div>
+                    </div>
+                </div>                <div class="section hidden" id="log-section">
+                    <h2 data-text="DEVELOPER SKILLS">DEVELOPER SKILLS</h2>
+                    <div class="log-entry">
+                        <div class="log-time">FRONTEND</div>
+                        <div class="log-text">HTML5, CSS3, JAVASCRIPT, REACT, VUE.JS</div>
+                    </div>
+                    <div class="log-entry">
+                        <div class="log-time">BACKEND</div>
+                        <div class="log-text">NODE.JS, PHP, PYTHON, DATABASE SYSTEMS</div>
+                    </div>
+                    <div class="log-entry">
+                        <div class="log-time">DESIGN</div>
+                        <div class="log-text">UI/UX, RESPONSIVE DESIGN, ANIMATION</div>
+                    </div>
+                    <div class="log-entry">
+                        <div class="log-time">OTHER</div>
+                        <div class="log-text">MEDITATION INSTRUCTION, BUDDHIST PHILOSOPHY</div>
+                    </div>
+                </div>                <div class="section hidden" id="documents-section">
+                    <h2 data-text="BUDDHIST TEACHINGS">BUDDHIST TEACHINGS</h2>
+                    <div class="document-list">
+                        <div class="document-item">THE FOUR NOBLE TRUTHS</div>
+                        <div class="document-item">THE EIGHTFOLD PATH</div>
+                        <div class="document-item">MEDITATION TECHNIQUES</div>
+                        <div class="document-item">IMPERMANENCE AND CODE: A DEVELOPER'S PERSPECTIVE</div>
+                        <div class="document-item">MINDFULNESS IN PROGRAMMING</div>
+                    </div>
+                </div>
 
-        <!-- Currency Converter Section -->
-        <div class="section">
-            <h3>Currency Converter</h3>
-            <div class="section-input">
-                <input type="number" id="currencyValue" placeholder="Enter amount" oninput="convertCurrency()">
-                <select id="currencyFrom" onchange="convertCurrency()">
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
-                    <option value="JPY">JPY</option>
-                </select>
-                <select id="currencyTo" onchange="convertCurrency()">
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
-                    <option value="JPY">JPY</option>
-                </select>
-            </div>
-            <div class="section-result" id="currencyResult">Result: 0 USD</div>
-        </div>
+                <div class="section hidden" id="orders-section">
+                    <h2 data-text="EXPERIENCE">EXPERIENCE</h2>
+                    <div class="order-item">
+                        <div class="order-number">2022 - PRESENT</div>
+                        <div class="order-description">FREELANCE DEVELOPER // SIEM REAP</div>
+                    </div>
+                    <div class="order-item">
+                        <div class="order-number">2020 - 2022</div>
+                        <div class="order-description">FRONTEND DEVELOPER // PHNOM PENH TECH</div>
+                    </div>
+                    <div class="order-item">
+                        <div class="order-number">2018 - 2020</div>
+                        <div class="order-description">JUNIOR WEB DEVELOPER // KRATIE DIGITAL</div>
+                    </div>
+                </div>
 
-        <!-- Time Zone Converter Section -->
-        <div class="section">
-            <h3>Time Zone Converter</h3>
-            <div class="section-input">
-                <input type="datetime-local" id="timeValue" oninput="convertTimeZone()">
-                <select id="timeFrom" onchange="convertTimeZone()">
-                    <option value="UTC">UTC</option>
-                    <option value="America/New_York">New York (EST)</option>
-                    <option value="Europe/London">London (GMT)</option>
-                    <option value="Asia/Tokyo">Tokyo (JST)</option>
-                </select>
-                <select id="timeTo" onchange="convertTimeZone()">
-                    <option value="UTC">UTC</option>
-                    <option value="America/New_York">New York (EST)</option>
-                    <option value="Europe/London">London (GMT)</option>
-                    <option value="Asia/Tokyo">Tokyo (JST)</option>
-                </select>
+                <div class="section hidden" id="recordings-section">
+                    <h2 data-text="MEDITATION SESSIONS">MEDITATION SESSIONS</h2>
+                    <div class="recording-item">
+                        <div class="recording-name">MINDFULNESS FOR DEVELOPERS</div>
+                        <div class="recording-duration">00:30:15</div>
+                    </div>
+                    <div class="recording-item">
+                        <div class="recording-name">CODING WITH CLARITY</div>
+                        <div class="recording-duration">00:45:00</div>
+                    </div>
+                    <div class="recording-item">
+                        <div class="recording-name">DEBUGGING YOUR MIND</div>
+                        <div class="recording-duration">00:20:30</div>
+                    </div>
+                    <div class="recording-item">
+                        <div class="recording-name">DAILY TEMPLE MEDITATION</div>
+                        <div class="recording-duration">01:00:00</div>
+                    </div>
+                </div>                <div class="section hidden" id="map-section">
+                    <h2 data-text="LOCATION: KRATIE">LOCATION: KRATIE</h2>
+                    <div class="map-container">
+                        <div class="map-grid">
+                            <!-- Grid shows Kratie locations -->
+                            <div class="map-marker" style="top: 30%; left: 40%;">MEKONG RIVER</div>
+                            <div class="map-marker" style="top: 60%; left: 20%;">KRATIE TOWN</div>
+                            <div class="map-marker" style="top: 45%; left: 70%;">CURRENT</div>
+                        </div>
+                    </div>
+                </div><div class="status-footer">
+                    <div class="status-signal">TERMINAL ACTIVE // KRATIE</div>
+                </div>
             </div>
-            <div class="section-result" id="timeResult">Result: Select a time</div>
-        </div>
 
-        <!-- Prime Number Checker Section -->
-        <div class="section">
-            <h3>Prime Number Checker</h3>
-            <div class="section-input">
-                <input type="number" id="primeValue" placeholder="Enter a number" oninput="checkPrime()">
+            <div class="right-panel">
+                <div class="profile-container">                <div class="profile-photo">
+                    <img id="profile-image" src="img/photo_1.jpg" alt="Profile Photo">
+                </div><div class="profile-info">
+                        <div class="info-row"><span class="info-label">DEV ID:</span> KR-23-KH</div>
+                        <div class="info-row"><span class="info-label">NAME:</span> ALIAS EIRSVi</div>
+                        <div class="info-row"><span class="info-label">AGE:</span> <span id="age-countdown">23</span> YRS</div>
+                        <div class="info-row"><span class="info-label">LOCATION:</span> KRATIE</div>
+                    </div>
+              </div>                <div class="bio-section">                    <p>ALIAS IS A DEDICATED WEB DEVELOPER WITH ADVANCED PROFICIENCY IN HTML AND CSS, CRAFTING VISUALLY STUNNING AND HIGHLY FUNCTIONAL INTERFACES.</p>
+                                    <p>ALIAS'S FRONTEND EXPERTISE EXTENDS TO JAVASCRIPT, TAILWIND CSS, AND REACT.</p>
+                                    <p>ON THE BACKEND, ALIAS LEVERAGES JAVA, LINUX, AND LARAVEL TO BUILD ROBUST SYSTEMS, WITH STRONG SKILLS IN POSTMAN FOR API DEVELOPMENT AND GIT & GITHUB FOR EFFICIENT COLLABORATION.</p>
+                                    <p>ALIAS IS ALSO VERSED IN BODY LANGUAGE INTERPRETATION, EMOTIONAL INTELLIGENCE, AND THE ANCIENT CODING LANGUAGES OF PALI AND SANSKRIT.</p>
+                                    <p>ALIAS POSSESSES KNOWLEDGE OF KHMER, ENGLISH, CHINESE, AND FRENCH, ENHANCING COMMUNICATION AND UNDERSTANDING ACROSS DIVERSE CULTURES.</p>
+                                    <p>ALIAS UNDERSTANDS STRATEGY, INFLUENCE, PSYCHOLOGY, AND PROPAGANDA, OFFERING A UNIQUE PERSPECTIVE ON USER ENGAGEMENT AND ETHICAL DEVELOPMENT.</p>
+                                    <p>ALIAS ENJOYS SCRIPT GAMES IN REAL LIFE AND VIRTUAL SIMULATIONS, INCLUDING MLBB AND VARIOUS SOCIAL MEDIA PLATFORMS SUCH AS X, FACEBOOK, TIKTOK, YOUTUBE, TELEGRAM, AND GITHUB. USERNAME: @EIRSVI.</p>
+                                    <p>FOR MORE INFORMATION, REACH OUT TO SRIEVI@TUTA.IO.</p>
+              </div>               
+                      
+                <div class="footer">
+                    <div class="property-info">ALIAS ស្រ៊ី វី // BUDD DEVELOPER // KRATIE</div>
+                </div>
             </div>
-            <div class="section-result" id="primeResult">Result: Enter a number</div>
-        </div>
-
-        <!-- Factorial Calculator Section -->
-        <div class="section">
-            <h3>Factorial Calculator</h3>
-            <div class="section-input">
-                <input type="number" id="factorialValue" placeholder="Enter a number" oninput="calculateFactorial()">
-            </div>
-            <div class="section-result" id="factorialResult">Result: 0</div>
         </div>
     </div>
-
-    <script>
-        // Arithmetic Calculator Logic
-        let display = document.getElementById('display');
-        let currentInput = '';
-
-        function appendToDisplay(value) {
-            if (display.innerText === '0' && value !== '.') {
-                currentInput = value;
-            } else {
-                currentInput += value;
-            }
-            display.innerText = currentInput;
-        }
-
-        function clearDisplay() {
-            currentInput = '';
-            display.innerText = '0';
-        }
-
-        function calculate() {
-            try {
-                let expression = currentInput.replace(/×/g, '*');
-                let result = eval(expression);
-                display.innerText = result;
-                currentInput = result.toString();
-            } catch (error) {
-                display.innerText = 'Error';
-                currentInput = '';
-            }
-        }
-
-        // Data Size Converter Logic
-        function convertDataSize() {
-            const dataValue = parseFloat(document.getElementById('dataValue').value) || 0;
-            const fromUnit = document.getElementById('fromUnit').value;
-            const toUnit = document.getElementById('toUnit').value;
-            const dataResult = document.getElementById('dataResult');
-
-            const unitsToBytes = {
-                B: 1,
-                KB: 1024,
-                MB: 1024 * 1024,
-                GB: 1024 * 1024 * 1024
-            };
-
-            const valueInBytes = dataValue * unitsToBytes[fromUnit];
-            const result = valueInBytes / unitsToBytes[toUnit];
-            dataResult.innerText = `Result: ${result.toFixed(2)} ${toUnit}`;
-        }
-
-        // Unit Converter Logic (Length, Weight, Temperature)
-        const unitOptions = {
-            length: [
-                { value: 'm', label: 'Meters (m)' },
-                { value: 'km', label: 'Kilometers (km)' },
-                { value: 'ft', label: 'Feet (ft)' },
-                { value: 'mi', label: 'Miles (mi)' }
-            ],
-            weight: [
-                { value: 'kg', label: 'Kilograms (kg)' },
-                { value: 'g', label: 'Grams (g)' },
-                { value: 'lb', label: 'Pounds (lb)' },
-                { value: 'oz', label: 'Ounces (oz)' }
-            ],
-            temperature: [
-                { value: 'C', label: 'Celsius (C)' },
-                { value: 'F', label: 'Fahrenheit (F)' },
-                { value: 'K', label: 'Kelvin (K)' }
-            ]
-        };
-
-        function updateUnitOptions() {
-            const unitType = document.getElementById('unitType').value;
-            const unitFrom = document.getElementById('unitFrom');
-            const unitTo = document.getElementById('unitTo');
-
-            unitFrom.innerHTML = '';
-            unitTo.innerHTML = '';
-
-            unitOptions[unitType].forEach(option => {
-                const opt1 = document.createElement('option');
-                opt1.value = option.value;
-                opt1.text = option.label;
-                unitFrom.appendChild(opt1);
-
-                const opt2 = document.createElement('option');
-                opt2.value = option.value;
-                opt2.text = option.label;
-                unitTo.appendChild(opt2);
-            });
-
-            convertUnit();
-        }
-
-        function convertUnit() {
-            const unitValue = parseFloat(document.getElementById('unitValue').value) || 0;
-            const unitType = document.getElementById('unitType').value;
-            const fromUnit = document.getElementById('unitFrom').value;
-            const toUnit = document.getElementById('unitTo').value;
-            const unitResult = document.getElementById('unitResult');
-
-            let result;
-
-            if (unitType === 'length') {
-                const lengthToMeters = {
-                    m: 1,
-                    km: 1000,
-                    ft: 0.3048,
-                    mi: 1609.34
-                };
-                const valueInMeters = unitValue * lengthToMeters[fromUnit];
-                result = valueInMeters / lengthToMeters[toUnit];
-            } else if (unitType === 'weight') {
-                const weightToKg = {
-                    kg: 1,
-                    g: 0.001,
-                    lb: 0.453592,
-                    oz: 0.0283495
-                };
-                const valueInKg = unitValue * weightToKg[fromUnit];
-                result = valueInKg / weightToKg[toUnit];
-            } else if (unitType === 'temperature') {
-                let valueInCelsius;
-                if (fromUnit === 'C') valueInCelsius = unitValue;
-                else if (fromUnit === 'F') valueInCelsius = (unitValue - 32) * 5 / 9;
-                else if (fromUnit === 'K') valueInCelsius = unitValue - 273.15;
-
-                if (toUnit === 'C') result = valueInCelsius;
-                else if (toUnit === 'F') result = (valueInCelsius * 9 / 5) + 32;
-                else if (toUnit === 'K') result = valueInCelsius + 273.15;
-            }
-
-            unitResult.innerText = `Result: ${result.toFixed(2)} ${toUnit}`;
-        }
-
-        // Currency Converter Logic (Static Rates for Simplicity)
-        const exchangeRates = {
-            USD: 1,
-            EUR: 0.85,
-            GBP: 0.73,
-            JPY: 110.0
-        };
-
-        function convertCurrency() {
-            const currencyValue = parseFloat(document.getElementById('currencyValue').value) || 0;
-            const fromCurrency = document.getElementById('currencyFrom').value;
-            const toCurrency = document.getElementById('currencyTo').value;
-            const currencyResult = document.getElementById('currencyResult');
-
-            const valueInUSD = currencyValue / exchangeRates[fromCurrency];
-            const result = valueInUSD * exchangeRates[toCurrency];
-            currencyResult.innerText = `Result: ${result.toFixed(2)} ${toCurrency}`;
-        }
-
-        // Time Zone Converter Logic
-        function convertTimeZone() {
-            const timeValue = document.getElementById('timeValue').value;
-            const fromZone = document.getElementById('timeFrom').value;
-            const toZone = document.getElementById('timeTo').value;
-            const timeResult = document.getElementById('timeResult');
-
-            if (!timeValue) {
-                timeResult.innerText = 'Result: Select a time';
-                return;
-            }
-
-            const date = new Date(timeValue);
-            const options = { timeZone: fromZone, hour: '2-digit', minute: '2-digit', second: '2-digit', year: 'numeric', month: '2-digit', day: '2-digit' };
-            const fromTime = date.toLocaleString('en-US', options);
-
-            options.timeZone = toZone;
-            const toTime = date.toLocaleString('en-US', options);
-
-            timeResult.innerText = `Result: ${toTime} (${toZone})`;
-        }
-
-        // Prime Number Checker Logic
-        function checkPrime() {
-            const primeValue = parseInt(document.getElementById('primeValue').value) || 0;
-            const primeResult = document.getElementById('primeResult');
-
-            if (primeValue <= 1) {
-                primeResult.innerText = 'Result: Not a prime number';
-                return;
-            }
-
-            let isPrime = true;
-            for (let i = 2; i <= Math.sqrt(primeValue); i++) {
-                if (primeValue % i === 0) {
-                    isPrime = false;
-                    break;
-                }
-            }
-
-            primeResult.innerText = `Result: ${isPrime ? 'Prime' : 'Not a prime number'}`;
-        }
-
-        // Factorial Calculator Logic
-        function calculateFactorial() {
-            const factorialValue = parseInt(document.getElementById('factorialValue').value) || 0;
-            const factorialResult = document.getElementById('factorialResult');
-
-            if (factorialValue < 0) {
-                factorialResult.innerText = 'Result: Invalid input';
-                return;
-            }
-
-            if (factorialValue === 0 || factorialValue === 1) {
-                factorialResult.innerText = 'Result: 1';
-                return;
-            }
-
-            let result = 1n; // Use BigInt for large numbers
-            for (let i = 2; i <= factorialValue; i++) {
-                result *= BigInt(i);
-            }
-
-            factorialResult.innerText = `Result: ${result.toString()}`;
-        }
-
-        // Initialize Unit Converter Options on Page Load
-        window.onload = updateUnitOptions;
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
