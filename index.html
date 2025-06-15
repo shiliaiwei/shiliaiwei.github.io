@@ -1,164 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOK RATHY - Curriculum Vitae</title>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<head>    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>EIRSVi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <div class="signature">
-                <img src="img/signature.svg" alt="SR Signature" class="signature-img">
+        <div class="header">                <div class="status-bar">
+                <div class="status-left">ALIAS DEV 2.4.00</div>
+                <div class="status-right">PERSONAL PROFILE</div>
+                <div id="fullscreen-btn" class="fullscreen-btn" title="TOGGLE FULLSCREEN">⛶</div>
             </div>
-            <h1 class="name">SOK RATHY</h1>
-            <h2 class="title">CURRICULUM VITAE</h2>
-            <p class="subtitle">International Relations</p>
-        </header>
+        </div>
 
-        <div class="content">
-            <div class="left-column">
-                <section class="personal-info">
-                    <div class="info-item">
-                        <h3>BIRTH</h3>
-                        <p>October 8, 2000</p>
+        <div class="main-content">
+            <div class="left-panel">                <div class="menu-bar">
+                    <div class="menu-item active" data-section="chat">CHAT</div>
+                    <div class="menu-item" data-section="contacts">PROJECTS</div>
+                    <div class="menu-item" data-section="log">SKILLS</div>
+                    <div class="menu-item" data-section="documents">TEACHINGS</div>
+                    <div class="menu-item" data-section="orders">EXPERIENCE</div>
+                    <div class="menu-item" data-section="recordings">MEDITATIONS</div>
+                    <div class="menu-item" data-section="map">LOCATION</div>
+                </div><div class="chat-section visible" id="chat-section">                    <div class="chat-message">
+                        <div class="message-sender">SYSTEM: WELCOME TO ALIAS'S TERMINAL INTERFACE</div>
                     </div>
-                    
-                    <div class="info-item">
-                        <h3>NATIONALITY</h3>
-                        <p>Cambodian</p>
+                    <div class="chat-message">
+                        <div class="message-sender">VISITOR: TELL ME ABOUT YOUR DEVELOPMENT EXPERIENCE</div>
+                    </div>                    <div class="chat-message">
+                        <div class="message-sender">ALIAS: I SPECIALIZE IN CREATING FUTURISTIC INTERFACES USING HTML, CSS, AND JAVASCRIPT</div>
                     </div>
-                    
-                    <div class="info-item">
-                        <h3>LOCATION</h3>
-                        <p>Currently in Phnom Penh</p>
-                        <p>Originally from Kratie</p>
+                    <div class="chat-message">
+                        <div class="message-sender">VISITOR: HOW DOES BUDDHISM INFLUENCE YOUR CODE?</div>
+                    </div>                    <div class="chat-message">
+                        <div class="message-sender">ALIAS: MINDFULNESS LEADS TO CLEANER CODE. PATIENCE SOLVES THE MOST COMPLEX BUGS.</div>
                     </div>
-                    
-                    <div class="info-item">
-                        <h3>CONTACT</h3>
-                        <p>sokrathy@puc.edu.kh</p>
-                        <p>+855 12 345 678</p>
-                    </div>
-                </section>
 
-                <section class="skills">
-                    <h3>SKILLS</h3>
-                    <div class="skill-category">
-                        <h4>Languages</h4>
-                        <ul>
-                            <li>Khmer (Native)</li>
-                            <li>English (Fluent)</li>
-                            <li>French (Intermediate)</li>
-                        </ul>
+                    <div class="input-area">
+                        <textarea placeholder="DON'T THINK TOO MUCH ABOUT IT"></textarea>
+                        <div class="keypad">
+                            <div class="key">A</div>
+                            <div class="key">B</div>
+                            <div class="key">C</div>
+                            <div class="key">1</div>
+                            <div class="key">2</div>
+                            <div class="key">3</div>
+                            <div class="key">4</div>
+                            <div class="key">5</div>
+                            <div class="key">6</div>
+                            <div class="key">7</div>
+                            <div class="key">8</div>
+                            <div class="key">9</div>
+                            <div class="key">0</div>
+                            <div class="key">*</div>
+                            <button class="send-btn">SEND</button>
+                        </div>
                     </div>
-                    
-                    <div class="skill-category">
-                        <h4>Research</h4>
-                        <ul>
-                            <li>Policy Analysis</li>
-                            <li>Diplomatic Studies</li>
-                            <li>International Law</li>
-                            <li>Conflict Resolution</li>
-                        </ul>
+                </div>                <div class="section hidden" id="contacts-section">
+                    <h2 data-text="PROJECTS DATABASE">PROJECTS DATABASE</h2>
+                    <div class="data-list">
+                        <div class="data-item">
+                            <div class="data-name">FUTURISTIC INTERFACE</div>
+                            <div class="data-details">INTERACTIVE WEB EXPERIENCE</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-name">MEDITATION TRACKER</div>
+                            <div class="data-details">MOBILE APP FOR MINDFULNESS</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-name">KHMER SCRIPT CONVERTER</div>
+                            <div class="data-details">LANGUAGE PRESERVATION TOOL</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-name">TEMPLE DATABASE</div>
+                            <div class="data-details">INTERACTIVE MAP OF CAMBODIAN TEMPLES</div>
+                        </div>
                     </div>
-                    
-                    <div class="skill-category">
-                        <h4>Technical</h4>
-                        <ul>
-                            <li>Microsoft Office Suite</li>
-                            <li>SPSS</li>
-                            <li>Data Analysis</li>
-                            <li>Report Writing</li>
-                        </ul>
+                </div>                <div class="section hidden" id="log-section">
+                    <h2 data-text="DEVELOPER SKILLS">DEVELOPER SKILLS</h2>
+                    <div class="log-entry">
+                        <div class="log-time">FRONTEND</div>
+                        <div class="log-text">HTML5, CSS3, JAVASCRIPT, REACT, VUE.JS</div>
                     </div>
-                </section>
+                    <div class="log-entry">
+                        <div class="log-time">BACKEND</div>
+                        <div class="log-text">NODE.JS, PHP, PYTHON, DATABASE SYSTEMS</div>
+                    </div>
+                    <div class="log-entry">
+                        <div class="log-time">DESIGN</div>
+                        <div class="log-text">UI/UX, RESPONSIVE DESIGN, ANIMATION</div>
+                    </div>
+                    <div class="log-entry">
+                        <div class="log-time">OTHER</div>
+                        <div class="log-text">MEDITATION INSTRUCTION, BUDDHIST PHILOSOPHY</div>
+                    </div>
+                </div>                <div class="section hidden" id="documents-section">
+                    <h2 data-text="BUDDHIST TEACHINGS">BUDDHIST TEACHINGS</h2>
+                    <div class="document-list">
+                        <div class="document-item">THE FOUR NOBLE TRUTHS</div>
+                        <div class="document-item">THE EIGHTFOLD PATH</div>
+                        <div class="document-item">MEDITATION TECHNIQUES</div>
+                        <div class="document-item">IMPERMANENCE AND CODE: A DEVELOPER'S PERSPECTIVE</div>
+                        <div class="document-item">MINDFULNESS IN PROGRAMMING</div>
+                    </div>
+                </div>
 
-                <section class="capabilities">
-                    <h3>CAPABILITIES</h3>
-                    <p>Analytical thinking and diplomatic communication skills developed through comprehensive International Relations studies. Experienced in cross-cultural dialogue, policy research, and multilateral negotiations. Proficient in Southeast Asian political dynamics and international cooperation frameworks.</p>
-                </section>
+                <div class="section hidden" id="orders-section">
+                    <h2 data-text="EXPERIENCE">EXPERIENCE</h2>
+                    <div class="order-item">
+                        <div class="order-number">2022 - PRESENT</div>
+                        <div class="order-description">FREELANCE DEVELOPER // SIEM REAP</div>
+                    </div>
+                    <div class="order-item">
+                        <div class="order-number">2020 - 2022</div>
+                        <div class="order-description">FRONTEND DEVELOPER // PHNOM PENH TECH</div>
+                    </div>
+                    <div class="order-item">
+                        <div class="order-number">2018 - 2020</div>
+                        <div class="order-description">JUNIOR WEB DEVELOPER // KRATIE DIGITAL</div>
+                    </div>
+                </div>
+
+                <div class="section hidden" id="recordings-section">
+                    <h2 data-text="MEDITATION SESSIONS">MEDITATION SESSIONS</h2>
+                    <div class="recording-item">
+                        <div class="recording-name">MINDFULNESS FOR DEVELOPERS</div>
+                        <div class="recording-duration">00:30:15</div>
+                    </div>
+                    <div class="recording-item">
+                        <div class="recording-name">CODING WITH CLARITY</div>
+                        <div class="recording-duration">00:45:00</div>
+                    </div>
+                    <div class="recording-item">
+                        <div class="recording-name">DEBUGGING YOUR MIND</div>
+                        <div class="recording-duration">00:20:30</div>
+                    </div>
+                    <div class="recording-item">
+                        <div class="recording-name">DAILY TEMPLE MEDITATION</div>
+                        <div class="recording-duration">01:00:00</div>
+                    </div>
+                </div>                <div class="section hidden" id="map-section">
+                    <h2 data-text="LOCATION: KRATIE">LOCATION: KRATIE</h2>
+                    <div class="map-container">
+                        <div class="map-grid">
+                            <!-- Grid shows Kratie locations -->
+                            <div class="map-marker" style="top: 30%; left: 40%;">MEKONG RIVER</div>
+                            <div class="map-marker" style="top: 60%; left: 20%;">KRATIE TOWN</div>
+                            <div class="map-marker" style="top: 45%; left: 70%;">CURRENT</div>
+                        </div>
+                    </div>
+                </div><div class="status-footer">
+                    <div class="status-signal">TERMINAL ACTIVE // KRATIE</div>
+                </div>
             </div>
 
-            <div class="right-column">
-                <section class="personal-statement">
-                    <h3>PERSONAL STATEMENT</h3>
-                    <p>As a dedicated student of International Relations with a passion for diplomacy and global governance, I am committed to contributing to Cambodia's engagement with the international community. My academic journey at Paragon University Corporation has equipped me with a deep understanding of global politics, international law, and diplomatic practices.</p>
-                    
-                    <p>Growing up in Kratie and now studying in Phnom Penh, I bring a unique perspective that bridges rural and urban Cambodia. I am passionate about leveraging international cooperation to address development challenges and promote sustainable growth in Southeast Asia.</p>
-                    
-                    <p>My career aspirations focus on diplomatic service, international development, or policy analysis, where I can apply my analytical skills and cultural understanding to foster positive international relations and contribute to Cambodia's continued progress on the global stage.</p>
-                </section>
-
-                <section class="experience">
-                    <h3>EXPERIENCE</h3>
-                    <div class="experience-item">
-                        <h4>Research Assistant</h4>
-                        <p class="organization">Paragon University Corporation</p>
-                        <p class="date">2023 - Present</p>
-                        <p class="description">Assisted faculty in research projects focusing on ASEAN integration and Cambodia's foreign policy. Conducted literature reviews, data collection, and preliminary analysis for academic publications.</p>
+            <div class="right-panel">
+                <div class="profile-container">                <div class="profile-photo">
+                    <img id="profile-image" src="img/photo_1.jpg" alt="Profile Photo">
+                </div><div class="profile-info">
+                        <div class="info-row"><span class="info-label">DEV ID:</span> KR-23-KH</div>
+                        <div class="info-row"><span class="info-label">NAME:</span> ALIAS EIRSVi</div>
+                        <div class="info-row"><span class="info-label">AGE:</span> <span id="age-countdown">23</span> YRS</div>
+                        <div class="info-row"><span class="info-label">LOCATION:</span> KRATIE</div>
                     </div>
-                    
-                    <div class="experience-item">
-                        <h4>Intern</h4>
-                        <p class="organization">Ministry of Foreign Affairs (Student Program)</p>
-                        <p class="date">Summer 2023</p>
-                        <p class="description">Gained hands-on experience in diplomatic protocol and international correspondence. Supported preparation for bilateral meetings and assisted in drafting briefing materials.</p>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <h4>Model UN Delegate</h4>
-                        <p class="organization">Various International Conferences</p>
-                        <p class="date">2022 - 2024</p>
-                        <p class="description">Represented Cambodia in multiple Model United Nations conferences, developing negotiation skills and deep understanding of multilateral diplomacy.</p>
-                    </div>
-                </section>
-
-                <section class="education">
-                    <h3>EDUCATION</h3>
-                    <div class="education-item">
-                        <h4>Bachelor of Arts in International Relations</h4>
-                        <p class="organization">Paragon University Corporation (PUC)</p>
-                        <p class="date">2019 - Present</p>
-                        <p class="gpa">GPA: 3.8/4.0</p>
-                        <p class="description">Comprehensive study of international politics, diplomatic history, international law, and regional studies with focus on Southeast Asia and East Asia relations.</p>
-                    </div>
-                    
-                    <div class="education-item">
-                        <h4>High School Diploma</h4>
-                        <p class="organization">Kratie High School</p>
-                        <p class="date">2016 - 2019</p>
-                        <p class="description">Graduated with honors, particularly excelling in social studies and languages.</p>
-                    </div>
-                </section>
-
-                <section class="achievements">
-                    <h3>ACHIEVEMENTS & RECOGNITION</h3>
-                    <ul>
-                        <li>Dean's List - PUC International Relations Department (2022-2024)</li>
-                        <li>Best Delegate Award - Cambodia Model UN Conference 2023</li>
-                        <li>Outstanding Research Paper - "ASEAN Economic Integration and Cambodia's Development" (2023)</li>
-                        <li>Cultural Ambassador - PUC International Student Exchange Program</li>
-                    </ul>
-                </section>
-
-                <section class="interests">
-                    <h3>INTERESTS</h3>
-                    <div class="interests-grid">
-                        <div class="interest-item">Diplomacy</div>
-                        <div class="interest-item">Southeast Asian Politics</div>
-                        <div class="interest-item">Cultural Exchange</div>
-                        <div class="interest-item">Sustainable Development</div>
-                        <div class="interest-item">International Law</div>
-                        <div class="interest-item">Public Policy</div>
-                        <div class="interest-item">Multilingual Communication</div>
-                        <div class="interest-item">Regional Integration</div>
-                    </div>
-                </section>
+              </div>                <div class="bio-section">                    <p>ALIAS IS A DEDICATED WEB DEVELOPER WITH ADVANCED PROFICIENCY IN HTML AND CSS, CRAFTING VISUALLY STUNNING AND HIGHLY FUNCTIONAL INTERFACES.</p>
+                                    <p>ALIAS'S FRONTEND EXPERTISE EXTENDS TO JAVASCRIPT, TAILWIND CSS, AND REACT.</p>
+                                    <p>ON THE BACKEND, ALIAS LEVERAGES JAVA, LINUX, AND LARAVEL TO BUILD ROBUST SYSTEMS, WITH STRONG SKILLS IN POSTMAN FOR API DEVELOPMENT AND GIT & GITHUB FOR EFFICIENT COLLABORATION.</p>
+                                    <p>ALIAS IS ALSO VERSED IN BODY LANGUAGE INTERPRETATION, EMOTIONAL INTELLIGENCE, AND THE ANCIENT CODING LANGUAGES OF PALI AND SANSKRIT.</p>
+                                    <p>ALIAS POSSESSES KNOWLEDGE OF KHMER, ENGLISH, CHINESE, AND FRENCH, ENHANCING COMMUNICATION AND UNDERSTANDING ACROSS DIVERSE CULTURES.</p>
+                                    <p>ALIAS UNDERSTANDS STRATEGY, INFLUENCE, PSYCHOLOGY, AND PROPAGANDA, OFFERING A UNIQUE PERSPECTIVE ON USER ENGAGEMENT AND ETHICAL DEVELOPMENT.</p>
+                                    <p>ALIAS ENJOYS SCRIPT GAMES IN REAL LIFE AND VIRTUAL SIMULATIONS, INCLUDING MLBB AND VARIOUS SOCIAL MEDIA PLATFORMS SUCH AS X, FACEBOOK, TIKTOK, YOUTUBE, TELEGRAM, AND GITHUB. USERNAME: @EIRSVI.</p>
+                                    <p>FOR MORE INFORMATION, REACH OUT TO SRIEVI@TUTA.IO.</p>
+              </div>               
+                      
+                <div class="footer">
+                    <div class="property-info">ALIAS ស្រ៊ី វី // BUDD DEVELOPER // KRATIE</div>
+                </div>
             </div>
         </div>
     </div>
+    <script src="js/script.js"></script>
 </body>
 </html>
