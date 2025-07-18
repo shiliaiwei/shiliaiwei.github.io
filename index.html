@@ -1,191 +1,244 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <title>EIRSVi</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+<html lang="km">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SRIEVi </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Serif+Khmer:wght@400;700&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <style>
+    body {
+      font-family: 'Noto Serif Khmer', serif;
+      color: #222;
+      background: #fff;
+      position: relative;
+      min-height: 100vh;
+    }
+    .kh-title {
+      font-family: 'Noto Serif Khmer', serif;
+      font-weight: bold;
+    }
+    .en-text {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .newspaper-border {
+      border: 1.5px solid #222;
+      border-radius: 0.5rem;
+      background: #fff;
+    }
+    .section-title {
+      font-family: 'Noto Serif Khmer', serif;
+      font-size: 1.25rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #222;
+      padding-bottom: 0.25rem;
+    }
+    .icon {
+      color: #76542C;
+      font-size: 1.5rem;
+      vertical-align: middle;
+    }
+    .quote {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: #76542C;
+      margin: 1.5rem 0 1rem 0;
+      font-weight: normal;
+      padding: 0;
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+    .edu-note {
+      color: #3B1EFF;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+    .profile-squircle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 2rem;
+      flex-shrink: 0;
+      box-shadow: 0 2px 16px #76542C33;
+    }
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .profile-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      max-width: 600px;
+      margin: 2rem auto 1rem auto;
+      position: relative;
+    }
+    .profile-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .profile-fab {
+      position: absolute;
+      right: -32px;
+      bottom: -32px;
+      background: #3B1EFF;
+      color: #fff;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px #3B1EFF44;
+      font-size: 2.2rem;
+      border: none;
+      cursor: pointer;
+      z-index: 2;
+      transition: background 0.2s;
+    }
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .footer-social ion-icon {
+      font-size: 2rem;
+      color: #bbb;
+      transition: none;
+    }
+  </style>
 </head>
-<body>
-    <div class="container">
-        <div class="header">                <div class="status-bar">
-                <div class="status-left">ALIAS DEV 2.4.00</div>
-                <div class="status-right">PERSONAL PROFILE</div>
-                <div id="fullscreen-btn" class="fullscreen-btn" title="TOGGLE FULLSCREEN">⛶</div>
-            </div>
-        </div>
-
-        <div class="main-content">
-            <div class="left-panel">                <div class="menu-bar">
-                    <div class="menu-item active" data-section="chat">CHAT</div>
-                    <div class="menu-item" data-section="contacts">PROJECTS</div>
-                    <div class="menu-item" data-section="log">SKILLS</div>
-                    <div class="menu-item" data-section="documents">TEACHINGS</div>
-                    <div class="menu-item" data-section="orders">EXPERIENCE</div>
-                    <div class="menu-item" data-section="recordings">MEDITATIONS</div>
-                    <div class="menu-item" data-section="map">LOCATION</div>
-                </div><div class="chat-section visible" id="chat-section">                    <div class="chat-message">
-                        <div class="message-sender">SYSTEM: WELCOME TO ALIAS'S TERMINAL INTERFACE</div>
-                    </div>
-                    <div class="chat-message">
-                        <div class="message-sender">VISITOR: TELL ME ABOUT YOUR DEVELOPMENT EXPERIENCE</div>
-                    </div>                    <div class="chat-message">
-                        <div class="message-sender">ALIAS: I SPECIALIZE IN CREATING FUTURISTIC INTERFACES USING HTML, CSS, AND JAVASCRIPT</div>
-                    </div>
-                    <div class="chat-message">
-                        <div class="message-sender">VISITOR: HOW DOES BUDDHISM INFLUENCE YOUR CODE?</div>
-                    </div>                    <div class="chat-message">
-                        <div class="message-sender">ALIAS: MINDFULNESS LEADS TO CLEANER CODE. PATIENCE SOLVES THE MOST COMPLEX BUGS.</div>
-                    </div>
-
-                    <div class="input-area">
-                        <textarea placeholder="DON'T THINK TOO MUCH ABOUT IT"></textarea>
-                        <div class="keypad">
-                            <div class="key">A</div>
-                            <div class="key">B</div>
-                            <div class="key">C</div>
-                            <div class="key">1</div>
-                            <div class="key">2</div>
-                            <div class="key">3</div>
-                            <div class="key">4</div>
-                            <div class="key">5</div>
-                            <div class="key">6</div>
-                            <div class="key">7</div>
-                            <div class="key">8</div>
-                            <div class="key">9</div>
-                            <div class="key">0</div>
-                            <div class="key">*</div>
-                            <button class="send-btn">SEND</button>
-                        </div>
-                    </div>
-                </div>                <div class="section hidden" id="contacts-section">
-                    <h2 data-text="PROJECTS DATABASE">PROJECTS DATABASE</h2>
-                    <div class="data-list">
-                        <div class="data-item">
-                            <div class="data-name">FUTURISTIC INTERFACE</div>
-                            <div class="data-details">INTERACTIVE WEB EXPERIENCE</div>
-                        </div>
-                        <div class="data-item">
-                            <div class="data-name">MEDITATION TRACKER</div>
-                            <div class="data-details">MOBILE APP FOR MINDFULNESS</div>
-                        </div>
-                        <div class="data-item">
-                            <div class="data-name">KHMER SCRIPT CONVERTER</div>
-                            <div class="data-details">LANGUAGE PRESERVATION TOOL</div>
-                        </div>
-                        <div class="data-item">
-                            <div class="data-name">TEMPLE DATABASE</div>
-                            <div class="data-details">INTERACTIVE MAP OF CAMBODIAN TEMPLES</div>
-                        </div>
-                    </div>
-                </div>                <div class="section hidden" id="log-section">
-                    <h2 data-text="DEVELOPER SKILLS">DEVELOPER SKILLS</h2>
-                    <div class="log-entry">
-                        <div class="log-time">FRONTEND</div>
-                        <div class="log-text">HTML5, CSS3, JAVASCRIPT, REACT, VUE.JS</div>
-                    </div>
-                    <div class="log-entry">
-                        <div class="log-time">BACKEND</div>
-                        <div class="log-text">NODE.JS, PHP, PYTHON, DATABASE SYSTEMS</div>
-                    </div>
-                    <div class="log-entry">
-                        <div class="log-time">DESIGN</div>
-                        <div class="log-text">UI/UX, RESPONSIVE DESIGN, ANIMATION</div>
-                    </div>
-                    <div class="log-entry">
-                        <div class="log-time">OTHER</div>
-                        <div class="log-text">MEDITATION INSTRUCTION, BUDDHIST PHILOSOPHY</div>
-                    </div>
-                </div>                <div class="section hidden" id="documents-section">
-                    <h2 data-text="BUDDHIST TEACHINGS">BUDDHIST TEACHINGS</h2>
-                    <div class="document-list">
-                        <div class="document-item">THE FOUR NOBLE TRUTHS</div>
-                        <div class="document-item">THE EIGHTFOLD PATH</div>
-                        <div class="document-item">MEDITATION TECHNIQUES</div>
-                        <div class="document-item">IMPERMANENCE AND CODE: A DEVELOPER'S PERSPECTIVE</div>
-                        <div class="document-item">MINDFULNESS IN PROGRAMMING</div>
-                    </div>
-                </div>
-
-                <div class="section hidden" id="orders-section">
-                    <h2 data-text="EXPERIENCE">EXPERIENCE</h2>
-                    <div class="order-item">
-                        <div class="order-number">2022 - PRESENT</div>
-                        <div class="order-description">FREELANCE DEVELOPER // SIEM REAP</div>
-                    </div>
-                    <div class="order-item">
-                        <div class="order-number">2020 - 2022</div>
-                        <div class="order-description">FRONTEND DEVELOPER // PHNOM PENH TECH</div>
-                    </div>
-                    <div class="order-item">
-                        <div class="order-number">2018 - 2020</div>
-                        <div class="order-description">JUNIOR WEB DEVELOPER // KRATIE DIGITAL</div>
-                    </div>
-                </div>
-
-                <div class="section hidden" id="recordings-section">
-                    <h2 data-text="MEDITATION SESSIONS">MEDITATION SESSIONS</h2>
-                    <div class="recording-item">
-                        <div class="recording-name">MINDFULNESS FOR DEVELOPERS</div>
-                        <div class="recording-duration">00:30:15</div>
-                    </div>
-                    <div class="recording-item">
-                        <div class="recording-name">CODING WITH CLARITY</div>
-                        <div class="recording-duration">00:45:00</div>
-                    </div>
-                    <div class="recording-item">
-                        <div class="recording-name">DEBUGGING YOUR MIND</div>
-                        <div class="recording-duration">00:20:30</div>
-                    </div>
-                    <div class="recording-item">
-                        <div class="recording-name">DAILY TEMPLE MEDITATION</div>
-                        <div class="recording-duration">01:00:00</div>
-                    </div>
-                </div>                <div class="section hidden" id="map-section">
-                    <h2 data-text="LOCATION: KRATIE">LOCATION: KRATIE</h2>
-                    <div class="map-container">
-                        <div class="map-grid">
-                            <!-- Grid shows Kratie locations -->
-                            <div class="map-marker" style="top: 30%; left: 40%;">MEKONG RIVER</div>
-                            <div class="map-marker" style="top: 60%; left: 20%;">KRATIE TOWN</div>
-                            <div class="map-marker" style="top: 45%; left: 70%;">CURRENT</div>
-                        </div>
-                    </div>
-                </div><div class="status-footer">
-                    <div class="status-signal">TERMINAL ACTIVE // KRATIE</div>
-                </div>
-            </div>
-
-            <div class="right-panel">
-                <div class="profile-container">                <div class="profile-photo">
-                    <img id="profile-image" src="img/photo_1.jpg" alt="Profile Photo">
-                </div><div class="profile-info">
-                        <div class="info-row"><span class="info-label">DEV ID:</span> KR-23-KH</div>
-                        <div class="info-row"><span class="info-label">NAME:</span> ALIAS EIRSVi</div>
-                        <div class="info-row"><span class="info-label">AGE:</span> <span id="age-countdown">23</span> YRS</div>
-                        <div class="info-row"><span class="info-label">LOCATION:</span> KRATIE</div>
-                    </div>
-              </div>                <div class="bio-section">                    <p>ALIAS IS A DEDICATED WEB DEVELOPER WITH ADVANCED PROFICIENCY IN HTML AND CSS, CRAFTING VISUALLY STUNNING AND HIGHLY FUNCTIONAL INTERFACES.</p>
-                                    <p>ALIAS'S FRONTEND EXPERTISE EXTENDS TO JAVASCRIPT, TAILWIND CSS, AND REACT.</p>
-                                    <p>ON THE BACKEND, ALIAS LEVERAGES JAVA, LINUX, AND LARAVEL TO BUILD ROBUST SYSTEMS, WITH STRONG SKILLS IN POSTMAN FOR API DEVELOPMENT AND GIT & GITHUB FOR EFFICIENT COLLABORATION.</p>
-                                    <p>ALIAS IS ALSO VERSED IN BODY LANGUAGE INTERPRETATION, EMOTIONAL INTELLIGENCE, AND THE ANCIENT CODING LANGUAGES OF PALI AND SANSKRIT.</p>
-                                    <p>ALIAS POSSESSES KNOWLEDGE OF KHMER, ENGLISH, CHINESE, AND FRENCH, ENHANCING COMMUNICATION AND UNDERSTANDING ACROSS DIVERSE CULTURES.</p>
-                                    <p>ALIAS UNDERSTANDS STRATEGY, INFLUENCE, PSYCHOLOGY, AND PROPAGANDA, OFFERING A UNIQUE PERSPECTIVE ON USER ENGAGEMENT AND ETHICAL DEVELOPMENT.</p>
-                                    <p>ALIAS ENJOYS SCRIPT GAMES IN REAL LIFE AND VIRTUAL SIMULATIONS, INCLUDING MLBB AND VARIOUS SOCIAL MEDIA PLATFORMS SUCH AS X, FACEBOOK, TIKTOK, YOUTUBE, TELEGRAM, AND GITHUB. USERNAME: @EIRSVI.</p>
-                                    <p>FOR MORE INFORMATION, REACH OUT TO SRIEVI@TUTA.IO.</p>
-              </div>               
-                      
-                <div class="footer">
-                    <div class="property-info">ALIAS ស្រ៊ី វី // BUDD DEVELOPER // KRATIE</div>
-                </div>
-            </div>
-        </div>
+<body class="min-h-screen flex flex-col">
+  <!-- Profile Section -->
+  <section class="max-w-4xl mx-auto mt-8 mb-4 px-4">
+    <div class="profile-row">
+      <div class="profile-squircle">
+        <img src="img/photo_3.jpg" alt="SRIE_Vi" class="profile-img" />
+      </div>
+      <div class="profile-info">
+        <h1 class="text-3xl font-bold mb-1">SRIE Vi</h1>
+        <div class="text-lg text-[#76542C] font-semibold mb-2">Developer</div>
+        <div class="quote">"To Be Educated Is To Be Changed"</div>
+      </div>
     </div>
-    <script src="js/script.js"></script>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto flex-1 px-4">
+    <!-- About Me -->
+    <section class="newspaper-border p-6 mb-6">
+      <div class="section-title kh-title">
+        <ion-icon name="person-outline" class="icon"></ion-icon>
+        អំពីខ្ញុំ
+      </div>
+      <div>
+         សួស្តី ខ្ញុំឈ្មោះ វី។ ខ្ញុំបង្កើតបច្ចេកវិទ្យាដើម្បីជួយឲ្យមនុស្សភ្ជាប់ទំនាក់ទំនង និងធ្វើឲ្យជីវិតប្រសើរឡើង។
+       </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="newspaper-border p-6 mb-6">
+      <div class="section-title kh-title">
+        <ion-icon name="construct-outline" class="icon"></ion-icon>
+        ជំនាញ
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div>
+          <div class="font-bold mb-2">Frontend Developer</div>
+          <ul class="list-disc list-inside space-y-1">
+            <li><ion-icon name="logo-html5" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>HTML</li>
+            <li><ion-icon name="logo-css3" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>CSS</li>
+            <li><ion-icon name="logo-javascript" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>JavaScript</li>
+            <li><ion-icon name="color-palette-outline" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>TailWind CSS</li>
+            <li><ion-icon name="logo-react" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>React</li>
+            <li><ion-icon name="logo-github" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>Git & GitHub</li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold mb-2">Backend Developer</div>
+          <ul class="list-disc list-inside space-y-1">
+            <li><ion-icon name="logo-tux" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>Linux</li>
+            <li><ion-icon name="flask-outline" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>PostMan</li>
+            <li><ion-icon name="server-outline" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>Databases</li>
+            <li><ion-icon name="logo-laravel" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>Laravel</li>
+          </ul>
+        </div>
+        <div>
+          <div class="font-bold mb-2">Network/Config</div>
+          <ul class="list-disc list-inside space-y-1">
+            <li><ion-icon name="wifi-outline" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>Mikrotik Support</li>
+            <li><ion-icon name="settings-outline" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>Network Configuration</li>
+            <li><ion-icon name="desktop-outline" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>IT Support</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interests -->
+    <section class="newspaper-border p-6 mb-6">
+      <div class="section-title kh-title">
+        <ion-icon name="book-outline" class="icon"></ion-icon>
+        ចំណង់ចំណូលចិត្ត
+      </div>
+      <ul class="list-disc list-inside space-y-1">
+        <li class="en-text">Body Language</li>
+        <li class="en-text">Dark Psychology</li>
+        <li class="en-text">Game Theory Economics</li>
+        <li class="en-text">HOK, MLBB, Chess</li>
+      </ul>
+    </section>
+
+    <!-- Achievements -->
+    <section class="newspaper-border p-6 mb-6">
+      <div class="section-title kh-title">
+        <ion-icon name="trophy-outline" class="icon"></ion-icon>
+        សមិទ្ធិផល
+      </div>
+      <ul class="list-disc list-inside space-y-1">
+        <li>សមិទ្ធិផលក្នុងការអភិវឌ្ឍបច្ចេកវិទ្យា</li>
+        <li>រង្វាន់មួយចំនួនក្នុងវិស័យបច្ចេកវិទ្យា</li>
+        <li>ការច្នៃប្រឌិតថ្មីៗក្នុងការបង្កើតគម្រោង</li>
+      </ul>
+    </section>
+
+    <!-- Education -->
+    <section class="newspaper-border p-6 mb-6">
+      <div class="section-title kh-title">
+        <ion-icon name="school-outline" class="icon"></ion-icon>
+        ការអប់រំ
+      </div>
+      <ul class="list-disc list-inside text-[#76542C] space-y-1">
+        <li>សិក្សានៅខេត្តក្រចេះ </li>
+        <li>សិក្សានៅខេត្តកំពង់ចាម</li>
+        <li>សិក្សានៅខេត្តសៀមរាប</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="max-w-4xl mx-auto px-4 py-4 text-center text-xs text-[#76542C] border-t border-[#76542C] mt-auto">
+    <div class="footer-social">
+      <a href="#" title="TikTok"><ion-icon name="logo-tiktok"></ion-icon></a>
+      <a href="#" title="Telegram"><ion-icon name="paper-plane-outline"></ion-icon></a>
+      <a href="https://x.com/eirsvi" target="_blank" title="X"><ion-icon name="logo-twitter"></ion-icon></a>
+      <a href="https://github.com/eirsvi" target="_blank" title="GitHub"><ion-icon name="logo-github"></ion-icon></a>
+      <a href="https://scholar.google.com/citations?user=HcO_fhsAAAAJ&hl=en" target="_blank" title="Google Scholar"><ion-icon name="school-outline"></ion-icon></a>
+    </div>
+    © EIRSVi | ២០២៥
+  </footer>
 </body>
 </html>
