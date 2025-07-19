@@ -120,6 +120,12 @@
       color: #bbb;
       transition: none;
     }
+    /* Custom list item styling to align icon and text */
+    .list-item-with-icon {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem; /* Space between icon and text */
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -127,7 +133,8 @@
   <section class="max-w-4xl mx-auto mt-8 mb-4 px-4">
     <div class="profile-row">
       <div class="profile-squircle">
-        <img src="img/photo_3.jpg" alt="SRIE_Vi" class="profile-img" />
+        <!-- Placeholder image for demonstration. Replace with actual image path. -->
+        <img src="/img/photo_3.jpg" alt="SRIE_Vi" class="profile-img" onerror="this.onerror=null;this.src='https://placehold.co/140x140/76542C/FFFFFF?text=SRIE+Vi';" />
       </div>
       <div class="profile-info">
         <h1 class="text-3xl font-bold mb-1">SRIE Vi</h1>
@@ -159,30 +166,30 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
           <div class="font-bold mb-2">Frontend Developer</div>
-          <ul class="list-disc list-inside space-y-1">
-            <li><ion-icon name="logo-html5" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>HTML</li>
-            <li><ion-icon name="logo-css3" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>CSS</li>
-            <li><ion-icon name="logo-javascript" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>JavaScript</li>
-            <li><ion-icon name="color-palette-outline" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>TailWind CSS</li>
-            <li><ion-icon name="logo-react" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>React</li>
-            <li><ion-icon name="logo-github" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>Git & GitHub</li>
+          <ul class="space-y-1">
+            <li class="list-item-with-icon"><ion-icon name="logo-html5" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>HTML</li>
+            <li class="list-item-with-icon"><ion-icon name="logo-css3" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>CSS</li>
+            <li class="list-item-with-icon"><ion-icon name="logo-javascript" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>JavaScript</li>
+            <li class="list-item-with-icon"><ion-icon name="color-palette-outline" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>TailWind CSS</li>
+            <li class="list-item-with-icon"><ion-icon name="logo-react" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>React</li>
+            <li class="list-item-with-icon"><ion-icon name="logo-github" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>Git & GitHub</li>
           </ul>
         </div>
         <div>
           <div class="font-bold mb-2">Backend Developer</div>
-          <ul class="list-disc list-inside space-y-1">
-            <li><ion-icon name="logo-tux" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>Linux</li>
-            <li><ion-icon name="flask-outline" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>PostMan</li>
-            <li><ion-icon name="server-outline" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>Databases</li>
-            <li><ion-icon name="logo-laravel" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>Laravel</li>
+          <ul class="space-y-1">
+            <li class="list-item-with-icon"><ion-icon name="logo-tux" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>Linux</li>
+            <li class="list-item-with-icon"><ion-icon name="flask-outline" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>PostMan</li>
+            <li class="list-item-with-icon"><ion-icon name="server-outline" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>Databases</li>
+            <li class="list-item-with-icon"><ion-icon name="logo-laravel" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>Laravel</li>
           </ul>
         </div>
         <div>
           <div class="font-bold mb-2">Network/Config</div>
-          <ul class="list-disc list-inside space-y-1">
-            <li><ion-icon name="wifi-outline" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>Mikrotik Support</li>
-            <li><ion-icon name="settings-outline" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>Network Configuration</li>
-            <li><ion-icon name="desktop-outline" style="font-size:1.1em;vertical-align:middle;margin-right:0.4em;color:#222;"></ion-icon>IT Support</li>
+          <ul class="space-y-1">
+            <li class="list-item-with-icon"><ion-icon name="wifi-outline" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>Mikrotik Support</li>
+            <li class="list-item-with-icon"><ion-icon name="settings-outline" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>Network Configuration</li>
+            <li class="list-item-with-icon"><ion-icon name="desktop-outline" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>IT Support</li>
           </ul>
         </div>
       </div>
@@ -194,11 +201,11 @@
         <ion-icon name="book-outline" class="icon"></ion-icon>
         ចំណង់ចំណូលចិត្ត
       </div>
-      <ul class="list-disc list-inside space-y-1">
-        <li class="en-text">Body Language</li>
-        <li class="en-text">Dark Psychology</li>
-        <li class="en-text">Game Theory Economics</li>
-        <li class="en-text">HOK, MLBB, Chess</li>
+      <ul class="space-y-1">
+        <li class="en-text list-item-with-icon"><ion-icon name="heart-outline" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>Body Language</li>
+        <li class="en-text list-item-with-icon"><ion-icon name="heart-outline" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>Dark Psychology</li>
+        <li class="en-text list-item-with-icon"><ion-icon name="heart-outline" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>Game Theory Economics</li>
+        <li class="en-text list-item-with-icon"><ion-icon name="game-controller-outline" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>HOK, MLBB, Chess</li>
       </ul>
     </section>
 
@@ -208,10 +215,10 @@
         <ion-icon name="trophy-outline" class="icon"></ion-icon>
         សមិទ្ធិផល
       </div>
-      <ul class="list-disc list-inside space-y-1">
-        <li>សមិទ្ធិផលក្នុងការអភិវឌ្ឍបច្ចេកវិទ្យា</li>
-        <li>រង្វាន់មួយចំនួនក្នុងវិស័យបច្ចេកវិទ្យា</li>
-        <li>ការច្នៃប្រឌិតថ្មីៗក្នុងការបង្កើតគម្រោង</li>
+      <ul class="space-y-1">
+        <li class="list-item-with-icon"><ion-icon name="trophy-outline" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>សមិទ្ធិផលក្នុងការអភិវឌ្ឍបច្ចេកវិទ្យា</li>
+        <li class="list-item-with-icon"><ion-icon name="trophy-outline" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>រង្វាន់មួយចំនួនក្នុងវិស័យបច្ចេកវិទ្យា</li>
+        <li class="list-item-with-icon"><ion-icon name="trophy-outline" style="font-size:1.1em;vertical-align:middle;color:#222;"></ion-icon>ការច្នៃប្រឌិតថ្មីៗក្នុងការបង្កើតគម្រោង</li>
       </ul>
     </section>
 
@@ -221,10 +228,10 @@
         <ion-icon name="school-outline" class="icon"></ion-icon>
         ការអប់រំ
       </div>
-      <ul class="list-disc list-inside text-[#76542C] space-y-1">
-        <li>សិក្សានៅខេត្តក្រចេះ </li>
-        <li>សិក្សានៅខេត្តកំពង់ចាម</li>
-        <li>សិក្សានៅខេត្តសៀមរាប</li>
+      <ul class="text-[#76542C] space-y-1">
+        <li class="list-item-with-icon"><ion-icon name="school-outline" style="font-size:1.1em;vertical-align:middle;color:#76542C;"></ion-icon>សិក្សានៅខេត្តក្រចេះ </li>
+        <li class="list-item-with-icon"><ion-icon name="school-outline" style="font-size:1.1em;vertical-align:middle;color:#76542C;"></ion-icon>សិក្សានៅខេត្តកំពង់ចាម</li>
+        <li class="list-item-with-icon"><ion-icon name="school-outline" style="font-size:1.1em;vertical-align:middle;color:#76542C;"></ion-icon>សិក្សានៅខេត្តសៀមរាប</li>
       </ul>
     </section>
   </main>
@@ -242,3 +249,4 @@
   </footer>
 </body>
 </html>
+
