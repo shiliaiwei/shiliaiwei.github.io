@@ -3,333 +3,324 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/styles.css" />
-
-  <title>EIRSVi</title>
-  <meta name="description" content="SRIE_Vi — Developer and technologist. I create and innovate technology to help people connect, improve their lives, and enhance understanding of new technology." />
+  <title>EIRSVi • HUD Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="source/css/styles.css" />
+  <meta name="description" content="EIRSVi • Developer — To Be Educated Is To Be Changed" />
 </head>
 <body>
-  <a class="skip-link" href="#content">Skip to content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Top sticky HUD rail (icon-only) -->
+  <nav class="top-rail" aria-label="Primary">
+    <a class="rail-item" href="#home" aria-label="Home"><i class="ri-home-5-fill" aria-hidden="true"></i><span class="visually-hidden">Home</span></a>
+    <a class="rail-item" href="#mission" aria-label="Mission"><i class="ri-flag-2-fill"></i></a>
+    <a class="rail-item" href="#skills" aria-label="Skills"><i class="ri-cpu-fill"></i></a>
+    <a class="rail-item" href="#interests" aria-label="Interests"><i class="ri-pulse-fill"></i></a>
+    <a class="rail-item" href="#achievements" aria-label="Achievements"><i class="ri-trophy-fill"></i></a>
+    <a class="rail-item" href="#education" aria-label="Education"><i class="ri-graduation-cap-fill"></i></a>
+    <a class="rail-item" href="#social" aria-label="Social"><i class="ri-links-fill"></i></a>
+  </nav>
+
   <header class="site-header">
-    <div class="container">
-      <nav class="nav" aria-label="Primary">
-        <a class="brand" href="#" aria-label="SRIE_Vi Home">
-          <span class="dot"></span>
-          <span>EIRSVi</span>
-        </a>
-        <div class="spacer"></div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#interests">Interests</a></li>
-          <li><a href="#achievements">Achievements</a></li>
-          <li><a href="#education">Education</a></li>
-        </ul>
-        <div class="nav-actions">
-          <a class="icon-btn" href="https://github.com/eirsvi" target="_blank" rel="noreferrer" aria-label="GitHub"><i class="ri-github-line"></i></a>
-          <a class="icon-btn" href="https://x.com/eirsvi" target="_blank" rel="noreferrer" aria-label="X"><i class="ri-twitter-x-line"></i></a>
-          <a class="icon-btn" href="https://t.me/eirsvi" target="_blank" rel="noreferrer" aria-label="Telegram"><i class="ri-telegram-line"></i></a>
-          <a class="icon-btn" href="https://www.youtube.com/eirsvi" target="_blank" rel="noreferrer" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
-        </div>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
-          <i class="ri-apps-2-line"></i>
-        </button>
-      </nav>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="EIRSVi">
+        <span class="dot" aria-hidden="true"></span>
+        <span>EIRSVi</span>
+      </a>
+      <div class="spacer"></div>
+      <div class="nav-actions">
+        <a class="icon-btn" href="#social" aria-label="Contacts"><i class="ri-bubble-chart-fill"></i></a>
+        <a class="icon-btn" href="https://github.com/eirsvi" target="_blank" rel="noopener" aria-label="GitHub"><i class="ri-github-fill"></i></a>
+      </div>
     </div>
   </header>
 
-  <!-- Mobile full-screen grid menu -->
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <div class="mobile-menu__panel">
-      <div class="mobile-menu__header"><a class="brand" href="#" aria-label="SRIE_Vi Home"><span class="dot"></span><span>SRIE_Vi</span></a></div>
-      <div class="mobile-menu__grid">
-        <a class="mobile-menu__item" href="#about"><img src="assets/img/search.svg" alt="About" /><span>About</span></a>
-        <a class="mobile-menu__item" href="#skills"><img src="assets/img/task.svg" alt="Skills" /><span>Skills</span></a>
-        <a class="mobile-menu__item" href="#interests"><img src="assets/img/translate.svg" alt="Interests" /><span>Interests</span></a>
-        <a class="mobile-menu__item" href="#achievements"><img src="assets/img/cloud.svg" alt="Achievements" /><span>Achievements</span></a>
-        <a class="mobile-menu__item" href="#education"><img src="assets/img/calendar.svg" alt="Education" /><span>Education</span></a>
-        <a class="mobile-menu__item" href="https://x.com/eirsvi" target="_blank" rel="noreferrer"><img src="assets/img/chat.svg" alt="X" /><span>X</span></a>
-        <a class="mobile-menu__item" href="https://t.me/eirsvi" target="_blank" rel="noreferrer"><img src="assets/img/meet.svg" alt="Telegram" /><span>Telegram</span></a>
-        <a class="mobile-menu__item" href="https://www.youtube.com/eirsvi" target="_blank" rel="noreferrer"><img src="assets/img/youtube.svg" alt="YouTube" /><span>YouTube</span></a>
-      </div>
-    </div>
-  </div>
-
-  <main id="content" class="site-main">
-    <section class="hero">
-      <div class="container hero__grid">
+  <main id="main" class="site-main">
+    <!-- HERO / ABOUT -->
+    <section id="home" class="hero container">
+      <div class="hero__grid">
         <div class="hero__media">
-          <img class="avatar" src="https://github.com/eirsvi.png" alt="Portrait of SRIE_Vi" width="260" height="260" />
+          <div class="avatar-frame" aria-hidden="true">
+            <img class="avatar" src="source/img/eirsvi.png" alt="Portrait of EIRSVi" />
+          </div>
         </div>
         <div class="hero__content">
-          <h1 class="title">SRIE_Vi</h1>
-          <p class="tagline">Developer • "To Be Educated Is To Be Changed"</p>
-          <p class="lede">I create and innovate technology to help people connect, improve their lives, and enhance understanding of new technology.</p>
-          <div class="socials">
-            <a href="https://scholar.google.com/citations?user=HcO_fhsAAAAJ&hl=en" class="chip" target="_blank" rel="noreferrer" aria-label="Google Scholar"><i class="ri-graduation-cap-line"></i></a>
-            <a href="https://github.com/eirsvi" class="chip" target="_blank" rel="noreferrer" aria-label="GitHub"><i class="ri-github-line"></i></a>
-            <a href="https://x.com/eirsvi" class="chip" target="_blank" rel="noreferrer" aria-label="X"><i class="ri-twitter-x-line"></i></a>
-            <a href="https://t.me/eirsvi" class="chip" target="_blank" rel="noreferrer" aria-label="Telegram"><i class="ri-telegram-line"></i></a>
-            <a href="https://tiktok.com/@eirsvi" class="chip" target="_blank" rel="noreferrer" aria-label="TikTok"><i class="ri-tiktok-line"></i></a>
-            <a href="https://khmercoder.com/@eirsvi" class="chip" target="_blank" rel="noreferrer" aria-label="KhmerCoder"><i class="ri-global-line"></i></a>
-            <a href="https://www.youtube.com/eirsvi" class="chip" target="_blank" rel="noreferrer" aria-label="YouTube"><i class="ri-youtube-line"></i></a>
-          </div>
+          <h1 class="title">EIRSVi — Developer</h1>
+          <p class="tagline">“To Be Educated Is To Be Changed.”</p>
+          <p class="lede">About me: Buddhist monk. “The machine obeys no one—unless you command it.” I craft resilient interfaces and backends with a calm, methodical approach.</p>
         </div>
       </div>
     </section>
 
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section__header">
-          <h2>About</h2>
-          <p>Crafting human-centric technology that connects people and accelerates learning.</p>
-        </div>
-        <div class="card grid-2">
-          <div>
-            <h3>Mission</h3>
-            <p>I build and prototype systems that make everyday life better—clarifying complex tech, amplifying communication, and empowering people to do more with less friction.</p>
+    <!-- MISSION -->
+    <section id="mission" class="section container">
+      <div class="section__header">
+        <h2>Mission</h2>
+        <p>Build thoughtful systems that serve people—fast, reliable, and elegant.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="row">
+            <div class="badges"><span class="badge"><i class="ri-speed-fill"></i> Speed</span></div>
+            <span class="dot" style="width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.25);"></span>
           </div>
-          <div>
-            <h3>Focus</h3>
-            <ul class="list">
-              <li>Frontend experiences with React and Tailwind CSS</li>
-              <li>Backend services with Java and Laravel</li>
-              <li>Networking and infrastructure configuration</li>
-            </ul>
+          <p class="lede">Ship rapidly while preserving clarity and quality.</p>
+        </article>
+        <article class="card">
+          <div class="row">
+            <div class="badges"><span class="badge"><i class="ri-shield-star-fill"></i> Reliability</span></div>
+            <span class="dot" style="width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.25);"></span>
           </div>
-        </div>
+          <p class="lede">Engineer robust backends and fault‑tolerant UIs.</p>
+        </article>
+        <article class="card">
+          <div class="row">
+            <div class="badges"><span class="badge"><i class="ri-brush-fill"></i> Design</span></div>
+            <span class="dot" style="width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.25);"></span>
+          </div>
+          <p class="lede">Futuristic HUD aesthetics with accessible ergonomics.</p>
+        </article>
       </div>
     </section>
 
-    <section id="skills" class="section">
-      <div class="container">
-        <div class="section__header"><h2>Skills</h2></div>
-        <div class="skills">
-          <div class="skill-group">
-            <h3>Frontend Developer</h3>
-            <div class="badges">
-              <span class="badge">HTML</span>
-              <span class="badge">CSS</span>
-              <span class="badge">JavaScript</span>
-              <span class="badge">Tailwind CSS</span>
-              <span class="badge">React</span>
-              <span class="badge">Git & GitHub</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <h3>Backend Developer</h3>
-            <div class="badges">
-              <span class="badge">Linux</span>
-              <span class="badge">Postman</span>
-              <span class="badge">Java</span>
-              <span class="badge">Databases</span>
-              <span class="badge">Laravel</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <h3>Network / Config</h3>
-            <div class="badges">
-              <span class="badge">MikroTik Support</span>
-              <span class="badge">Network Configuration</span>
-              <span class="badge">IT Support</span>
-            </div>
-          </div>
-        </div>
+    <!-- SKILLS -->
+    <section id="skills" class="section container">
+      <div class="section__header">
+        <h2>Skills</h2>
+        <p>Frontend, Backend, and Network/Config</p>
       </div>
-    </section>
-
-    <section id="interests" class="section">
-      <div class="container">
-        <div class="section__header"><h2>Interests</h2></div>
+      <div class="grid-2">
         <div class="card">
-          <div class="badges wrap">
-            <span class="badge">Body Language</span>
-            <span class="badge">Dark Psychology</span>
-            <span class="badge">Game Theory Economics</span>
-            <span class="badge">MOBA</span>
-            <span class="badge">Chess</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="achievements" class="section">
-      <div class="container">
-        <div class="section__header"><h2>Achievements</h2></div>
-        <div class="grid-3">
-          <div class="card">
-            <h3>Technology Development</h3>
-            <p>Achievements in developing and shipping technology that solves real-world problems.</p>
-          </div>
-          <div class="card">
-            <h3>Awards</h3>
-            <p>Several recognitions for contributions in the technology field.</p>
-          </div>
-          <div class="card">
-            <h3>Innovation</h3>
-            <p>New innovations in project creation—from idea to execution.</p>
-          </div>
-          <div class="card achievements-project">
-            <div class="row" style="display:flex;align-items:center;gap:.75rem;justify-content:space-between;">
-              <div>
-                <h3 style="margin:.1rem 0">Achievements project</h3>
-                <p class="small" style="margin-top:-.1rem;color:var(--muted)">Click the QR icon to open</p>
+          <div class="skills">
+            <div class="skill-group">
+              <h3>Frontend Developer</h3>
+              <div class="badges wrap">
+                <span class="badge">HTML</span>
+                <span class="badge">CSS</span>
+                <span class="badge">JavaScript</span>
+                <span class="badge">Tailwind CSS</span>
+                <span class="badge">React</span>
+                <span class="badge">Git &amp; GitHub</span>
               </div>
-              <button id="achievementsQrTrigger" class="icon-btn" type="button" aria-label="Show Achievements project QR" aria-haspopup="dialog" aria-controls="qrModal">
-                <i class="ri-qr-code-line"></i>
-              </button>
             </div>
+            <div class="skill-group">
+              <h3>Backend Developer</h3>
+              <div class="badges wrap">
+                <span class="badge">Linux</span>
+                <span class="badge">Postman</span>
+                <span class="badge">Java</span>
+                <span class="badge">Databases</span>
+                <span class="badge">Laravel</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <h3>Network / Config</h3>
+              <div class="badges wrap">
+                <span class="badge">Network Configuration</span>
+                <span class="badge">IT Support</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Interests</h3>
+          <ul class="list">
+            <li>Body Language</li>
+            <li>Dark Psychology</li>
+            <li>Game Theory, Economics</li>
+            <li>MOBA</li>
+            <li>Chess</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS / QR -->
+    <section id="achievements" class="section container">
+      <div class="section__header">
+        <h2>Achievements</h2>
+        <p>Tap the icon to open a scannable QR to my project success.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card qr-card" tabindex="0" data-modal="qr">
+          <div class="row">
+            <h3 style="margin:0">Project QR</h3>
+            <a class="icon-btn" href="#" aria-label="Open QR" data-modal="qr"><i class="ri-qr-code-fill"></i></a>
+          </div>
+          <p class="tagline">Click to open the QR code.</p>
+          <img class="qr-img" src="source/img/qrcode.png" alt="QR code to project" />
+        </article>
+        <article class="card qr-card" tabindex="0" data-modal="qr">
+          <div class="row">
+            <h3 style="margin:0">Showcase QR</h3>
+            <a class="icon-btn" href="#" aria-label="Open QR" data-modal="qr"><i class="ri-qr-code-fill"></i></a>
+          </div>
+          <p class="tagline">Click to open the QR code.</p>
+          <img class="qr-img" src="source/img/qrcode.png" alt="QR code to project" />
+        </article>
+        <article class="card qr-card" tabindex="0" data-modal="qr">
+          <div class="row">
+            <h3 style="margin:0">Portfolio QR</h3>
+            <a class="icon-btn" href="#" aria-label="Open QR" data-modal="qr"><i class="ri-qr-code-fill"></i></a>
+          </div>
+          <p class="tagline">Click to open the QR code.</p>
+          <img class="qr-img" src="source/img/qrcode.png" alt="QR code to project" />
+        </article>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section container">
+      <div class="section__header">
+        <h2>Education</h2>
+        <p>Path of continuous learning across provinces.</p>
+      </div>
+      <div class="timeline card">
+        <div class="timeline__item">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="content">
+            <h4>Kratie Province</h4>
+            <p>Studied foundational subjects and early computing.</p>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="content">
+            <h4>Kampong Cham Province</h4>
+            <p>Expanded focus on software and systems.</p>
+          </div>
+        </div>
+        <div class="timeline__item">
+          <span class="dot" aria-hidden="true"></span>
+          <div class="content">
+            <h4>Siem Reap Province</h4>
+            <p>Advanced learning in technology and innovation.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="education" class="section">
-      <div class="container">
-        <div class="section__header"><h2>Education</h2></div>
-        <div class="timeline">
-          <div class="timeline__item">
-            <div class="dot"></div>
-            <div class="content">
-              <h4>Kratie Province</h4>
-              <p>Studied foundational subjects and early computing.</p>
-            </div>
-          </div>
-          <div class="timeline__item">
-            <div class="dot"></div>
-            <div class="content">
-              <h4>Kampong Cham Province</h4>
-              <p>Expanded focus on software and systems.</p>
-            </div>
-          </div>
-          <div class="timeline__item">
-            <div class="dot"></div>
-            <div class="content">
-              <h4>Siem Reap Province</h4>
-              <p>Advanced learning in technology and innovation.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <!-- QR Modal Popup -->
-  <div class="modal" id="qrModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle">
-    <div class="modal__backdrop" data-close="true"></div>
-    <div class="modal__dialog">
-      <div class="modal__header">
-        <h3 class="modal__title" id="qrModalTitle">Achievements project QR</h3>
-        <button class="modal__close" type="button" aria-label="Close" data-close="true"><i class="ri-close-line"></i></button>
-      </div>
-      <div class="modal__body">
-        <div class="qr-frame" role="img" aria-label="QR code to open the Achievements project">
-          <img class="modal__qr" src="assets/img/qrcode.png" alt="" width="300" height="300" />
-        </div>
-        <p class="small" style="margin-top:.5rem">Scan with your phone camera to open the Achievements project</p>
-      </div>
-    </div>
-  </div>
-
   <footer class="site-footer">
-    <div class="container">
-      <p class="small">© <span id="year"></span> SRIE_Vi</p>
+    <div class="container footer-row">
+      <div class="footer-socials" aria-label="Social links">
+        <a class="icon-btn" href="https://github.com/eirsvi" target="_blank" rel="noopener" aria-label="GitHub"><i class="ri-github-fill"></i></a>
+        <a class="icon-btn" href="https://scholar.google.com/citations?user=HcO_fhsAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><i class="ri-graduation-cap-fill"></i></a>
+        <a class="icon-btn" href="https://youtube.com/@eirsvi" target="_blank" rel="noopener" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+        <a class="icon-btn" href="https://tiktok.com/@eirsvi" target="_blank" rel="noopener" aria-label="TikTok"><i class="ri-tiktok-fill"></i></a>
+        <a class="icon-btn" href="https://t.me/eirsvi" target="_blank" rel="noopener" aria-label="Telegram"><i class="ri-telegram-fill"></i></a>
+        <a class="icon-btn" href="https://x.com/eirsvi" target="_blank" rel="noopener" aria-label="X"><i class="ri-twitter-x-fill"></i></a>
+      </div>
+      <small class="small">© <span id="year"></span> EIRSVi • HUD Portfolio</small>
     </div>
   </footer>
 
+  <!-- Modal for QR -->
+  <div class="modal" id="qrModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="qrTitle">
+    <div class="modal__backdrop" data-close="qr"></div>
+    <div class="modal__dialog">
+      <div class="modal__header">
+        <h3 id="qrTitle" class="modal__title">Scan the QR</h3>
+        <button class="modal__close" data-close="qr" aria-label="Close"><i class="ri-close-line"></i></button>
+      </div>
+      <div class="modal__body">
+        <div class="qr-frame">
+          <img class="modal__qr" src="source/img/qrcode.png" alt="QR code" />
+        </div>
+        <small class="small">Point your camera to open the project.</small>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // Current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    (function(){
-      const btn = document.getElementById('mobileToggle');
-      const menu = document.getElementById('mobileMenu');
-      if (!btn || !menu) return;
-
-      function openMenu(){
-        menu.setAttribute('aria-hidden', 'false');
-        btn.setAttribute('aria-expanded', 'true');
-        document.body.classList.add('body-no-scroll');
-        btn.setAttribute('aria-label', 'Close menu');
-      }
-      function closeMenu(){
-        menu.setAttribute('aria-hidden', 'true');
-        btn.setAttribute('aria-expanded', 'false');
-        document.body.classList.remove('body-no-scroll');
-        btn.setAttribute('aria-label', 'Open menu');
-      }
-      function toggleMenu(){
-        const hidden = menu.getAttribute('aria-hidden') !== 'false';
-        hidden ? openMenu() : closeMenu();
-      }
-
-      btn.addEventListener('click', toggleMenu);
-      menu.addEventListener('click', (e) => {
-        // Close when clicking outside items (on backdrop)
-        if (e.target === menu) closeMenu();
-        // Close when clicking any menu item link
-        const link = e.target.closest('.mobile-menu__item');
-        if (link) closeMenu();
-      });
-      // Close on Escape
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMenu();
-      });
-    })();
-
-    // QR interactions: open modal from Achievements QR icon/title
-    (function(){
-      const trigger = document.getElementById('achievementsQrTrigger');
-      const modal = document.getElementById('qrModal');
-      if (!trigger || !modal) return;
-
-      function openModal(){
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('body-no-scroll');
-        const closeBtn = modal.querySelector('[data-close]');
-        closeBtn && closeBtn.focus();
-      }
-      function closeModal(){
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('body-no-scroll');
-        trigger.focus();
-      }
-
-      // Open on click / keyboard
-      trigger.addEventListener('click', openModal);
-      trigger.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id.length > 1) {
           e.preventDefault();
-          openModal();
+          document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
+    });
 
-      // Also allow clicking the card title to open modal
-      const title = document.querySelector('.achievements-project h3');
-      if (title) {
-        title.style.cursor = 'zoom-in';
-        title.tabIndex = 0;
-        title.setAttribute('role', 'button');
-        title.setAttribute('aria-controls', 'qrModal');
-        title.addEventListener('click', openModal);
-        title.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(); }
-        });
+    // Active rail indicator on scroll
+    const sections = Array.from(document.querySelectorAll('main section[id]'));
+    const railLinks = Array.from(document.querySelectorAll('.top-rail .rail-item'));
+    const onScroll = () => {
+      const y = window.scrollY + 120;
+      let current = sections[0]?.id;
+      for (const s of sections) {
+        if (s.offsetTop <= y) current = s.id;
       }
-
-      // Close interactions for modal
-      modal.addEventListener('click', (e) => {
-        if (e.target instanceof Element && e.target.matches('[data-close], .modal__backdrop')) {
-          closeModal();
+      railLinks.forEach(l => {
+        if (l.getAttribute('href') === '#' + current) {
+          l.style.boxShadow = '0 0 0 4px rgba(34,197,94,.18)';
+        } else {
+          l.style.boxShadow = '';
         }
       });
-      document.addEventListener('keydown', (e) => {
-        if (modal.getAttribute('aria-hidden') === 'false' && e.key === 'Escape') closeModal();
+    };
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // QR modal open/close
+    const qrModal = document.getElementById('qrModal');
+    function openQR() {
+      qrModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('body-no-scroll');
+    }
+    function closeQR() {
+      qrModal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('body-no-scroll');
+    }
+    document.querySelectorAll('[data-modal="qr"]').forEach(el => {
+      el.addEventListener('click', (e) => { e.preventDefault(); openQR(); });
+      el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openQR(); } });
+    });
+    qrModal.addEventListener('click', (e) => {
+      if (e.target.matches('[data-close="qr"], .modal__backdrop')) closeQR();
+    });
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') closeQR(); });
+
+    // Long-hover tooltips (3s) for icons
+    (function(){
+      const targets = Array.from(document.querySelectorAll('.rail-item, .icon-btn'));
+      let timer = null, tipEl = null;
+      function showTip(el){
+        const label = el.getAttribute('aria-label') || el.title || '';
+        if(!label) return;
+        tipEl = document.createElement('div');
+        tipEl.className = 'tooltip';
+        tipEl.textContent = label;
+        document.body.appendChild(tipEl);
+        const rect = el.getBoundingClientRect();
+        const tipRect = tipEl.getBoundingClientRect();
+        const top = window.scrollY + rect.top - tipRect.height - 8;
+        const left = window.scrollX + rect.left + (rect.width - tipRect.width)/2;
+        tipEl.style.top = `${Math.max(8, top)}px`;
+        tipEl.style.left = `${Math.max(8, left)}px`;
+        requestAnimationFrame(()=> tipEl.classList.add('show'));
+      }
+      function hideTip(){
+        if(timer){ clearTimeout(timer); timer=null; }
+        if(tipEl){
+          tipEl.classList.remove('show');
+          const el = tipEl; tipEl = null;
+          setTimeout(()=> el.remove(), 150);
+        }
+      }
+      targets.forEach(el=>{
+        el.addEventListener('mouseenter', ()=>{ timer = setTimeout(()=> showTip(el), 3000); });
+        el.addEventListener('mouseleave', hideTip);
+        el.addEventListener('blur', hideTip);
       });
     })();
   </script>
