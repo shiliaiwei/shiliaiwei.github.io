@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>1606ttowfz</title>
+  <title>StockRoom - Complete MVP Plan</title>
   <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -83,55 +83,150 @@ code span.st { color: #4070a0; }
 code span.va { color: #19177c; } 
 code span.vs { color: #4070a0; } 
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
-</style>
-  <style type="text/css">html {
-margin: 0 auto;
-max-width: 800px;
+
+/* Mobile-First Responsive Design */
+html {
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 0 15px;
 }
+
 body {
-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-padding: 3em;
-background-color: #fafafa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: 1em;
+  background-color: #fafafa;
+  font-size: 16px;
+  line-height: 1.8;
 }
-img {
-max-width: 100%;
+
+/* Desktop Notice for Mobile Users */
+.desktop-notice {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  z-index: 1000;
+  font-weight: bold;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  font-size: 14px;
 }
-blockquote {
-border-left: 3px solid #ccc;
-margin-left: 0;
-padding-left: 1em;
+
+.desktop-notice button {
+  background-color: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  margin-left: 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Enhanced Inspiration Sources Section */
+.inspiration-sources {
+  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  border: 2px solid #d1d5db;
+  padding: 25px;
+  border-radius: 12px;
+  margin: 25px 0;
+  text-align: center;
+}
+
+.source-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.source-link {
+  display: inline-block;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  padding: 15px 25px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s ease;
+  min-width: 140px;
+}
+
+.source-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
 }
 
 /* Custom Color Styles for Better Readability */
 h1 {
   color: #2c5f2d;
   border-bottom: 3px solid #97bc62;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
+  font-size: 28px;
+  margin-bottom: 25px;
 }
 
 h2 {
   color: #2563eb;
   border-left: 4px solid #60a5fa;
-  padding-left: 15px;
-  margin-top: 2em;
+  padding-left: 20px;
+  margin-top: 3em;
   background-color: #eff6ff;
-  padding: 12px 15px;
-  border-radius: 5px;
+  padding: 18px 20px;
+  border-radius: 8px;
+  font-size: 22px;
 }
 
 h3 {
   color: #dc2626;
   font-weight: bold;
-  margin-top: 1.5em;
+  margin-top: 2em;
+  font-size: 18px;
 }
 
-/* Team Member Color Coding */
-.member-1 { color: #7c3aed; background-color: #f3f4f6; padding: 8px; border-radius: 5px; }
-.member-2 { color: #059669; background-color: #f0fdf4; padding: 8px; border-radius: 5px; }
-.member-3 { color: #dc2626; background-color: #fef2f2; padding: 8px; border-radius: 5px; }
-.member-4 { color: #ea580c; background-color: #fff7ed; padding: 8px; border-radius: 5px; }
-.member-5 { color: #2563eb; background-color: #eff6ff; padding: 8px; border-radius: 5px; }
-.member-6 { color: #7c2d12; background-color: #fef7f0; padding: 8px; border-radius: 5px; }
+/* Important Elements */
+.important-note {
+  background-color: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  padding: 18px;
+  margin: 20px 0;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.tech-stack {
+  background-color: #f3f4f6;
+  border: 2px solid #6b7280;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.timeline {
+  background-color: #ecfdf5;
+  border-left: 4px solid #10b981;
+  padding: 18px;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+/* Tables and Code Blocks */
+pre {
+  background-color: #1f2937;
+  color: #f9fafb;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #3b82f6;
+  font-size: 14px;
+  overflow-x: auto;
+}
 
 /* Phase Color Coding */
 .phase-1 { color: #059669; font-weight: bold; }
@@ -139,38 +234,124 @@ h3 {
 .phase-3 { color: #2563eb; font-weight: bold; }
 .phase-4 { color: #ea580c; font-weight: bold; }
 
-/* Important Elements */
-.important-note {
-  background-color: #fef3c7;
-  border-left: 4px solid #f59e0b;
-  padding: 12px;
-  margin: 15px 0;
-  border-radius: 5px;
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .desktop-notice {
+    display: block;
+  }
+  
+  body {
+    padding-top: 100px;
+    font-size: 15px;
+    line-height: 1.7;
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+  }
+  
+  h1 {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 20px;
+    padding: 15px 18px;
+    margin-top: 2em;
+  }
+  
+  h3 {
+    font-size: 18px;
+    margin-top: 1.5em;
+  }
+  
+  .tech-stack, .important-note, .timeline {
+    padding: 15px;
+    margin: 15px 0;
+  }
+  
+  pre {
+    padding: 15px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  
+  /* Simplify UI prototypes for mobile */
+  .ui-prototype {
+    display: none;
+  }
+  
+  .mobile-prototype-notice {
+    display: block;
+    background-color: #f3f4f6;
+    border: 2px solid #d1d5db;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    color: #6b7280;
+  }
+  
+  .source-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .source-link {
+    width: 220px;
+    text-align: center;
+    font-size: 15px;
+    padding: 12px 20px;
+  }
+  
+  .inspiration-sources {
+    padding: 20px;
+  }
 }
 
-.tech-stack {
-  background-color: #f3f4f6;
-  border: 2px solid #6b7280;
-  padding: 15px;
-  border-radius: 8px;
-  margin: 15px 0;
+@media (min-width: 769px) {
+  html {
+    max-width: 1200px;
+    padding: 0 25px;
+  }
+  
+  body {
+    padding: 4em;
+    font-size: 17px;
+  }
+  
+  .mobile-prototype-notice {
+    display: none;
+  }
+  
+  .ui-prototype {
+    display: block;
+  }
 }
 
-.timeline {
-  background-color: #ecfdf5;
-  border-left: 4px solid #10b981;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 5px;
+/* Remove colors from UI prototypes - make them grayscale */
+.prototype-grayscale {
+  filter: grayscale(100%);
+  opacity: 0.8;
 }
 
-/* Tables and Code Blocks */
-pre {
-  background-color: #1f2937;
-  color: #f9fafb;
-  padding: 15px;
-  border-radius: 8px;
-  border-left: 4px solid #3b82f6;
+.prototype-grayscale h2,
+.prototype-grayscale h3,
+.prototype-grayscale h4 {
+  color: #374151 !important;
+}
+
+.prototype-grayscale div[style*="background"] {
+  background: #f3f4f6 !important;
+}
+
+/* Lists styling */
+li {
+  margin-bottom: 8px;
+  font-size: inherit;
+}
+
+ul li::marker {
+  color: #3b82f6;
 }
 
 /* Strong text emphasis */
@@ -178,30 +359,84 @@ strong {
   color: #1f2937;
   font-weight: 700;
 }
-
-/* Lists styling */
-li {
-  margin-bottom: 5px;
-}
-
-ul li::marker {
-  color: #3b82f6;
-}
-
-@page {
-size: letter;
-margin: 1in;
-}
-@media print {
-body {
-margin: 0;
-padding: 0;
-background-color: white;
-}
-}</style>
+  </style>
 </head>
 <body>
+
+<!-- Desktop Notice for Mobile Users -->
+<div class="desktop-notice">
+  MOBILE NOTICE: Best viewed on desktop for full prototype experience
+  <button onclick="this.parentElement.style.display='none'">Got it</button>
+</div>
+
 <h1 id="stockroom---complete-mvp-plan">StockRoom - Complete MVP Plan</h1>
+
+<!-- Enhanced Inspiration Sources Section -->
+<div class="inspiration-sources">
+  <h3 style="color: #1f2937; margin: 0 0 20px 0; font-size: 24px;">Design Inspiration Sources</h3>
+  <p style="color: #6b7280; margin: 0 0 30px 0; font-size: 17px; line-height: 1.6;">Our UI prototypes draw inspiration from the most successful inventory management platforms in the market. Each platform contributes unique design elements that enhance user experience and workflow efficiency.</p>
+  
+  <!-- Enhanced Source Cards -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin: 30px 0;">
+    
+    <!-- Loyverse Card -->
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 15px; padding: 25px; box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); transition: transform 0.3s ease;">
+      <h4 style="color: white; margin: 0 0 15px 0; font-size: 20px; font-weight: bold;">Loyverse POS</h4>
+      <p style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6; margin: 0 0 20px 0;">Modern point-of-sale system with clean interface design and intuitive mobile-responsive patterns. Excellent for retail inventory management.</p>
+      <div style="margin-bottom: 20px;">
+        <div style="font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 8px;">Key Features We Adopted:</div>
+        <div style="font-size: 12px; color: rgba(255,255,255,0.9);">
+          • Clean product grid layouts<br>
+          • Mobile-first responsive design<br>
+          • Simple transaction workflows
+        </div>
+      </div>
+      <a href="https://loyverse.com/" target="_blank" style="background-color: rgba(255,255,255,0.2); color: white; padding: 12px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 14px; display: inline-block; transition: background-color 0.3s ease;">
+        Explore Loyverse →
+      </a>
+    </div>
+
+    <!-- Odoo Card -->
+    <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; border-radius: 15px; padding: 25px; box-shadow: 0 8px 25px rgba(67, 233, 123, 0.3); transition: transform 0.3s ease;">
+      <h4 style="color: white; margin: 0 0 15px 0; font-size: 20px; font-weight: bold;">Odoo ERP</h4>
+      <p style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6; margin: 0 0 20px 0;">Comprehensive enterprise resource planning system with advanced search capabilities and modular layout structure for complex business processes.</p>
+      <div style="margin-bottom: 20px;">
+        <div style="font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 8px;">Key Features We Adopted:</div>
+        <div style="font-size: 12px; color: rgba(255,255,255,0.9);">
+          • Advanced filtering systems<br>
+          • Modular dashboard design<br>
+          • Multi-level navigation
+        </div>
+      </div>
+      <a href="https://www.odoo.com/" target="_blank" style="background-color: rgba(255,255,255,0.2); color: white; padding: 12px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 14px; display: inline-block; transition: background-color 0.3s ease;">
+        Explore Odoo →
+      </a>
+    </div>
+
+    <!-- InFlow Card -->
+    <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; border-radius: 15px; padding: 25px; box-shadow: 0 8px 25px rgba(250, 112, 154, 0.3); transition: transform 0.3s ease;">
+      <h4 style="color: white; margin: 0 0 15px 0; font-size: 20px; font-weight: bold;">InFlow Inventory</h4>
+      <p style="color: rgba(255,255,255,0.9); font-size: 14px; line-height: 1.6; margin: 0 0 20px 0;">Specialized inventory management platform with comprehensive workflow organization and professional dashboard layouts for stock control.</p>
+      <div style="margin-bottom: 20px;">
+        <div style="font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 8px;">Key Features We Adopted:</div>
+        <div style="font-size: 12px; color: rgba(255,255,255,0.9);">
+          • Workflow-based navigation<br>
+          • Comprehensive dashboards<br>
+          • Advanced reporting tools
+        </div>
+      </div>
+      <a href="https://app.inflowinventory.com/homepage" target="_blank" style="background-color: rgba(255,255,255,0.2); color: white; padding: 12px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 14px; display: inline-block; transition: background-color 0.3s ease;">
+        Explore InFlow →
+      </a>
+    </div>
+  </div>
+
+  <!-- Design Philosophy Summary -->
+  <div style="background-color: rgba(255,255,255,0.8); border-radius: 12px; padding: 25px; margin-top: 30px; border-left: 4px solid #2563eb;">
+    <h4 style="color: #1f2937; margin: 0 0 15px 0; font-size: 18px;">Our Design Philosophy</h4>
+    <p style="color: #4b5563; font-size: 15px; line-height: 1.7; margin: 0;">We've carefully studied these market-leading platforms to create StockRoom - combining Loyverse's simplicity, Odoo's power, and InFlow's specialized inventory focus into a unified, professional solution that serves businesses of all sizes.</p>
+  </div>
+</div>
 
 <div class="important-note">
 <p><strong>Project Overview:</strong> Building a <strong>StockRoom Inventory Management System</strong> from scratch using Java Spring Boot (Backend) and React (Frontend).</p>
@@ -534,7 +769,7 @@ Plan)</h2>
 </div>
 
 <div class="important-note">
-<h3><strong>🎯 Project Success Criteria</strong></h3>
+<h3><strong>Project Success Criteria</strong></h3>
 <p>This plan provides a solid foundation to build a production-ready inventory management system. Start with the backend database and entities, then build the APIs, and finally create the React frontend to consume those APIs.</p>
 </div>
 
@@ -564,303 +799,201 @@ Plan)</h2>
 </ul>
 </div>
 
-<!-- Add UI Prototype Section -->
+<!-- Update UI Prototype Section -->
 <h2 id="ui-prototype-examples">UI Prototype Examples</h2>
 
 <div class="important-note">
-<p><strong>Frontend Design Goals:</strong> Clean, intuitive interface with clear navigation and responsive design for inventory management workflows.</p>
+  <p><strong>MOBILE NOTE:</strong> UI prototypes are displayed in simplified grayscale on mobile. <strong>View on desktop for full interactive experience.</strong></p>
+  <p><strong>Design Philosophy:</strong> Professional inventory management interface inspired by Loyverse, Odoo, and InFlow platforms.</p>
 </div>
 
-<div class="tech-stack">
-<h3><strong>🎨 Login Page</strong></h3>
-<div style="border: 2px solid #e5e7eb; border-radius: 8px; padding: 20px; background-color: #f9fafb; margin: 15px 0;">
-<div style="text-align: center; padding: 40px; background-color: white; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-  <h2 style="color: #2563eb; margin: 0 0 30px 0;">📦 StockRoom</h2>
-  <div style="max-width: 300px; margin: 0 auto;">
-    <div style="margin-bottom: 15px;">
-      <input type="text" placeholder="Username" style="width: 100%; padding: 12px; border: 2px solid #d1d5db; border-radius: 6px; font-size: 14px;" disabled>
-    </div>
-    <div style="margin-bottom: 20px;">
-      <input type="password" placeholder="Password" style="width: 100%; padding: 12px; border: 2px solid #d1d5db; border-radius: 6px; font-size: 14px;" disabled>
-    </div>
-    <button style="width: 100%; padding: 12px; background-color: #2563eb; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Sign In</button>
-  </div>
-</div>
-</div>
+<!-- Mobile Prototype Notice -->
+<div class="mobile-prototype-notice">
+  <h3 style="color: #6b7280; margin: 0 0 20px 0;">Mobile Simplified View</h3>
+  <p style="margin: 0 0 20px 0;">UI prototypes are simplified for mobile viewing.</p>
+  <p style="margin: 0; font-weight: bold;">DESKTOP EXPERIENCE includes:</p>
+  <ul style="text-align: left; max-width: 320px; margin: 20px auto 0; font-size: 15px;">
+    <li>Complete dashboard layouts</li>
+    <li>Advanced product management tables</li>
+    <li>Interactive workflow cards</li>
+    <li>Professional gradient designs</li>
+    <li>Full prototype interactions</li>
+  </ul>
 </div>
 
-<div class="tech-stack">
-<h3><strong>📊 Dashboard Layout</strong></h3>
-<div style="border: 2px solid #e5e7eb; border-radius: 8px; padding: 20px; background-color: #f9fafb; margin: 15px 0;">
-  <!-- Header -->
-  <div style="background-color: #2563eb; color: white; padding: 15px; border-radius: 6px 6px 0 0; display: flex; justify-content: space-between; align-items: center;">
-    <h3 style="margin: 0; color: white;">📦 StockRoom Dashboard</h3>
-    <div style="display: flex; align-items: center; gap: 15px;">
-      <span style="font-size: 14px;">👤 Admin User</span>
-      <button style="padding: 5px 10px; background-color: #1d4ed8; border: none; border-radius: 4px; color: white; cursor: pointer;">Logout</button>
-    </div>
-  </div>
+<!-- Wrap existing UI prototypes in desktop-only container -->
+<div class="ui-prototype">
+<div class="tech-stack prototype-grayscale">
+<h3><strong>Welcome Dashboard (Inspired by InFlow & Odoo)</strong></h3>
+<div style="border: 2px solid #e5e7eb; border-radius: 12px; padding: 0; background-color: white; margin: 15px 0; overflow: hidden;">
   
-  <!-- Navigation + Content -->
-  <div style="display: flex; background-color: white; border-radius: 0 0 6px 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-    <!-- Sidebar -->
-    <div style="width: 200px; background-color: #f8fafc; padding: 20px; border-right: 1px solid #e5e7eb;">
-      <div style="margin-bottom: 10px; padding: 10px; background-color: #eff6ff; border-radius: 4px; color: #2563eb; font-weight: bold;">📊 Dashboard</div>
-      <div style="margin-bottom: 10px; padding: 10px; color: #6b7280; cursor: pointer;">📦 Products</div>
-      <div style="margin-bottom: 10px; padding: 10px; color: #6b7280; cursor: pointer;">📂 Categories</div>
-      <div style="margin-bottom: 10px; padding: 10px; color: #6b7280; cursor: pointer;">🏢 Suppliers</div>
-      <div style="margin-bottom: 10px; padding: 10px; color: #6b7280; cursor: pointer;">📈 Stock In/Out</div>
-      <div style="margin-bottom: 10px; padding: 10px; color: #6b7280; cursor: pointer;">📋 Reports</div>
-    </div>
-    
-    <!-- Main Content -->
-    <div style="flex: 1; padding: 20px;">
-      <!-- Stats Cards -->
-      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px;">
-        <div style="padding: 20px; background-color: #ecfdf5; border-radius: 6px; border-left: 4px solid #10b981;">
-          <h4 style="margin: 0 0 5px 0; color: #065f46;">Total Products</h4>
-          <p style="margin: 0; font-size: 24px; font-weight: bold; color: #059669;">1,247</p>
-        </div>
-        <div style="padding: 20px; background-color: #fef3c7; border-radius: 6px; border-left: 4px solid #f59e0b;">
-          <h4 style="margin: 0 0 5px 0; color: #92400e;">Low Stock</h4>
-          <p style="margin: 0; font-size: 24px; font-weight: bold; color: #d97706;">23</p>
-        </div>
-        <div style="padding: 20px; background-color: #eff6ff; border-radius: 6px; border-left: 4px solid #3b82f6;">
-          <h4 style="margin: 0 0 5px 0; color: #1e40af;">Categories</h4>
-          <p style="margin: 0; font-size: 24px; font-weight: bold; color: #2563eb;">18</p>
-        </div>
-        <div style="padding: 20px; background-color: #fdf2f8; border-radius: 6px; border-left: 4px solid #ec4899;">
-          <h4 style="margin: 0 0 5px 0; color: #be185d;">Suppliers</h4>
-          <p style="margin: 0; font-size: 24px; font-weight: bold; color: #db2777;">12</p>
-        </div>
+  <!-- Simplified Header -->
+  <div style="background-color: #f3f4f6; color: #374151; padding: 15px 25px; border-bottom: 1px solid #e5e7eb;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h2 style="margin: 0; color: #374151; font-size: 24px;">StockRoom</h2>
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <span style="font-size: 14px;">Admin User</span>
+        <button style="padding: 8px 15px; background-color: #e5e7eb; border: 1px solid #d1d5db; border-radius: 6px; color: #374151;">Settings</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Simplified Welcome Banner -->
+  <div style="background-color: #f9fafb; color: #374151; padding: 20px 25px; border-bottom: 1px solid #e5e7eb;">
+    <h1 style="margin: 0 0 10px 0; color: #374151; font-size: 22px;">Good afternoon, Team</h1>
+    <p style="margin: 0; font-size: 14px; color: #6b7280;">Professional inventory management system inspired by InFlow, Odoo, and Loyverse platforms.</p>
+  </div>
+
+  <!-- Simplified Workflow Cards -->
+  <div style="padding: 25px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 20px;">
       
-      <!-- Recent Transactions -->
-      <div style="background-color: white; border: 1px solid #e5e7eb; border-radius: 6px; padding: 20px;">
-        <h4 style="margin: 0 0 15px 0; color: #1f2937;">📋 Recent Stock Transactions</h4>
-        <div style="font-size: 14px;">
-          <div style="display: flex; padding: 10px; background-color: #f9fafb; border-radius: 4px; margin-bottom: 5px;">
-            <span style="flex: 1; font-weight: bold;">Product</span>
-            <span style="flex: 1; font-weight: bold;">Type</span>
-            <span style="flex: 1; font-weight: bold;">Quantity</span>
-            <span style="flex: 1; font-weight: bold;">Date</span>
-          </div>
-          <div style="display: flex; padding: 8px 10px; border-bottom: 1px solid #f3f4f6;">
-            <span style="flex: 1;">Laptop Dell XPS 13</span>
-            <span style="flex: 1; color: #059669;">Stock In</span>
-            <span style="flex: 1;">+50</span>
-            <span style="flex: 1; color: #6b7280;">2024-01-15</span>
-          </div>
-          <div style="display: flex; padding: 8px 10px; border-bottom: 1px solid #f3f4f6;">
-            <span style="flex: 1;">iPhone 15 Pro</span>
-            <span style="flex: 1; color: #dc2626;">Stock Out</span>
-            <span style="flex: 1;">-25</span>
-            <span style="flex: 1; color: #6b7280;">2024-01-14</span>
-          </div>
-          <div style="display: flex; padding: 8px 10px;">
-            <span style="flex: 1;">Samsung Monitor 27"</span>
-            <span style="flex: 1; color: #059669;">Stock In</span>
-            <span style="flex: 1;">+30</span>
-            <span style="flex: 1; color: #6b7280;">2024-01-14</span>
-          </div>
+      <!-- Purchasing Card -->
+      <div style="background-color: #f8fafc; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px;">
+        <h3 style="margin: 0 0 15px 0; color: #374151; font-size: 16px;">Purchasing</h3>
+        <div style="color: #6b7280; font-size: 14px; line-height: 1.6;">
+          • Purchase orders: 12<br>
+          • Purchase quotes: 5<br>
+          • Vendors: 8
+        </div>
+      </div>
+
+      <!-- Inventory Card -->
+      <div style="background-color: #f8fafc; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px;">
+        <h3 style="margin: 0 0 15px 0; color: #374151; font-size: 16px;">Inventory</h3>
+        <div style="color: #6b7280; font-size: 14px; line-height: 1.6;">
+          • Products: 1,247<br>
+          • Low stock: 23<br>
+          • Transfers: 7
+        </div>
+      </div>
+
+      <!-- Sales Card -->
+      <div style="background-color: #f8fafc; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px;">
+        <h3 style="margin: 0 0 15px 0; color: #374151; font-size: 16px;">Sales</h3>
+        <div style="color: #6b7280; font-size: 14px; line-height: 1.6;">
+          • Sales orders: 28<br>
+          • Quotes: 15<br>
+          • Customers: 156
         </div>
       </div>
     </div>
+    
+    <div style="background-color: #f3f4f6; border-radius: 8px; padding: 20px; text-align: center;">
+      <h4 style="margin: 0 0 10px 0; color: #374151;">Reports & Analytics</h4>
+      <p style="margin: 0; color: #6b7280; font-size: 14px;">Advanced reporting capabilities inspired by Odoo and InFlow platforms</p>
+    </div>
   </div>
 </div>
 </div>
 
-<div class="tech-stack">
-<h3><strong>📦 Product Management Page</strong></h3>
-<div style="border: 2px solid #e5e7eb; border-radius: 8px; padding: 20px; background-color: #f9fafb; margin: 15px 0;">
-<div style="background-color: white; border-radius: 6px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-  <!-- Page Header -->
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #f3f4f6;">
-    <h2 style="margin: 0; color: #1f2937;">📦 Product Management</h2>
-    <button style="padding: 10px 20px; background-color: #059669; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">+ Add Product</button>
+<div class="tech-stack prototype-grayscale">
+<h3><strong>Product Management (Inspired by Loyverse & Odoo)</strong></h3>
+<div style="border: 2px solid #e5e7eb; border-radius: 8px; padding: 20px; background-color: white; margin: 15px 0;">
+  <!-- Simplified Header -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
+    <h2 style="margin: 0; color: #374151;">Product Management</h2>
+    <button style="padding: 10px 20px; background-color: #f3f4f6; color: #374151; border: 1px solid #d1d5db; border-radius: 6px;">+ Add Product</button>
   </div>
   
-  <!-- Search and Filters -->
-  <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-    <input type="text" placeholder="Search products..." style="flex: 1; padding: 10px; border: 2px solid #d1d5db; border-radius: 6px;" disabled>
-    <select style="padding: 10px; border: 2px solid #d1d5db; border-radius: 6px; width: 150px;" disabled>
-      <option>All Categories</option>
-    </select>
-    <select style="padding: 10px; border: 2px solid #d1d5db; border-radius: 6px; width: 120px;" disabled>
-      <option>All Status</option>
-    </select>
-  </div>
-  
-  <!-- Product Table -->
-  <div style="border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden;">
-    <div style="display: flex; background-color: #f8fafc; padding: 15px; font-weight: bold; color: #374151; border-bottom: 1px solid #e5e7eb;">
-      <span style="flex: 0 0 100px;">SKU</span>
-      <span style="flex: 1;">Product Name</span>
-      <span style="flex: 0 0 120px;">Category</span>
-      <span style="flex: 0 0 80px;">Stock</span>
-      <span style="flex: 0 0 100px;">Price</span>
-      <span style="flex: 0 0 80px;">Status</span>
-      <span style="flex: 0 0 100px;">Actions</span>
-    </div>
-    
-    <div style="display: flex; padding: 15px; border-bottom: 1px solid #f3f4f6; align-items: center;">
-      <span style="flex: 0 0 100px; font-family: monospace; color: #6b7280;">LP001</span>
-      <span style="flex: 1;">Dell XPS 13 Laptop</span>
-      <span style="flex: 0 0 120px;">Electronics</span>
-      <span style="flex: 0 0 80px; color: #059669; font-weight: bold;">45</span>
-      <span style="flex: 0 0 100px;">$999.99</span>
-      <span style="flex: 0 0 80px;"><span style="background-color: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 12px; font-size: 12px;">Active</span></span>
-      <span style="flex: 0 0 100px;">
-        <button style="padding: 4px 8px; background-color: #3b82f6; color: white; border: none; border-radius: 4px; margin-right: 5px; cursor: pointer;">Edit</button>
-        <button style="padding: 4px 8px; background-color: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer;">Delete</button>
-      </span>
-    </div>
-    
-    <div style="display: flex; padding: 15px; border-bottom: 1px solid #f3f4f6; align-items: center;">
-      <span style="flex: 0 0 100px; font-family: monospace; color: #6b7280;">IP002</span>
-      <span style="flex: 1;">iPhone 15 Pro</span>
-      <span style="flex: 0 0 120px;">Electronics</span>
-      <span style="flex: 0 0 80px; color: #dc2626; font-weight: bold;">8</span>
-      <span style="flex: 0 0 100px;">$1,199.99</span>
-      <span style="flex: 0 0 80px;"><span style="background-color: #fef3c7; color: #92400e; padding: 4px 8px; border-radius: 12px; font-size: 12px;">Low Stock</span></span>
-      <span style="flex: 0 0 100px;">
-        <button style="padding: 4px 8px; background-color: #3b82f6; color: white; border: none; border-radius: 4px; margin-right: 5px; cursor: pointer;">Edit</button>
-        <button style="padding: 4px 8px; background-color: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer;">Delete</button>
-      </span>
-    </div>
-    
-    <div style="display: flex; padding: 15px; align-items: center;">
-      <span style="flex: 0 0 100px; font-family: monospace; color: #6b7280;">MN003</span>
-      <span style="flex: 1;">Samsung 27" Monitor</span>
-      <span style="flex: 0 0 120px;">Electronics</span>
-      <span style="flex: 0 0 80px; color: #059669; font-weight: bold;">120</span>
-      <span style="flex: 0 0 100px;">$299.99</span>
-      <span style="flex: 0 0 80px;"><span style="background-color: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 12px; font-size: 12px;">Active</span></span>
-      <span style="flex: 0 0 100px;">
-        <button style="padding: 4px 8px; background-color: #3b82f6; color: white; border: none; border-radius: 4px; margin-right: 5px; cursor: pointer;">Edit</button>
-        <button style="padding: 4px 8px; background-color: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer;">Delete</button>
-      </span>
-    </div>
-  </div>
-  
-  <!-- Pagination -->
-  <div style="display: flex; justify-content: between; align-items: center; margin-top: 15px;">
-    <span style="color: #6b7280; font-size: 14px;">Showing 1-3 of 1,247 products</span>
-    <div style="display: flex; gap: 5px; margin-left: auto;">
-      <button style="padding: 8px 12px; border: 1px solid #d1d5db; background-color: white; border-radius: 4px; cursor: pointer;">Previous</button>
-      <button style="padding: 8px 12px; border: 1px solid #d1d5db; background-color: #2563eb; color: white; border-radius: 4px; cursor: pointer;">1</button>
-      <button style="padding: 8px 12px; border: 1px solid #d1d5db; background-color: white; border-radius: 4px; cursor: pointer;">2</button>
-      <button style="padding: 8px 12px; border: 1px solid #d1d5db; background-color: white; border-radius: 4px; cursor: pointer;">3</button>
-      <button style="padding: 8px 12px; border: 1px solid #d1d5db; background-color: white; border-radius: 4px; cursor: pointer;">Next</button>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-
-<div class="tech-stack">
-<h3><strong>📈 Stock Transaction Form</strong></h3>
-<div style="border: 2px solid #e5e7eb; border-radius: 8px; padding: 20px; background-color: #f9fafb; margin: 15px 0;">
-<div style="background-color: white; border-radius: 6px; padding: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 500px; margin: 0 auto;">
-  <h3 style="margin: 0 0 20px 0; color: #1f2937; text-align: center;">📈 Stock In Transaction</h3>
-  
-  <div style="margin-bottom: 15px;">
-    <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: bold;">Product</label>
-    <select style="width: 100%; padding: 10px; border: 2px solid #d1d5db; border-radius: 6px;" disabled>
-      <option>Dell XPS 13 Laptop (LP001)</option>
-    </select>
-  </div>
-  
-  <div style="display: flex; gap: 15px; margin-bottom: 15px;">
-    <div style="flex: 1;">
-      <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: bold;">Quantity</label>
-      <input type="number" value="50" style="width: 100%; padding: 10px; border: 2px solid #d1d5db; border-radius: 6px;" disabled>
-    </div>
-    <div style="flex: 1;">
-      <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: bold;">Unit Price</label>
-      <input type="number" value="999.99" style="width: 100%; padding: 10px; border: 2px solid #d1d5db; border-radius: 6px;" disabled>
-    </div>
-  </div>
-  
-  <div style="margin-bottom: 15px;">
-    <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: bold;">Reference Number</label>
-    <input type="text" value="PO-2024-001" style="width: 100%; padding: 10px; border: 2px solid #d1d5db; border-radius: 6px;" disabled>
-  </div>
-  
+  <!-- Simplified Search -->
   <div style="margin-bottom: 20px;">
-    <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: bold;">Notes</label>
-    <textarea style="width: 100%; padding: 10px; border: 2px solid #d1d5db; border-radius: 6px; height: 80px; resize: vertical;" disabled>Received from Dell supplier - Q1 inventory restock</textarea>
+    <input type="text" placeholder="Search products..." style="width: 100%; max-width: 400px; padding: 12px; border: 1px solid #d1d5db; border-radius: 6px; background-color: #f9fafb; font-size: 15px;" disabled>
   </div>
   
-  <div style="background-color: #f8fafc; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
-    <div style="display: flex; justify-content: between; margin-bottom: 5px;">
-      <span style="color: #6b7280;">Quantity:</span>
-      <span style="font-weight: bold;">50 units</span>
+  <!-- Simplified Product List -->
+  <div style="border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden;">
+    <div style="background-color: #f8fafc; padding: 15px; font-weight: bold; color: #374151; border-bottom: 1px solid #e5e7eb;">
+      Product List Overview
     </div>
-    <div style="display: flex; justify-content: between; margin-bottom: 5px;">
-      <span style="color: #6b7280;">Unit Price:</span>
-      <span style="font-weight: bold;">$999.99</span>
+    
+    <div style="padding: 15px; border-bottom: 1px solid #f3f4f6;">
+      <div style="font-weight: bold; color: #374151; font-size: 16px;">Dell XPS 13 Laptop</div>
+      <div style="font-size: 14px; color: #6b7280; margin-top: 5px;">SKU: LP001 | Stock: 45 | Price: $999.99</div>
     </div>
-    <div style="display: flex; justify-content: between; padding-top: 10px; border-top: 1px solid #e5e7eb;">
-      <span style="color: #1f2937; font-weight: bold;">Total Amount:</span>
-      <span style="font-weight: bold; color: #059669; font-size: 18px;">$49,999.50</span>
+    
+    <div style="padding: 15px; background-color: #fef3c7; border-bottom: 1px solid #f3f4f6;">
+      <div style="font-weight: bold; color: #374151; display: flex; align-items: center; gap: 8px; font-size: 16px;">
+        iPhone 15 Pro
+        <span style="background-color: #ef4444; color: white; padding: 3px 8px; border-radius: 12px; font-size: 11px;">LOW STOCK</span>
+      </div>
+      <div style="font-size: 14px; color: #6b7280; margin-top: 5px;">SKU: IP002 | Stock: 8 | Price: $1,199.99</div>
     </div>
-  </div>
-  
-  <div style="display: flex; gap: 10px;">
-    <button style="flex: 1; padding: 12px; background-color: #6b7280; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Cancel</button>
-    <button style="flex: 1; padding: 12px; background-color: #059669; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Complete Transaction</button>
+    
+    <div style="padding: 15px;">
+      <div style="font-weight: bold; color: #374151; font-size: 16px;">Samsung 27" Monitor</div>
+      <div style="font-size: 14px; color: #6b7280; margin-top: 5px;">SKU: MN003 | Stock: 120 | Price: $299.99</div>
+    </div>
   </div>
 </div>
 </div>
 </div>
 
 <div class="important-note">
-<h3><strong>🎨 UI Design Principles</strong></h3>
+<h3><strong>Design Inspiration Summary</strong></h3>
 <ul>
-<li><strong>Clean Layout:</strong> Consistent spacing, clear typography, and intuitive navigation</li>
-<li><strong>Color Coding:</strong> Green for positive actions/stock in, Red for negative actions/alerts, Blue for neutral actions</li>
-<li><strong>Responsive Design:</strong> Mobile-first approach with flexible grid layouts</li>
-<li><strong>User Experience:</strong> Minimal clicks to complete tasks, clear visual feedback, and error handling</li>
-<li><strong>Accessibility:</strong> High contrast colors, keyboard navigation, and screen reader friendly</li>
+<li><strong>InFlow Inventory:</strong> Comprehensive dashboard design and workflow organization</li>
+<li><strong>Odoo ERP:</strong> Advanced search capabilities and modular layout structure</li>
+<li><strong>Loyverse POS:</strong> Clean interface design and mobile-responsive patterns</li>
+<li><strong>Professional Standards:</strong> Modern SaaS application design principles</li>
+<li><strong>Accessibility:</strong> High contrast colors and keyboard navigation support</li>
 </ul>
 </div>
 
+ 
+<!-- Add mobile-responsive adjustments -->
+<style>
+@media (max-width: 768px) {
+  .inspiration-sources {
+    padding: 20px 15px;
+  }
+  
+  .inspiration-sources > div[style*="grid"] {
+    grid-template-columns: 1fr !important;
+  }
+  
+  div[style*="linear-gradient"][style*="border-radius: 20px"] {
+    margin: 30px 0 !important;
+    border-radius: 15px !important;
+  }
+  
+  div[style*="linear-gradient"] div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  div[style*="linear-gradient"] div[style*="padding: 40px"] {
+    padding: 25px 20px !important;
+  }
+  
+  div[style*="linear-gradient"] div[style*="padding: 30px 40px"] {
+    padding: 25px 20px !important;
+  }
+  
+  div[style*="linear-gradient"] div[style*="padding: 25px 40px"] {
+    padding: 20px !important;
+  }
+  
+  div[style*="linear-gradient"] h3 {
+    font-size: 24px !important;
+  }
+  
+  div[style*="linear-gradient"] p {
+    font-size: 16px !important;
+  }
+  
+  div[style*="linear-gradient"] a {
+    font-size: 16px !important;
+    padding: 15px 30px !important;
+  }
+  
+  div[style*="display: flex"][style*="gap: 30px"] {
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+}
+</style>
+
 </body>
 </html>
-<h3 id="weekly-sync-meetings"><strong>Weekly Sync Meetings</strong></h3>
-<ul>
-<li><strong>Week 1:</strong> Database schema review and backend
-structure alignment</li>
-<li><strong>Week 2:</strong> API contracts and security integration</li>
-<li><strong>Week 3:</strong> Frontend-backend API integration
-planning</li>
-<li><strong>Week 4:</strong> Stock transaction flow testing</li>
-<li><strong>Week 5:</strong> UI/UX consistency and component
-sharing</li>
-<li><strong>Week 6:</strong> End-to-end testing and bug fixing</li>
-</ul>
-<h3 id="shared-responsibilities"><strong>Shared
-Responsibilities</strong></h3>
-<ul>
-<li><strong>All Members:</strong> Code reviews and testing</li>
-<li><strong>Members 1-4:</strong> Backend API documentation</li>
-<li><strong>Members 5-6:</strong> Frontend component documentation</li>
-<li><strong>Member 2 &amp; 5:</strong> Authentication flow
-integration</li>
-<li><strong>Member 4 &amp; 6:</strong> Stock management feature
-integration</li>
-</ul>
-<h3 id="dependencies"><strong>Dependencies</strong></h3>
-<ul>
-<li>Member 2 depends on Member 1 (database entities for user
-management)</li>
-<li>Member 3 depends on Member 1 (product entities) and Member 2
-(authentication)</li>
-<li>Member 4 depends on Members 1-3 (all entities and user context)</li>
-<li>Member 5 depends on Member 2 (authentication APIs)</li>
-</ul>
-<p>Member 6 depends on Members 3-5 (product APIs and auth
-components)</p>
-</body>
 </html>
