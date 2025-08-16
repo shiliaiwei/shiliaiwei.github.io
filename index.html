@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EIRSVi • HUD Portfolio</title>
+  <title>EIRSVi •</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
@@ -15,12 +15,8 @@
 
   <!-- Top sticky HUD rail (icon-only) -->
   <nav class="top-rail" aria-label="Primary">
-    <a class="rail-item" href="#home" aria-label="Home"><i class="ri-home-5-fill" aria-hidden="true"></i><span class="visually-hidden">Home</span></a>
-    <a class="rail-item" href="#mission" aria-label="Mission"><i class="ri-flag-2-fill"></i></a>
+    <a class="rail-item" href="#home" aria-label="Home"><i class="ri-home-5-fill" aria-hidden="true"></i></a>
     <a class="rail-item" href="#skills" aria-label="Skills"><i class="ri-cpu-fill"></i></a>
-    <a class="rail-item" href="#interests" aria-label="Interests"><i class="ri-pulse-fill"></i></a>
-    <a class="rail-item" href="#achievements" aria-label="Achievements"><i class="ri-trophy-fill"></i></a>
-    <a class="rail-item" href="#education" aria-label="Education"><i class="ri-graduation-cap-fill"></i></a>
     <a class="rail-item" href="#social" aria-label="Social"><i class="ri-links-fill"></i></a>
   </nav>
 
@@ -48,41 +44,10 @@
           </div>
         </div>
         <div class="hero__content">
-          <h1 class="title">EIRSVi — Developer</h1>
+            <h1 class="title">EIRSVi </h1>
           <p class="tagline">“To Be Educated Is To Be Changed.”</p>
           <p class="lede">About me: Buddhist monk. “The machine obeys no one—unless you command it.” I craft resilient interfaces and backends with a calm, methodical approach.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- MISSION -->
-    <section id="mission" class="section container">
-      <div class="section__header">
-        <h2>Mission</h2>
-        <p>Build thoughtful systems that serve people—fast, reliable, and elegant.</p>
-      </div>
-      <div class="grid-3">
-        <article class="card">
-          <div class="row">
-            <div class="badges"><span class="badge"><i class="ri-speed-fill"></i> Speed</span></div>
-            <span class="dot" style="width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.25);"></span>
-          </div>
-          <p class="lede">Ship rapidly while preserving clarity and quality.</p>
-        </article>
-        <article class="card">
-          <div class="row">
-            <div class="badges"><span class="badge"><i class="ri-shield-star-fill"></i> Reliability</span></div>
-            <span class="dot" style="width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.25);"></span>
-          </div>
-          <p class="lede">Engineer robust backends and fault‑tolerant UIs.</p>
-        </article>
-        <article class="card">
-          <div class="row">
-            <div class="badges"><span class="badge"><i class="ri-brush-fill"></i> Design</span></div>
-            <span class="dot" style="width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 4px rgba(34,197,94,.25);"></span>
-          </div>
-          <p class="lede">Futuristic HUD aesthetics with accessible ergonomics.</p>
-        </article>
       </div>
     </section>
 
@@ -90,114 +55,39 @@
     <section id="skills" class="section container">
       <div class="section__header">
         <h2>Skills</h2>
-        <p>Frontend, Backend, and Network/Config</p>
+        <p>My technical expertise and personal interests</p>
       </div>
-      <div class="grid-2">
-        <div class="card">
-          <div class="skills">
-            <div class="skill-group">
-              <h3>Frontend Developer</h3>
-              <div class="badges wrap">
-                <span class="badge">HTML</span>
-                <span class="badge">CSS</span>
-                <span class="badge">JavaScript</span>
-                <span class="badge">Tailwind CSS</span>
-                <span class="badge">React</span>
-                <span class="badge">Git &amp; GitHub</span>
-              </div>
-            </div>
-            <div class="skill-group">
-              <h3>Backend Developer</h3>
-              <div class="badges wrap">
-                <span class="badge">Linux</span>
-                <span class="badge">Postman</span>
-                <span class="badge">Java</span>
-                <span class="badge">Databases</span>
-                <span class="badge">Laravel</span>
-              </div>
-            </div>
-            <div class="skill-group">
-              <h3>Network / Config</h3>
-              <div class="badges wrap">
-                <span class="badge">Network Configuration</span>
-                <span class="badge">IT Support</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <h3 style="margin-top:0">Interests</h3>
-          <ul class="list">
-            <li>Body Language</li>
-            <li>Dark Psychology</li>
-            <li>Game Theory, Economics</li>
-            <li>MOBA</li>
-            <li>Chess</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+      <div class="skills-container">
+        <div class="all-skills">
+          <div class="tag-cloud">
+            <!-- Frontend Skills - Blue -->
+            <span class="skill-tag frontend-tag">HTML</span>
+            <span class="skill-tag frontend-tag">CSS</span>
+            <span class="skill-tag frontend-tag">JavaScript</span>
+            <span class="skill-tag frontend-tag">Tailwind CSS</span>
+            <span class="skill-tag frontend-tag">React</span>
 
-    <!-- ACHIEVEMENTS / QR -->
-    <section id="achievements" class="section container">
-      <div class="section__header">
-        <h2>Achievements</h2>
-        <p>Tap the icon to open a scannable QR to my project success.</p>
-      </div>
-      <div class="grid-3">
-        <article class="card qr-card" tabindex="0" data-modal="qr">
-          <div class="row">
-            <h3 style="margin:0">Project QR</h3>
-            <a class="icon-btn" href="#" aria-label="Open QR" data-modal="qr"><i class="ri-qr-code-fill"></i></a>
-          </div>
-          <p class="tagline">Click to open the QR code.</p>
-          <img class="qr-img" src="source/img/qrcode.png" alt="QR code to project" />
-        </article>
-        <article class="card qr-card" tabindex="0" data-modal="qr">
-          <div class="row">
-            <h3 style="margin:0">Showcase QR</h3>
-            <a class="icon-btn" href="#" aria-label="Open QR" data-modal="qr"><i class="ri-qr-code-fill"></i></a>
-          </div>
-          <p class="tagline">Click to open the QR code.</p>
-          <img class="qr-img" src="source/img/qrcode.png" alt="QR code to project" />
-        </article>
-        <article class="card qr-card" tabindex="0" data-modal="qr">
-          <div class="row">
-            <h3 style="margin:0">Portfolio QR</h3>
-            <a class="icon-btn" href="#" aria-label="Open QR" data-modal="qr"><i class="ri-qr-code-fill"></i></a>
-          </div>
-          <p class="tagline">Click to open the QR code.</p>
-          <img class="qr-img" src="source/img/qrcode.png" alt="QR code to project" />
-        </article>
-      </div>
-    </section>
+            <!-- Backend Skills - Green -->
+            <span class="skill-tag backend-tag">Linux</span>
+            <span class="skill-tag backend-tag">Java</span>
+            <span class="skill-tag backend-tag">Databases</span>
+            <span class="skill-tag backend-tag">Laravel</span>
 
-    <!-- EDUCATION -->
-    <section id="education" class="section container">
-      <div class="section__header">
-        <h2>Education</h2>
-        <p>Path of continuous learning across provinces.</p>
-      </div>
-      <div class="timeline card">
-        <div class="timeline__item">
-          <span class="dot" aria-hidden="true"></span>
-          <div class="content">
-            <h4>Kratie Province</h4>
-            <p>Studied foundational subjects and early computing.</p>
-          </div>
-        </div>
-        <div class="timeline__item">
-          <span class="dot" aria-hidden="true"></span>
-          <div class="content">
-            <h4>Kampong Cham Province</h4>
-            <p>Expanded focus on software and systems.</p>
-          </div>
-        </div>
-        <div class="timeline__item">
-          <span class="dot" aria-hidden="true"></span>
-          <div class="content">
-            <h4>Siem Reap Province</h4>
-            <p>Advanced learning in technology and innovation.</p>
+            <!-- Tools & DevOps - Orange -->
+            <span class="skill-tag tools-tag">Git & GitHub</span>
+            <span class="skill-tag tools-tag">Postman</span>
+
+            <!-- Network & Support - Cyan -->
+            <span class="skill-tag network-tag">Network Configuration</span>
+            <span class="skill-tag network-tag">IT Support</span>
+
+            <!-- Personal Interests - Purple -->
+            <span class="interest-tag">Body Language</span>
+            <span class="interest-tag">Dark Psychology</span>
+            <span class="interest-tag">Game Theory</span>
+            <span class="interest-tag">Economics</span>
+            <span class="interest-tag">MOBA</span>
+            <span class="interest-tag">Chess</span>
           </div>
         </div>
       </div>
@@ -215,7 +105,7 @@
         <a class="icon-btn" href="https://t.me/eirsvi" target="_blank" rel="noopener" aria-label="Telegram"><i class="ri-telegram-fill"></i></a>
         <a class="icon-btn" href="https://x.com/eirsvi" target="_blank" rel="noopener" aria-label="X"><i class="ri-twitter-x-fill"></i></a>
       </div>
-      <small class="small">© <span id="year"></span> EIRSVi • HUD Portfolio</small>
+      <small class="small">  EIRSVi • 2025 </small>
     </div>
   </footer>
 
