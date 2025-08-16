@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>1606ttowfz</title>
+  <style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+  <style type="text/css">html {
+margin: 0 auto;
+max-width: 800px;
+}
+body {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+padding: 3em;
+background-color: #fafafa;
+}
+img {
+max-width: 100%;
+}
+blockquote {
+border-left: 3px solid #ccc;
+margin-left: 0;
+padding-left: 1em;
+}
+
+/* Custom Color Styles for Better Readability */
+h1 {
+  color: #2c5f2d;
+  border-bottom: 3px solid #97bc62;
+  padding-bottom: 10px;
+}
+
+h2 {
+  color: #2563eb;
+  border-left: 4px solid #60a5fa;
+  padding-left: 15px;
+  margin-top: 2em;
+  background-color: #eff6ff;
+  padding: 12px 15px;
+  border-radius: 5px;
+}
+
+h3 {
+  color: #dc2626;
+  font-weight: bold;
+  margin-top: 1.5em;
+}
+
+/* Team Member Color Coding */
+.member-1 { color: #7c3aed; background-color: #f3f4f6; padding: 8px; border-radius: 5px; }
+.member-2 { color: #059669; background-color: #f0fdf4; padding: 8px; border-radius: 5px; }
+.member-3 { color: #dc2626; background-color: #fef2f2; padding: 8px; border-radius: 5px; }
+.member-4 { color: #ea580c; background-color: #fff7ed; padding: 8px; border-radius: 5px; }
+.member-5 { color: #2563eb; background-color: #eff6ff; padding: 8px; border-radius: 5px; }
+.member-6 { color: #7c2d12; background-color: #fef7f0; padding: 8px; border-radius: 5px; }
+
+/* Phase Color Coding */
+.phase-1 { color: #059669; font-weight: bold; }
+.phase-2 { color: #dc2626; font-weight: bold; }
+.phase-3 { color: #2563eb; font-weight: bold; }
+.phase-4 { color: #ea580c; font-weight: bold; }
+
+/* Important Elements */
+.important-note {
+  background-color: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  padding: 12px;
+  margin: 15px 0;
+  border-radius: 5px;
+}
+
+.tech-stack {
+  background-color: #f3f4f6;
+  border: 2px solid #6b7280;
+  padding: 15px;
+  border-radius: 8px;
+  margin: 15px 0;
+}
+
+.timeline {
+  background-color: #ecfdf5;
+  border-left: 4px solid #10b981;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+/* Tables and Code Blocks */
+pre {
+  background-color: #1f2937;
+  color: #f9fafb;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+}
+
+/* Strong text emphasis */
+strong {
+  color: #1f2937;
+  font-weight: 700;
+}
+
+/* Lists styling */
+li {
+  margin-bottom: 5px;
+}
+
+ul li::marker {
+  color: #3b82f6;
+}
+
+@page {
+size: letter;
+margin: 1in;
+}
+@media print {
+body {
+margin: 0;
+padding: 0;
+background-color: white;
+}
+}</style>
+</head>
+<body>
+<h1 id="stockroom---complete-mvp-plan">StockRoom - Complete MVP Plan</h1>
+
+<div class="important-note">
+<p><strong>Project Overview:</strong> Building a <strong>StockRoom Inventory Management System</strong> from scratch using Java Spring Boot (Backend) and React (Frontend).</p>
+</div>
+
+<h2 id="mvp-core-features">MVP Core Features</h2>
+
+<h3 id="essential-features-phase-1"><strong class="phase-1">Essential Features (Phase 1)</strong></h3>
+<p><strong>User Authentication &amp; Authorization</strong></p>
+<ul>
+<li>Login/Register system</li>
+<li>Role-based access (Admin, Manager, Employee)</li>
+</ul>
+<p><strong>Product Management</strong></p>
+<ul>
+<li>Add/Edit/Delete products</li>
+<li>Product categories</li>
+<li>SKU generation</li>
+<li>Basic product information</li>
+</ul>
+<p><strong>Stock Management</strong></p>
+<ul>
+<li>Stock in (receiving inventory)</li>
+<li>Stock out (issuing inventory)</li>
+<li>Current stock levels</li>
+<li>Low stock alerts</li>
+</ul>
+<p><strong>Basic Reporting</strong></p>
+<ul>
+<li>Stock levels report</li>
+<li>Recent transactions</li>
+<li>Simple dashboard</li>
+</ul>
+
+<h2 id="system-architecture">System Architecture</h2>
+<pre><code>Frontend (React)     ←→     Backend (Spring Boot)     ←→     Database (MySQL)
+    ├── Auth Pages            ├── REST APIs                  ├── Users
+    ├── Dashboard             ├── Security Layer             ├── Products  
+    ├── Product Pages         ├── Business Logic             ├── Categories
+    ├── Stock Pages           ├── Data Access Layer          ├── Transactions
+    └── Reports               └── Validation                 └── Suppliers</code></pre>
+
+<h2 id="database-design-relationships">Database Design &amp; Relationships</h2>
+<h3 id="core-tables-structure"><strong>Core Tables Structure</strong></h3>
+<h3 id="users-table"><strong>Users Table</strong></h3>
+<pre><code>users
+├── id (PK)
+├── username (UNIQUE)
+├── email (UNIQUE)  
+├── password (HASHED)
+├── full_name
+├── role (ADMIN/MANAGER/EMPLOYEE)
+├── status (ACTIVE/INACTIVE)
+├── created_at
+└── updated_at</code></pre>
+<h3 id="categories-table"><strong>Categories Table</strong></h3>
+<pre><code>categories
+├── id (PK)
+├── name (UNIQUE)
+├── description
+├── status (ACTIVE/INACTIVE)
+├── created_at
+└── created_by (FK → users.id)</code></pre>
+<h3 id="suppliers-table"><strong>Suppliers Table</strong></h3>
+<pre><code>suppliers
+├── id (PK)
+├── name
+├── contact_person
+├── email
+├── phone
+├── address
+├── status (ACTIVE/INACTIVE)
+├── created_at
+└── created_by (FK → users.id)</code></pre>
+<h3 id="products-table"><strong>Products Table</strong></h3>
+<pre><code>products
+├── id (PK)
+├── sku (UNIQUE)
+├── name
+├── description
+├── category_id (FK → categories.id)
+├── supplier_id (FK → suppliers.id)
+├── unit_price
+├── minimum_stock_level
+├── current_stock_quantity
+├── status (ACTIVE/DISCONTINUED)
+├── created_at
+├── updated_at
+└── created_by (FK → users.id)</code></pre>
+<h3 id="stock-transactions-table"><strong>Stock Transactions
+Table</strong></h3>
+<pre><code>stock_transactions
+├── id (PK)
+├── transaction_type (IN/OUT)
+├── product_id (FK → products.id)
+├── quantity
+├── unit_price
+├── total_amount
+├── reference_number
+├── notes
+├── transaction_date
+├── created_by (FK → users.id)
+└── created_at</code></pre>
+<h3 id="database-relationships"><strong>Database
+Relationships</strong></h3>
+<p><strong>One-to-Many Relationships:</strong></p>
+<ul>
+<li>Users → Categories (1:N)</li>
+<li>Users → Products (1:N)</li>
+<li>Users → Stock Transactions (1:N)</li>
+<li>Categories → Products (1:N)</li>
+<li>Suppliers → Products (1:N)</li>
+<li>Products → Stock Transactions (1:N)</li>
+</ul>
+<p><strong>Key Constraints:</strong></p>
+<ul>
+<li>Unique constraints on SKU, username, email</li>
+<li>Foreign key constraints with referential integrity</li>
+<li>Check constraints for positive quantities and prices</li>
+</ul>
+<h2 id="backend-structure-spring-boot">Backend Structure (Spring
+Boot)</h2>
+<h3 id="project-structure"><strong>Project Structure</strong></h3>
+<pre><code>src/main/java/com/company/ims/
+├── ImsApplication.java
+├── config/
+│   ├── SecurityConfig.java
+│   ├── DatabaseConfig.java
+│   └── CorsConfig.java
+├── controller/
+│   ├── AuthController.java
+│   ├── ProductController.java
+│   ├── CategoryController.java
+│   ├── SupplierController.java
+│   ├── StockController.java
+│   └── ReportController.java
+├── service/
+│   ├── AuthService.java
+│   ├── ProductService.java
+│   ├── CategoryService.java
+│   ├── SupplierService.java
+│   ├── StockService.java
+│   └── ReportService.java
+├── repository/
+│   ├── UserRepository.java
+│   ├── ProductRepository.java
+│   ├── CategoryRepository.java
+│   ├── SupplierRepository.java
+│   └── StockTransactionRepository.java
+├── entity/
+│   ├── User.java
+│   ├── Product.java
+│   ├── Category.java
+│   ├── Supplier.java
+│   └── StockTransaction.java
+├── dto/
+│   ├── LoginRequest.java
+│   ├── ProductDto.java
+│   ├── StockTransactionDto.java
+│   └── DashboardDto.java
+├── security/
+│   ├── JwtAuthenticationFilter.java
+│   ├── JwtTokenProvider.java
+│   └── UserDetailsImpl.java
+└── exception/
+    ├── GlobalExceptionHandler.java
+    ├── ResourceNotFoundException.java
+    └── CustomException.java</code></pre>
+<h3 id="key-dependencies-pom.xml"><strong>Key Dependencies
+(pom.xml)</strong></h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>- Spring Boot Starter Web</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>- Spring Boot Starter Data JPA</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>- Spring Boot Starter Security</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>- Spring Boot Starter Validation</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>- MySQL Connector</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>- JWT Dependencies</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>- Spring Boot Starter Test</span></code></pre></div>
+<h2 id="frontend-structure-react">Frontend Structure (React)</h2>
+<h3 id="project-structure-1"><strong>Project Structure</strong></h3>
+<pre><code>src/
+├── App.js
+├── index.js
+├── components/
+│   ├── common/
+│   │   ├── Layout.js
+│   │   ├── Navbar.js
+│   │   ├── Sidebar.js
+│   │   ├── LoadingSpinner.js
+│   │   └── ErrorMessage.js
+│   ├── auth/
+│   │   ├── ProtectedRoute.js
+│   │   └── RoleBasedRoute.js
+│   └── ui/
+│       ├── Button.js
+│       ├── Input.js
+│       ├── Modal.js
+│       └── Table.js
+├── pages/
+│   ├── auth/
+│   │   ├── LoginPage.js
+│   │   └── RegisterPage.js
+│   ├── dashboard/
+│   │   └── DashboardPage.js
+│   ├── products/
+│   │   ├── ProductListPage.js
+│   │   ├── AddProductPage.js
+│   │   └── EditProductPage.js
+│   ├── categories/
+│   │   └── CategoryPage.js
+│   ├── suppliers/
+│   │   └── SupplierPage.js
+│   ├── stock/
+│   │   ├── StockInPage.js
+│   │   ├── StockOutPage.js
+│   │   └── StockReportPage.js
+│   └── reports/
+│       └── ReportsPage.js
+├── services/
+│   ├── api.js
+│   ├── authService.js
+│   ├── productService.js
+│   ├── stockService.js
+│   └── reportService.js
+├── hooks/
+│   ├── useAuth.js
+│   ├── useApi.js
+│   └── useLocalStorage.js
+├── context/
+│   └── AuthContext.js
+├── utils/
+│   ├── constants.js
+│   ├── helpers.js
+│   └── validation.js
+└── styles/
+    ├── globals.css
+    ├── components.css
+    └── pages.css</code></pre>
+<h2 id="development-timeline-8-week-plan">Development Timeline (8-Week
+Plan)</h2>
+
+<div class="timeline">
+<h3 id="week-1-2-backend-foundation"><strong class="phase-1">Week 1-2: Backend Foundation</strong></h3>
+<ul>
+<li>Project setup &amp; dependencies</li>
+<li>Database design &amp; creation</li>
+<li>Entity models &amp; repositories</li>
+<li>Basic CRUD operations</li>
+</ul>
+</div>
+
+<div class="timeline">
+<h3 id="week-3-4-backend-security-apis"><strong class="phase-2">Week 3-4: Backend Security &amp; APIs</strong></h3>
+<ul>
+<li>Spring Security configuration</li>
+<li>JWT authentication</li>
+<li>User management APIs</li>
+<li>Product &amp; Category APIs</li>
+</ul>
+</div>
+
+<div class="timeline">
+<h3 id="week-5-6-frontend-foundation"><strong class="phase-3">Week 5-6: Frontend Foundation</strong></h3>
+<ul>
+<li>React project setup</li>
+<li>Authentication pages</li>
+<li>Protected routing</li>
+<li>API integration setup</li>
+</ul>
+</div>
+
+<div class="timeline">
+<h3 id="week-7-8-frontend-features-integration"><strong class="phase-4">Week 7-8: Frontend Features &amp; Integration</strong></h3>
+<ul>
+<li>Product management pages</li>
+<li>Stock transaction pages</li>
+<li>Dashboard &amp; reports</li>
+<li>Final testing &amp; bug fixes</li>
+</ul>
+</div>
+
+<div class="tech-stack">
+<h2 id="technology-stack-summary">Technology Stack Summary</h2>
+<h3 id="backend"><strong>Backend</strong></h3>
+<ul>
+<li><strong>Language</strong>: Java 17+</li>
+<li><strong>Framework</strong>: Spring Boot 3.x</li>
+<li><strong>Database</strong>: MySQL 8.0</li>
+<li><strong>Security</strong>: Spring Security + JWT</li>
+<li><strong>Build Tool</strong>: Maven</li>
+<li><strong>API</strong>: RESTful APIs</li>
+</ul>
+
+<h3 id="frontend"><strong>Frontend</strong></h3>
+<ul>
+<li><strong>Framework</strong>: React 18</li>
+<li><strong>Routing</strong>: React Router DOM</li>
+<li><strong>HTTP Client</strong>: Axios</li>
+<li><strong>Styling</strong>: CSS3 (Custom)</li>
+<li><strong>Build Tool</strong>: npm/yarn</li>
+</ul>
+
+<h3 id="development-tools"><strong>Development Tools</strong></h3>
+<ul>
+<li><strong>IDE</strong>: IntelliJ IDEA / VS Code</li>
+<li><strong>Database</strong>: MySQL Workbench</li>
+<li><strong>API Testing</strong>: Postman</li>
+<li><strong>Version Control</strong>: Git</li>
+</ul>
+</div>
+
+<h2 id="team-member-responsibilities-6-person-team">Team Member Responsibilities</h2>
+
+<div class="important-note">
+<p><strong>Team Structure:</strong> This project requires a 6-person development team with specialized roles. Each member has specific responsibilities and clear deliverables.</p>
+<p><strong>👉 <a href="team-responsibilities.html" style="color: #2563eb; font-weight: bold; text-decoration: underline;">View Detailed Team Responsibilities & Collaboration Plan</a></strong></p>
+</div>
+
+<div class="tech-stack">
+<h3><strong>Team Overview</strong></h3>
+<ul>
+<li><strong>Member 1:</strong> Database Architect & Backend Foundation</li>
+<li><strong>Member 2:</strong> Authentication & Security Specialist</li>
+<li><strong>Member 3:</strong> Product & Category API Developer</li>
+<li><strong>Member 4:</strong> Stock Management & Transaction Handler</li>
+<li><strong>Member 5:</strong> Frontend Core & Authentication Developer</li>
+<li><strong>Member 6:</strong> Frontend Features & Integration Specialist</li>
+</ul>
+
+<p><strong>Development Timeline:</strong> 8 weeks with clear dependencies and collaboration points between team members.</p>
+</div>
+
+<div class="important-note">
+<h3><strong>🎯 Project Success Criteria</strong></h3>
+<p>This plan provides a solid foundation to build a production-ready inventory management system. Start with the backend database and entities, then build the APIs, and finally create the React frontend to consume those APIs.</p>
+</div>
+
+<!-- Add MVP Success Criteria section -->
+<h2 id="mvp-success-criteria">MVP Success Criteria</h2>
+
+<div class="timeline">
+<h3 id="must-have-mvp"><strong class="phase-1">Must Have (MVP)</strong></h3>
+<ul>
+<li>User can login/logout</li>
+<li>Admin can manage products and categories</li>
+<li>Users can record stock in/out transactions</li>
+<li>System shows current stock levels</li>
+<li>Basic dashboard with key metrics</li>
+</ul>
+</div>
+
+<div class="timeline">
+<h3 id="nice-to-have-future-versions"><strong class="phase-4">Nice to Have (Future Versions)</strong></h3>
+<ul>
+<li>Advanced reporting &amp; analytics</li>
+<li>Mobile responsive design</li>
+<li>Email notifications for low stock</li>
+<li>Stock forecasting</li>
+<li>Barcode scanning</li>
+<li>Export reports to PDF/Excel</li>
+</ul>
+</div>
+
+<!-- Add UI Prototype Section -->
+<h2 id="ui-prototype-examples">UI Prototype Examples</h2>
+
+<div class="important-note">
+<p><strong>Frontend Design Goals:</strong> Clean, intuitive interface with clear navigation and responsive design for inventory management workflows.</p>
+</div>
+
+<div class="tech-stack">
+<h3><strong>🎨 Login Page</strong></h3>
+<div style="border: 2px solid #e5e7eb; border-radius: 8px; padding: 20px; background-color: #f9fafb; margin: 15px 0;">
+<div style="text-align: center; padding: 40px; background-color: white; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+  <h2 style="color: #2563eb; margin: 0 0 30px 0;">📦 StockRoom</h2>
+  <div style="max-width: 300px; margin: 0 auto;">
+    <div style="margin-bottom: 15px;">
+      <input type="text" placeholder="Username" style="width: 100%; padding: 12px; border: 2px solid #d1d5db; border-radius: 6px; font-size: 14px;" disabled>
+    </div>
+    <div style="margin-bottom: 20px;">
+      <input type="password" placeholder="Password" style="width: 100%; padding: 12px; border: 2px solid #d1d5db; border-radius: 6px; font-size: 14px;" disabled>
+    </div>
+    <button style="width: 100%; padding: 12px; background-color: #2563eb; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Sign In</button>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="tech-stack">
+<h3><strong>📊 Dashboard Layout</strong></h3>
+<div style="border: 2px solid #e5e7eb; border-radius: 8px; padding: 20px; background-color: #f9fafb; margin: 15px 0;">
+  <!-- Header -->
+  <div style="background-color: #2563eb; color: white; padding: 15px; border-radius: 6px 6px 0 0; display: flex; justify-content: space-between; align-items: center;">
+    <h3 style="margin: 0; color: white;">📦 StockRoom Dashboard</h3>
+    <div style="display: flex; align-items: center; gap: 15px;">
+      <span style="font-size: 14px;">👤 Admin User</span>
+      <button style="padding: 5px 10px; background-color: #1d4ed8; border: none; border-radius: 4px; color: white; cursor: pointer;">Logout</button>
+    </div>
+  </div>
+  
+  <!-- Navigation + Content -->
+  <div style="display: flex; background-color: white; border-radius: 0 0 6px 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <!-- Sidebar -->
+    <div style="width: 200px; background-color: #f8fafc; padding: 20px; border-right: 1px solid #e5e7eb;">
+      <div style="margin-bottom: 10px; padding: 10px; background-color: #eff6ff; border-radius: 4px; color: #2563eb; font-weight: bold;">📊 Dashboard</div>
+      <div style="margin-bottom: 10px; padding: 10px; color: #6b7280; cursor: pointer;">📦 Products</div>
+      <div style="margin-bottom: 10px; padding: 10px; color: #6b7280; cursor: pointer;">📂 Categories</div>
+      <div style="margin-bottom: 10px; padding: 10px; color: #6b7280; cursor: pointer;">🏢 Suppliers</div>
+      <div style="margin-bottom: 10px; padding: 10px; color: #6b7280; cursor: pointer;">📈 Stock In/Out</div>
+      <div style="margin-bottom: 10px; padding: 10px; color: #6b7280; cursor: pointer;">📋 Reports</div>
+    </div>
+    
+    <!-- Main Content -->
+    <div style="flex: 1; padding: 20px;">
+      <!-- Stats Cards -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px;">
+        <div style="padding: 20px; background-color: #ecfdf5; border-radius: 6px; border-left: 4px solid #10b981;">
+          <h4 style="margin: 0 0 5px 0; color: #065f46;">Total Products</h4>
+          <p style="margin: 0; font-size: 24px; font-weight: bold; color: #059669;">1,247</p>
+        </div>
+        <div style="padding: 20px; background-color: #fef3c7; border-radius: 6px; border-left: 4px solid #f59e0b;">
+          <h4 style="margin: 0 0 5px 0; color: #92400e;">Low Stock</h4>
+          <p style="margin: 0; font-size: 24px; font-weight: bold; color: #d97706;">23</p>
+        </div>
+        <div style="padding: 20px; background-color: #eff6ff; border-radius: 6px; border-left: 4px solid #3b82f6;">
+          <h4 style="margin: 0 0 5px 0; color: #1e40af;">Categories</h4>
+          <p style="margin: 0; font-size: 24px; font-weight: bold; color: #2563eb;">18</p>
+        </div>
+        <div style="padding: 20px; background-color: #fdf2f8; border-radius: 6px; border-left: 4px solid #ec4899;">
+          <h4 style="margin: 0 0 5px 0; color: #be185d;">Suppliers</h4>
+          <p style="margin: 0; font-size: 24px; font-weight: bold; color: #db2777;">12</p>
+        </div>
+      </div>
+      
+      <!-- Recent Transactions -->
+      <div style="background-color: white; border: 1px solid #e5e7eb; border-radius: 6px; padding: 20px;">
+        <h4 style="margin: 0 0 15px 0; color: #1f2937;">📋 Recent Stock Transactions</h4>
+        <div style="font-size: 14px;">
+          <div style="display: flex; padding: 10px; background-color: #f9fafb; border-radius: 4px; margin-bottom: 5px;">
+            <span style="flex: 1; font-weight: bold;">Product</span>
+            <span style="flex: 1; font-weight: bold;">Type</span>
+            <span style="flex: 1; font-weight: bold;">Quantity</span>
+            <span style="flex: 1; font-weight: bold;">Date</span>
+          </div>
+          <div style="display: flex; padding: 8px 10px; border-bottom: 1px solid #f3f4f6;">
+            <span style="flex: 1;">Laptop Dell XPS 13</span>
+            <span style="flex: 1; color: #059669;">Stock In</span>
+            <span style="flex: 1;">+50</span>
+            <span style="flex: 1; color: #6b7280;">2024-01-15</span>
+          </div>
+          <div style="display: flex; padding: 8px 10px; border-bottom: 1px solid #f3f4f6;">
+            <span style="flex: 1;">iPhone 15 Pro</span>
+            <span style="flex: 1; color: #dc2626;">Stock Out</span>
+            <span style="flex: 1;">-25</span>
+            <span style="flex: 1; color: #6b7280;">2024-01-14</span>
+          </div>
+          <div style="display: flex; padding: 8px 10px;">
+            <span style="flex: 1;">Samsung Monitor 27"</span>
+            <span style="flex: 1; color: #059669;">Stock In</span>
+            <span style="flex: 1;">+30</span>
+            <span style="flex: 1; color: #6b7280;">2024-01-14</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="tech-stack">
+<h3><strong>📦 Product Management Page</strong></h3>
+<div style="border: 2px solid #e5e7eb; border-radius: 8px; padding: 20px; background-color: #f9fafb; margin: 15px 0;">
+<div style="background-color: white; border-radius: 6px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+  <!-- Page Header -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #f3f4f6;">
+    <h2 style="margin: 0; color: #1f2937;">📦 Product Management</h2>
+    <button style="padding: 10px 20px; background-color: #059669; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">+ Add Product</button>
+  </div>
+  
+  <!-- Search and Filters -->
+  <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+    <input type="text" placeholder="Search products..." style="flex: 1; padding: 10px; border: 2px solid #d1d5db; border-radius: 6px;" disabled>
+    <select style="padding: 10px; border: 2px solid #d1d5db; border-radius: 6px; width: 150px;" disabled>
+      <option>All Categories</option>
+    </select>
+    <select style="padding: 10px; border: 2px solid #d1d5db; border-radius: 6px; width: 120px;" disabled>
+      <option>All Status</option>
+    </select>
+  </div>
+  
+  <!-- Product Table -->
+  <div style="border: 1px solid #e5e7eb; border-radius: 6px; overflow: hidden;">
+    <div style="display: flex; background-color: #f8fafc; padding: 15px; font-weight: bold; color: #374151; border-bottom: 1px solid #e5e7eb;">
+      <span style="flex: 0 0 100px;">SKU</span>
+      <span style="flex: 1;">Product Name</span>
+      <span style="flex: 0 0 120px;">Category</span>
+      <span style="flex: 0 0 80px;">Stock</span>
+      <span style="flex: 0 0 100px;">Price</span>
+      <span style="flex: 0 0 80px;">Status</span>
+      <span style="flex: 0 0 100px;">Actions</span>
+    </div>
+    
+    <div style="display: flex; padding: 15px; border-bottom: 1px solid #f3f4f6; align-items: center;">
+      <span style="flex: 0 0 100px; font-family: monospace; color: #6b7280;">LP001</span>
+      <span style="flex: 1;">Dell XPS 13 Laptop</span>
+      <span style="flex: 0 0 120px;">Electronics</span>
+      <span style="flex: 0 0 80px; color: #059669; font-weight: bold;">45</span>
+      <span style="flex: 0 0 100px;">$999.99</span>
+      <span style="flex: 0 0 80px;"><span style="background-color: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 12px; font-size: 12px;">Active</span></span>
+      <span style="flex: 0 0 100px;">
+        <button style="padding: 4px 8px; background-color: #3b82f6; color: white; border: none; border-radius: 4px; margin-right: 5px; cursor: pointer;">Edit</button>
+        <button style="padding: 4px 8px; background-color: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer;">Delete</button>
+      </span>
+    </div>
+    
+    <div style="display: flex; padding: 15px; border-bottom: 1px solid #f3f4f6; align-items: center;">
+      <span style="flex: 0 0 100px; font-family: monospace; color: #6b7280;">IP002</span>
+      <span style="flex: 1;">iPhone 15 Pro</span>
+      <span style="flex: 0 0 120px;">Electronics</span>
+      <span style="flex: 0 0 80px; color: #dc2626; font-weight: bold;">8</span>
+      <span style="flex: 0 0 100px;">$1,199.99</span>
+      <span style="flex: 0 0 80px;"><span style="background-color: #fef3c7; color: #92400e; padding: 4px 8px; border-radius: 12px; font-size: 12px;">Low Stock</span></span>
+      <span style="flex: 0 0 100px;">
+        <button style="padding: 4px 8px; background-color: #3b82f6; color: white; border: none; border-radius: 4px; margin-right: 5px; cursor: pointer;">Edit</button>
+        <button style="padding: 4px 8px; background-color: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer;">Delete</button>
+      </span>
+    </div>
+    
+    <div style="display: flex; padding: 15px; align-items: center;">
+      <span style="flex: 0 0 100px; font-family: monospace; color: #6b7280;">MN003</span>
+      <span style="flex: 1;">Samsung 27" Monitor</span>
+      <span style="flex: 0 0 120px;">Electronics</span>
+      <span style="flex: 0 0 80px; color: #059669; font-weight: bold;">120</span>
+      <span style="flex: 0 0 100px;">$299.99</span>
+      <span style="flex: 0 0 80px;"><span style="background-color: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 12px; font-size: 12px;">Active</span></span>
+      <span style="flex: 0 0 100px;">
+        <button style="padding: 4px 8px; background-color: #3b82f6; color: white; border: none; border-radius: 4px; margin-right: 5px; cursor: pointer;">Edit</button>
+        <button style="padding: 4px 8px; background-color: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer;">Delete</button>
+      </span>
+    </div>
+  </div>
+  
+  <!-- Pagination -->
+  <div style="display: flex; justify-content: between; align-items: center; margin-top: 15px;">
+    <span style="color: #6b7280; font-size: 14px;">Showing 1-3 of 1,247 products</span>
+    <div style="display: flex; gap: 5px; margin-left: auto;">
+      <button style="padding: 8px 12px; border: 1px solid #d1d5db; background-color: white; border-radius: 4px; cursor: pointer;">Previous</button>
+      <button style="padding: 8px 12px; border: 1px solid #d1d5db; background-color: #2563eb; color: white; border-radius: 4px; cursor: pointer;">1</button>
+      <button style="padding: 8px 12px; border: 1px solid #d1d5db; background-color: white; border-radius: 4px; cursor: pointer;">2</button>
+      <button style="padding: 8px 12px; border: 1px solid #d1d5db; background-color: white; border-radius: 4px; cursor: pointer;">3</button>
+      <button style="padding: 8px 12px; border: 1px solid #d1d5db; background-color: white; border-radius: 4px; cursor: pointer;">Next</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="tech-stack">
+<h3><strong>📈 Stock Transaction Form</strong></h3>
+<div style="border: 2px solid #e5e7eb; border-radius: 8px; padding: 20px; background-color: #f9fafb; margin: 15px 0;">
+<div style="background-color: white; border-radius: 6px; padding: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 500px; margin: 0 auto;">
+  <h3 style="margin: 0 0 20px 0; color: #1f2937; text-align: center;">📈 Stock In Transaction</h3>
+  
+  <div style="margin-bottom: 15px;">
+    <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: bold;">Product</label>
+    <select style="width: 100%; padding: 10px; border: 2px solid #d1d5db; border-radius: 6px;" disabled>
+      <option>Dell XPS 13 Laptop (LP001)</option>
+    </select>
+  </div>
+  
+  <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+    <div style="flex: 1;">
+      <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: bold;">Quantity</label>
+      <input type="number" value="50" style="width: 100%; padding: 10px; border: 2px solid #d1d5db; border-radius: 6px;" disabled>
+    </div>
+    <div style="flex: 1;">
+      <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: bold;">Unit Price</label>
+      <input type="number" value="999.99" style="width: 100%; padding: 10px; border: 2px solid #d1d5db; border-radius: 6px;" disabled>
+    </div>
+  </div>
+  
+  <div style="margin-bottom: 15px;">
+    <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: bold;">Reference Number</label>
+    <input type="text" value="PO-2024-001" style="width: 100%; padding: 10px; border: 2px solid #d1d5db; border-radius: 6px;" disabled>
+  </div>
+  
+  <div style="margin-bottom: 20px;">
+    <label style="display: block; margin-bottom: 5px; color: #374151; font-weight: bold;">Notes</label>
+    <textarea style="width: 100%; padding: 10px; border: 2px solid #d1d5db; border-radius: 6px; height: 80px; resize: vertical;" disabled>Received from Dell supplier - Q1 inventory restock</textarea>
+  </div>
+  
+  <div style="background-color: #f8fafc; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
+    <div style="display: flex; justify-content: between; margin-bottom: 5px;">
+      <span style="color: #6b7280;">Quantity:</span>
+      <span style="font-weight: bold;">50 units</span>
+    </div>
+    <div style="display: flex; justify-content: between; margin-bottom: 5px;">
+      <span style="color: #6b7280;">Unit Price:</span>
+      <span style="font-weight: bold;">$999.99</span>
+    </div>
+    <div style="display: flex; justify-content: between; padding-top: 10px; border-top: 1px solid #e5e7eb;">
+      <span style="color: #1f2937; font-weight: bold;">Total Amount:</span>
+      <span style="font-weight: bold; color: #059669; font-size: 18px;">$49,999.50</span>
+    </div>
+  </div>
+  
+  <div style="display: flex; gap: 10px;">
+    <button style="flex: 1; padding: 12px; background-color: #6b7280; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Cancel</button>
+    <button style="flex: 1; padding: 12px; background-color: #059669; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Complete Transaction</button>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="important-note">
+<h3><strong>🎨 UI Design Principles</strong></h3>
+<ul>
+<li><strong>Clean Layout:</strong> Consistent spacing, clear typography, and intuitive navigation</li>
+<li><strong>Color Coding:</strong> Green for positive actions/stock in, Red for negative actions/alerts, Blue for neutral actions</li>
+<li><strong>Responsive Design:</strong> Mobile-first approach with flexible grid layouts</li>
+<li><strong>User Experience:</strong> Minimal clicks to complete tasks, clear visual feedback, and error handling</li>
+<li><strong>Accessibility:</strong> High contrast colors, keyboard navigation, and screen reader friendly</li>
+</ul>
+</div>
+
+</body>
+</html>
+<h3 id="weekly-sync-meetings"><strong>Weekly Sync Meetings</strong></h3>
+<ul>
+<li><strong>Week 1:</strong> Database schema review and backend
+structure alignment</li>
+<li><strong>Week 2:</strong> API contracts and security integration</li>
+<li><strong>Week 3:</strong> Frontend-backend API integration
+planning</li>
+<li><strong>Week 4:</strong> Stock transaction flow testing</li>
+<li><strong>Week 5:</strong> UI/UX consistency and component
+sharing</li>
+<li><strong>Week 6:</strong> End-to-end testing and bug fixing</li>
+</ul>
+<h3 id="shared-responsibilities"><strong>Shared
+Responsibilities</strong></h3>
+<ul>
+<li><strong>All Members:</strong> Code reviews and testing</li>
+<li><strong>Members 1-4:</strong> Backend API documentation</li>
+<li><strong>Members 5-6:</strong> Frontend component documentation</li>
+<li><strong>Member 2 &amp; 5:</strong> Authentication flow
+integration</li>
+<li><strong>Member 4 &amp; 6:</strong> Stock management feature
+integration</li>
+</ul>
+<h3 id="dependencies"><strong>Dependencies</strong></h3>
+<ul>
+<li>Member 2 depends on Member 1 (database entities for user
+management)</li>
+<li>Member 3 depends on Member 1 (product entities) and Member 2
+(authentication)</li>
+<li>Member 4 depends on Members 1-3 (all entities and user context)</li>
+<li>Member 5 depends on Member 2 (authentication APIs)</li>
+</ul>
+<p>Member 6 depends on Members 3-5 (product APIs and auth
+components)</p>
+</body>
+</html>
