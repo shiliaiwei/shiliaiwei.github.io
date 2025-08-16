@@ -13,11 +13,13 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- git push && git commit -m "update" && git push origin docs-->
+  <!--
+   git  add . && git commit -m "update" && git push origin docs
+   -->
   <nav class="top-rail" aria-label="Primary">
-    <a class="rail-item" href="#" aria-label="Home"><i class="ri-home-5-fill" aria-hidden="true"></i></a>
-    <a class="rail-item" href="#skills" aria-label="Skills"><i class="ri-cpu-fill"></i></a>
-    <a class="rail-item" href="#social" aria-label="Social"><i class="ri-links-fill"></i></a>
+    <a class="rail-item" href="#home" data-route="home" aria-label="Home"><i class="ri-home-5-fill" aria-hidden="true"></i></a>
+    <a class="rail-item" href="#tools" data-route="tools" aria-label="Tools"><i class="ri-tools-fill"></i></a>
+    <a class="rail-item" href="#links" data-route="links" aria-label="Links"><i class="ri-links-fill"></i></a>
   </nav>
 
   <header class="site-header">
@@ -28,15 +30,18 @@
       </a>
       <div class="spacer"></div>
       <div class="nav-actions">
-        <a class="icon-btn" href="#social" aria-label="Contacts"><i class="ri-bubble-chart-fill"></i></a>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"><i class="ri-moon-line"></i></button>
+        <button class="icon-btn" id="langToggle" aria-label="Switch language"><span class="lang-text">EN</span></button>
         <a class="icon-btn" href="https://github.com/eirsvi" target="_blank" rel="noopener" aria-label="GitHub"><i class="ri-github-fill"></i></a>
       </div>
     </div>
   </header>
 
   <main id="main" class="site-main">
-    <!-- HERO / ABOUT -->
-    <section id="home" class="hero container">
+    <!-- HOME PAGE -->
+    <div id="page-home" class="page-content active">
+      <!-- HERO / ABOUT -->
+      <section id="home" class="hero container">
       <div class="hero__grid">
         <div class="hero__media">
           <div class="avatar-frame" aria-hidden="true">
@@ -46,7 +51,7 @@
         <div class="hero__content">
             <h1 class="title">EIRSVi </h1>
           <p class="tagline">“To Be Educated Is To Be Changed.”</p>
-          <p class="lede">“The machine obeys no one—unless you command it.</p>
+          <p class="lede">The machine obeys no one—unless you command it.</p>
         </div>
       </div>
     </section>
@@ -92,6 +97,161 @@
         </div>
       </div>
     </section>
+    </div>
+
+    <!-- TOOLS PAGE -->
+    <div id="page-tools" class="page-content">
+      <section class="section container">
+        <div class="section__header">
+          <h2>Tools & Projects</h2>
+          <p>Explore the tools and projects I've built</p>
+        </div>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="ri-code-s-slash-line"></i>
+            </div>
+            <h3>Portfolio Website</h3>
+            <p>A responsive portfolio built with vanilla HTML, CSS, and JavaScript featuring dark/light mode and multi-language support.</p>
+            <div class="tool-tags">
+              <span class="tool-tag">HTML</span>
+              <span class="tool-tag">CSS</span>
+              <span class="tool-tag">JavaScript</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="btn-primary" data-modal="qr">View Project</a>
+              <a href="https://github.com/eirsvi" target="_blank" class="btn-secondary">Source Code</a>
+            </div>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="ri-database-2-line"></i>
+            </div>
+            <h3>Data Management System</h3>
+            <p>A comprehensive data management solution built with Laravel and MySQL for efficient data processing and analysis.</p>
+            <div class="tool-tags">
+              <span class="tool-tag">Laravel</span>
+              <span class="tool-tag">MySQL</span>
+              <span class="tool-tag">PHP</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="btn-primary" data-modal="qr">View Project</a>
+              <a href="https://github.com/eirsvi" target="_blank" class="btn-secondary">Source Code</a>
+            </div>
+          </div>
+          
+          <div class="tool-card">
+            <div class="tool-icon">
+              <i class="ri-smartphone-line"></i>
+            </div>
+            <h3>Mobile App Interface</h3>
+            <p>A modern mobile application interface designed with React and Tailwind CSS for optimal user experience.</p>
+            <div class="tool-tags">
+              <span class="tool-tag">React</span>
+              <span class="tool-tag">Tailwind</span>
+              <span class="tool-tag">Mobile</span>
+            </div>
+            <div class="tool-actions">
+              <a href="#" class="btn-primary" data-modal="qr">View Project</a>
+              <a href="https://github.com/eirsvi" target="_blank" class="btn-secondary">Source Code</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- LINKS PAGE -->
+    <div id="page-links" class="page-content">
+      <section class="section container">
+        <div class="section__header">
+          <h2>Links & Resources</h2>
+          <p>Connect with me and explore useful resources</p>
+        </div>
+        <div class="links-container">
+          <div class="links-category">
+            <h3>Social Media</h3>
+            <div class="links-grid">
+              <a href="https://github.com/eirsvi" target="_blank" class="link-card">
+                <div class="link-icon">
+                  <i class="ri-github-fill"></i>
+                </div>
+                <div class="link-content">
+                  <h4>GitHub</h4>
+                  <p>View my code repositories and contributions</p>
+                </div>
+                <i class="ri-external-link-line link-arrow"></i>
+              </a>
+              
+              <a href="https://youtube.com/@eirsvi" target="_blank" class="link-card">
+                <div class="link-icon">
+                  <i class="ri-youtube-fill"></i>
+                </div>
+                <div class="link-content">
+                  <h4>YouTube</h4>
+                  <p>Educational content and tutorials</p>
+                </div>
+                <i class="ri-external-link-line link-arrow"></i>
+              </a>
+              
+              <a href="https://x.com/eirsvi" target="_blank" class="link-card">
+                <div class="link-icon">
+                  <i class="ri-twitter-x-fill"></i>
+                </div>
+                <div class="link-content">
+                  <h4>X (Twitter)</h4>
+                  <p>Latest thoughts and tech updates</p>
+                </div>
+                <i class="ri-external-link-line link-arrow"></i>
+              </a>
+            </div>
+          </div>
+          
+          <div class="links-category">
+            <h3>Professional</h3>
+            <div class="links-grid">
+              <a href="https://scholar.google.com/citations?user=HcO_fhsAAAAJ&hl=en" target="_blank" class="link-card">
+                <div class="link-icon">
+                  <i class="ri-graduation-cap-fill"></i>
+                </div>
+                <div class="link-content">
+                  <h4>Google Scholar</h4>
+                  <p>Academic publications and research</p>
+                </div>
+                <i class="ri-external-link-line link-arrow"></i>
+              </a>
+              
+              <a href="https://t.me/eirsvi" target="_blank" class="link-card">
+                <div class="link-icon">
+                  <i class="ri-telegram-fill"></i>
+                </div>
+                <div class="link-content">
+                  <h4>Telegram</h4>
+                  <p>Direct communication channel</p>
+                </div>
+                <i class="ri-external-link-line link-arrow"></i>
+              </a>
+            </div>
+          </div>
+          
+          <div class="links-category">
+            <h3>Entertainment</h3>
+            <div class="links-grid">
+              <a href="https://tiktok.com/@eirsvi" target="_blank" class="link-card">
+                <div class="link-icon">
+                  <i class="ri-tiktok-fill"></i>
+                </div>
+                <div class="link-content">
+                  <h4>TikTok</h4>
+                  <p>Short-form content and creativity</p>
+                </div>
+                <i class="ri-external-link-line link-arrow"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
   </main>
 
@@ -127,11 +287,152 @@
   </div>
 
   <script>
-    // Current year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    // Check for saved theme preference or default to 'dark'
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+    // Update icon based on current theme
+    if (currentTheme === 'light') {
+      themeIcon.className = 'ri-sun-line';
+    } else {
+      themeIcon.className = 'ri-moon-line';
+    }
+    
+    // Theme toggle event listener
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      // Update icon
+      if (newTheme === 'light') {
+        themeIcon.className = 'ri-sun-line';
+      } else {
+        themeIcon.className = 'ri-moon-line';
+      }
+    });
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
+    // Language toggle functionality
+    const langToggle = document.getElementById('langToggle');
+    const langText = langToggle.querySelector('.lang-text');
+    
+    // Check for saved language preference or default to 'en'
+    const currentLang = localStorage.getItem('language') || 'en';
+    document.documentElement.setAttribute('lang', currentLang);
+    langText.textContent = currentLang.toUpperCase();
+    
+    // Language toggle event listener
+    langToggle.addEventListener('click', () => {
+      const currentLang = document.documentElement.getAttribute('lang');
+      const newLang = currentLang === 'en' ? 'km' : 'en';
+      
+      document.documentElement.setAttribute('lang', newLang);
+      localStorage.setItem('language', newLang);
+      langText.textContent = newLang.toUpperCase();
+      
+      // Update content based on language
+      updateLanguageContent(newLang);
+    });
+    
+    // Language content updates
+    function updateLanguageContent(lang) {
+      const translations = {
+        en: {
+          title: 'EIRSVi',
+          tagline: '"To Be Educated Is To Be Changed."',
+          lede: 'The machine obeys no one—unless you command it.',
+          skillsTitle: 'Skills',
+          skillsDesc: 'My technical expertise and personal interests'
+        },
+        km: {
+          title: 'EIRSVi',
+          tagline: '"ការអប់រំគឺជាការផ្លាស់ប្តូរ"',
+          lede: 'ម៉ាស៊ីនមិនស្តាប់នរណាម្នាក់ទេ លុះត្រាតែអ្នកបញ្ជាវា។',
+          skillsTitle: 'ជំនាញ',
+          skillsDesc: 'ជំនាញបច្ចេកទេស និងចំណាប់អារម្មណ៍ផ្ទាល់ខ្លួនរបស់ខ្ញុំ'
+        }
+      };
+      
+      const t = translations[lang];
+      
+      // Update text content
+      document.querySelector('.title').textContent = t.title;
+      document.querySelector('.tagline').textContent = t.tagline;
+      document.querySelector('.lede').textContent = t.lede;
+      document.querySelector('#skills .section__header h2').textContent = t.skillsTitle;
+      document.querySelector('#skills .section__header p').textContent = t.skillsDesc;
+    }
+    
+    // Initialize language content
+    updateLanguageContent(currentLang);
+
+    // Router functionality
+    let currentRoute = 'home';
+    
+    function showPage(route) {
+      // Hide all pages
+      document.querySelectorAll('.page-content').forEach(page => {
+        page.classList.remove('active');
+      });
+      
+      // Show target page
+      const targetPage = document.getElementById(`page-${route}`);
+      if (targetPage) {
+        targetPage.classList.add('active');
+        currentRoute = route;
+        
+        // Update URL without refresh
+        history.pushState({ route }, '', `#${route}`);
+        
+        // Update active rail indicator
+        updateActiveRail(route);
+      }
+    }
+    
+    function updateActiveRail(route) {
+      document.querySelectorAll('.rail-item').forEach(item => {
+        item.style.boxShadow = '';
+      });
+      
+      const activeItem = document.querySelector(`[data-route="${route}"]`);
+      if (activeItem) {
+        activeItem.style.boxShadow = '0 0 0 4px rgba(34,197,94,.18)';
+      }
+    }
+    
+    // Handle navigation clicks
+    document.querySelectorAll('[data-route]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const route = link.getAttribute('data-route');
+        showPage(route);
+      });
+    });
+    
+    // Handle browser back/forward
+    window.addEventListener('popstate', (e) => {
+      const route = e.state?.route || 'home';
+      showPage(route);
+    });
+    
+    // Initialize router based on URL hash
+    function initRouter() {
+      const hash = window.location.hash.substring(1);
+      const route = ['home', 'tools', 'links'].includes(hash) ? hash : 'home';
+      showPage(route);
+    }
+    
+    // Initialize on load
+    initRouter();
+
+    // Smooth scroll (updated for single page routing)
+    document.querySelectorAll('a[href^="#"]:not([data-route])').forEach(a => {
       a.addEventListener('click', e => {
         const id = a.getAttribute('href');
         if (id.length > 1) {
@@ -141,25 +442,6 @@
       });
     });
 
-    // Active rail indicator on scroll
-    const sections = Array.from(document.querySelectorAll('main section[id]'));
-    const railLinks = Array.from(document.querySelectorAll('.top-rail .rail-item'));
-    const onScroll = () => {
-      const y = window.scrollY + 120;
-      let current = sections[0]?.id;
-      for (const s of sections) {
-        if (s.offsetTop <= y) current = s.id;
-      }
-      railLinks.forEach(l => {
-        if (l.getAttribute('href') === '#' + current) {
-          l.style.boxShadow = '0 0 0 4px rgba(34,197,94,.18)';
-        } else {
-          l.style.boxShadow = '';
-        }
-      });
-    };
-    document.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
 
     // QR modal open/close
     const qrModal = document.getElementById('qrModal');
