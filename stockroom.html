@@ -6,360 +6,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>StockRoom - Complete MVP Plan</title>
   <style>
-code{white-space: pre-wrap;}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* Skeleton Styles */
+    body {
+      font-family: sans-serif;
+      line-height: 1.5;
+      margin: 0;
+      padding: 1em;
+    }
 
-ul.task-list[class]{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-font-size: inherit;
-width: 0.8em;
-margin: 0 0.8em 0.2em -1.6em;
-vertical-align: middle;
-}
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
 
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-{ counter-reset: source-line 0; }
-pre.numberSource code > span
-{ position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-{ content: counter(source-line);
-position: relative; left: -1em; text-align: right; vertical-align: baseline;
-border: none; display: inline-block;
--webkit-touch-callout: none; -webkit-user-select: none;
--khtml-user-select: none; -moz-user-select: none;
--ms-user-select: none; user-select: none;
-padding: 0 4px; width: 4em;
-color: #aaaaaa;
-}
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
-div.sourceCode
-{ }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } 
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
-code span.at { color: #7d9029; } 
-code span.bn { color: #40a070; } 
-code span.bu { color: #008000; } 
-code span.cf { color: #007020; font-weight: bold; } 
-code span.ch { color: #4070a0; } 
-code span.cn { color: #880000; } 
-code span.co { color: #60a0b0; font-style: italic; } 
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
-code span.do { color: #ba2121; font-style: italic; } 
-code span.dt { color: #902000; } 
-code span.dv { color: #40a070; } 
-code span.er { color: #ff0000; font-weight: bold; } 
-code span.ex { } 
-code span.fl { color: #40a070; } 
-code span.fu { color: #06287e; } 
-code span.im { color: #008000; font-weight: bold; } 
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
-code span.kw { color: #007020; font-weight: bold; } 
-code span.op { color: #666666; } 
-code span.ot { color: #007020; } 
-code span.pp { color: #bc7a00; } 
-code span.sc { color: #4070a0; } 
-code span.ss { color: #bb6688; } 
-code span.st { color: #4070a0; } 
-code span.va { color: #19177c; } 
-code span.vs { color: #4070a0; } 
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: bold;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
 
-/* Mobile-First Responsive Design */
-html {
-  margin: 0 auto;
-  max-width: 100%;
-  padding: 0 15px;
-}
+    h1 { font-size: 1.8em; }
+    h2 { font-size: 1.4em; }
+    h3 { font-size: 1.2em; }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  padding: 1em;
-  background-color: #fafafa;
-  font-size: 16px;
-  line-height: 1.8;
-}
+    p {
+      margin-bottom: 1em;
+    }
 
-/* Desktop Notice for Mobile Users */
-.desktop-notice {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-  color: white;
-  padding: 20px;
-  text-align: center;
-  z-index: 1000;
-  font-weight: bold;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  font-size: 14px;
-}
+    ul, ol {
+      padding-left: 2em;
+    }
 
-.desktop-notice button {
-  background-color: rgba(255,255,255,0.2);
-  border: 1px solid rgba(255,255,255,0.3);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 6px;
-  margin-left: 15px;
-  cursor: pointer;
-  font-size: 14px;
-}
+    pre {
+      border: 1px solid #000;
+      padding: 1em;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
 
-/* Enhanced Inspiration Sources Section */
-.inspiration-sources {
-  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-  border: 2px solid #d1d5db;
-  padding: 25px;
-  border-radius: 12px;
-  margin: 25px 0;
-  text-align: center;
-}
-
-.source-links {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-.source-link {
-  display: inline-block;
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  color: white;
-  padding: 15px 25px;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 16px;
-  box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
-  transition: all 0.3s ease;
-  min-width: 140px;
-}
-
-.source-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
-}
-
-/* Custom Color Styles for Better Readability */
-h1 {
-  color: #2c5f2d;
-  border-bottom: 3px solid #97bc62;
-  padding-bottom: 15px;
-  font-size: 28px;
-  margin-bottom: 25px;
-}
-
-h2 {
-  color: #2563eb;
-  border-left: 4px solid #60a5fa;
-  padding-left: 20px;
-  margin-top: 3em;
-  background-color: #eff6ff;
-  padding: 18px 20px;
-  border-radius: 8px;
-  font-size: 22px;
-}
-
-h3 {
-  color: #dc2626;
-  font-weight: bold;
-  margin-top: 2em;
-  font-size: 18px;
-}
-
-/* Important Elements */
-.important-note {
-  background-color: #fef3c7;
-  border-left: 4px solid #f59e0b;
-  padding: 18px;
-  margin: 20px 0;
-  border-radius: 8px;
-  font-size: 16px;
-}
-
-.tech-stack {
-  background-color: #f3f4f6;
-  border: 2px solid #6b7280;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 20px 0;
-}
-
-.timeline {
-  background-color: #ecfdf5;
-  border-left: 4px solid #10b981;
-  padding: 18px;
-  margin: 15px 0;
-  border-radius: 8px;
-}
-
-/* Tables and Code Blocks */
-pre {
-  background-color: #1f2937;
-  color: #f9fafb;
-  padding: 20px;
-  border-radius: 10px;
-  border-left: 4px solid #3b82f6;
-  font-size: 14px;
-  overflow-x: auto;
-}
-
-/* Phase Color Coding */
-.phase-1 { color: #059669; font-weight: bold; }
-.phase-2 { color: #dc2626; font-weight: bold; }
-.phase-3 { color: #2563eb; font-weight: bold; }
-.phase-4 { color: #ea580c; font-weight: bold; }
-
-/* Mobile Responsive Adjustments */
-@media (max-width: 768px) {
-  .desktop-notice {
-    display: block;
-  }
-  
-  body {
-    padding-top: 100px;
-    font-size: 15px;
-    line-height: 1.7;
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-  }
-  
-  h1 {
-    font-size: 24px;
-    text-align: center;
-  }
-  
-  h2 {
-    font-size: 20px;
-    padding: 15px 18px;
-    margin-top: 2em;
-  }
-  
-  h3 {
-    font-size: 18px;
-    margin-top: 1.5em;
-  }
-  
-  .tech-stack, .important-note, .timeline {
-    padding: 15px;
-    margin: 15px 0;
-  }
-  
-  pre {
-    padding: 15px;
-    font-size: 13px;
-    line-height: 1.5;
-  }
-  
-  /* Simplify UI prototypes for mobile */
-  .ui-prototype {
-    display: none;
-  }
-  
-  .mobile-prototype-notice {
-    display: block;
-    background-color: #f3f4f6;
-    border: 2px solid #d1d5db;
-    border-radius: 10px;
-    padding: 25px;
-    text-align: center;
-    color: #6b7280;
-  }
-  
-  .source-links {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-  
-  .source-link {
-    width: 220px;
-    text-align: center;
-    font-size: 15px;
-    padding: 12px 20px;
-  }
-  
-  .inspiration-sources {
-    padding: 20px;
-  }
-}
-
-@media (min-width: 769px) {
-  html {
-    max-width: 1200px;
-    padding: 0 25px;
-  }
-  
-  body {
-    padding: 4em;
-    font-size: 17px;
-  }
-  
-  .mobile-prototype-notice {
-    display: none;
-  }
-  
-  .ui-prototype {
-    display: block;
-  }
-}
-
-/* Remove colors from UI prototypes - make them grayscale */
-.prototype-grayscale {
-  filter: grayscale(100%);
-  opacity: 0.8;
-}
-
-.prototype-grayscale h2,
-.prototype-grayscale h3,
-.prototype-grayscale h4 {
-  color: #374151 !important;
-}
-
-.prototype-grayscale div[style*="background"] {
-  background: #f3f4f6 !important;
-}
-
-/* Lists styling */
-li {
-  margin-bottom: 8px;
-  font-size: inherit;
-}
-
-ul li::marker {
-  color: #3b82f6;
-}
-
-/* Strong text emphasis */
-strong {
-  color: #1f2937;
-  font-weight: 700;
-}
-  </style>
+    code {
+      font-family: monospace;
+    }
+    
+    /* Unset all previous styles */
+    .desktop-notice, .inspiration-sources, .source-links, .source-link, .important-note, .tech-stack, .timeline, .phase-1, .phase-2, .phase-3, .phase-4, .prototype-grayscale, .mobile-prototype-notice, .ui-prototype, div[style], h3[style], p[style], a[style] {
+        all: revert;
+    }
+    
+    strong {
+        font-weight: bold;
+    }
+    
+    a {
+        text-decoration: underline;
+        color: inherit;
+    }
+</style>
 </head>
 <body>
 
@@ -739,26 +442,7 @@ Plan)</h2>
 </ul>
 </div>
 
-<h2 id="team-member-responsibilities-6-person-team">Team Member Responsibilities</h2>
 
-<div class="important-note">
-<p><strong>Team Structure:</strong> This project requires a 6-person development team with specialized roles. Each member has specific responsibilities and clear deliverables.</p>
-<p><strong>👉 <a href="team-responsibilities.html" style="color: #2563eb; font-weight: bold; text-decoration: underline;">View Detailed Team Responsibilities & Collaboration Plan</a></strong></p>
-</div>
-
-<div class="tech-stack">
-<h3><strong>Team Overview</strong></h3>
-<ul>
-<li><strong>Member 1:</strong> Database Architect & Backend Foundation</li>
-<li><strong>Member 2:</strong> Authentication & Security Specialist</li>
-<li><strong>Member 3:</strong> Product & Category API Developer</li>
-<li><strong>Member 4:</strong> Stock Management & Transaction Handler</li>
-<li><strong>Member 5:</strong> Frontend Core & Authentication Developer</li>
-<li><strong>Member 6:</strong> Frontend Features & Integration Specialist</li>
-</ul>
-
-<p><strong>Development Timeline:</strong> 8 weeks with clear dependencies and collaboration points between team members.</p>
-</div>
 
 <div class="important-note">
 <h3><strong>Project Success Criteria</strong></h3>
@@ -933,58 +617,6 @@ Plan)</h2>
 </div>
 
  
-<!-- Add mobile-responsive adjustments -->
-<style>
-@media (max-width: 768px) {
-  .inspiration-sources {
-    padding: 20px 15px;
-  }
-  
-  .inspiration-sources > div[style*="grid"] {
-    grid-template-columns: 1fr !important;
-  }
-  
-  div[style*="linear-gradient"][style*="border-radius: 20px"] {
-    margin: 30px 0 !important;
-    border-radius: 15px !important;
-  }
-  
-  div[style*="linear-gradient"] div[style*="grid-template-columns"] {
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-  }
-  
-  div[style*="linear-gradient"] div[style*="padding: 40px"] {
-    padding: 25px 20px !important;
-  }
-  
-  div[style*="linear-gradient"] div[style*="padding: 30px 40px"] {
-    padding: 25px 20px !important;
-  }
-  
-  div[style*="linear-gradient"] div[style*="padding: 25px 40px"] {
-    padding: 20px !important;
-  }
-  
-  div[style*="linear-gradient"] h3 {
-    font-size: 24px !important;
-  }
-  
-  div[style*="linear-gradient"] p {
-    font-size: 16px !important;
-  }
-  
-  div[style*="linear-gradient"] a {
-    font-size: 16px !important;
-    padding: 15px 30px !important;
-  }
-  
-  div[style*="display: flex"][style*="gap: 30px"] {
-    flex-direction: column !important;
-    gap: 15px !important;
-  }
-}
-</style>
 
 </body>
 </html>
