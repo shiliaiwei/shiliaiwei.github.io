@@ -1067,3 +1067,194 @@ img {
 .resource-card.media .card-header i {
   color: #ec4899;
 }
+
+/* VNote Page Styles */
+.vnote-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 2rem;
+}
+
+.cover-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 368px;
+}
+
+.cover-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cover-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(100%);
+}
+
+.cover-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 2rem 1.5rem 1.5rem;
+  color: white;
+}
+
+[data-theme="light"] .cover-overlay {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+}
+
+.cover-content h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.cover-content p {
+  margin: 0 0 1rem 0;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+/* Article Page Styles */
+.article-content {
+  display: none;
+}
+
+.article-content.active {
+  display: block;
+}
+
+.article-header {
+  margin-bottom: 3rem;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--fg);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.back-btn i {
+  font-size: 20px;
+  color: var(--fg);
+}
+
+.article-body {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.article-text {
+  color: var(--fg);
+  line-height: 1.8;
+}
+
+.article-text h1 {
+  margin: 0 0 2rem 0;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--fg);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+.article-text h2 {
+  margin: 3rem 0 1.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--fg);
+  line-height: 1.3;
+}
+
+.article-text p {
+  margin: 0 0 2rem 0;
+  color: var(--muted);
+  text-align: justify;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.article-text em {
+  color: var(--fg-weak);
+  font-style: italic;
+}
+
+/* Responsive adjustments for articles */
+@media (max-width: 767px) {
+  .article-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .article-text h2 {
+    font-size: 1.3rem;
+  }
+
+  .article-text p {
+    font-size: 1rem;
+  }
+}
+
+/* Responsive adjustments for VNote */
+@media (max-width: 767px) {
+  .vnote-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .cover-card {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .vnote-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  .vnote-grid {
+    grid-template-columns: repeat(auto-fit, 736px);
+    justify-content: center;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .cover-content h3 {
+    font-size: 1.25rem;
+  }
+
+  .vnote-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
