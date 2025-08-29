@@ -1677,3 +1677,239 @@ img {
     font-size: 0.95rem;
   }
 }
+
+/* Digital Library Styles */
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.library-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.library-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary);
+}
+
+.library-card:active {
+  transform: translateY(0);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.card-icon i {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.card-category {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Article Reader Styles */
+.article-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.article-header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.back-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.back-btn:hover {
+  background: var(--surface);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.back-btn i {
+  font-size: 1.1rem;
+}
+
+.article-meta h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+}
+
+.article-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.separator {
+  color: var(--border);
+}
+
+.article-content {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.article-content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1rem 0;
+  color: var(--text);
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2rem 0 0.75rem 0;
+  color: var(--text);
+}
+
+.article-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem 0;
+  color: var(--text);
+}
+
+.article-content p {
+  margin: 0 0 1.25rem 0;
+}
+
+.article-content ul {
+  margin: 0 0 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+.article-content li {
+  margin: 0.5rem 0;
+}
+
+.article-content strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.article-content em {
+  font-style: italic;
+  color: var(--primary);
+}
+
+.article-content a {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.article-content a:hover {
+  border-bottom-color: var(--primary);
+}
+
+/* Link Tooltip */
+.link-tooltip {
+  position: absolute;
+  background: var(--text);
+  color: var(--background);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: all 0.2s ease;
+  pointer-events: none;
+  max-width: 300px;
+  word-break: break-all;
+}
+
+.link-tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.link-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 1rem;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid var(--text);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .library-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .library-card {
+    padding: 1.25rem;
+  }
+
+  .article-meta h1 {
+    font-size: 2rem;
+  }
+
+  .article-content {
+    font-size: 1rem;
+  }
+}

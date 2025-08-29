@@ -22,6 +22,8 @@
     <a class="rail-item" href="#home" data-route="home" aria-label="Home"><i class="ri-home-5-fill"
         aria-hidden="true"></i></a>
     <a class="rail-item" href="#links" data-route="links" aria-label="Links"><i class="ri-links-fill"></i></a>
+    <a class="rail-item" href="#library" data-route="library" aria-label="Digital Library"><i
+        class="ri-book-2-fill"></i></a>
   </nav>
 
   <header class="site-header">
@@ -91,7 +93,6 @@
 
               <!-- Personal Interests - Purple -->
               <span class="interest-tag">Body Language</span>
-              <span class="interest-tag">Dark Psychology</span>
               <span class="interest-tag">Game Theory</span>
               <span class="interest-tag">Economics</span>
               <span class="interest-tag">MOBA</span>
@@ -110,17 +111,6 @@
           <p>A collection of powerful tools, resources, and platforms that enhance productivity and knowledge</p>
         </div>
 
-        <!-- Bio Section -->
-        <div class="bio-section">
-          <div class="bio-content">
-            <h3>Why This Collection?</h3>
-            <p>This carefully curated collection represents years of discovering and testing digital tools, platforms,
-              and resources that truly make a difference. From OSINT research tools to design systems, privacy-focused
-              solutions to learning platforms—each link serves a specific purpose in the modern digital workflow.</p>
-            <p>Whether you're a developer, researcher, designer, or curious learner, these resources can enhance your
-              productivity, expand your knowledge, and provide valuable insights across various domains.</p>
-          </div>
-        </div>
 
         <!-- Links Grid -->
         <div class="resource-links">
@@ -625,6 +615,43 @@
       </section>
     </div>
 
+    <!-- DIGITAL LIBRARY PAGE -->
+    <div id="page-library" class="page-content">
+      <section class="section container">
+        <div class="section__header">
+          <h2>Digital Library</h2>
+          <p>Curated collection of knowledge articles and resources</p>
+        </div>
+
+        <!-- Library Grid -->
+        <div class="library-grid" id="libraryGrid">
+          <!-- Articles will be loaded dynamically -->
+        </div>
+      </section>
+    </div>
+
+    <!-- ARTICLE READER PAGE -->
+    <div id="page-article" class="page-content">
+      <section class="article-section container">
+        <div class="article-header">
+          <button class="back-btn" id="backToLibrary">
+            <i class="ri-arrow-left-line"></i>
+            <span>Back to Library</span>
+          </button>
+          <div class="article-meta">
+            <h1 id="articleTitle"></h1>
+            <div class="article-info">
+              <span id="articleCategory"></span>
+              <span class="separator">•</span>
+              <span id="readingTime"></span>
+            </div>
+          </div>
+        </div>
+        <div class="article-content" id="articleContent">
+          <!-- Article content will be loaded here -->
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer class="site-footer">
@@ -753,7 +780,7 @@
     // Router functionality
     let currentRoute = 'home';
 
-    function showPage(route) {
+    function showPage(route, articleId = null) {
       // Hide all pages
       document.querySelectorAll('.page-content').forEach(page => {
         page.classList.remove('active');
@@ -764,7 +791,17 @@
       if (targetPage) {
         targetPage.classList.add('active');
         currentRoute = route;
-        history.pushState({ route }, '', `#${route}`);
+
+        if (route === 'article' && articleId) {
+          loadArticle(articleId);
+          history.pushState({ route, articleId }, '', `#article/${articleId}`);
+        } else if (route === 'library') {
+          loadLibrary();
+          history.pushState({ route }, '', `#${route}`);
+        } else {
+          history.pushState({ route }, '', `#${route}`);
+        }
+
         updateActiveRail(route);
       }
     }
@@ -798,8 +835,16 @@
     // Initialize router based on URL hash
     function initRouter() {
       const hash = window.location.hash.substring(1);
-      const route = ['home', 'links'].includes(hash) ? hash : 'home';
-      showPage(route);
+      const routeParts = hash.split('/');
+      const route = routeParts[0];
+
+      if (route === 'article' && routeParts[1]) {
+        showPage('article', routeParts[1]);
+      } else if (['home', 'links', 'library'].includes(route)) {
+        showPage(route);
+      } else {
+        showPage('home');
+      }
     }
 
     // Initialize on load
@@ -827,8 +872,434 @@
       'Cryptoeconomics': 'សេដ្ឋកិច្ចគ្រីបតូ'
     };
 
-    // Initialize on load
-    initRouter();
+    // Digital Library System
+    const libraryData = {
+      "game-theory": {
+        title: "Game Theory",
+        category: "Economics",
+        icon: "ri-game-line",
+        content: `
+# Game Theory: Strategic Decision Making
+
+Game theory is the mathematical study of strategic decision making among rational agents. It provides a framework for understanding situations where the outcome for each participant depends on the actions of others.
+
+## Core Concepts
+
+### Nash Equilibrium
+A Nash equilibrium occurs when each player chooses their optimal strategy given the strategies of other players. No player can unilaterally change their strategy and improve their payoff.
+
+### Prisoner's Dilemma
+The classic example demonstrating how individual rational behavior can lead to collectively irrational outcomes. Two prisoners must decide whether to cooperate or defect without communication.
+
+### Zero-Sum vs Non-Zero-Sum Games
+- **Zero-sum**: One player's gain equals another's loss
+- **Non-zero-sum**: Players can achieve mutual gains or losses
+
+## Applications
+
+Game theory finds applications in:
+- Economics and business strategy
+- Political science and voting systems
+- Biology and evolutionary dynamics
+- Computer science and algorithm design
+- Social psychology and human behavior
+
+## Strategic Thinking
+
+Understanding game theory helps develop:
+- Better negotiation skills
+- Strategic business decisions
+- Conflict resolution abilities
+- Resource allocation strategies
+
+The key insight is that optimal decisions often depend not just on your preferences, but on predicting and responding to others' likely actions.
+        `
+      },
+      "economics": {
+        title: "Economics Fundamentals",
+        category: "Economics",
+        icon: "ri-line-chart-line",
+        content: `
+# Economics: Understanding Markets and Behavior
+
+Economics studies how societies allocate scarce resources to satisfy unlimited wants. It examines production, distribution, and consumption of goods and services.
+
+## Microeconomics
+
+### Supply and Demand
+The fundamental forces that determine prices in market economies:
+- **Demand**: Consumer willingness to purchase at various prices
+- **Supply**: Producer willingness to sell at various prices
+- **Equilibrium**: Where supply meets demand
+
+### Market Structures
+- **Perfect Competition**: Many buyers and sellers, homogeneous products
+- **Monopoly**: Single seller controls market
+- **Oligopoly**: Few large firms dominate
+- **Monopolistic Competition**: Many sellers with differentiated products
+
+## Macroeconomics
+
+### Key Indicators
+- **GDP**: Total value of goods and services produced
+- **Inflation**: General increase in price levels
+- **Unemployment**: Percentage of workforce without jobs
+- **Interest Rates**: Cost of borrowing money
+
+### Economic Cycles
+Understanding expansion, peak, contraction, and trough phases helps predict economic trends and make informed decisions.
+
+## Behavioral Economics
+
+Modern economics incorporates psychological insights:
+- Cognitive biases affect decision-making
+- Loss aversion influences risk perception
+- Social factors impact economic choices
+
+## Practical Applications
+
+Economic principles guide:
+- Personal financial decisions
+- Business strategy and pricing
+- Government policy formation
+- Investment and trading strategies
+        `
+      },
+      "body-language": {
+        title: "Body Language & Nonverbal Communication",
+        category: "Psychology",
+        icon: "ri-user-line",
+        content: `
+# Body Language: The Silent Communication
+
+Nonverbal communication accounts for up to 93% of all human communication. Understanding body language enhances personal and professional relationships.
+
+## Facial Expressions
+
+### Universal Expressions
+Seven basic emotions are universally recognized:
+- Happiness, Sadness, Anger, Fear, Surprise, Disgust, Contempt
+
+### Microexpressions
+Brief, involuntary facial expressions that reveal true feelings, lasting 1/25th to 1/5th of a second.
+
+## Body Positioning
+
+### Open vs Closed Postures
+- **Open**: Arms uncrossed, palms visible, facing toward others
+- **Closed**: Arms crossed, turning away, barriers created
+
+### Power Poses
+Expansive postures increase confidence and presence:
+- Standing tall with hands on hips
+- Spreading arms wide
+- Taking up space confidently
+
+## Gestures and Movement
+
+### Hand Gestures
+- Pointing can be perceived as aggressive
+- Open palms suggest honesty
+- Steepling indicates confidence
+
+### Mirroring
+Unconsciously copying others' body language builds rapport and connection.
+
+## Cultural Considerations
+
+Body language varies across cultures:
+- Eye contact norms differ significantly
+- Personal space preferences vary
+- Gesture meanings can be opposite
+
+## Practical Applications
+
+Improve communication by:
+- Matching your nonverbals to your message
+- Reading others' emotional states
+- Building trust through appropriate body language
+- Detecting deception or discomfort
+- Enhancing leadership presence
+        `
+      },
+      "network-security": {
+        title: "Network Security Fundamentals",
+        category: "Technology",
+        icon: "ri-shield-check-line",
+        content: `
+# Network Security: Protecting Digital Infrastructure
+
+Network security encompasses policies, practices, and technologies designed to protect computer networks and data from unauthorized access, attacks, and damage.
+
+## Core Security Principles
+
+### CIA Triad
+- **Confidentiality**: Information accessible only to authorized users
+- **Integrity**: Data remains accurate and unaltered
+- **Availability**: Systems and data accessible when needed
+
+### Defense in Depth
+Multiple layers of security controls provide comprehensive protection:
+- Physical security
+- Network perimeter defenses
+- Host-based protection
+- Application security
+- Data encryption
+
+## Common Threats
+
+### Network Attacks
+- **DDoS**: Overwhelming systems with traffic
+- **Man-in-the-Middle**: Intercepting communications
+- **SQL Injection**: Exploiting database vulnerabilities
+- **Phishing**: Social engineering for credential theft
+
+### Malware Types
+- Viruses, Worms, Trojans
+- Ransomware and Spyware
+- Rootkits and Botnets
+
+## Security Technologies
+
+### Firewalls
+Filter network traffic based on predetermined rules:
+- Packet filtering
+- Stateful inspection
+- Application-level gateways
+
+### Encryption
+Protects data confidentiality:
+- Symmetric encryption (AES)
+- Asymmetric encryption (RSA)
+- Hash functions (SHA-256)
+
+### Network Monitoring
+- Intrusion Detection Systems (IDS)
+- Intrusion Prevention Systems (IPS)
+- Security Information and Event Management (SIEM)
+
+## Best Practices
+
+Implement security through:
+- Regular security assessments
+- Employee training programs
+- Incident response procedures
+- Patch management
+- Access control policies
+- Backup and recovery plans
+
+Security is an ongoing process requiring constant vigilance and adaptation to emerging threats.
+        `
+      },
+      "artificial-intelligence": {
+        title: "Artificial Intelligence Overview",
+        category: "Technology",
+        icon: "ri-robot-line",
+        content: `
+# Artificial Intelligence: Machines That Think
+
+AI encompasses computer systems that can perform tasks typically requiring human intelligence, including learning, reasoning, perception, and natural language processing.
+
+## Types of AI
+
+### Narrow AI (Weak AI)
+Designed for specific tasks:
+- Image recognition systems
+- Language translation tools
+- Recommendation algorithms
+- Game-playing programs
+
+### General AI (Strong AI)
+Hypothetical AI with human-level cognitive abilities across all domains - not yet achieved.
+
+### Superintelligent AI
+Theoretical AI surpassing human intelligence in all aspects.
+
+## Machine Learning Approaches
+
+### Supervised Learning
+Learning from labeled training data:
+- Classification problems
+- Regression analysis
+- Decision trees and neural networks
+
+### Unsupervised Learning
+Finding patterns in unlabeled data:
+- Clustering algorithms
+- Association rules
+- Dimensionality reduction
+
+### Reinforcement Learning
+Learning through interaction and feedback:
+- Q-learning algorithms
+- Policy gradient methods
+- Applications in robotics and gaming
+
+## Deep Learning
+
+Neural networks with multiple layers enable:
+- Computer vision breakthroughs
+- Natural language processing advances
+- Speech recognition improvements
+- Autonomous vehicle development
+
+## Current Applications
+
+### Industry Impact
+- Healthcare: Medical diagnosis and drug discovery
+- Finance: Fraud detection and algorithmic trading
+- Transportation: Autonomous vehicles and route optimization
+- Entertainment: Content recommendation and creation
+- Education: Personalized learning systems
+
+### Emerging Technologies
+- Large Language Models (LLMs)
+- Computer vision systems
+- Robotics and automation
+- Natural language generation
+
+## Ethical Considerations
+
+AI development raises important questions:
+- Bias in algorithmic decision-making
+- Privacy and surveillance concerns
+- Job displacement and economic impact
+- Transparency and explainability
+- Safety and control mechanisms
+
+The future of AI requires balancing innovation with responsible development and deployment.
+        `
+      }
+    };
+
+    function loadLibrary() {
+      const grid = document.getElementById('libraryGrid');
+      if (!grid) return;
+
+      grid.innerHTML = Object.entries(libraryData).map(([id, article]) => `
+        <div class="library-card" data-article="${id}">
+          <div class="card-icon">
+            <i class="${article.icon}"></i>
+          </div>
+          <div class="card-content">
+            <span class="card-category">${article.category}</span>
+            <h3 class="card-title">${article.title}</h3>
+          </div>
+        </div>
+      `).join('');
+
+      // Add click handlers
+      grid.querySelectorAll('.library-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const articleId = card.getAttribute('data-article');
+          showPage('article', articleId);
+        });
+      });
+    }
+
+    function loadArticle(articleId) {
+      const article = libraryData[articleId];
+      if (!article) return;
+
+      document.getElementById('articleTitle').textContent = article.title;
+      document.getElementById('articleCategory').textContent = article.category;
+
+      // Calculate reading time (average 200 words per minute)
+      const wordCount = article.content.split(' ').length;
+      const readingTime = Math.ceil(wordCount / 200);
+      document.getElementById('readingTime').textContent = `${readingTime} min read`;
+
+      // Process and display content
+      const contentEl = document.getElementById('articleContent');
+      contentEl.innerHTML = processMarkdown(article.content);
+
+      // Handle links to show tooltips instead of navigation
+      contentEl.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+        });
+
+        link.addEventListener('mouseenter', (e) => {
+          showLinkTooltip(e.target, e.target.href || e.target.textContent);
+        });
+
+        link.addEventListener('mouseleave', () => {
+          hideLinkTooltip();
+        });
+      });
+    }
+
+    function processMarkdown(content) {
+      return content
+        // Remove emojis and special symbols
+        .replace(/[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu, '')
+        // Convert headers
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        // Convert bold and italic
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        // Convert lists
+        .replace(/^- (.*$)/gim, '<li>$1</li>')
+        .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+        // Convert line breaks
+        .replace(/\n\n/g, '</p><p>')
+        .replace(/^(.*)$/gim, '<p>$1</p>')
+        // Clean up empty paragraphs
+        .replace(/<p><\/p>/g, '')
+        .replace(/<p><h/g, '<h')
+        .replace(/<\/h([1-6])><\/p>/g, '</h$1>')
+        .replace(/<p><ul>/g, '<ul>')
+        .replace(/<\/ul><\/p>/g, '</ul>');
+    }
+
+    let linkTooltip = null;
+
+    function showLinkTooltip(element, text) {
+      linkTooltip = document.createElement('div');
+      linkTooltip.className = 'link-tooltip';
+      linkTooltip.textContent = text;
+      document.body.appendChild(linkTooltip);
+
+      const rect = element.getBoundingClientRect();
+      linkTooltip.style.top = `${rect.bottom + 8}px`;
+      linkTooltip.style.left = `${rect.left}px`;
+
+      setTimeout(() => linkTooltip.classList.add('show'), 10);
+    }
+
+    function hideLinkTooltip() {
+      if (linkTooltip) {
+        linkTooltip.classList.remove('show');
+        setTimeout(() => {
+          if (linkTooltip) {
+            linkTooltip.remove();
+            linkTooltip = null;
+          }
+        }, 200);
+      }
+    }
+
+    // Back to library button
+    document.getElementById('backToLibrary').addEventListener('click', () => {
+      showPage('library');
+    });
+
+    // Update router initialization to include library
+    function initRouter() {
+      const hash = window.location.hash.substring(1);
+      const routeParts = hash.split('/');
+      const route = routeParts[0];
+
+      if (route === 'article' && routeParts[1]) {
+        showPage('article', routeParts[1]);
+      } else if (['home', 'links', 'library'].includes(route)) {
+        showPage(route);
+      } else {
+        showPage('home');
+      }
+    }
 
     // Smooth scroll (updated for single page routing)
     document.querySelectorAll('a[href^="#"]:not([data-route])').forEach(a => {
