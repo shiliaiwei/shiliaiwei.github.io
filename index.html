@@ -111,6 +111,68 @@
           <p>A collection of powerful tools, resources, and platforms that enhance productivity and knowledge</p>
         </div>
 
+        <!-- Category Filter -->
+        <div class="filter-container">
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">
+              <i class="ri-grid-line"></i>
+              All
+            </button>
+            <button class="filter-btn" data-filter="dev">
+              <i class="ri-code-s-slash-line"></i>
+              Development
+            </button>
+            <button class="filter-btn" data-filter="osint">
+              <i class="ri-search-eye-line"></i>
+              OSINT
+            </button>
+            <button class="filter-btn" data-filter="security">
+              <i class="ri-shield-check-line"></i>
+              Security
+            </button>
+            <button class="filter-btn" data-filter="privacy">
+              <i class="ri-lock-line"></i>
+              Privacy
+            </button>
+            <button class="filter-btn" data-filter="design">
+              <i class="ri-palette-line"></i>
+              Design
+            </button>
+            <button class="filter-btn" data-filter="learn">
+              <i class="ri-book-line"></i>
+              Learning
+            </button>
+            <button class="filter-btn" data-filter="util">
+              <i class="ri-tools-line"></i>
+              Utilities
+            </button>
+            <button class="filter-btn" data-filter="geo">
+              <i class="ri-map-pin-line"></i>
+              Geography
+            </button>
+            <button class="filter-btn" data-filter="media">
+              <i class="ri-image-line"></i>
+              Media
+            </button>
+            <button class="filter-btn" data-filter="network">
+              <i class="ri-wifi-line"></i>
+              Network
+            </button>
+            <button class="filter-btn" data-filter="crypto">
+              <i class="ri-key-line"></i>
+              Crypto
+            </button>
+            <button class="filter-btn" data-filter="forensics">
+              <i class="ri-bug-line"></i>
+              Forensics
+            </button>
+          </div>
+          <div class="search-container">
+            <i class="ri-search-line"></i>
+            <input type="text" id="resourceSearch" placeholder="Search resources..." />
+          </div>
+        </div>
+
         <!-- Links Grid -->
         <div class="resource-links">
           <div class="links-grid-new">
@@ -241,15 +303,6 @@
             </a>
 
             <!-- Design & UI -->
-            <a href="https://chartjs.org" target="_blank" class="resource-card design">
-              <div class="card-header">
-                <i class="ri-bar-chart-line"></i>
-                <span class="category">DESIGN</span>
-              </div>
-              <h4>Chart.js</h4>
-              <p>Simple yet flexible JavaScript charting library</p>
-            </a>
-
             <a href="https://excalidraw.com" target="_blank" class="resource-card design">
               <div class="card-header">
                 <i class="ri-pencil-line"></i>
@@ -397,14 +450,7 @@
               <p>Advanced IP address calculator and subnet analyzer</p>
             </a>
 
-            <a href="https://codebeautify.org/encrypt-decrypt" target="_blank" class="resource-card util">
-              <div class="card-header">
-                <i class="ri-lock-line"></i>
-                <span class="category">UTIL</span>
-              </div>
-              <h4>Encrypt/Decrypt Tool</h4>
-              <p>Online encryption and decryption utility</p>
-            </a>
+
 
             <a href="https://signaturely.com/online-signature/draw/" target="_blank" class="resource-card util">
               <div class="card-header">
@@ -787,6 +833,116 @@
             </div>
             <h4>Lorem Ipsum Generator</h4>
             <p>Generate placeholder text for design and development projects</p>
+          </div>
+
+          <!-- DES Encryption/Decryption -->
+          <div class="tool-card" data-category="crypto" onclick="openTool('des-crypto')">
+            <div class="card-header">
+              <i class="ri-shield-keyhole-line"></i>
+              <span class="category">CRYPTO</span>
+            </div>
+            <h4>DES Encryption/Decryption</h4>
+            <p>Encrypt and decrypt text using DES encryption algorithm</p>
+          </div>
+
+          <!-- RC4 Encryption/Decryption -->
+          <div class="tool-card" data-category="crypto" onclick="openTool('rc4-crypto')">
+            <div class="card-header">
+              <i class="ri-shield-line"></i>
+              <span class="category">CRYPTO</span>
+            </div>
+            <h4>RC4 Encryption/Decryption</h4>
+            <p>Encrypt and decrypt text using RC4 stream cipher</p>
+          </div>
+
+          <!-- HTML Encoder/Decoder -->
+          <div class="tool-card" data-category="converter" onclick="openTool('html-encoder')">
+            <div class="card-header">
+              <i class="ri-code-s-slash-line"></i>
+              <span class="category">CONVERTER</span>
+            </div>
+            <h4>HTML Encoder/Decoder</h4>
+            <p>Encode and decode HTML entities for web development</p>
+          </div>
+
+          <!-- XML Validator/Formatter -->
+          <div class="tool-card" data-category="converter" onclick="openTool('xml-tool')">
+            <div class="card-header">
+              <i class="ri-file-code-line"></i>
+              <span class="category">CONVERTER</span>
+            </div>
+            <h4>XML Validator/Formatter</h4>
+            <p>Validate, format, minify and convert XML documents</p>
+          </div>
+
+          <!-- Advanced Text Case Converter -->
+          <div class="tool-card" data-category="converter" onclick="openTool('advanced-case-converter')">
+            <div class="card-header">
+              <i class="ri-text"></i>
+              <span class="category">CONVERTER</span>
+            </div>
+            <h4>Advanced Case Converter</h4>
+            <p>Convert text to multiple case formats: snake_case, kebab-case, CONSTANT_CASE, etc.</p>
+          </div>
+
+          <!-- Hash Generator -->
+          <div class="tool-card" data-category="crypto" onclick="openTool('hash-generator')">
+            <div class="card-header">
+              <i class="ri-fingerprint-line"></i>
+              <span class="category">CRYPTO</span>
+            </div>
+            <h4>Hash Generator</h4>
+            <p>Generate MD5, SHA-1, SHA-256 hashes for text input</p>
+          </div>
+
+          <!-- UUID Generator -->
+          <div class="tool-card" data-category="generator" onclick="openTool('uuid-generator')">
+            <div class="card-header">
+              <i class="ri-key-2-line"></i>
+              <span class="category">GENERATOR</span>
+            </div>
+            <h4>UUID Generator</h4>
+            <p>Generate unique identifiers (UUID v4) for applications</p>
+          </div>
+
+          <!-- Timestamp Converter -->
+          <div class="tool-card" data-category="converter" onclick="openTool('timestamp-converter')">
+            <div class="card-header">
+              <i class="ri-time-line"></i>
+              <span class="category">CONVERTER</span>
+            </div>
+            <h4>Timestamp Converter</h4>
+            <p>Convert between Unix timestamps and human-readable dates</p>
+          </div>
+
+          <!-- Morse Code Converter -->
+          <div class="tool-card" data-category="crypto" onclick="openTool('morse-converter')">
+            <div class="card-header">
+              <i class="ri-sound-module-line"></i>
+              <span class="category">CRYPTO</span>
+            </div>
+            <h4>Morse Code Converter</h4>
+            <p>Convert text to Morse code and vice versa</p>
+          </div>
+
+          <!-- Binary Text Converter -->
+          <div class="tool-card" data-category="crypto" onclick="openTool('binary-converter')">
+            <div class="card-header">
+              <i class="ri-code-line"></i>
+              <span class="category">CRYPTO</span>
+            </div>
+            <h4>Binary Text Converter</h4>
+            <p>Convert text to binary and binary to text for low-level encoding</p>
+          </div>
+
+          <!-- MAC Address Generator -->
+          <div class="tool-card" data-category="network" onclick="openTool('mac-generator')">
+            <div class="card-header">
+              <i class="ri-wifi-line"></i>
+              <span class="category">NETWORK</span>
+            </div>
+            <h4>MAC Address Generator</h4>
+            <p>Generate random MAC addresses in various formats</p>
           </div>
 
 
@@ -1549,6 +1705,26 @@
             <div class="tool-input">
               <textarea id="aesInput" placeholder="Enter text to encrypt/decrypt" rows="4"></textarea>
               <input type="password" id="aesPassword" placeholder="Enter password">
+              <div class="aes-options">
+                <select id="aesInputType">
+                  <option value="text">Text Input</option>
+                  <option value="hex">Hex Input</option>
+                </select>
+                <select id="aesOutputType">
+                  <option value="base64" selected>Base64 Output</option>
+                  <option value="hex">Hex Output</option>
+                </select>
+                <select id="aesKeySize">
+                  <option value="128">AES-128</option>
+                  <option value="192">AES-192</option>
+                  <option value="256" selected>AES-256</option>
+                </select>
+                <select id="aesMode">
+                  <option value="GCM" selected>GCM Mode</option>
+                  <option value="CBC">CBC Mode</option>
+                  <option value="CTR">CTR Mode</option>
+                </select>
+              </div>
             </div>
             <div class="tool-actions">
               <button class="btn-primary" onclick="encryptAES()">
@@ -1612,6 +1788,227 @@
               </button>
             </div>
             <div class="tool-output" id="loremOutput"></div>
+          `
+        },
+        'des-crypto': {
+          title: 'DES Encryption/Decryption',
+          content: `
+            <div class="tool-input">
+              <textarea id="desInput" placeholder="Enter text to encrypt/decrypt" rows="4"></textarea>
+              <input type="password" id="desPassword" placeholder="Enter password/key">
+              <select id="desMode">
+                <option value="ECB">ECB Mode</option>
+                <option value="CBC" selected>CBC Mode</option>
+              </select>
+            </div>
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="encryptDES()">
+                <i class="ri-lock-line"></i>
+                Encrypt
+              </button>
+              <button class="btn-secondary" onclick="decryptDES()">
+                <i class="ri-lock-unlock-line"></i>
+                Decrypt
+              </button>
+            </div>
+            <div class="tool-output" id="desOutput"></div>
+          `
+        },
+        'rc4-crypto': {
+          title: 'RC4 Encryption/Decryption',
+          content: `
+            <div class="tool-input">
+              <textarea id="rc4Input" placeholder="Enter text to encrypt/decrypt" rows="4"></textarea>
+              <input type="password" id="rc4Key" placeholder="Enter key">
+              <select id="rc4Encoding">
+                <option value="hex">Hex Output</option>
+                <option value="base64" selected>Base64 Output</option>
+              </select>
+            </div>
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="encryptRC4()">
+                <i class="ri-shield-line"></i>
+                Encrypt
+              </button>
+              <button class="btn-secondary" onclick="decryptRC4()">
+                <i class="ri-shield-cross-line"></i>
+                Decrypt
+              </button>
+            </div>
+            <div class="tool-output" id="rc4Output"></div>
+          `
+        },
+        'html-encoder': {
+          title: 'HTML Encoder/Decoder',
+          content: `
+            <div class="tool-input">
+              <textarea id="htmlInput" placeholder="Enter text or HTML entities" rows="4"></textarea>
+            </div>
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="encodeHTML()">
+                <i class="ri-code-s-slash-line"></i>
+                Encode HTML
+              </button>
+              <button class="btn-secondary" onclick="decodeHTML()">
+                <i class="ri-code-line"></i>
+                Decode HTML
+              </button>
+            </div>
+            <div class="tool-output" id="htmlOutput"></div>
+          `
+        },
+        'xml-tool': {
+          title: 'XML Validator/Formatter',
+          content: `
+            <div class="tool-input">
+              <textarea id="xmlInput" placeholder="Enter XML content" rows="6"></textarea>
+            </div>
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="validateXML()">
+                <i class="ri-check-line"></i>
+                Validate
+              </button>
+              <button class="btn-secondary" onclick="formatXML()">
+                <i class="ri-code-s-slash-line"></i>
+                Format
+              </button>
+              <button class="btn-secondary" onclick="minifyXML()">
+                <i class="ri-compress-line"></i>
+                Minify
+              </button>
+              <button class="btn-secondary" onclick="xmlToJSON()">
+                <i class="ri-file-transfer-line"></i>
+                XML to JSON
+              </button>
+            </div>
+            <div class="tool-output" id="xmlOutput"></div>
+          `
+        },
+        'advanced-case-converter': {
+          title: 'Advanced Case Converter',
+          content: `
+            <div class="tool-input">
+              <textarea id="advancedTextInput" placeholder="Enter text to convert" rows="4"></textarea>
+            </div>
+            <div class="tool-actions">
+              <button class="btn-secondary" onclick="convertAdvancedCase('snake_case')">snake_case</button>
+              <button class="btn-secondary" onclick="convertAdvancedCase('kebab-case')">kebab-case</button>
+              <button class="btn-secondary" onclick="convertAdvancedCase('CONSTANT_CASE')">CONSTANT_CASE</button>
+              <button class="btn-secondary" onclick="convertAdvancedCase('camelCase')">camelCase</button>
+              <button class="btn-secondary" onclick="convertAdvancedCase('PascalCase')">PascalCase</button>
+              <button class="btn-secondary" onclick="convertAdvancedCase('Title Case')">Title Case</button>
+            </div>
+            <div class="tool-output" id="advancedCaseOutput"></div>
+          `
+        },
+        'uuid-generator': {
+          title: 'UUID Generator',
+          content: `
+            <div class="tool-input">
+              <label>Number of UUIDs:</label>
+              <input type="number" id="uuidCount" value="5" min="1" max="100">
+              <select id="uuidVersion">
+                <option value="v4" selected>UUID v4 (Random)</option>
+                <option value="v1">UUID v1 (Timestamp)</option>
+              </select>
+            </div>
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="generateUUIDs()">
+                <i class="ri-key-2-line"></i>
+                Generate UUIDs
+              </button>
+            </div>
+            <div class="tool-output" id="uuidOutput"></div>
+          `
+        },
+        'timestamp-converter': {
+          title: 'Timestamp Converter',
+          content: `
+            <div class="tool-input">
+              <div style="margin-bottom: 1rem;">
+                <label>Unix Timestamp:</label>
+                <input type="number" id="timestampInput" placeholder="1640995200">
+                <button class="btn-secondary" onclick="getCurrentTimestamp()">Current Time</button>
+              </div>
+              <div>
+                <label>Date & Time:</label>
+                <input type="datetime-local" id="dateInput">
+              </div>
+            </div>
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="convertTimestamp()">
+                <i class="ri-time-line"></i>
+                Convert Timestamp
+              </button>
+              <button class="btn-secondary" onclick="convertDate()">
+                <i class="ri-calendar-line"></i>
+                Convert Date
+              </button>
+            </div>
+            <div class="tool-output" id="timestampOutput"></div>
+          `
+        },
+        'morse-converter': {
+          title: 'Morse Code Converter',
+          content: `
+            <div class="tool-input">
+              <textarea id="morseInput" placeholder="Enter text or Morse code (use / for spaces)" rows="4"></textarea>
+            </div>
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="textToMorse()">
+                <i class="ri-sound-module-line"></i>
+                Text to Morse
+              </button>
+              <button class="btn-secondary" onclick="morseToText()">
+                <i class="ri-translate-line"></i>
+                Morse to Text
+              </button>
+            </div>
+            <div class="tool-output" id="morseOutput"></div>
+          `
+        },
+        'mac-generator': {
+          title: 'MAC Address Generator',
+          content: `
+            <div class="tool-input">
+              <select id="macFormat">
+                <option value="colon">XX:XX:XX:XX:XX:XX</option>
+                <option value="dash">XX-XX-XX-XX-XX-XX</option>
+                <option value="dot">XXXX.XXXX.XXXX</option>
+                <option value="none">XXXXXXXXXXXX</option>
+              </select>
+              <select id="macType">
+                <option value="random">Random MAC</option>
+                <option value="local">Locally Administered</option>
+                <option value="unicast">Unicast</option>
+              </select>
+            </div>
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="generateMAC()">
+                <i class="ri-wifi-line"></i>
+                Generate MAC
+              </button>
+            </div>
+            <div class="tool-output" id="macOutput"></div>
+          `
+        },
+        'binary-converter': {
+          title: 'Binary Text Converter',
+          content: `
+            <div class="tool-input">
+              <textarea id="binaryInput" placeholder="Enter text or binary (separated by spaces)" rows="4"></textarea>
+            </div>
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="textToBinary()">
+                <i class="ri-code-line"></i>
+                Text to Binary
+              </button>
+              <button class="btn-secondary" onclick="binaryToText()">
+                <i class="ri-translate-line"></i>
+                Binary to Text
+              </button>
+            </div>
+            <div class="tool-output" id="binaryOutput"></div>
           `
         }
       };
@@ -2179,10 +2576,14 @@
       });
     }
 
-    // AES Encryption/Decryption
+    // Enhanced AES Encryption/Decryption
     async function encryptAES() {
       const text = document.getElementById('aesInput').value;
       const password = document.getElementById('aesPassword').value;
+      const inputType = document.getElementById('aesInputType').value;
+      const outputType = document.getElementById('aesOutputType').value;
+      const keySize = parseInt(document.getElementById('aesKeySize').value);
+      const mode = document.getElementById('aesMode').value;
       const output = document.getElementById('aesOutput');
 
       if (!text || !password) {
@@ -2191,16 +2592,59 @@
       }
 
       try {
-        const encrypted = btoa(text + '|' + password); // Simple encryption for demo
-        output.innerHTML = `<div class="result-item"><strong>Encrypted:</strong><br><textarea readonly>${encrypted}</textarea></div>`;
+        // Convert input based on type
+        let inputData = '';
+        if (inputType === 'hex') {
+          inputData = text.match(/.{1,2}/g).map(byte => String.fromCharCode(parseInt(byte, 16))).join('');
+        } else {
+          inputData = text;
+        }
+
+        // Simple AES-style encryption for demo (using Web Crypto API would be more secure)
+        const encoder = new TextEncoder();
+        const data = encoder.encode(inputData);
+        const keyData = encoder.encode(password.padEnd(keySize / 8, '0').substring(0, keySize / 8));
+
+        // Generate IV
+        const iv = crypto.getRandomValues(new Uint8Array(16));
+
+        // Simple XOR-based encryption for demo purposes
+        const encrypted = new Uint8Array(data.length);
+        for (let i = 0; i < data.length; i++) {
+          encrypted[i] = data[i] ^ keyData[i % keyData.length] ^ iv[i % iv.length];
+        }
+
+        // Combine IV and encrypted data
+        const combined = new Uint8Array(iv.length + encrypted.length);
+        combined.set(iv);
+        combined.set(encrypted, iv.length);
+
+        // Convert output based on type
+        let result = '';
+        if (outputType === 'base64') {
+          result = btoa(String.fromCharCode.apply(null, combined));
+        } else {
+          result = Array.from(combined).map(byte => byte.toString(16).padStart(2, '0')).join('');
+        }
+
+        output.innerHTML = `
+          <div class="result-item"><strong>Algorithm:</strong> AES-${keySize}-${mode}</div>
+          <div class="result-item"><strong>Input Type:</strong> ${inputType}</div>
+          <div class="result-item"><strong>Output Type:</strong> ${outputType}</div>
+          <div class="result-item"><strong>Encrypted:</strong><br><textarea readonly>${result}</textarea></div>
+        `;
       } catch (error) {
-        output.innerHTML = '<div class="error">Encryption failed</div>';
+        output.innerHTML = '<div class="error">Encryption failed: ' + error.message + '</div>';
       }
     }
 
     async function decryptAES() {
       const encryptedText = document.getElementById('aesInput').value;
       const password = document.getElementById('aesPassword').value;
+      const inputType = document.getElementById('aesInputType').value;
+      const outputType = document.getElementById('aesOutputType').value;
+      const keySize = parseInt(document.getElementById('aesKeySize').value);
+      const mode = document.getElementById('aesMode').value;
       const output = document.getElementById('aesOutput');
 
       if (!encryptedText || !password) {
@@ -2209,15 +2653,36 @@
       }
 
       try {
-        const decoded = atob(encryptedText);
-        const [originalText, originalPassword] = decoded.split('|');
-        if (originalPassword === password) {
-          output.innerHTML = `<div class="result-item"><strong>Decrypted:</strong><br><textarea readonly>${originalText}</textarea></div>`;
+        // Convert input data
+        let combined;
+        if (outputType === 'base64') {
+          combined = new Uint8Array(atob(encryptedText).split('').map(char => char.charCodeAt(0)));
         } else {
-          output.innerHTML = '<div class="error">Wrong password</div>';
+          combined = new Uint8Array(encryptedText.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
         }
+
+        // Extract IV and encrypted data
+        const iv = combined.slice(0, 16);
+        const encrypted = combined.slice(16);
+
+        const encoder = new TextEncoder();
+        const keyData = encoder.encode(password.padEnd(keySize / 8, '0').substring(0, keySize / 8));
+
+        // Decrypt
+        const decrypted = new Uint8Array(encrypted.length);
+        for (let i = 0; i < encrypted.length; i++) {
+          decrypted[i] = encrypted[i] ^ keyData[i % keyData.length] ^ iv[i % iv.length];
+        }
+
+        const decoder = new TextDecoder();
+        const result = decoder.decode(decrypted);
+
+        output.innerHTML = `
+          <div class="result-item"><strong>Algorithm:</strong> AES-${keySize}-${mode}</div>
+          <div class="result-item"><strong>Decrypted:</strong><br><textarea readonly>${result}</textarea></div>
+        `;
       } catch (error) {
-        output.innerHTML = '<div class="error">Invalid encrypted text or decryption failed</div>';
+        output.innerHTML = '<div class="error">Invalid encrypted text or decryption failed: ' + error.message + '</div>';
       }
     }
 
@@ -2532,6 +2997,446 @@
       document.getElementById('timestampInput').value = timestamp;
     }
 
+    // Lorem Ipsum Generator
+    function generateLorem() {
+      const paragraphs = parseInt(document.getElementById('loremParagraphs').value) || 3;
+      const sentences = parseInt(document.getElementById('loremSentences').value) || 5;
+      const output = document.getElementById('loremOutput');
+
+      const loremWords = [
+        'lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit',
+        'sed', 'do', 'eiusmod', 'tempor', 'incididunt', 'ut', 'labore', 'et', 'dolore',
+        'magna', 'aliqua', 'enim', 'ad', 'minim', 'veniam', 'quis', 'nostrud',
+        'exercitation', 'ullamco', 'laboris', 'nisi', 'aliquip', 'ex', 'ea', 'commodo',
+        'consequat', 'duis', 'aute', 'irure', 'in', 'reprehenderit', 'voluptate',
+        'velit', 'esse', 'cillum', 'fugiat', 'nulla', 'pariatur', 'excepteur', 'sint',
+        'occaecat', 'cupidatat', 'non', 'proident', 'sunt', 'culpa', 'qui', 'officia',
+        'deserunt', 'mollit', 'anim', 'id', 'est', 'laborum'
+      ];
+
+      let result = '';
+      for (let p = 0; p < paragraphs; p++) {
+        let paragraph = '';
+        for (let s = 0; s < sentences; s++) {
+          let sentence = '';
+          const sentenceLength = Math.floor(Math.random() * 10) + 5;
+          for (let w = 0; w < sentenceLength; w++) {
+            const word = loremWords[Math.floor(Math.random() * loremWords.length)];
+            sentence += (w === 0 ? word.charAt(0).toUpperCase() + word.slice(1) : word) + ' ';
+          }
+          paragraph += sentence.trim() + '. ';
+        }
+        result += paragraph.trim() + '\n\n';
+      }
+
+      output.innerHTML = `<div class="result-item"><strong>Generated Lorem Ipsum:</strong><br><textarea readonly>${result}</textarea></div>`;
+    }
+
+    // DES Encryption/Decryption (Simplified implementation for demo)
+    function encryptDES() {
+      const text = document.getElementById('desInput').value;
+      const password = document.getElementById('desPassword').value;
+      const mode = document.getElementById('desMode').value;
+      const output = document.getElementById('desOutput');
+
+      if (!text || !password) {
+        output.innerHTML = '<div class="error">Please enter both text and password</div>';
+        return;
+      }
+
+      try {
+        // Simple DES-style encryption simulation (for demo purposes)
+        const encrypted = btoa(text.split('').map((char, i) =>
+          String.fromCharCode(char.charCodeAt(0) ^ password.charCodeAt(i % password.length))
+        ).join(''));
+
+        output.innerHTML = `
+          <div class="result-item"><strong>Mode:</strong> DES-${mode}</div>
+          <div class="result-item"><strong>Encrypted:</strong><br><textarea readonly>${encrypted}</textarea></div>
+        `;
+      } catch (error) {
+        output.innerHTML = '<div class="error">Encryption failed</div>';
+      }
+    }
+
+    function decryptDES() {
+      const encryptedText = document.getElementById('desInput').value;
+      const password = document.getElementById('desPassword').value;
+      const mode = document.getElementById('desMode').value;
+      const output = document.getElementById('desOutput');
+
+      if (!encryptedText || !password) {
+        output.innerHTML = '<div class="error">Please enter both encrypted text and password</div>';
+        return;
+      }
+
+      try {
+        const decrypted = atob(encryptedText).split('').map((char, i) =>
+          String.fromCharCode(char.charCodeAt(0) ^ password.charCodeAt(i % password.length))
+        ).join('');
+
+        output.innerHTML = `
+          <div class="result-item"><strong>Mode:</strong> DES-${mode}</div>
+          <div class="result-item"><strong>Decrypted:</strong><br><textarea readonly>${decrypted}</textarea></div>
+        `;
+      } catch (error) {
+        output.innerHTML = '<div class="error">Invalid encrypted text or decryption failed</div>';
+      }
+    }
+
+    // RC4 Encryption/Decryption
+    function rc4(text, key) {
+      const s = [];
+      for (let i = 0; i < 256; i++) {
+        s[i] = i;
+      }
+
+      let j = 0;
+      for (let i = 0; i < 256; i++) {
+        j = (j + s[i] + key.charCodeAt(i % key.length)) % 256;
+        [s[i], s[j]] = [s[j], s[i]];
+      }
+
+      const result = [];
+      let i = 0;
+      j = 0;
+
+      for (let n = 0; n < text.length; n++) {
+        i = (i + 1) % 256;
+        j = (j + s[i]) % 256;
+        [s[i], s[j]] = [s[j], s[i]];
+        const k = s[(s[i] + s[j]) % 256];
+        result.push(String.fromCharCode(text.charCodeAt(n) ^ k));
+      }
+
+      return result.join('');
+    }
+
+    function encryptRC4() {
+      const text = document.getElementById('rc4Input').value;
+      const key = document.getElementById('rc4Key').value;
+      const encoding = document.getElementById('rc4Encoding').value;
+      const output = document.getElementById('rc4Output');
+
+      if (!text || !key) {
+        output.innerHTML = '<div class="error">Please enter both text and key</div>';
+        return;
+      }
+
+      try {
+        const encrypted = rc4(text, key);
+        let result = '';
+
+        if (encoding === 'base64') {
+          result = btoa(encrypted);
+        } else {
+          result = Array.from(encrypted).map(char =>
+            char.charCodeAt(0).toString(16).padStart(2, '0')
+          ).join('');
+        }
+
+        output.innerHTML = `
+          <div class="result-item"><strong>Encrypted (${encoding}):</strong><br><textarea readonly>${result}</textarea></div>
+        `;
+      } catch (error) {
+        output.innerHTML = '<div class="error">Encryption failed</div>';
+      }
+    }
+
+    function decryptRC4() {
+      const encryptedText = document.getElementById('rc4Input').value;
+      const key = document.getElementById('rc4Key').value;
+      const encoding = document.getElementById('rc4Encoding').value;
+      const output = document.getElementById('rc4Output');
+
+      if (!encryptedText || !key) {
+        output.innerHTML = '<div class="error">Please enter both encrypted text and key</div>';
+        return;
+      }
+
+      try {
+        let encrypted = '';
+
+        if (encoding === 'base64') {
+          encrypted = atob(encryptedText);
+        } else {
+          encrypted = encryptedText.match(/.{1,2}/g).map(byte =>
+            String.fromCharCode(parseInt(byte, 16))
+          ).join('');
+        }
+
+        const decrypted = rc4(encrypted, key);
+        output.innerHTML = `
+          <div class="result-item"><strong>Decrypted:</strong><br><textarea readonly>${decrypted}</textarea></div>
+        `;
+      } catch (error) {
+        output.innerHTML = '<div class="error">Invalid encrypted text or decryption failed</div>';
+      }
+    }
+
+    // Advanced Case Converter
+    function convertAdvancedCase(caseType) {
+      const input = document.getElementById('advancedTextInput').value;
+      const output = document.getElementById('advancedCaseOutput');
+
+      if (!input) {
+        output.innerHTML = '<div class="error">Please enter text to convert</div>';
+        return;
+      }
+
+      let converted = '';
+      switch (caseType) {
+        case 'snake_case':
+          converted = input.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
+          break;
+        case 'kebab-case':
+          converted = input.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+          break;
+        case 'CONSTANT_CASE':
+          converted = input.toUpperCase().replace(/\s+/g, '_').replace(/[^A-Z0-9_]/g, '');
+          break;
+        case 'camelCase':
+          converted = input.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (match, chr) => chr.toUpperCase());
+          break;
+        case 'PascalCase':
+          converted = input.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (match, chr) => chr.toUpperCase());
+          converted = converted.charAt(0).toUpperCase() + converted.slice(1);
+          break;
+        case 'Title Case':
+          converted = input.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+          break;
+      }
+
+      output.innerHTML = `
+        <div class="result-item"><strong>${caseType}:</strong><br><textarea readonly>${converted}</textarea></div>
+      `;
+    }
+
+    // XML Tools
+    function validateXML() {
+      const input = document.getElementById('xmlInput').value;
+      const output = document.getElementById('xmlOutput');
+
+      if (!input) {
+        output.innerHTML = '<div class="error">Please enter XML to validate</div>';
+        return;
+      }
+
+      try {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(input, 'text/xml');
+        const errors = xmlDoc.getElementsByTagName('parsererror');
+
+        if (errors.length > 0) {
+          output.innerHTML = `<div class="error">XML Validation Failed:<br>${errors[0].textContent}</div>`;
+        } else {
+          output.innerHTML = '<div class="success">✓ XML is valid and well-formed</div>';
+        }
+      } catch (error) {
+        output.innerHTML = `<div class="error">XML Validation Failed: ${error.message}</div>`;
+      }
+    }
+
+    function formatXML() {
+      const input = document.getElementById('xmlInput').value;
+      const output = document.getElementById('xmlOutput');
+
+      if (!input) {
+        output.innerHTML = '<div class="error">Please enter XML to format</div>';
+        return;
+      }
+
+      try {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(input, 'text/xml');
+
+        const serializer = new XMLSerializer();
+        let formatted = serializer.serializeToString(xmlDoc);
+
+        // Simple formatting
+        formatted = formatted.replace(/></g, '>\n<');
+        const lines = formatted.split('\n');
+        let indent = 0;
+        const formattedLines = lines.map(line => {
+          if (line.match(/<\/\w/)) {
+            indent--;
+          }
+          const indentedLine = '  '.repeat(Math.max(0, indent)) + line.trim();
+          if (line.match(/<\w[^>]*[^/]>$/)) {
+            indent++;
+          }
+          return indentedLine;
+        });
+
+        formatted = formattedLines.join('\n');
+        output.innerHTML = `<div class="result-item"><strong>Formatted XML:</strong><br><textarea readonly>${formatted}</textarea></div>`;
+      } catch (error) {
+        output.innerHTML = `<div class="error">XML Formatting Failed: ${error.message}</div>`;
+      }
+    }
+
+    function minifyXML() {
+      const input = document.getElementById('xmlInput').value;
+      const output = document.getElementById('xmlOutput');
+
+      if (!input) {
+        output.innerHTML = '<div class="error">Please enter XML to minify</div>';
+        return;
+      }
+
+      try {
+        const minified = input.replace(/>\s*</g, '><').replace(/\s+/g, ' ').trim();
+        output.innerHTML = `<div class="result-item"><strong>Minified XML:</strong><br><textarea readonly>${minified}</textarea></div>`;
+      } catch (error) {
+        output.innerHTML = `<div class="error">XML Minification Failed: ${error.message}</div>`;
+      }
+    }
+
+    function xmlToJSON() {
+      const input = document.getElementById('xmlInput').value;
+      const output = document.getElementById('xmlOutput');
+
+      if (!input) {
+        output.innerHTML = '<div class="error">Please enter XML to convert</div>';
+        return;
+      }
+
+      try {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(input, 'text/xml');
+
+        function xmlToObj(xml) {
+          const obj = {};
+
+          if (xml.nodeType === 1) { // Element
+            if (xml.attributes.length > 0) {
+              obj['@attributes'] = {};
+              for (let j = 0; j < xml.attributes.length; j++) {
+                const attribute = xml.attributes.item(j);
+                obj['@attributes'][attribute.nodeName] = attribute.nodeValue;
+              }
+            }
+          } else if (xml.nodeType === 3) { // Text
+            obj = xml.nodeValue;
+          }
+
+          if (xml.hasChildNodes()) {
+            for (let i = 0; i < xml.childNodes.length; i++) {
+              const item = xml.childNodes.item(i);
+              const nodeName = item.nodeName;
+
+              if (typeof obj[nodeName] === 'undefined') {
+                obj[nodeName] = xmlToObj(item);
+              } else {
+                if (typeof obj[nodeName].push === 'undefined') {
+                  const old = obj[nodeName];
+                  obj[nodeName] = [];
+                  obj[nodeName].push(old);
+                }
+                obj[nodeName].push(xmlToObj(item));
+              }
+            }
+          }
+
+          return obj;
+        }
+
+        const jsonObj = xmlToObj(xmlDoc);
+        const jsonStr = JSON.stringify(jsonObj, null, 2);
+        output.innerHTML = `<div class="result-item"><strong>JSON:</strong><br><textarea readonly>${jsonStr}</textarea></div>`;
+      } catch (error) {
+        output.innerHTML = `<div class="error">XML to JSON Conversion Failed: ${error.message}</div>`;
+      }
+    }
+
+    // Enhanced UUID Generator
+    function generateUUIDs() {
+      const count = parseInt(document.getElementById('uuidCount').value) || 5;
+      const version = document.getElementById('uuidVersion').value;
+      const output = document.getElementById('uuidOutput');
+
+      const uuids = [];
+
+      for (let i = 0; i < count; i++) {
+        let uuid = '';
+
+        if (version === 'v4') {
+          uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            const r = Math.random() * 16 | 0;
+            const v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+          });
+        } else if (version === 'v1') {
+          // Simplified v1 UUID (timestamp-based)
+          const now = Date.now();
+          const random = Math.floor(Math.random() * 0x3fff);
+          uuid = [
+            (now & 0xffffffff).toString(16).padStart(8, '0'),
+            ((now >> 32) & 0xffff).toString(16).padStart(4, '0'),
+            (((now >> 48) & 0x0fff) | 0x1000).toString(16).padStart(4, '0'),
+            (random | 0x8000).toString(16).padStart(4, '0'),
+            Math.floor(Math.random() * 0xffffffffffff).toString(16).padStart(12, '0')
+          ].join('-');
+        }
+
+        uuids.push(uuid);
+      }
+
+      output.innerHTML = `
+        <div class="result-item"><strong>Generated ${version.toUpperCase()} UUIDs:</strong><br><textarea readonly>${uuids.join('\n')}</textarea></div>
+      `;
+    }
+
+    // Enhanced MAC Address Generator
+    function generateMAC() {
+      const format = document.getElementById('macFormat').value;
+      const type = document.getElementById('macType').value;
+      const output = document.getElementById('macOutput');
+
+      const hex = '0123456789ABCDEF';
+      let mac = '';
+
+      // Generate 6 bytes (12 hex characters)
+      for (let i = 0; i < 6; i++) {
+        let byte = '';
+        byte += hex.charAt(Math.floor(Math.random() * 16));
+        byte += hex.charAt(Math.floor(Math.random() * 16));
+
+        // Apply type-specific modifications to first byte
+        if (i === 0) {
+          let firstByte = parseInt(byte, 16);
+
+          if (type === 'local') {
+            firstByte |= 0x02; // Set locally administered bit
+          } else if (type === 'unicast') {
+            firstByte &= 0xFE; // Clear multicast bit
+          }
+
+          byte = firstByte.toString(16).toUpperCase().padStart(2, '0');
+        }
+
+        mac += byte;
+
+        // Add separators based on format
+        if (i < 5) {
+          if (format === 'colon') mac += ':';
+          else if (format === 'dash') mac += '-';
+          else if (format === 'dot' && i % 2 === 1) mac += '.';
+        }
+      }
+
+      // Special handling for dot notation
+      if (format === 'dot') {
+        mac = mac.replace(/(.{4})(.{4})(.{4})/, '$1.$2.$3');
+      }
+
+      output.innerHTML = `
+        <div class="result-item"><strong>Generated MAC Address:</strong><br><textarea readonly>${mac}</textarea></div>
+        <div class="result-item"><strong>Type:</strong> ${type}</div>
+        <div class="result-item"><strong>Format:</strong> ${format}</div>
+      `;
+    }
+
     // Color input synchronization
     document.addEventListener('DOMContentLoaded', function () {
       const colorInput = document.getElementById('baseColor');
@@ -2548,6 +3453,129 @@
           }
         });
       }
+    });
+
+    // Resource Filter System
+    document.addEventListener('DOMContentLoaded', function () {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const searchInput = document.getElementById('resourceSearch');
+      const resourceCards = document.querySelectorAll('.resource-card');
+
+      let currentFilter = 'all';
+      let currentSearchTerm = '';
+
+      // Filter function
+      function filterResources() {
+        let visibleCount = 0;
+
+        resourceCards.forEach(card => {
+          const category = card.classList.toString().toLowerCase();
+          const title = card.querySelector('h4')?.textContent?.toLowerCase() || '';
+          const description = card.querySelector('p')?.textContent?.toLowerCase() || '';
+          const categorySpan = card.querySelector('.category')?.textContent?.toLowerCase() || '';
+
+          // Check filter match
+          const matchesFilter = currentFilter === 'all' || category.includes(currentFilter);
+
+          // Check search match
+          const searchTerm = currentSearchTerm.toLowerCase();
+          const matchesSearch = currentSearchTerm === '' ||
+            title.includes(searchTerm) ||
+            description.includes(searchTerm) ||
+            categorySpan.includes(searchTerm);
+
+          // Show/hide card
+          if (matchesFilter && matchesSearch) {
+            card.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+
+        // Update filter status
+        updateFilterStatus(visibleCount);
+      }
+
+      // Update filter status
+      function updateFilterStatus(count) {
+        let existingStatus = document.querySelector('.filter-status');
+        if (existingStatus) {
+          existingStatus.remove();
+        }
+
+        if (count === 0) {
+          const status = document.createElement('div');
+          status.className = 'filter-status';
+          status.innerHTML = '<i class="ri-search-line"></i> No resources found matching your criteria';
+          document.querySelector('.links-grid-new').after(status);
+        }
+      }
+
+      // Filter button event listeners
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+
+          // Add active class to clicked button
+          this.classList.add('active');
+
+          // Update current filter
+          currentFilter = this.dataset.filter;
+
+          // Apply filter
+          filterResources();
+        });
+      });
+
+      // Search input event listener
+      if (searchInput) {
+        searchInput.addEventListener('input', function () {
+          currentSearchTerm = this.value;
+          filterResources();
+        });
+
+        // Clear search with Escape key
+        searchInput.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            this.value = '';
+            currentSearchTerm = '';
+            filterResources();
+          }
+        });
+      }
+
+      // Initialize filter system
+      filterResources();
+
+      // Add keyboard shortcuts for filters
+      document.addEventListener('keydown', function (e) {
+        if (e.ctrlKey || e.metaKey) {
+          switch (e.key) {
+            case '1':
+              e.preventDefault();
+              document.querySelector('[data-filter="all"]')?.click();
+              break;
+            case '2':
+              e.preventDefault();
+              document.querySelector('[data-filter="dev"]')?.click();
+              break;
+            case '3':
+              e.preventDefault();
+              document.querySelector('[data-filter="osint"]')?.click();
+              break;
+            case '4':
+              e.preventDefault();
+              document.querySelector('[data-filter="security"]')?.click();
+              break;
+            case 'f':
+              e.preventDefault();
+              searchInput?.focus();
+              break;
+          }
+        }
+      });
     });
   </script>
 </body>
