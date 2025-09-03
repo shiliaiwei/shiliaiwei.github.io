@@ -24,7 +24,8 @@
     <a class="rail-item" href="#links" data-route="links" aria-label="Links"><i class="ri-links-fill"></i></a>
     <a class="rail-item" href="#vtool" data-route="vtool" aria-label="VTool"><i class="ri-tools-fill"></i></a>
     <a class="rail-item" href="#vnote" data-route="vnote" aria-label="VNote"><i class="ri-book-open-fill"></i></a>
-    <a class="rail-item" href="#cheatsheet" data-route="cheatsheet" aria-label="Network Cheatsheet"><i class="ri-router-line"></i></a>
+    <a class="rail-item" href="#cheatsheet" data-route="cheatsheet" aria-label="Network Cheatsheet"><i
+        class="ri-router-line"></i></a>
   </nav>
 
   <header class="site-header">
@@ -984,11 +985,391 @@
         </div>
 
         <div class="cheatsheet-grid">
+          <!-- Networking Fundamentals -->
+          <div class="cheatsheet-card">
+            <div class="card-header">
+              <i class="ri-global-line"></i>
+              <h3>Networking Fundamentals</h3>
+            </div>
+            <div class="cheatsheet-content">
+              <div class="protocol-section">
+                <h4>OSI Model Layers</h4>
+                <ul>
+                  <li><strong>Layer 1:</strong> Physical - Cables, hubs, repeaters</li>
+                  <li><strong>Layer 2:</strong> Data Link - Switches, MAC addresses</li>
+                  <li><strong>Layer 3:</strong> Network - Routers, IP addresses</li>
+                  <li><strong>Layer 4:</strong> Transport - TCP/UDP</li>
+                  <li><strong>Layer 5:</strong> Session - NetBIOS, PPTP</li>
+                  <li><strong>Layer 6:</strong> Presentation - SSL/TLS, encryption</li>
+                  <li><strong>Layer 7:</strong> Application - HTTP, FTP, SMTP</li>
+                </ul>
+              </div>
+              <div class="protocol-section">
+                <h4>Network Types</h4>
+                <ul>
+                  <li><strong>LAN:</strong> Local Area Network</li>
+                  <li><strong>WAN:</strong> Wide Area Network</li>
+                  <li><strong>MAN:</strong> Metropolitan Area Network</li>
+                  <li><strong>PAN:</strong> Personal Area Network</li>
+                  <li><strong>WLAN:</strong> Wireless Local Area Network</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Routing Protocols -->
+          <div class="cheatsheet-card">
+            <div class="card-header">
+              <i class="ri-route-line"></i>
+              <h3>Routing Protocols</h3>
+            </div>
+            <div class="cheatsheet-content">
+              <div class="protocol-section">
+                <h4>Interior Gateway Protocols (IGP)</h4>
+                <ul>
+                  <li><strong>RIP v1/v2:</strong> Distance Vector, 15 hop limit</li>
+                  <li><strong>EIGRP:</strong> Cisco proprietary, hybrid protocol</li>
+                  <li><strong>OSPF:</strong> Link State, hierarchical design</li>
+                  <li><strong>IS-IS:</strong> Link State, used in ISP networks</li>
+                </ul>
+              </div>
+              <div class="protocol-section">
+                <h4>Exterior Gateway Protocols (EGP)</h4>
+                <ul>
+                  <li><strong>BGP v4:</strong> Path Vector, Internet backbone</li>
+                  <li><strong>EGP:</strong> Legacy exterior protocol</li>
+                </ul>
+              </div>
+              <div class="protocol-section">
+                <h4>Routing Concepts</h4>
+                <ul>
+                  <li><strong>Static Routing:</strong> Manually configured routes</li>
+                  <li><strong>Dynamic Routing:</strong> Automatically learned routes</li>
+                  <li><strong>Default Route:</strong> 0.0.0.0/0 - Route of last resort</li>
+                  <li><strong>Administrative Distance:</strong> Route trustworthiness</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Switching Protocols -->
+          <div class="cheatsheet-card">
+            <div class="card-header">
+              <i class="ri-shuffle-line"></i>
+              <h3>Switching Protocols</h3>
+            </div>
+            <div class="cheatsheet-content">
+              <div class="protocol-section">
+                <h4>Spanning Tree Protocols</h4>
+                <ul>
+                  <li><strong>STP (802.1D):</strong> Original spanning tree</li>
+                  <li><strong>RSTP (802.1w):</strong> Rapid spanning tree</li>
+                  <li><strong>MSTP (802.1s):</strong> Multiple spanning tree</li>
+                  <li><strong>PVST+:</strong> Cisco per-VLAN spanning tree</li>
+                </ul>
+              </div>
+              <div class="protocol-section">
+                <h4>VLAN Protocols</h4>
+                <ul>
+                  <li><strong>802.1Q:</strong> VLAN tagging standard</li>
+                  <li><strong>ISL:</strong> Cisco Inter-Switch Link (legacy)</li>
+                  <li><strong>VTP:</strong> VLAN Trunking Protocol</li>
+                  <li><strong>DTP:</strong> Dynamic Trunking Protocol</li>
+                </ul>
+              </div>
+              <div class="protocol-section">
+                <h4>Link Aggregation</h4>
+                <ul>
+                  <li><strong>LACP (802.3ad):</strong> Link Aggregation Control</li>
+                  <li><strong>PAgP:</strong> Cisco Port Aggregation Protocol</li>
+                  <li><strong>EtherChannel:</strong> Cisco link bundling</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Firewall Protocols -->
+          <div class="cheatsheet-card">
+            <div class="card-header">
+              <i class="ri-shield-line"></i>
+              <h3>Firewall & Security Protocols</h3>
+            </div>
+            <div class="cheatsheet-content">
+              <div class="protocol-section">
+                <h4>Firewall Types</h4>
+                <ul>
+                  <li><strong>Packet Filter:</strong> Layer 3/4 inspection</li>
+                  <li><strong>Stateful:</strong> Connection state tracking</li>
+                  <li><strong>Application Gateway:</strong> Layer 7 proxy</li>
+                  <li><strong>NAT Firewall:</strong> Network Address Translation</li>
+                  <li><strong>NGFW:</strong> Next Generation Firewall</li>
+                </ul>
+              </div>
+              <div class="protocol-section">
+                <h4>Security Protocols</h4>
+                <ul>
+                  <li><strong>IPSec:</strong> IP Security suite</li>
+                  <li><strong>SSL/TLS:</strong> Secure Socket Layer/Transport Layer Security</li>
+                  <li><strong>WPA2/WPA3:</strong> WiFi Protected Access</li>
+                  <li><strong>802.1X:</strong> Port-based network access control</li>
+                  <li><strong>RADIUS:</strong> Remote Authentication</li>
+                  <li><strong>TACACS+:</strong> Terminal Access Controller Access</li>
+                </ul>
+              </div>
+              <div class="protocol-section">
+                <h4>IDS/IPS Systems</h4>
+                <ul>
+                  <li><strong>NIDS:</strong> Network Intrusion Detection</li>
+                  <li><strong>NIPS:</strong> Network Intrusion Prevention</li>
+                  <li><strong>HIDS:</strong> Host Intrusion Detection</li>
+                  <li><strong>Snort:</strong> Open source IDS/IPS</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- IPv4 Addressing & Subnetting -->
+          <div class="cheatsheet-card">
+            <div class="card-header">
+              <i class="ri-ip-line"></i>
+              <h3>IPv4 Addressing & Subnetting</h3>
+            </div>
+            <div class="cheatsheet-content">
+              <div class="ip-section">
+                <h4>Classful Address Ranges</h4>
+                <ul>
+                  <li><strong>Class A:</strong> 1.0.0.0 - 126.255.255.255 (/8)</li>
+                  <li><strong>Class B:</strong> 128.0.0.0 - 191.255.255.255 (/16)</li>
+                  <li><strong>Class C:</strong> 192.0.0.0 - 223.255.255.255 (/24)</li>
+                  <li><strong>Class D:</strong> 224.0.0.0 - 239.255.255.255 (Multicast)</li>
+                  <li><strong>Class E:</strong> 240.0.0.0 - 255.255.255.255 (Reserved)</li>
+                </ul>
+              </div>
+              <div class="ip-section">
+                <h4>Private IPv4 Ranges (RFC 1918)</h4>
+                <ul>
+                  <li><code>10.0.0.0/8</code> - 10.0.0.0 to 10.255.255.255</li>
+                  <li><code>172.16.0.0/12</code> - 172.16.0.0 to 172.31.255.255</li>
+                  <li><code>192.168.0.0/16</code> - 192.168.0.0 to 192.168.255.255</li>
+                </ul>
+              </div>
+              <div class="ip-section">
+                <h4>Special & Bogon IPv4 Addresses</h4>
+                <ul>
+                  <li><code>127.0.0.0/8</code> - Loopback addresses</li>
+                  <li><code>169.254.0.0/16</code> - Link-local (APIPA)</li>
+                  <li><code>224.0.0.0/4</code> - Multicast</li>
+                  <li><code>0.0.0.0/8</code> - Current network</li>
+                  <li><code>255.255.255.255</code> - Broadcast</li>
+                  <li><code>192.0.2.0/24</code> - TEST-NET-1</li>
+                  <li><code>198.51.100.0/24</code> - TEST-NET-2</li>
+                  <li><code>203.0.113.0/24</code> - TEST-NET-3</li>
+                </ul>
+              </div>
+              <div class="ip-section">
+                <h4>Common Subnet Masks & CIDR</h4>
+                <div class="subnet-table">
+                  <div class="subnet-row"><code>/8</code> = <code>255.0.0.0</code> = 16,777,214 hosts</div>
+                  <div class="subnet-row"><code>/16</code> = <code>255.255.0.0</code> = 65,534 hosts</div>
+                  <div class="subnet-row"><code>/24</code> = <code>255.255.255.0</code> = 254 hosts</div>
+                  <div class="subnet-row"><code>/25</code> = <code>255.255.255.128</code> = 126 hosts</div>
+                  <div class="subnet-row"><code>/26</code> = <code>255.255.255.192</code> = 62 hosts</div>
+                  <div class="subnet-row"><code>/27</code> = <code>255.255.255.224</code> = 30 hosts</div>
+                  <div class="subnet-row"><code>/28</code> = <code>255.255.255.240</code> = 14 hosts</div>
+                  <div class="subnet-row"><code>/29</code> = <code>255.255.255.248</code> = 6 hosts</div>
+                  <div class="subnet-row"><code>/30</code> = <code>255.255.255.252</code> = 2 hosts</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- VPN Types & Technologies -->
+          <div class="cheatsheet-card">
+            <div class="card-header">
+              <i class="ri-shield-keyhole-line"></i>
+              <h3>VPN Types & Technologies</h3>
+            </div>
+            <div class="cheatsheet-content">
+              <div class="vpn-section">
+                <h4>VPN by Deployment</h4>
+                <ul>
+                  <li><strong>Site-to-Site VPN:</strong> Connects entire networks securely over internet</li>
+                  <li><strong>Remote Access VPN:</strong> Individual users connect to corporate network</li>
+                  <li><strong>Client-to-Site VPN:</strong> Software client connects to VPN server</li>
+                  <li><strong>Host-to-Host VPN:</strong> Direct secure connection between two devices</li>
+                </ul>
+              </div>
+              <div class="vpn-section">
+                <h4>VPN Technologies</h4>
+                <ul>
+                  <li><strong>IPSec VPN:</strong> Layer 3 encryption, ESP/AH protocols, IKE key exchange</li>
+                  <li><strong>SSL/TLS VPN:</strong> Web-based, clientless access, HTTPS encryption</li>
+                  <li><strong>PPTP:</strong> Point-to-Point Tunneling (legacy, insecure)</li>
+                  <li><strong>L2TP/IPSec:</strong> Layer 2 tunneling with IPSec encryption</li>
+                  <li><strong>OpenVPN:</strong> Open-source SSL/TLS based VPN</li>
+                  <li><strong>WireGuard:</strong> Modern, lightweight VPN protocol</li>
+                </ul>
+              </div>
+              <div class="vpn-section">
+                <h4>Cloud VPN Services</h4>
+                <ul>
+                  <li><strong>AWS VPN:</strong> Site-to-Site & Client VPN</li>
+                  <li><strong>Azure VPN Gateway:</strong> Point-to-Site & Site-to-Site</li>
+                  <li><strong>Google Cloud VPN:</strong> Classic & HA VPN</li>
+                  <li><strong>Cisco AnyConnect:</strong> SSL VPN client</li>
+                  <li><strong>Fortinet FortiClient:</strong> SSL VPN solution</li>
+                </ul>
+              </div>
+              <div class="vpn-section">
+                <h4>How VPN Works</h4>
+                <ul>
+                  <li><strong>1. Tunnel Creation:</strong> Secure encrypted tunnel established</li>
+                  <li><strong>2. Authentication:</strong> User/device credentials verified</li>
+                  <li><strong>3. Encryption:</strong> Data encrypted before transmission</li>
+                  <li><strong>4. Routing:</strong> Traffic routed through VPN server</li>
+                  <li><strong>5. Decryption:</strong> Data decrypted at destination</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Network Servers & Services -->
+          <div class="cheatsheet-card">
+            <div class="card-header">
+              <i class="ri-server-line"></i>
+              <h3>Network Servers & Services</h3>
+            </div>
+            <div class="cheatsheet-content">
+              <div class="server-section">
+                <h4>Core Network Servers</h4>
+                <ul>
+                  <li><strong>DNS Server:</strong> Domain name resolution, hierarchical database</li>
+                  <li><strong>DHCP Server:</strong> Automatic IP address assignment</li>
+                  <li><strong>NTP Server:</strong> Network time synchronization</li>
+                  <li><strong>RADIUS Server:</strong> Authentication, authorization, accounting</li>
+                  <li><strong>LDAP Server:</strong> Directory services, user management</li>
+                </ul>
+              </div>
+              <div class="server-section">
+                <h4>Application Servers</h4>
+                <ul>
+                  <li><strong>Web Server:</strong> Apache, Nginx, IIS - HTTP/HTTPS content</li>
+                  <li><strong>Mail Server:</strong> Exchange, Postfix - Email services</li>
+                  <li><strong>Database Server:</strong> MySQL, PostgreSQL, SQL Server</li>
+                  <li><strong>File Server:</strong> SMB/CIFS, NFS file sharing</li>
+                  <li><strong>Print Server:</strong> Centralized printing services</li>
+                </ul>
+              </div>
+              <div class="server-section">
+                <h4>Proxy & Load Balancers</h4>
+                <ul>
+                  <li><strong>Forward Proxy:</strong> Client-side proxy, caching, filtering</li>
+                  <li><strong>Reverse Proxy:</strong> Server-side proxy, load balancing</li>
+                  <li><strong>Load Balancer:</strong> F5, HAProxy, AWS ELB - traffic distribution</li>
+                  <li><strong>API Gateway:</strong> API management, rate limiting, security</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Public DNS Providers -->
+          <div class="cheatsheet-card">
+            <div class="card-header">
+              <i class="ri-global-line"></i>
+              <h3>Public DNS Providers</h3>
+            </div>
+            <div class="cheatsheet-content">
+              <div class="dns-section">
+                <h4>Major DNS Providers</h4>
+                <ul>
+                  <li><strong>Google DNS:</strong> <code>8.8.8.8</code>, <code>8.8.4.4</code></li>
+                  <li><strong>Cloudflare:</strong> <code>1.1.1.1</code>, <code>1.0.0.1</code></li>
+                  <li><strong>Quad9:</strong> <code>9.9.9.9</code>, <code>149.112.112.112</code></li>
+                  <li><strong>OpenDNS:</strong> <code>208.67.222.222</code>, <code>208.67.220.220</code></li>
+                  <li><strong>AdGuard DNS:</strong> <code>94.140.14.14</code>, <code>94.140.15.15</code></li>
+                </ul>
+              </div>
+              <div class="dns-section">
+                <h4>Regional DNS Providers</h4>
+                <ul>
+                  <li><strong>Yandex DNS (Russia):</strong> <code>77.88.8.8</code>, <code>77.88.8.1</code></li>
+                  <li><strong>Baidu DNS (China):</strong> <code>180.76.76.76</code></li>
+                  <li><strong>114 DNS (China):</strong> <code>114.114.114.114</code>, <code>114.114.115.115</code></li>
+                  <li><strong>Comodo DNS:</strong> <code>8.26.56.26</code>, <code>8.20.247.20</code></li>
+                  <li><strong>Verisign DNS:</strong> <code>64.6.64.6</code>, <code>64.6.65.6</code></li>
+                </ul>
+              </div>
+              <div class="dns-section">
+                <h4>Specialized DNS</h4>
+                <ul>
+                  <li><strong>CleanBrowsing:</strong> <code>185.228.168.9</code> (Family filter)</li>
+                  <li><strong>Norton DNS:</strong> <code>199.85.126.10</code> (Security)</li>
+                  <li><strong>SafeDNS:</strong> <code>195.46.39.39</code> (Content filtering)</li>
+                  <li><strong>Alternate DNS:</strong> <code>76.76.19.19</code>, <code>76.223.100.101</code></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Network Devices -->
+          <div class="cheatsheet-card">
+            <div class="card-header">
+              <i class="ri-router-line"></i>
+              <h3>Network Devices</h3>
+            </div>
+            <div class="cheatsheet-content">
+              <div class="device-section">
+                <h4>Layer 1 Devices (Physical)</h4>
+                <ul>
+                  <li><strong>Hub:</strong> Multi-port repeater, collision domain</li>
+                  <li><strong>Repeater:</strong> Signal amplification, extends distance</li>
+                  <li><strong>Cables:</strong> Ethernet, fiber optic, coaxial</li>
+                  <li><strong>Media Converter:</strong> Converts between media types</li>
+                </ul>
+              </div>
+              <div class="device-section">
+                <h4>Layer 2 Devices (Data Link)</h4>
+                <ul>
+                  <li><strong>Switch:</strong> MAC address learning, VLAN support</li>
+                  <li><strong>Bridge:</strong> Connects network segments</li>
+                  <li><strong>Wireless AP:</strong> WiFi access point</li>
+                  <li><strong>NIC:</strong> Network Interface Card</li>
+                </ul>
+              </div>
+              <div class="device-section">
+                <h4>Layer 3 Devices (Network)</h4>
+                <ul>
+                  <li><strong>Router:</strong> Inter-network routing, IP forwarding</li>
+                  <li><strong>Layer 3 Switch:</strong> Routing + switching capabilities</li>
+                  <li><strong>Multilayer Switch:</strong> L2/L3/L4 processing</li>
+                </ul>
+              </div>
+              <div class="device-section">
+                <h4>Security Devices</h4>
+                <ul>
+                  <li><strong>Firewall:</strong> Packet filtering, stateful inspection</li>
+                  <li><strong>IDS/IPS:</strong> Intrusion detection/prevention</li>
+                  <li><strong>UTM:</strong> Unified Threat Management</li>
+                  <li><strong>VPN Concentrator:</strong> VPN tunnel termination</li>
+                </ul>
+              </div>
+              <div class="device-section">
+                <h4>Specialized Devices</h4>
+                <ul>
+                  <li><strong>Load Balancer:</strong> Traffic distribution</li>
+                  <li><strong>Proxy Server:</strong> Intermediary for requests</li>
+                  <li><strong>Network Scanner:</strong> Port scanning, vulnerability assessment</li>
+                  <li><strong>Protocol Analyzer:</strong> Packet capture and analysis</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
           <!-- Common Ports Section -->
           <div class="cheatsheet-card">
             <div class="card-header">
               <i class="ri-door-line"></i>
-              <h3>Common Ports</h3>
+              <h3>Common Ports & Services</h3>
             </div>
             <div class="cheatsheet-content">
               <div class="port-list">
@@ -1042,60 +1423,31 @@
                   <span class="port-service">RDP</span>
                   <span class="port-protocol">TCP</span>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- IP Address Types -->
-          <div class="cheatsheet-card">
-            <div class="card-header">
-              <i class="ri-ip-line"></i>
-              <h3>IP Address Types</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="ip-section">
-                <h4>Private IP Ranges</h4>
-                <ul>
-                  <li><code>10.0.0.0 - 10.255.255.255</code> (/8)</li>
-                  <li><code>172.16.0.0 - 172.31.255.255</code> (/12)</li>
-                  <li><code>192.168.0.0 - 192.168.255.255</code> (/16)</li>
-                </ul>
-              </div>
-              <div class="ip-section">
-                <h4>Special IP Addresses</h4>
-                <ul>
-                  <li><code>127.0.0.1</code> - Loopback</li>
-                  <li><code>0.0.0.0</code> - Any Address</li>
-                  <li><code>255.255.255.255</code> - Broadcast</li>
-                  <li><code>169.254.0.0/16</code> - Link-Local</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Network Protocols -->
-          <div class="cheatsheet-card">
-            <div class="card-header">
-              <i class="ri-stack-line"></i>
-              <h3>Network Protocols</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="protocol-section">
-                <h4>Transport Layer</h4>
-                <ul>
-                  <li><strong>TCP</strong> - Reliable, connection-oriented</li>
-                  <li><strong>UDP</strong> - Fast, connectionless</li>
-                </ul>
-              </div>
-              <div class="protocol-section">
-                <h4>Application Layer</h4>
-                <ul>
-                  <li><strong>HTTP/HTTPS</strong> - Web protocols</li>
-                  <li><strong>SMTP</strong> - Email sending</li>
-                  <li><strong>POP3/IMAP</strong> - Email retrieval</li>
-                  <li><strong>FTP/SFTP</strong> - File transfer</li>
-                  <li><strong>DNS</strong> - Domain name resolution</li>
-                </ul>
+                <div class="port-item">
+                  <span class="port-number">993</span>
+                  <span class="port-service">IMAPS</span>
+                  <span class="port-protocol">TCP</span>
+                </div>
+                <div class="port-item">
+                  <span class="port-number">995</span>
+                  <span class="port-service">POP3S</span>
+                  <span class="port-protocol">TCP</span>
+                </div>
+                <div class="port-item">
+                  <span class="port-number">161</span>
+                  <span class="port-service">SNMP</span>
+                  <span class="port-protocol">UDP</span>
+                </div>
+                <div class="port-item">
+                  <span class="port-number">69</span>
+                  <span class="port-service">TFTP</span>
+                  <span class="port-protocol">UDP</span>
+                </div>
+                <div class="port-item">
+                  <span class="port-number">123</span>
+                  <span class="port-service">NTP</span>
+                  <span class="port-protocol">UDP</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1110,79 +1462,27 @@
               <div class="command-section">
                 <h4>Windows Commands</h4>
                 <ul>
-                  <li><code>ipconfig</code> - Show IP configuration</li>
+                  <li><code>ipconfig /all</code> - Show detailed IP configuration</li>
                   <li><code>ping [host]</code> - Test connectivity</li>
-                  <li><code>tracert [host]</code> - Trace route</li>
-                  <li><code>netstat -an</code> - Show connections</li>
+                  <li><code>tracert [host]</code> - Trace route to destination</li>
+                  <li><code>netstat -an</code> - Show all connections</li>
                   <li><code>nslookup [domain]</code> - DNS lookup</li>
                   <li><code>arp -a</code> - Show ARP table</li>
+                  <li><code>route print</code> - Show routing table</li>
+                  <li><code>pathping [host]</code> - Network path analysis</li>
                 </ul>
               </div>
               <div class="command-section">
                 <h4>Linux/Unix Commands</h4>
                 <ul>
-                  <li><code>ifconfig</code> - Network interface config</li>
+                  <li><code>ifconfig</code> - Network interface configuration</li>
                   <li><code>ip addr show</code> - Show IP addresses</li>
                   <li><code>ping [host]</code> - Test connectivity</li>
                   <li><code>traceroute [host]</code> - Trace route</li>
                   <li><code>netstat -tuln</code> - Show listening ports</li>
-                  <li><code>ss -tuln</code> - Modern netstat</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Network Security -->
-          <div class="cheatsheet-card">
-            <div class="card-header">
-              <i class="ri-shield-line"></i>
-              <h3>Network Security</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="security-section">
-                <h4>Common Threats</h4>
-                <ul>
-                  <li><strong>DDoS</strong> - Distributed denial of service</li>
-                  <li><strong>MITM</strong> - Man-in-the-middle attacks</li>
-                  <li><strong>Port Scanning</strong> - Service discovery</li>
-                  <li><strong>Packet Sniffing</strong> - Traffic interception</li>
-                </ul>
-              </div>
-              <div class="security-section">
-                <h4>Security Measures</h4>
-                <ul>
-                  <li><strong>Firewalls</strong> - Traffic filtering</li>
-                  <li><strong>VPN</strong> - Encrypted tunnels</li>
-                  <li><strong>SSL/TLS</strong> - Encrypted communication</li>
-                  <li><strong>Network Segmentation</strong> - Isolation</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Network Services -->
-          <div class="cheatsheet-card">
-            <div class="card-header">
-              <i class="ri-server-line"></i>
-              <h3>Network Services</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="service-section">
-                <h4>Core Services</h4>
-                <ul>
-                  <li><strong>DHCP</strong> - Dynamic IP assignment</li>
-                  <li><strong>DNS</strong> - Domain name resolution</li>
-                  <li><strong>NAT</strong> - Network address translation</li>
-                  <li><strong>Load Balancer</strong> - Traffic distribution</li>
-                </ul>
-              </div>
-              <div class="service-section">
-                <h4>Web Services</h4>
-                <ul>
-                  <li><strong>Apache/Nginx</strong> - Web servers</li>
-                  <li><strong>Proxy</strong> - Intermediary servers</li>
-                  <li><strong>CDN</strong> - Content delivery networks</li>
-                  <li><strong>API Gateway</strong> - API management</li>
+                  <li><code>ss -tuln</code> - Modern netstat replacement</li>
+                  <li><code>dig [domain]</code> - DNS lookup utility</li>
+                  <li><code>tcpdump</code> - Packet capture</li>
                 </ul>
               </div>
             </div>
@@ -2010,13 +2310,13 @@
             const display = document.getElementById('passLengthDisplay');
             const wordSlider = document.getElementById('wordCount');
             const wordDisplay = document.getElementById('wordCountDisplay');
-            
+
             if (slider) {
               slider.addEventListener('input', function () {
                 display.textContent = this.value;
               });
             }
-            
+
             if (wordSlider) {
               wordSlider.addEventListener('input', function () {
                 wordDisplay.textContent = this.value;
@@ -2886,21 +3186,21 @@
     function switchQRTab(tab) {
       const tabs = document.querySelectorAll('.tab-btn');
       const contents = document.querySelectorAll('.tab-content');
-      
+
       tabs.forEach(t => t.classList.remove('active'));
       contents.forEach(c => c.classList.remove('active'));
-      
+
       document.querySelector(`[onclick="switchQRTab('${tab}')"]`).classList.add('active');
       document.getElementById(`qr-${tab}-tab`).classList.add('active');
     }
-    
+
     function switchPasswordTab(tab) {
       const tabs = document.querySelectorAll('.tab-btn');
       const contents = document.querySelectorAll('.tab-content');
-      
+
       tabs.forEach(t => t.classList.remove('active'));
       contents.forEach(c => c.classList.remove('active'));
-      
+
       document.querySelector(`[onclick="switchPasswordTab('${tab}')"]`).classList.add('active');
       document.getElementById(`password-${tab}-tab`).classList.add('active');
     }
@@ -2937,7 +3237,7 @@
         </div>
       `;
     }
-    
+
     function downloadQR(url, filename) {
       const a = document.createElement('a');
       a.href = url;
@@ -3521,7 +3821,7 @@
         const maskNum = (0xFFFFFFFF << (32 - cidr)) >>> 0;
         const networkNum = (ipNum & maskNum) >>> 0;
         const broadcastNum = (networkNum | (0xFFFFFFFF >>> cidr)) >>> 0;
-        
+
         const subnetMask = [
           (maskNum >>> 24) & 0xFF,
           (maskNum >>> 16) & 0xFF,
@@ -3608,17 +3908,17 @@
         const [ip, cidrStr] = input.split('/');
         const cidr = parseInt(cidrStr);
         const ipParts = ip.split('.').map(part => parseInt(part));
-        
+
         const ipNum = (ipParts[0] << 24) + (ipParts[1] << 16) + (ipParts[2] << 8) + ipParts[3];
         const maskNum = (0xFFFFFFFF << (32 - cidr)) >>> 0;
         const networkNum = (ipNum & maskNum) >>> 0;
         const broadcastNum = (networkNum | (0xFFFFFFFF >>> cidr)) >>> 0;
-        
+
         const totalIPs = broadcastNum - networkNum + 1;
-        
+
         if (totalIPs > 256) {
           output.innerHTML = `<div class="info">Network too large (${totalIPs.toLocaleString()} IPs). Showing first and last 10 IPs only.</div>`;
-          
+
           let ipList = '<div class="ip-range"><h4>First 10 IPs:</h4><div class="ip-list">';
           for (let i = 0; i < Math.min(10, totalIPs); i++) {
             const currentIP = networkNum + i;
@@ -3630,7 +3930,7 @@
             ].join('.');
             ipList += `<div class="ip-item">${ipAddr}</div>`;
           }
-          
+
           ipList += '</div><h4>Last 10 IPs:</h4><div class="ip-list">';
           for (let i = Math.max(0, totalIPs - 10); i < totalIPs; i++) {
             const currentIP = networkNum + i;

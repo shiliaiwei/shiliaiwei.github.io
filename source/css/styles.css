@@ -3263,11 +3263,19 @@ input[type="color"] {
   border-radius: 4px;
 }
 
-.ip-section, .protocol-section, .command-section, .security-section, .service-section {
+.ip-section,
+.protocol-section,
+.command-section,
+.security-section,
+.service-section {
   margin-bottom: 1.5rem;
 }
 
-.ip-section:last-child, .protocol-section:last-child, .command-section:last-child, .security-section:last-child, .service-section:last-child {
+.ip-section:last-child,
+.protocol-section:last-child,
+.command-section:last-child,
+.security-section:last-child,
+.service-section:last-child {
   margin-bottom: 0;
 }
 
@@ -3380,15 +3388,18 @@ input[type="color"] {
   transition: width 0.3s ease;
 }
 
-.strength-weak, .strength-fill.strength-weak {
+.strength-weak,
+.strength-fill.strength-weak {
   background: #ef4444;
 }
 
-.strength-medium, .strength-fill.strength-medium {
+.strength-medium,
+.strength-fill.strength-medium {
   background: #f59e0b;
 }
 
-.strength-strong, .strength-fill.strength-strong {
+.strength-strong,
+.strength-fill.strength-strong {
   background: #10b981;
 }
 
@@ -3470,18 +3481,18 @@ input[type="color"] {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .port-item {
     grid-template-columns: 50px 1fr;
     gap: 0.75rem;
   }
-  
+
   .port-protocol {
     grid-column: 1 / -1;
     justify-self: start;
     margin-top: 0.25rem;
   }
-  
+
   .ip-list {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   }
