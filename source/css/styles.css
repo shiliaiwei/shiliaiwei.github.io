@@ -707,34 +707,19 @@ img {
   .container {
     padding-inline: 1rem;
     margin-inline: auto;
-    text-align: center;
     max-width: 100%;
   }
 
   .section {
-    text-align: center;
     width: 100%;
   }
 
   .hero__content {
-    text-align: center;
     width: 100%;
-  }
-
-  .hero__content .title,
-  .hero__content .tagline,
-  .hero__content .lede {
-    text-align: center;
   }
 
   .section__header {
-    text-align: center;
     width: 100%;
-  }
-
-  .section__header h2,
-  .section__header p {
-    text-align: center;
   }
 
   .tag-cloud {
@@ -750,14 +735,12 @@ img {
 
   /* Center all page content on mobile */
   .page-content {
-    text-align: center;
     width: 100%;
   }
 
   /* Center VTool page elements */
   .tool-filter {
     justify-content: center;
-    text-align: center;
     width: 100%;
   }
 
@@ -3360,6 +3343,96 @@ input[type="color"] {
   display: block;
 }
 
+/* Enhanced table styles for cheatsheet */
+.table-container {
+  margin: 1rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.subnet-table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.subnet-table,
+.routing-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-size: 0.85rem;
+  background: var(--bg);
+}
+
+.subnet-table thead th,
+.routing-table th {
+  background: var(--panel);
+  color: var(--accent);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.subnet-table tbody tr,
+.routing-table tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.subnet-table tbody tr:hover,
+.routing-table tr:hover {
+  background: rgba(var(--accent-rgb, 110, 231, 255), 0.05);
+}
+
+.subnet-table tbody tr:last-child,
+.routing-table tr:last-child {
+  border-bottom: none;
+}
+
+.subnet-table td,
+.routing-table td {
+  padding: 0.75rem 1rem;
+  color: var(--fg);
+}
+
+.subnet-table td:first-child,
+.routing-table td:first-child {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Numbered lists styling */
+.cheatsheet-content ol {
+  padding-left: 1.5rem;
+  margin: 0.75rem 0;
+}
+
+.cheatsheet-content ol li {
+  padding: 0.5rem 0;
+  margin: 0.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cheatsheet-content ol li:last-child {
+  border-bottom: none;
+}
+
+/* Small text for table footnotes */
+.cheatsheet-content small {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: italic;
+  display: block;
+  margin-top: 0.5rem;
+}
+
 /* Password generator strength indicators */
 .password-display {
   display: flex;
@@ -3495,5 +3568,126 @@ input[type="color"] {
 
   .ip-list {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  /* Enhanced mobile styles for new table elements */
+  .subnet-table-responsive {
+    border-radius: 6px;
+  }
+
+  .subnet-table,
+  .routing-table {
+    font-size: 0.75rem;
+    min-width: 600px;
+    /* Ensure horizontal scrolling for wide tables */
+  }
+
+  .subnet-table thead th,
+  .routing-table th {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .subnet-table td,
+  .routing-table td {
+    padding: 0.5rem 0.75rem;
+    white-space: nowrap;
+  }
+
+  /* Collapsible cheatsheet cards on mobile */
+  .cheatsheet-card .card-header {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+  }
+
+  .cheatsheet-content {
+    padding: 1rem;
+  }
+
+  .protocol-section,
+  .ip-section,
+  .vpn-section,
+  .server-section,
+  .dns-section,
+  .device-section {
+    margin-bottom: 1rem;
+  }
+
+  /* Make tabs stack on very small screens */
+  .tool-tabs {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .tab-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    flex: 1;
+    min-width: auto;
+    text-align: center;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .cheatsheet-content {
+    padding: 0.75rem;
+  }
+
+  .cheatsheet-card .card-header {
+    padding: 0.75rem;
+  }
+
+  .subnet-table,
+  .routing-table {
+    font-size: 0.7rem;
+    min-width: 500px;
+  }
+
+  .subnet-table thead th,
+  .routing-table th,
+  .subnet-table td,
+  .routing-table td {
+    padding: 0.4rem 0.6rem;
+  }
+
+  .ip-list {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.4rem;
+  }
+
+  .ip-item {
+    padding: 0.4rem;
+    font-size: 0.8rem;
+  }
+
+  .port-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .port-number,
+  .port-service,
+  .port-protocol {
+    justify-self: center;
+  }
+
+  .tab-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-width: 768px) and (orientation: landscape) {
+  .cheatsheet-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .subnet-table,
+  .routing-table {
+    font-size: 0.8rem;
   }
 }

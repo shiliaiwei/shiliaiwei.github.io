@@ -984,9 +984,63 @@
           <p>Essential networking reference guide for developers and system administrators</p>
         </div>
 
+        <!-- Filter System -->
+        <div class="filter-container">
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">
+              <i class="ri-apps-2-line"></i>
+              <span>All</span>
+            </button>
+            <button class="filter-btn" data-filter="fundamentals">
+              <i class="ri-global-line"></i>
+              <span>Fundamentals</span>
+            </button>
+            <button class="filter-btn" data-filter="routing">
+              <i class="ri-route-line"></i>
+              <span>Routing</span>
+            </button>
+            <button class="filter-btn" data-filter="switching">
+              <i class="ri-shuffle-line"></i>
+              <span>Switching</span>
+            </button>
+            <button class="filter-btn" data-filter="security">
+              <i class="ri-shield-line"></i>
+              <span>Security</span>
+            </button>
+            <button class="filter-btn" data-filter="addressing">
+              <i class="ri-ip-line"></i>
+              <span>IP Addressing</span>
+            </button>
+            <button class="filter-btn" data-filter="vpn">
+              <i class="ri-lock-line"></i>
+              <span>VPN</span>
+            </button>
+            <button class="filter-btn" data-filter="services">
+              <i class="ri-server-line"></i>
+              <span>Services</span>
+            </button>
+            <button class="filter-btn" data-filter="dns">
+              <i class="ri-links-line"></i>
+              <span>DNS</span>
+            </button>
+            <button class="filter-btn" data-filter="devices">
+              <i class="ri-router-line"></i>
+              <span>Devices</span>
+            </button>
+            <button class="filter-btn" data-filter="commands">
+              <i class="ri-terminal-line"></i>
+              <span>Commands</span>
+            </button>
+          </div>
+          <div class="search-container">
+            <i class="ri-search-line"></i>
+            <input type="text" id="cheatsheet-search" placeholder="Search cheatsheet content...">
+          </div>
+        </div>
+
         <div class="cheatsheet-grid">
           <!-- Networking Fundamentals -->
-          <div class="cheatsheet-card">
+          <div class="cheatsheet-card" data-category="fundamentals">
             <div class="card-header">
               <i class="ri-global-line"></i>
               <h3>Networking Fundamentals</h3>
@@ -1018,7 +1072,7 @@
           </div>
 
           <!-- Routing Protocols -->
-          <div class="cheatsheet-card">
+          <div class="cheatsheet-card" data-category="routing">
             <div class="card-header">
               <i class="ri-route-line"></i>
               <h3>Routing Protocols</h3>
@@ -1027,339 +1081,749 @@
               <div class="protocol-section">
                 <h4>Interior Gateway Protocols (IGP)</h4>
                 <ul>
-                  <li><strong>RIP v1/v2:</strong> Distance Vector, 15 hop limit</li>
-                  <li><strong>EIGRP:</strong> Cisco proprietary, hybrid protocol</li>
-                  <li><strong>OSPF:</strong> Link State, hierarchical design</li>
-                  <li><strong>IS-IS:</strong> Link State, used in ISP networks</li>
+                  <li><strong>RIP v1/v2:</strong> Distance Vector, 15 hop limit, metric = hop count</li>
+                  <li><strong>EIGRP:</strong> Cisco proprietary, hybrid protocol, fast convergence</li>
+                  <li><strong>OSPF:</strong> Link State, hierarchical design, uses LSAs</li>
+                  <li><strong>IS-IS:</strong> Link State, used in ISP networks, OSI protocol</li>
+                  <li><strong>IGRP:</strong> Cisco proprietary, legacy distance vector</li>
                 </ul>
               </div>
               <div class="protocol-section">
                 <h4>Exterior Gateway Protocols (EGP)</h4>
                 <ul>
-                  <li><strong>BGP v4:</strong> Path Vector, Internet backbone</li>
-                  <li><strong>EGP:</strong> Legacy exterior protocol</li>
+                  <li><strong>BGP v4:</strong> Path Vector, Internet backbone, AS-to-AS routing</li>
+                  <li><strong>eBGP:</strong> External BGP, between different autonomous systems</li>
+                  <li><strong>iBGP:</strong> Internal BGP, within same autonomous system</li>
+                  <li><strong>EGP:</strong> Legacy exterior protocol (obsolete)</li>
                 </ul>
               </div>
               <div class="protocol-section">
-                <h4>Routing Concepts</h4>
+                <h4>Routing Concepts & Metrics</h4>
                 <ul>
-                  <li><strong>Static Routing:</strong> Manually configured routes</li>
-                  <li><strong>Dynamic Routing:</strong> Automatically learned routes</li>
+                  <li><strong>Static Routing:</strong> Manually configured routes, no automatic updates</li>
+                  <li><strong>Dynamic Routing:</strong> Automatically learned routes, adaptive</li>
                   <li><strong>Default Route:</strong> 0.0.0.0/0 - Route of last resort</li>
-                  <li><strong>Administrative Distance:</strong> Route trustworthiness</li>
+                  <li><strong>Administrative Distance (AD):</strong> Route trustworthiness (0-255)</li>
+                  <li><strong>Metric:</strong> Cost calculation for best path selection</li>
+                  <li><strong>Convergence:</strong> Time for all routers to agree on topology</li>
+                  <li><strong>Load Balancing:</strong> Equal/unequal cost path distribution</li>
                 </ul>
+              </div>
+              <div class="protocol-section">
+                <h4>Administrative Distance Values</h4>
+                <div class="table-container">
+                  <table class="routing-table">
+                    <tr>
+                      <td>Connected Interface</td>
+                      <td>0</td>
+                    </tr>
+                    <tr>
+                      <td>Static Route</td>
+                      <td>1</td>
+                    </tr>
+                    <tr>
+                      <td>EIGRP</td>
+                      <td>90</td>
+                    </tr>
+                    <tr>
+                      <td>IGRP</td>
+                      <td>100</td>
+                    </tr>
+                    <tr>
+                      <td>OSPF</td>
+                      <td>110</td>
+                    </tr>
+                    <tr>
+                      <td>RIP</td>
+                      <td>120</td>
+                    </tr>
+                    <tr>
+                      <td>External EIGRP</td>
+                      <td>170</td>
+                    </tr>
+                    <tr>
+                      <td>Unknown/External</td>
+                      <td>255</td>
+                    </tr>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Switching Protocols -->
-          <div class="cheatsheet-card">
+          <div class="cheatsheet-card" data-category="switching">
             <div class="card-header">
               <i class="ri-shuffle-line"></i>
-              <h3>Switching Protocols</h3>
+              <h3>Switching Protocols & Technologies</h3>
             </div>
             <div class="cheatsheet-content">
               <div class="protocol-section">
                 <h4>Spanning Tree Protocols</h4>
                 <ul>
-                  <li><strong>STP (802.1D):</strong> Original spanning tree</li>
-                  <li><strong>RSTP (802.1w):</strong> Rapid spanning tree</li>
-                  <li><strong>MSTP (802.1s):</strong> Multiple spanning tree</li>
-                  <li><strong>PVST+:</strong> Cisco per-VLAN spanning tree</li>
+                  <li><strong>STP (802.1D):</strong> Original spanning tree, 50s convergence</li>
+                  <li><strong>RSTP (802.1w):</strong> Rapid spanning tree, 6s convergence</li>
+                  <li><strong>MSTP (802.1s):</strong> Multiple spanning tree, per-VLAN</li>
+                  <li><strong>PVST+:</strong> Cisco per-VLAN spanning tree plus</li>
+                  <li><strong>Rapid PVST+:</strong> Cisco rapid per-VLAN STP</li>
                 </ul>
               </div>
               <div class="protocol-section">
-                <h4>VLAN Protocols</h4>
+                <h4>VLAN Protocols & Standards</h4>
                 <ul>
-                  <li><strong>802.1Q:</strong> VLAN tagging standard</li>
-                  <li><strong>ISL:</strong> Cisco Inter-Switch Link (legacy)</li>
-                  <li><strong>VTP:</strong> VLAN Trunking Protocol</li>
-                  <li><strong>DTP:</strong> Dynamic Trunking Protocol</li>
+                  <li><strong>802.1Q:</strong> VLAN tagging standard, 4-byte header</li>
+                  <li><strong>ISL:</strong> Cisco Inter-Switch Link (legacy), 30-byte header</li>
+                  <li><strong>VTP:</strong> VLAN Trunking Protocol, VLAN database sync</li>
+                  <li><strong>DTP:</strong> Dynamic Trunking Protocol, auto trunk negotiation</li>
+                  <li><strong>Native VLAN:</strong> Untagged VLAN on trunk (default VLAN 1)</li>
+                  <li><strong>VLAN Range:</strong> 1-4094 (1 & 4095 reserved)</li>
                 </ul>
               </div>
               <div class="protocol-section">
-                <h4>Link Aggregation</h4>
+                <h4>Link Aggregation Protocols</h4>
                 <ul>
-                  <li><strong>LACP (802.3ad):</strong> Link Aggregation Control</li>
+                  <li><strong>LACP (802.3ad):</strong> Link Aggregation Control Protocol</li>
                   <li><strong>PAgP:</strong> Cisco Port Aggregation Protocol</li>
-                  <li><strong>EtherChannel:</strong> Cisco link bundling</li>
+                  <li><strong>EtherChannel:</strong> Cisco link bundling technology</li>
+                  <li><strong>Static LAG:</strong> Manual link aggregation configuration</li>
+                  <li><strong>Load Balancing:</strong> SRC-MAC, DST-MAC, SRC-DST-IP, etc.</li>
+                </ul>
+              </div>
+              <div class="protocol-section">
+                <h4>Switching Features & Protocols</h4>
+                <ul>
+                  <li><strong>CDP:</strong> Cisco Discovery Protocol, Layer 2 neighbor discovery</li>
+                  <li><strong>LLDP:</strong> Link Layer Discovery Protocol (IEEE standard)</li>
+                  <li><strong>BPDU Guard:</strong> Protects against STP loops on access ports</li>
+                  <li><strong>Root Guard:</strong> Prevents inferior BPDU reception</li>
+                  <li><strong>PortFast:</strong> Immediate forwarding for access ports</li>
+                  <li><strong>UDLD:</strong> UniDirectional Link Detection</li>
+                  <li><strong>Storm Control:</strong> Broadcast/multicast traffic limiting</li>
                 </ul>
               </div>
             </div>
           </div>
 
           <!-- Firewall Protocols -->
-          <div class="cheatsheet-card">
+          <div class="cheatsheet-card" data-category="security">
             <div class="card-header">
               <i class="ri-shield-line"></i>
               <h3>Firewall & Security Protocols</h3>
             </div>
             <div class="cheatsheet-content">
               <div class="protocol-section">
-                <h4>Firewall Types</h4>
+                <h4>Firewall Types & Technologies</h4>
                 <ul>
-                  <li><strong>Packet Filter:</strong> Layer 3/4 inspection</li>
-                  <li><strong>Stateful:</strong> Connection state tracking</li>
-                  <li><strong>Application Gateway:</strong> Layer 7 proxy</li>
-                  <li><strong>NAT Firewall:</strong> Network Address Translation</li>
-                  <li><strong>NGFW:</strong> Next Generation Firewall</li>
+                  <li><strong>Packet Filter:</strong> Layer 3/4 inspection, stateless filtering</li>
+                  <li><strong>Stateful Inspection:</strong> Connection state tracking, dynamic rules</li>
+                  <li><strong>Application Gateway:</strong> Layer 7 proxy, deep packet inspection</li>
+                  <li><strong>NAT Firewall:</strong> Network Address Translation with filtering</li>
+                  <li><strong>NGFW:</strong> Next Generation Firewall, integrated security</li>
+                  <li><strong>WAF:</strong> Web Application Firewall, HTTP/HTTPS protection</li>
+                  <li><strong>UTM:</strong> Unified Threat Management, all-in-one security</li>
                 </ul>
               </div>
               <div class="protocol-section">
-                <h4>Security Protocols</h4>
+                <h4>Security Protocols & Standards</h4>
                 <ul>
-                  <li><strong>IPSec:</strong> IP Security suite</li>
+                  <li><strong>IPSec:</strong> IP Security suite, ESP/AH protocols</li>
                   <li><strong>SSL/TLS:</strong> Secure Socket Layer/Transport Layer Security</li>
-                  <li><strong>WPA2/WPA3:</strong> WiFi Protected Access</li>
-                  <li><strong>802.1X:</strong> Port-based network access control</li>
-                  <li><strong>RADIUS:</strong> Remote Authentication</li>
-                  <li><strong>TACACS+:</strong> Terminal Access Controller Access</li>
+                  <li><strong>WPA2/WPA3:</strong> WiFi Protected Access (AES encryption)</li>
+                  <li><strong>WEP:</strong> Wired Equivalent Privacy (deprecated, RC4)</li>
+                  <li><strong>802.1X:</strong> Port-based network access control (EAP)</li>
+                  <li><strong>RADIUS:</strong> Remote Authentication Dial-In User Service</li>
+                  <li><strong>TACACS+:</strong> Terminal Access Controller Access Control System</li>
+                  <li><strong>Kerberos:</strong> Network authentication protocol (ticket-based)</li>
                 </ul>
               </div>
               <div class="protocol-section">
-                <h4>IDS/IPS Systems</h4>
+                <h4>Intrusion Detection & Prevention</h4>
                 <ul>
-                  <li><strong>NIDS:</strong> Network Intrusion Detection</li>
-                  <li><strong>NIPS:</strong> Network Intrusion Prevention</li>
-                  <li><strong>HIDS:</strong> Host Intrusion Detection</li>
-                  <li><strong>Snort:</strong> Open source IDS/IPS</li>
+                  <li><strong>NIDS:</strong> Network Intrusion Detection System</li>
+                  <li><strong>NIPS:</strong> Network Intrusion Prevention System</li>
+                  <li><strong>HIDS:</strong> Host-based Intrusion Detection System</li>
+                  <li><strong>HIPS:</strong> Host-based Intrusion Prevention System</li>
+                  <li><strong>Snort:</strong> Open source IDS/IPS engine</li>
+                  <li><strong>Suricata:</strong> High performance IDS/IPS/NSM engine</li>
+                  <li><strong>SIEM:</strong> Security Information Event Management</li>
+                </ul>
+              </div>
+              <div class="protocol-section">
+                <h4>Access Control & Authentication</h4>
+                <ul>
+                  <li><strong>ACL:</strong> Access Control Lists (standard/extended)</li>
+                  <li><strong>RBAC:</strong> Role-Based Access Control</li>
+                  <li><strong>MAC:</strong> Mandatory Access Control</li>
+                  <li><strong>DAC:</strong> Discretionary Access Control</li>
+                  <li><strong>LDAP:</strong> Lightweight Directory Access Protocol</li>
+                  <li><strong>Active Directory:</strong> Microsoft domain services</li>
+                  <li><strong>SSO:</strong> Single Sign-On authentication</li>
+                  <li><strong>MFA:</strong> Multi-Factor Authentication</li>
                 </ul>
               </div>
             </div>
           </div>
 
           <!-- IPv4 Addressing & Subnetting -->
-          <div class="cheatsheet-card">
+          <div class="cheatsheet-card" data-category="addressing">
             <div class="card-header">
               <i class="ri-ip-line"></i>
               <h3>IPv4 Addressing & Subnetting</h3>
             </div>
             <div class="cheatsheet-content">
               <div class="ip-section">
-                <h4>Classful Address Ranges</h4>
+                <h4>Classful Address Ranges (Legacy)</h4>
                 <ul>
-                  <li><strong>Class A:</strong> 1.0.0.0 - 126.255.255.255 (/8)</li>
-                  <li><strong>Class B:</strong> 128.0.0.0 - 191.255.255.255 (/16)</li>
-                  <li><strong>Class C:</strong> 192.0.0.0 - 223.255.255.255 (/24)</li>
+                  <li><strong>Class A:</strong> 1.0.0.0 - 126.255.255.255 (/8) - 16M hosts</li>
+                  <li><strong>Class B:</strong> 128.0.0.0 - 191.255.255.255 (/16) - 64K hosts</li>
+                  <li><strong>Class C:</strong> 192.0.0.0 - 223.255.255.255 (/24) - 254 hosts</li>
                   <li><strong>Class D:</strong> 224.0.0.0 - 239.255.255.255 (Multicast)</li>
-                  <li><strong>Class E:</strong> 240.0.0.0 - 255.255.255.255 (Reserved)</li>
+                  <li><strong>Class E:</strong> 240.0.0.0 - 255.255.255.255 (Experimental/Reserved)</li>
                 </ul>
               </div>
               <div class="ip-section">
                 <h4>Private IPv4 Ranges (RFC 1918)</h4>
                 <ul>
-                  <li><code>10.0.0.0/8</code> - 10.0.0.0 to 10.255.255.255</li>
-                  <li><code>172.16.0.0/12</code> - 172.16.0.0 to 172.31.255.255</li>
-                  <li><code>192.168.0.0/16</code> - 192.168.0.0 to 192.168.255.255</li>
+                  <li><code>10.0.0.0/8</code> - 10.0.0.0 to 10.255.255.255 (16.7M IPs)</li>
+                  <li><code>172.16.0.0/12</code> - 172.16.0.0 to 172.31.255.255 (1M IPs)</li>
+                  <li><code>192.168.0.0/16</code> - 192.168.0.0 to 192.168.255.255 (65K IPs)</li>
                 </ul>
               </div>
               <div class="ip-section">
                 <h4>Special & Bogon IPv4 Addresses</h4>
                 <ul>
-                  <li><code>127.0.0.0/8</code> - Loopback addresses</li>
-                  <li><code>169.254.0.0/16</code> - Link-local (APIPA)</li>
-                  <li><code>224.0.0.0/4</code> - Multicast</li>
-                  <li><code>0.0.0.0/8</code> - Current network</li>
-                  <li><code>255.255.255.255</code> - Broadcast</li>
-                  <li><code>192.0.2.0/24</code> - TEST-NET-1</li>
-                  <li><code>198.51.100.0/24</code> - TEST-NET-2</li>
-                  <li><code>203.0.113.0/24</code> - TEST-NET-3</li>
+                  <li><code>127.0.0.0/8</code> - Loopback addresses (localhost)</li>
+                  <li><code>169.254.0.0/16</code> - Link-local (APIPA, auto-config)</li>
+                  <li><code>224.0.0.0/4</code> - Multicast (Class D)</li>
+                  <li><code>0.0.0.0/8</code> - "This" network (current network)</li>
+                  <li><code>255.255.255.255/32</code> - Limited broadcast</li>
+                  <li><code>192.0.2.0/24</code> - TEST-NET-1 (RFC 5737)</li>
+                  <li><code>198.51.100.0/24</code> - TEST-NET-2 (RFC 5737)</li>
+                  <li><code>203.0.113.0/24</code> - TEST-NET-3 (RFC 5737)</li>
+                  <li><code>192.0.0.0/24</code> - IANA IPv4 Special Purpose</li>
+                  <li><code>198.18.0.0/15</code> - Benchmark testing (RFC 2544)</li>
                 </ul>
               </div>
               <div class="ip-section">
-                <h4>Common Subnet Masks & CIDR</h4>
-                <div class="subnet-table">
-                  <div class="subnet-row"><code>/8</code> = <code>255.0.0.0</code> = 16,777,214 hosts</div>
-                  <div class="subnet-row"><code>/16</code> = <code>255.255.0.0</code> = 65,534 hosts</div>
-                  <div class="subnet-row"><code>/24</code> = <code>255.255.255.0</code> = 254 hosts</div>
-                  <div class="subnet-row"><code>/25</code> = <code>255.255.255.128</code> = 126 hosts</div>
-                  <div class="subnet-row"><code>/26</code> = <code>255.255.255.192</code> = 62 hosts</div>
-                  <div class="subnet-row"><code>/27</code> = <code>255.255.255.224</code> = 30 hosts</div>
-                  <div class="subnet-row"><code>/28</code> = <code>255.255.255.240</code> = 14 hosts</div>
-                  <div class="subnet-row"><code>/29</code> = <code>255.255.255.248</code> = 6 hosts</div>
-                  <div class="subnet-row"><code>/30</code> = <code>255.255.255.252</code> = 2 hosts</div>
+                <h4>Subnet Masks, CIDR & Wildcards</h4>
+                <div class="subnet-table-responsive">
+                  <table class="subnet-table">
+                    <thead>
+                      <tr>
+                        <th>CIDR</th>
+                        <th>Subnet Mask</th>
+                        <th>Wildcard Mask</th>
+                        <th>Hosts</th>
+                        <th>Networks</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>/8</td>
+                        <td>255.0.0.0</td>
+                        <td>0.255.255.255</td>
+                        <td>16,777,214</td>
+                        <td>256</td>
+                      </tr>
+                      <tr>
+                        <td>/9</td>
+                        <td>255.128.0.0</td>
+                        <td>0.127.255.255</td>
+                        <td>8,388,606</td>
+                        <td>512</td>
+                      </tr>
+                      <tr>
+                        <td>/10</td>
+                        <td>255.192.0.0</td>
+                        <td>0.63.255.255</td>
+                        <td>4,194,302</td>
+                        <td>1,024</td>
+                      </tr>
+                      <tr>
+                        <td>/11</td>
+                        <td>255.224.0.0</td>
+                        <td>0.31.255.255</td>
+                        <td>2,097,150</td>
+                        <td>2,048</td>
+                      </tr>
+                      <tr>
+                        <td>/12</td>
+                        <td>255.240.0.0</td>
+                        <td>0.15.255.255</td>
+                        <td>1,048,574</td>
+                        <td>4,096</td>
+                      </tr>
+                      <tr>
+                        <td>/13</td>
+                        <td>255.248.0.0</td>
+                        <td>0.7.255.255</td>
+                        <td>524,286</td>
+                        <td>8,192</td>
+                      </tr>
+                      <tr>
+                        <td>/14</td>
+                        <td>255.252.0.0</td>
+                        <td>0.3.255.255</td>
+                        <td>262,142</td>
+                        <td>16,384</td>
+                      </tr>
+                      <tr>
+                        <td>/15</td>
+                        <td>255.254.0.0</td>
+                        <td>0.1.255.255</td>
+                        <td>131,070</td>
+                        <td>32,768</td>
+                      </tr>
+                      <tr>
+                        <td>/16</td>
+                        <td>255.255.0.0</td>
+                        <td>0.0.255.255</td>
+                        <td>65,534</td>
+                        <td>65,536</td>
+                      </tr>
+                      <tr>
+                        <td>/17</td>
+                        <td>255.255.128.0</td>
+                        <td>0.0.127.255</td>
+                        <td>32,766</td>
+                        <td>131,072</td>
+                      </tr>
+                      <tr>
+                        <td>/18</td>
+                        <td>255.255.192.0</td>
+                        <td>0.0.63.255</td>
+                        <td>16,382</td>
+                        <td>262,144</td>
+                      </tr>
+                      <tr>
+                        <td>/19</td>
+                        <td>255.255.224.0</td>
+                        <td>0.0.31.255</td>
+                        <td>8,190</td>
+                        <td>524,288</td>
+                      </tr>
+                      <tr>
+                        <td>/20</td>
+                        <td>255.255.240.0</td>
+                        <td>0.0.15.255</td>
+                        <td>4,094</td>
+                        <td>1,048,576</td>
+                      </tr>
+                      <tr>
+                        <td>/21</td>
+                        <td>255.255.248.0</td>
+                        <td>0.0.7.255</td>
+                        <td>2,046</td>
+                        <td>2,097,152</td>
+                      </tr>
+                      <tr>
+                        <td>/22</td>
+                        <td>255.255.252.0</td>
+                        <td>0.0.3.255</td>
+                        <td>1,022</td>
+                        <td>4,194,304</td>
+                      </tr>
+                      <tr>
+                        <td>/23</td>
+                        <td>255.255.254.0</td>
+                        <td>0.0.1.255</td>
+                        <td>510</td>
+                        <td>8,388,608</td>
+                      </tr>
+                      <tr>
+                        <td>/24</td>
+                        <td>255.255.255.0</td>
+                        <td>0.0.0.255</td>
+                        <td>254</td>
+                        <td>16,777,216</td>
+                      </tr>
+                      <tr>
+                        <td>/25</td>
+                        <td>255.255.255.128</td>
+                        <td>0.0.0.127</td>
+                        <td>126</td>
+                        <td>33,554,432</td>
+                      </tr>
+                      <tr>
+                        <td>/26</td>
+                        <td>255.255.255.192</td>
+                        <td>0.0.0.63</td>
+                        <td>62</td>
+                        <td>67,108,864</td>
+                      </tr>
+                      <tr>
+                        <td>/27</td>
+                        <td>255.255.255.224</td>
+                        <td>0.0.0.31</td>
+                        <td>30</td>
+                        <td>134,217,728</td>
+                      </tr>
+                      <tr>
+                        <td>/28</td>
+                        <td>255.255.255.240</td>
+                        <td>0.0.0.15</td>
+                        <td>14</td>
+                        <td>268,435,456</td>
+                      </tr>
+                      <tr>
+                        <td>/29</td>
+                        <td>255.255.255.248</td>
+                        <td>0.0.0.7</td>
+                        <td>6</td>
+                        <td>536,870,912</td>
+                      </tr>
+                      <tr>
+                        <td>/30</td>
+                        <td>255.255.255.252</td>
+                        <td>0.0.0.3</td>
+                        <td>2</td>
+                        <td>1,073,741,824</td>
+                      </tr>
+                      <tr>
+                        <td>/31</td>
+                        <td>255.255.255.254</td>
+                        <td>0.0.0.1</td>
+                        <td>0*</td>
+                        <td>2,147,483,648</td>
+                      </tr>
+                      <tr>
+                        <td>/32</td>
+                        <td>255.255.255.255</td>
+                        <td>0.0.0.0</td>
+                        <td>1**</td>
+                        <td>4,294,967,296</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <small>*Point-to-point links (RFC 3021) **Host route</small>
                 </div>
+              </div>
+              <div class="ip-section">
+                <h4>Subnetting Quick Reference</h4>
+                <ul>
+                  <li><strong>Subnetting Formula:</strong> 2^n = subnets (n = borrowed bits)</li>
+                  <li><strong>Host Formula:</strong> 2^h - 2 = hosts (h = host bits)</li>
+                  <li><strong>Network ID:</strong> First address in subnet</li>
+                  <li><strong>Broadcast ID:</strong> Last address in subnet</li>
+                  <li><strong>Block Size:</strong> 256 - subnet mask octet value</li>
+                  <li><strong>VLSM:</strong> Variable Length Subnet Masking</li>
+                  <li><strong>FLSM:</strong> Fixed Length Subnet Masking</li>
+                </ul>
               </div>
             </div>
           </div>
 
           <!-- VPN Types & Technologies -->
-          <div class="cheatsheet-card">
+          <div class="cheatsheet-card" data-category="vpn">
             <div class="card-header">
               <i class="ri-shield-keyhole-line"></i>
               <h3>VPN Types & Technologies</h3>
             </div>
             <div class="cheatsheet-content">
               <div class="vpn-section">
-                <h4>VPN by Deployment</h4>
+                <h4>VPN by Deployment Type</h4>
                 <ul>
                   <li><strong>Site-to-Site VPN:</strong> Connects entire networks securely over internet</li>
                   <li><strong>Remote Access VPN:</strong> Individual users connect to corporate network</li>
                   <li><strong>Client-to-Site VPN:</strong> Software client connects to VPN server</li>
                   <li><strong>Host-to-Host VPN:</strong> Direct secure connection between two devices</li>
+                  <li><strong>Extranet VPN:</strong> Secure access for business partners</li>
+                  <li><strong>Intranet VPN:</strong> Secure internal network connections</li>
                 </ul>
               </div>
               <div class="vpn-section">
-                <h4>VPN Technologies</h4>
+                <h4>VPN Protocols & Technologies</h4>
                 <ul>
                   <li><strong>IPSec VPN:</strong> Layer 3 encryption, ESP/AH protocols, IKE key exchange</li>
                   <li><strong>SSL/TLS VPN:</strong> Web-based, clientless access, HTTPS encryption</li>
-                  <li><strong>PPTP:</strong> Point-to-Point Tunneling (legacy, insecure)</li>
-                  <li><strong>L2TP/IPSec:</strong> Layer 2 tunneling with IPSec encryption</li>
-                  <li><strong>OpenVPN:</strong> Open-source SSL/TLS based VPN</li>
-                  <li><strong>WireGuard:</strong> Modern, lightweight VPN protocol</li>
+                  <li><strong>PPTP:</strong> Point-to-Point Tunneling (legacy, insecure, port 1723)</li>
+                  <li><strong>L2TP/IPSec:</strong> Layer 2 tunneling with IPSec encryption (port 1701)</li>
+                  <li><strong>OpenVPN:</strong> Open-source SSL/TLS based VPN (UDP 1194)</li>
+                  <li><strong>WireGuard:</strong> Modern, lightweight VPN protocol (UDP)</li>
+                  <li><strong>SSTP:</strong> Secure Socket Tunneling Protocol (Microsoft)</li>
+                  <li><strong>IKEv2:</strong> Internet Key Exchange version 2 (mobile-friendly)</li>
                 </ul>
               </div>
               <div class="vpn-section">
-                <h4>Cloud VPN Services</h4>
+                <h4>Cloud VPN Services & Solutions</h4>
                 <ul>
-                  <li><strong>AWS VPN:</strong> Site-to-Site & Client VPN</li>
-                  <li><strong>Azure VPN Gateway:</strong> Point-to-Site & Site-to-Site</li>
-                  <li><strong>Google Cloud VPN:</strong> Classic & HA VPN</li>
-                  <li><strong>Cisco AnyConnect:</strong> SSL VPN client</li>
-                  <li><strong>Fortinet FortiClient:</strong> SSL VPN solution</li>
+                  <li><strong>AWS VPN:</strong> Site-to-Site & Client VPN, VPC connectivity</li>
+                  <li><strong>Azure VPN Gateway:</strong> Point-to-Site & Site-to-Site, ExpressRoute</li>
+                  <li><strong>Google Cloud VPN:</strong> Classic & HA VPN, Cloud Interconnect</li>
+                  <li><strong>Cisco AnyConnect:</strong> SSL VPN client, endpoint security</li>
+                  <li><strong>Fortinet FortiClient:</strong> SSL VPN solution with security fabric</li>
+                  <li><strong>Palo Alto GlobalProtect:</strong> Next-gen VPN with threat prevention</li>
+                  <li><strong>SonicWall NetExtender:</strong> SSL VPN thin client</li>
+                  <li><strong>Check Point VPN:</strong> Enterprise VPN with threat prevention</li>
                 </ul>
               </div>
               <div class="vpn-section">
-                <h4>How VPN Works</h4>
+                <h4>How VPN Works (Step-by-Step)</h4>
+                <ol style="list-style-type: decimal; padding-left: 20px;">
+                  <li><strong>Tunnel Establishment:</strong> Secure encrypted tunnel created between endpoints</li>
+                  <li><strong>Authentication:</strong> User/device credentials verified (PSK, certificates, etc.)</li>
+                  <li><strong>Key Exchange:</strong> Cryptographic keys negotiated (IKE, ISAKMP)</li>
+                  <li><strong>Encapsulation:</strong> Original packets wrapped in VPN headers</li>
+                  <li><strong>Encryption:</strong> Data encrypted using agreed algorithms (AES, etc.)</li>
+                  <li><strong>Transmission:</strong> Encrypted packets sent through public network</li>
+                  <li><strong>Decryption:</strong> Data decrypted at destination endpoint</li>
+                  <li><strong>Delivery:</strong> Original packets delivered to final destination</li>
+                </ol>
+              </div>
+              <div class="vpn-section">
+                <h4>VPN Security & Encryption</h4>
                 <ul>
-                  <li><strong>1. Tunnel Creation:</strong> Secure encrypted tunnel established</li>
-                  <li><strong>2. Authentication:</strong> User/device credentials verified</li>
-                  <li><strong>3. Encryption:</strong> Data encrypted before transmission</li>
-                  <li><strong>4. Routing:</strong> Traffic routed through VPN server</li>
-                  <li><strong>5. Decryption:</strong> Data decrypted at destination</li>
+                  <li><strong>AES:</strong> Advanced Encryption Standard (128, 192, 256-bit)</li>
+                  <li><strong>3DES:</strong> Triple Data Encryption Standard (legacy)</li>
+                  <li><strong>RSA:</strong> Public key cryptography for key exchange</li>
+                  <li><strong>SHA:</strong> Secure Hash Algorithm for data integrity</li>
+                  <li><strong>MD5:</strong> Message Digest 5 (deprecated, weak)</li>
+                  <li><strong>DH:</strong> Diffie-Hellman key exchange groups</li>
+                  <li><strong>Perfect Forward Secrecy:</strong> Unique keys per session</li>
+                  <li><strong>Split Tunneling:</strong> Selective traffic routing through VPN</li>
                 </ul>
               </div>
             </div>
           </div>
 
           <!-- Network Servers & Services -->
-          <div class="cheatsheet-card">
+          <div class="cheatsheet-card" data-category="services">
             <div class="card-header">
               <i class="ri-server-line"></i>
               <h3>Network Servers & Services</h3>
             </div>
             <div class="cheatsheet-content">
               <div class="server-section">
-                <h4>Core Network Servers</h4>
+                <h4>Core Network Services</h4>
                 <ul>
-                  <li><strong>DNS Server:</strong> Domain name resolution, hierarchical database</li>
-                  <li><strong>DHCP Server:</strong> Automatic IP address assignment</li>
-                  <li><strong>NTP Server:</strong> Network time synchronization</li>
-                  <li><strong>RADIUS Server:</strong> Authentication, authorization, accounting</li>
-                  <li><strong>LDAP Server:</strong> Directory services, user management</li>
+                  <li><strong>DNS Server:</strong> Domain name resolution, hierarchical database (port 53)</li>
+                  <li><strong>DHCP Server:</strong> Automatic IP address assignment (ports 67/68)</li>
+                  <li><strong>NTP Server:</strong> Network time synchronization (port 123)</li>
+                  <li><strong>RADIUS Server:</strong> Authentication, authorization, accounting (port 1812/1813)</li>
+                  <li><strong>LDAP Server:</strong> Directory services, user management (port 389/636)</li>
+                  <li><strong>WINS Server:</strong> Windows Internet Name Service (NetBIOS name resolution)</li>
+                  <li><strong>Syslog Server:</strong> Centralized logging service (port 514)</li>
                 </ul>
               </div>
               <div class="server-section">
-                <h4>Application Servers</h4>
+                <h4>Application & Web Servers</h4>
                 <ul>
-                  <li><strong>Web Server:</strong> Apache, Nginx, IIS - HTTP/HTTPS content</li>
-                  <li><strong>Mail Server:</strong> Exchange, Postfix - Email services</li>
-                  <li><strong>Database Server:</strong> MySQL, PostgreSQL, SQL Server</li>
-                  <li><strong>File Server:</strong> SMB/CIFS, NFS file sharing</li>
-                  <li><strong>Print Server:</strong> Centralized printing services</li>
+                  <li><strong>Web Server:</strong> Apache, Nginx, IIS - HTTP/HTTPS content (ports 80/443)</li>
+                  <li><strong>Mail Server:</strong> Exchange, Postfix - Email services (SMTP 25, POP3 110, IMAP 143)
+                  </li>
+                  <li><strong>Database Server:</strong> MySQL, PostgreSQL, SQL Server, Oracle</li>
+                  <li><strong>File Server:</strong> SMB/CIFS (445), NFS (2049), FTP (21) file sharing</li>
+                  <li><strong>Print Server:</strong> Centralized printing services (port 631 IPP)</li>
+                  <li><strong>Terminal Server:</strong> Remote desktop/application services (RDP 3389)</li>
+                  <li><strong>Media Server:</strong> Streaming services (RTSP, HTTP streaming)</li>
                 </ul>
               </div>
               <div class="server-section">
-                <h4>Proxy & Load Balancers</h4>
+                <h4>Proxy, Load Balancers & CDN</h4>
                 <ul>
-                  <li><strong>Forward Proxy:</strong> Client-side proxy, caching, filtering</li>
-                  <li><strong>Reverse Proxy:</strong> Server-side proxy, load balancing</li>
+                  <li><strong>Forward Proxy:</strong> Client-side proxy, caching, content filtering</li>
+                  <li><strong>Reverse Proxy:</strong> Server-side proxy, load balancing, SSL termination</li>
                   <li><strong>Load Balancer:</strong> F5, HAProxy, AWS ELB - traffic distribution</li>
-                  <li><strong>API Gateway:</strong> API management, rate limiting, security</li>
+                  <li><strong>API Gateway:</strong> API management, rate limiting, authentication</li>
+                  <li><strong>CDN:</strong> Content Delivery Network (Cloudflare, AWS CloudFront)</li>
+                  <li><strong>Caching Server:</strong> Squid, Varnish - content caching</li>
+                </ul>
+              </div>
+              <div class="server-section">
+                <h4>Infrastructure & Management Servers</h4>
+                <ul>
+                  <li><strong>Domain Controller:</strong> Active Directory, user authentication</li>
+                  <li><strong>Certificate Authority:</strong> PKI certificate management</li>
+                  <li><strong>SNMP Manager:</strong> Network monitoring and management (port 161/162)</li>
+                  <li><strong>Backup Server:</strong> Data backup and recovery services</li>
+                  <li><strong>Virtualization Host:</strong> VMware, Hyper-V, KVM hypervisors</li>
+                  <li><strong>Container Registry:</strong> Docker Hub, Harbor - container images</li>
+                  <li><strong>Configuration Management:</strong> Ansible, Puppet, Chef servers</li>
+                </ul>
+              </div>
+              <div class="server-section">
+                <h4>Server Types by Purpose</h4>
+                <ul>
+                  <li><strong>Production Server:</strong> Live environment serving end users</li>
+                  <li><strong>Development Server:</strong> Testing and development environment</li>
+                  <li><strong>Staging Server:</strong> Pre-production testing environment</li>
+                  <li><strong>Test Server:</strong> Quality assurance and testing</li>
+                  <li><strong>Disaster Recovery:</strong> Backup site for business continuity</li>
+                  <li><strong>Edge Server:</strong> Distributed computing at network edge</li>
+                  <li><strong>Dedicated Server:</strong> Single-tenant physical server</li>
+                  <li><strong>Cloud Server:</strong> Virtual server in cloud infrastructure</li>
                 </ul>
               </div>
             </div>
           </div>
 
           <!-- Public DNS Providers -->
-          <div class="cheatsheet-card">
+          <div class="cheatsheet-card" data-category="dns">
             <div class="card-header">
               <i class="ri-global-line"></i>
               <h3>Public DNS Providers</h3>
             </div>
             <div class="cheatsheet-content">
               <div class="dns-section">
-                <h4>Major DNS Providers</h4>
+                <h4>Major Global DNS Providers</h4>
                 <ul>
-                  <li><strong>Google DNS:</strong> <code>8.8.8.8</code>, <code>8.8.4.4</code></li>
-                  <li><strong>Cloudflare:</strong> <code>1.1.1.1</code>, <code>1.0.0.1</code></li>
-                  <li><strong>Quad9:</strong> <code>9.9.9.9</code>, <code>149.112.112.112</code></li>
-                  <li><strong>OpenDNS:</strong> <code>208.67.222.222</code>, <code>208.67.220.220</code></li>
-                  <li><strong>AdGuard DNS:</strong> <code>94.140.14.14</code>, <code>94.140.15.15</code></li>
+                  <li><strong>Google DNS:</strong> <code>8.8.8.8</code>, <code>8.8.4.4</code> (Fast, reliable)</li>
+                  <li><strong>Cloudflare:</strong> <code>1.1.1.1</code>, <code>1.0.0.1</code> (Privacy-focused, fast)
+                  </li>
+                  <li><strong>Quad9:</strong> <code>9.9.9.9</code>, <code>149.112.112.112</code> (Security filtering)
+                  </li>
+                  <li><strong>OpenDNS:</strong> <code>208.67.222.222</code>, <code>208.67.220.220</code> (Content
+                    filtering)</li>
+                  <li><strong>AdGuard DNS:</strong> <code>94.140.14.14</code>, <code>94.140.15.15</code> (Ad blocking)
+                  </li>
+                  <li><strong>Verisign DNS:</strong> <code>64.6.64.6</code>, <code>64.6.65.6</code> (Stable, secure)
+                  </li>
+                  <li><strong>Comodo DNS:</strong> <code>8.26.56.26</code>, <code>8.20.247.20</code> (Malware
+                    protection)</li>
                 </ul>
               </div>
               <div class="dns-section">
-                <h4>Regional DNS Providers</h4>
+                <h4>Regional & Country-Specific DNS</h4>
                 <ul>
                   <li><strong>Yandex DNS (Russia):</strong> <code>77.88.8.8</code>, <code>77.88.8.1</code></li>
                   <li><strong>Baidu DNS (China):</strong> <code>180.76.76.76</code></li>
                   <li><strong>114 DNS (China):</strong> <code>114.114.114.114</code>, <code>114.114.115.115</code></li>
-                  <li><strong>Comodo DNS:</strong> <code>8.26.56.26</code>, <code>8.20.247.20</code></li>
-                  <li><strong>Verisign DNS:</strong> <code>64.6.64.6</code>, <code>64.6.65.6</code></li>
+                  <li><strong>Alibaba DNS (China):</strong> <code>223.5.5.5</code>, <code>223.6.6.6</code></li>
+                  <li><strong>CNNIC DNS (China):</strong> <code>1.2.4.8</code>, <code>210.2.4.8</code></li>
+                  <li><strong>360 DNS (China):</strong> <code>101.226.4.6</code>, <code>218.30.118.6</code></li>
+                  <li><strong>DNSPod (China):</strong> <code>119.29.29.29</code>, <code>182.254.116.116</code></li>
+                  <li><strong>Level3 DNS:</strong> <code>4.2.2.1</code>, <code>4.2.2.2</code>, <code>4.2.2.3</code>,
+                    <code>4.2.2.4</code></li>
                 </ul>
               </div>
               <div class="dns-section">
-                <h4>Specialized DNS</h4>
+                <h4>Specialized & Filtered DNS Services</h4>
                 <ul>
-                  <li><strong>CleanBrowsing:</strong> <code>185.228.168.9</code> (Family filter)</li>
-                  <li><strong>Norton DNS:</strong> <code>199.85.126.10</code> (Security)</li>
-                  <li><strong>SafeDNS:</strong> <code>195.46.39.39</code> (Content filtering)</li>
+                  <li><strong>CleanBrowsing Family:</strong> <code>185.228.168.9</code>, <code>185.228.169.9</code></li>
+                  <li><strong>CleanBrowsing Adult:</strong> <code>185.228.168.10</code>, <code>185.228.169.11</code>
+                  </li>
+                  <li><strong>Norton ConnectSafe:</strong> <code>199.85.126.10</code>, <code>199.85.127.10</code></li>
+                  <li><strong>SafeDNS:</strong> <code>195.46.39.39</code>, <code>195.46.39.40</code></li>
                   <li><strong>Alternate DNS:</strong> <code>76.76.19.19</code>, <code>76.223.100.101</code></li>
+                  <li><strong>DNS.Watch:</strong> <code>84.200.69.80</code>, <code>84.200.70.40</code></li>
+                  <li><strong>FreeDNS:</strong> <code>37.235.1.174</code>, <code>37.235.1.177</code></li>
+                  <li><strong>Neustar DNS:</strong> <code>156.154.70.1</code>, <code>156.154.71.1</code></li>
+                </ul>
+              </div>
+              <div class="dns-section">
+                <h4>DNS Features & Categories</h4>
+                <ul>
+                  <li><strong>Unfiltered:</strong> Google, Cloudflare, Verisign (raw DNS resolution)</li>
+                  <li><strong>Ad Blocking:</strong> AdGuard, NextDNS, Pi-hole (advertisement filtering)</li>
+                  <li><strong>Family Safe:</strong> OpenDNS Family, CleanBrowsing (parental controls)</li>
+                  <li><strong>Security:</strong> Quad9, Norton, Comodo (malware/phishing protection)</li>
+                  <li><strong>Privacy:</strong> Cloudflare, Quad9 (no logging, GDPR compliant)</li>
+                  <li><strong>Speed Optimized:</strong> Google, Cloudflare (global anycast networks)</li>
+                  <li><strong>Custom Filtering:</strong> OpenDNS, NextDNS (configurable policies)</li>
+                </ul>
+              </div>
+              <div class="dns-section">
+                <h4>DNS over HTTPS (DoH) & DNS over TLS (DoT)</h4>
+                <ul>
+                  <li><strong>Cloudflare DoH:</strong> <code>https://1.1.1.1/dns-query</code></li>
+                  <li><strong>Google DoH:</strong> <code>https://dns.google/dns-query</code></li>
+                  <li><strong>Quad9 DoH:</strong> <code>https://dns.quad9.net/dns-query</code></li>
+                  <li><strong>AdGuard DoH:</strong> <code>https://dns.adguard.com/dns-query</code></li>
+                  <li><strong>Cloudflare DoT:</strong> <code>1dot1dot1dot1.cloudflare-dns.com:853</code></li>
+                  <li><strong>Google DoT:</strong> <code>dns.google:853</code></li>
                 </ul>
               </div>
             </div>
           </div>
 
           <!-- Network Devices -->
-          <div class="cheatsheet-card">
+          <div class="cheatsheet-card" data-category="devices">
             <div class="card-header">
               <i class="ri-router-line"></i>
-              <h3>Network Devices</h3>
+              <h3>Network Devices & Equipment</h3>
             </div>
             <div class="cheatsheet-content">
               <div class="device-section">
-                <h4>Layer 1 Devices (Physical)</h4>
+                <h4>Layer 1 Devices (Physical Layer)</h4>
                 <ul>
-                  <li><strong>Hub:</strong> Multi-port repeater, collision domain</li>
-                  <li><strong>Repeater:</strong> Signal amplification, extends distance</li>
-                  <li><strong>Cables:</strong> Ethernet, fiber optic, coaxial</li>
-                  <li><strong>Media Converter:</strong> Converts between media types</li>
+                  <li><strong>Hub:</strong> Multi-port repeater, single collision domain, half-duplex</li>
+                  <li><strong>Repeater:</strong> Signal amplification, extends transmission distance</li>
+                  <li><strong>Media Converter:</strong> Converts between media types (copper to fiber)</li>
+                  <li><strong>Cables:</strong> Cat5e/6/6a/7/8, fiber optic (SM/MM), coaxial</li>
+                  <li><strong>Patch Panel:</strong> Cable management and organization</li>
+                  <li><strong>Transceiver:</strong> SFP/SFP+/QSFP+ modules for fiber connections</li>
                 </ul>
               </div>
               <div class="device-section">
-                <h4>Layer 2 Devices (Data Link)</h4>
+                <h4>Layer 2 Devices (Data Link Layer)</h4>
                 <ul>
-                  <li><strong>Switch:</strong> MAC address learning, VLAN support</li>
-                  <li><strong>Bridge:</strong> Connects network segments</li>
-                  <li><strong>Wireless AP:</strong> WiFi access point</li>
-                  <li><strong>NIC:</strong> Network Interface Card</li>
+                  <li><strong>Switch:</strong> MAC address learning, VLAN support, full-duplex</li>
+                  <li><strong>Managed Switch:</strong> SNMP, VLANs, QoS, port mirroring</li>
+                  <li><strong>Unmanaged Switch:</strong> Plug-and-play, no configuration</li>
+                  <li><strong>Bridge:</strong> Connects network segments, reduces collision domains</li>
+                  <li><strong>Wireless Access Point:</strong> WiFi connectivity, 802.11 standards</li>
+                  <li><strong>NIC:</strong> Network Interface Card (Ethernet, WiFi, Bluetooth)</li>
                 </ul>
               </div>
               <div class="device-section">
-                <h4>Layer 3 Devices (Network)</h4>
+                <h4>Layer 3 Devices (Network Layer)</h4>
                 <ul>
-                  <li><strong>Router:</strong> Inter-network routing, IP forwarding</li>
+                  <li><strong>Router:</strong> Inter-network routing, IP forwarding, NAT</li>
                   <li><strong>Layer 3 Switch:</strong> Routing + switching capabilities</li>
-                  <li><strong>Multilayer Switch:</strong> L2/L3/L4 processing</li>
+                  <li><strong>Multilayer Switch:</strong> L2/L3/L4 processing, wire-speed routing</li>
+                  <li><strong>Core Router:</strong> High-speed backbone routing</li>
+                  <li><strong>Edge Router:</strong> Network boundary, ISP connections</li>
+                  <li><strong>SOHO Router:</strong> Small office/home router with WiFi</li>
                 </ul>
               </div>
               <div class="device-section">
-                <h4>Security Devices</h4>
+                <h4>Security Devices & Appliances</h4>
                 <ul>
-                  <li><strong>Firewall:</strong> Packet filtering, stateful inspection</li>
-                  <li><strong>IDS/IPS:</strong> Intrusion detection/prevention</li>
-                  <li><strong>UTM:</strong> Unified Threat Management</li>
-                  <li><strong>VPN Concentrator:</strong> VPN tunnel termination</li>
+                  <li><strong>Firewall:</strong> Packet filtering, stateful inspection, application control</li>
+                  <li><strong>NGFW:</strong> Next-gen firewall with IPS, anti-malware, URL filtering</li>
+                  <li><strong>IDS/IPS:</strong> Intrusion detection/prevention systems</li>
+                  <li><strong>UTM Appliance:</strong> Unified threat management (all-in-one security)</li>
+                  <li><strong>VPN Concentrator:</strong> VPN tunnel termination and management</li>
+                  <li><strong>Web Security Gateway:</strong> HTTP/HTTPS traffic inspection</li>
+                  <li><strong>Email Security Gateway:</strong> Anti-spam, anti-phishing</li>
                 </ul>
               </div>
               <div class="device-section">
-                <h4>Specialized Devices</h4>
+                <h4>Specialized Network Devices</h4>
                 <ul>
-                  <li><strong>Load Balancer:</strong> Traffic distribution</li>
-                  <li><strong>Proxy Server:</strong> Intermediary for requests</li>
+                  <li><strong>Load Balancer:</strong> Traffic distribution, high availability</li>
+                  <li><strong>WAN Accelerator:</strong> Bandwidth optimization, caching</li>
+                  <li><strong>Proxy Server:</strong> Web caching, content filtering</li>
+                  <li><strong>Network TAP:</strong> Traffic monitoring and analysis</li>
+                  <li><strong>Protocol Analyzer:</strong> Packet capture and analysis (Wireshark)</li>
                   <li><strong>Network Scanner:</strong> Port scanning, vulnerability assessment</li>
-                  <li><strong>Protocol Analyzer:</strong> Packet capture and analysis</li>
+                  <li><strong>Wireless Controller:</strong> Centralized WiFi management</li>
+                  <li><strong>SD-WAN Appliance:</strong> Software-defined WAN optimization</li>
+                </ul>
+              </div>
+              <div class="device-section">
+                <h4>Network Infrastructure Components</h4>
+                <ul>
+                  <li><strong>Rack Cabinet:</strong> 19-inch standard equipment mounting</li>
+                  <li><strong>PDU:</strong> Power Distribution Unit for rack power management</li>
+                  <li><strong>UPS:</strong> Uninterruptible Power Supply for backup power</li>
+                  <li><strong>Cable Management:</strong> Cable trays, conduits, cable ties</li>
+                  <li><strong>Network Rack:</strong> Equipment organization and cooling</li>
+                  <li><strong>KVM Switch:</strong> Keyboard, Video, Mouse sharing</li>
+                  <li><strong>Console Server:</strong> Out-of-band management access</li>
+                  <li><strong>Environmental Monitor:</strong> Temperature, humidity, power monitoring</li>
+                </ul>
+              </div>
+              <div class="device-section">
+                <h4>Wireless & Mobile Devices</h4>
+                <ul>
+                  <li><strong>WiFi 6 AP:</strong> 802.11ax access points, high-density support</li>
+                  <li><strong>Outdoor AP:</strong> Weather-resistant wireless coverage</li>
+                  <li><strong>Mesh System:</strong> Distributed WiFi coverage (home/SMB)</li>
+                  <li><strong>WiFi Extender:</strong> Range extension, signal boosting</li>
+                  <li><strong>Cellular Gateway:</strong> 4G/5G internet connectivity</li>
+                  <li><strong>IoT Gateway:</strong> Internet of Things device connectivity</li>
+                  <li><strong>Bluetooth Gateway:</strong> BLE device connectivity</li>
                 </ul>
               </div>
             </div>
@@ -1453,7 +1917,7 @@
           </div>
 
           <!-- Network Commands -->
-          <div class="cheatsheet-card">
+          <div class="cheatsheet-card" data-category="commands">
             <div class="card-header">
               <i class="ri-terminal-line"></i>
               <h3>Essential Commands</h3>
@@ -5365,6 +5829,131 @@
             case 'f':
               e.preventDefault();
               searchInput?.focus();
+              break;
+          }
+        }
+      });
+    });
+
+    // Cheatsheet Filter System
+    document.addEventListener('DOMContentLoaded', function () {
+      const cheatsheetFilterButtons = document.querySelectorAll('.filter-container .filter-btn');
+      const cheatsheetSearchInput = document.getElementById('cheatsheet-search');
+      const cheatsheetCards = document.querySelectorAll('.cheatsheet-card');
+
+      let currentCheatsheetFilter = 'all';
+      let currentCheatsheetSearchTerm = '';
+
+      // Filter function for cheatsheet
+      function filterCheatsheet() {
+        let visibleCount = 0;
+
+        cheatsheetCards.forEach(card => {
+          const category = card.dataset.category;
+          const title = card.querySelector('h3')?.textContent?.toLowerCase() || '';
+          const content = card.querySelector('.cheatsheet-content')?.textContent?.toLowerCase() || '';
+
+          // Check filter match
+          const matchesFilter = currentCheatsheetFilter === 'all' || category === currentCheatsheetFilter;
+
+          // Check search match
+          const searchTerm = currentCheatsheetSearchTerm.toLowerCase();
+          const matchesSearch = currentCheatsheetSearchTerm === '' ||
+            title.includes(searchTerm) ||
+            content.includes(searchTerm);
+
+          // Show/hide card
+          if (matchesFilter && matchesSearch) {
+            card.style.display = 'block';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Update filter status for cheatsheet
+        updateCheatsheetFilterStatus(visibleCount);
+      }
+
+      // Update cheatsheet filter status
+      function updateCheatsheetFilterStatus(count) {
+        let existingStatus = document.querySelector('.cheatsheet-filter-status');
+        if (existingStatus) {
+          existingStatus.remove();
+        }
+
+        if (count === 0) {
+          const status = document.createElement('div');
+          status.className = 'filter-status cheatsheet-filter-status';
+          status.innerHTML = '<i class="ri-search-line"></i> No cheatsheet content found matching your criteria';
+          document.querySelector('.cheatsheet-grid').after(status);
+        }
+      }
+
+      // Filter button event listeners for cheatsheet
+      cheatsheetFilterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          // Remove active class from all buttons
+          cheatsheetFilterButtons.forEach(btn => btn.classList.remove('active'));
+
+          // Add active class to clicked button
+          this.classList.add('active');
+
+          // Update current filter
+          currentCheatsheetFilter = this.dataset.filter;
+
+          // Apply filter
+          filterCheatsheet();
+        });
+      });
+
+      // Search input event listener for cheatsheet
+      if (cheatsheetSearchInput) {
+        cheatsheetSearchInput.addEventListener('input', function () {
+          currentCheatsheetSearchTerm = this.value;
+          filterCheatsheet();
+        });
+
+        // Clear search with Escape key
+        cheatsheetSearchInput.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            this.value = '';
+            currentCheatsheetSearchTerm = '';
+            filterCheatsheet();
+          }
+        });
+      }
+
+      // Initialize cheatsheet filter system
+      filterCheatsheet();
+
+      // Add keyboard shortcuts for cheatsheet filters
+      document.addEventListener('keydown', function (e) {
+        if (currentRoute === 'cheatsheet' && (e.altKey || e.ctrlKey)) {
+          switch (e.key) {
+            case '1':
+              e.preventDefault();
+              document.querySelector('.filter-container [data-filter="all"]')?.click();
+              break;
+            case '2':
+              e.preventDefault();
+              document.querySelector('.filter-container [data-filter="fundamentals"]')?.click();
+              break;
+            case '3':
+              e.preventDefault();
+              document.querySelector('.filter-container [data-filter="routing"]')?.click();
+              break;
+            case '4':
+              e.preventDefault();
+              document.querySelector('.filter-container [data-filter="switching"]')?.click();
+              break;
+            case '5':
+              e.preventDefault();
+              document.querySelector('.filter-container [data-filter="security"]')?.click();
+              break;
+            case 'f':
+              e.preventDefault();
+              cheatsheetSearchInput?.focus();
               break;
           }
         }
