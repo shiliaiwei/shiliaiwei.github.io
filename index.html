@@ -31,8 +31,6 @@
     <a class="rail-item" href="#links" data-route="links" aria-label="Links"><i class="ri-links-fill"></i></a>
     <a class="rail-item" href="#vtool" data-route="vtool" aria-label="VTool"><i class="ri-tools-fill"></i></a>
     <a class="rail-item" href="#vnote" data-route="vnote" aria-label="VNote"><i class="ri-book-open-fill"></i></a>
-    <a class="rail-item" href="#cheatsheet" data-route="cheatsheet" aria-label="Network Cheatsheet"><i
-        class="ri-router-line"></i></a>
   </nav>
 
   <header class="site-header">
@@ -855,7 +853,7 @@
     <div id="page-vtool" class="page-content">
       <section class="section container">
         <div class="section__header">
-          <h2>VTool - Utility Collection</h2>
+          <h2>Tool Collection</h2>
           <p>Web-based utility tools for developers, network engineers, and everyday tasks</p>
         </div>
 
@@ -881,15 +879,14 @@
             <p>Calculate subnets, network ranges, and IP address information for network planning</p>
           </div>
 
-          <!-- Universal Cipher Tool -->
-          <div class="tool-card" data-category="crypto" onclick="openTool('universal-cipher')">
+          <!-- Binary Text Converter Tool -->
+          <div class="tool-card" data-category="converter" onclick="openTool('binary-text-converter')">
             <div class="card-header">
-              <i class="ri-shield-keyhole-line"></i>
-              <span class="category">CRYPTO</span>
+              <i class="ri-code-s-slash-line"></i>
+              <span class="category">CONVERTER</span>
             </div>
-            <h4>Universal Cipher</h4>
-            <p>Encrypt and decrypt text with multiple algorithms: Atbash, Affine, Beaufort, Baconian, Caesar, ROT13,
-              Rail Fence, Scytale, Vigenère</p>
+            <h4>Binary Text Converter</h4>
+            <p>Convert text to binary and binary to text with multiple formats and encoding options</p>
           </div>
 
           <!-- Base Encoding Tool -->
@@ -919,7 +916,17 @@
               <span class="category">CONVERTER</span>
             </div>
             <h4>Number System Converter</h4>
-            <p>Convert numbers between Binary, Decimal, Hexadecimal, and Octal systems</p>
+            <p>Convert numbers between Binary, Decimal, Hexadecimal, and Octal systems with ASCII text conversion</p>
+          </div>
+
+          <!-- Text Number Converter -->
+          <div class="tool-card" data-category="converter" onclick="openTool('text-number-converter')">
+            <div class="card-header">
+              <i class="ri-hashtag"></i>
+              <span class="category">CONVERTER</span>
+            </div>
+            <h4>Text Number Converter</h4>
+            <p>Convert text to numbers (ASCII values) and numbers to text with various formatting options</p>
           </div>
 
           <!-- QR Code Tool (Generator & Decoder) -->
@@ -1177,46 +1184,6 @@
               <i class="ri-apps-2-line"></i>
               <span>All</span>
             </button>
-            <button class="filter-btn" data-filter="fundamentals">
-              <i class="ri-global-line"></i>
-              <span>Fundamentals</span>
-            </button>
-            <button class="filter-btn" data-filter="routing">
-              <i class="ri-route-line"></i>
-              <span>Routing</span>
-            </button>
-            <button class="filter-btn" data-filter="switching">
-              <i class="ri-shuffle-line"></i>
-              <span>Switching</span>
-            </button>
-            <button class="filter-btn" data-filter="security">
-              <i class="ri-shield-line"></i>
-              <span>Security</span>
-            </button>
-            <button class="filter-btn" data-filter="addressing">
-              <i class="ri-ip-line"></i>
-              <span>IP Addressing</span>
-            </button>
-            <button class="filter-btn" data-filter="vpn">
-              <i class="ri-lock-line"></i>
-              <span>VPN</span>
-            </button>
-            <button class="filter-btn" data-filter="services">
-              <i class="ri-server-line"></i>
-              <span>Services</span>
-            </button>
-            <button class="filter-btn" data-filter="dns">
-              <i class="ri-links-line"></i>
-              <span>DNS</span>
-            </button>
-            <button class="filter-btn" data-filter="devices">
-              <i class="ri-router-line"></i>
-              <span>Devices</span>
-            </button>
-            <button class="filter-btn" data-filter="commands">
-              <i class="ri-terminal-line"></i>
-              <span>Commands</span>
-            </button>
           </div>
           <div class="search-container">
             <i class="ri-search-line"></i>
@@ -1225,921 +1192,25 @@
         </div>
 
         <div class="cheatsheet-grid">
-          <!-- Networking Fundamentals -->
-          <div class="cheatsheet-card" data-category="fundamentals">
-            <div class="card-header">
-              <i class="ri-global-line"></i>
-              <h3>Networking Fundamentals</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="protocol-section">
-                <h4><i class="ri-stack-line"></i> OSI Model Layers</h4>
-                <ul>
-                  <li><i class="ri-cable-line"></i><strong>Layer 1:</strong> Physical - Cables, hubs, repeaters</li>
-                  <li><i class="ri-shuffle-line"></i><strong>Layer 2:</strong> Data Link - Switches, MAC addresses</li>
-                  <li><i class="ri-route-line"></i><strong>Layer 3:</strong> Network - Routers, IP addresses</li>
-                  <li><i class="ri-send-plane-line"></i><strong>Layer 4:</strong> Transport - TCP/UDP</li>
-                  <li><i class="ri-links-line"></i><strong>Layer 5:</strong> Session - NetBIOS, PPTP</li>
-                  <li><i class="ri-lock-line"></i><strong>Layer 6:</strong> Presentation - SSL/TLS, encryption</li>
-                  <li><i class="ri-apps-line"></i><strong>Layer 7:</strong> Application - HTTP, FTP, SMTP</li>
-                </ul>
-              </div>
-              <div class="protocol-section">
-                <h4><i class="ri-network-line"></i> Network Types</h4>
-                <ul>
-                  <li><i class="ri-home-wifi-line"></i><strong>LAN:</strong> Local Area Network</li>
-                  <li><i class="ri-global-line"></i><strong>WAN:</strong> Wide Area Network</li>
-                  <li><i class="ri-building-line"></i><strong>MAN:</strong> Metropolitan Area Network</li>
-                  <li><i class="ri-smartphone-line"></i><strong>PAN:</strong> Personal Area Network</li>
-                  <li><i class="ri-wifi-line"></i><strong>WLAN:</strong> Wireless Local Area Network</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Routing Protocols -->
-          <div class="cheatsheet-card" data-category="routing">
-            <div class="card-header">
-              <i class="ri-route-line"></i>
-              <h3>Routing Protocols</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="protocol-section">
-                <h4>Interior Gateway Protocols (IGP)</h4>
-                <ul>
-                  <li><strong>RIP v1/v2:</strong> Distance Vector, 15 hop limit, metric = hop count</li>
-                  <li><strong>EIGRP:</strong> Cisco proprietary, hybrid protocol, fast convergence</li>
-                  <li><strong>OSPF:</strong> Link State, hierarchical design, uses LSAs</li>
-                  <li><strong>IS-IS:</strong> Link State, used in ISP networks, OSI protocol</li>
-                  <li><strong>IGRP:</strong> Cisco proprietary, legacy distance vector</li>
-                </ul>
-              </div>
-              <div class="protocol-section">
-                <h4>Exterior Gateway Protocols (EGP)</h4>
-                <ul>
-                  <li><strong>BGP v4:</strong> Path Vector, Internet backbone, AS-to-AS routing</li>
-                  <li><strong>eBGP:</strong> External BGP, between different autonomous systems</li>
-                  <li><strong>iBGP:</strong> Internal BGP, within same autonomous system</li>
-                  <li><strong>EGP:</strong> Legacy exterior protocol (obsolete)</li>
-                </ul>
-              </div>
-              <div class="protocol-section">
-                <h4>Routing Concepts & Metrics</h4>
-                <ul>
-                  <li><strong>Static Routing:</strong> Manually configured routes, no automatic updates</li>
-                  <li><strong>Dynamic Routing:</strong> Automatically learned routes, adaptive</li>
-                  <li><strong>Default Route:</strong> 0.0.0.0/0 - Route of last resort</li>
-                  <li><strong>Administrative Distance (AD):</strong> Route trustworthiness (0-255)</li>
-                  <li><strong>Metric:</strong> Cost calculation for best path selection</li>
-                  <li><strong>Convergence:</strong> Time for all routers to agree on topology</li>
-                  <li><strong>Load Balancing:</strong> Equal/unequal cost path distribution</li>
-                </ul>
-              </div>
-              <div class="protocol-section">
-                <h4>Administrative Distance Values</h4>
-                <div class="table-container">
-                  <table class="routing-table">
-                    <tr>
-                      <td>Connected Interface</td>
-                      <td>0</td>
-                    </tr>
-                    <tr>
-                      <td>Static Route</td>
-                      <td>1</td>
-                    </tr>
-                    <tr>
-                      <td>EIGRP</td>
-                      <td>90</td>
-                    </tr>
-                    <tr>
-                      <td>IGRP</td>
-                      <td>100</td>
-                    </tr>
-                    <tr>
-                      <td>OSPF</td>
-                      <td>110</td>
-                    </tr>
-                    <tr>
-                      <td>RIP</td>
-                      <td>120</td>
-                    </tr>
-                    <tr>
-                      <td>External EIGRP</td>
-                      <td>170</td>
-                    </tr>
-                    <tr>
-                      <td>Unknown/External</td>
-                      <td>255</td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Switching Protocols -->
-          <div class="cheatsheet-card" data-category="switching">
-            <div class="card-header">
-              <i class="ri-shuffle-line"></i>
-              <h3>Switching Protocols & Technologies</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="protocol-section">
-                <h4>Spanning Tree Protocols</h4>
-                <ul>
-                  <li><strong>STP (802.1D):</strong> Original spanning tree, 50s convergence</li>
-                  <li><strong>RSTP (802.1w):</strong> Rapid spanning tree, 6s convergence</li>
-                  <li><strong>MSTP (802.1s):</strong> Multiple spanning tree, per-VLAN</li>
-                  <li><strong>PVST+:</strong> Cisco per-VLAN spanning tree plus</li>
-                  <li><strong>Rapid PVST+:</strong> Cisco rapid per-VLAN STP</li>
-                </ul>
-              </div>
-              <div class="protocol-section">
-                <h4>VLAN Protocols & Standards</h4>
-                <ul>
-                  <li><strong>802.1Q:</strong> VLAN tagging standard, 4-byte header</li>
-                  <li><strong>ISL:</strong> Cisco Inter-Switch Link (legacy), 30-byte header</li>
-                  <li><strong>VTP:</strong> VLAN Trunking Protocol, VLAN database sync</li>
-                  <li><strong>DTP:</strong> Dynamic Trunking Protocol, auto trunk negotiation</li>
-                  <li><strong>Native VLAN:</strong> Untagged VLAN on trunk (default VLAN 1)</li>
-                  <li><strong>VLAN Range:</strong> 1-4094 (1 & 4095 reserved)</li>
-                </ul>
-              </div>
-              <div class="protocol-section">
-                <h4>Link Aggregation Protocols</h4>
-                <ul>
-                  <li><strong>LACP (802.3ad):</strong> Link Aggregation Control Protocol</li>
-                  <li><strong>PAgP:</strong> Cisco Port Aggregation Protocol</li>
-                  <li><strong>EtherChannel:</strong> Cisco link bundling technology</li>
-                  <li><strong>Static LAG:</strong> Manual link aggregation configuration</li>
-                  <li><strong>Load Balancing:</strong> SRC-MAC, DST-MAC, SRC-DST-IP, etc.</li>
-                </ul>
-              </div>
-              <div class="protocol-section">
-                <h4>Switching Features & Protocols</h4>
-                <ul>
-                  <li><strong>CDP:</strong> Cisco Discovery Protocol, Layer 2 neighbor discovery</li>
-                  <li><strong>LLDP:</strong> Link Layer Discovery Protocol (IEEE standard)</li>
-                  <li><strong>BPDU Guard:</strong> Protects against STP loops on access ports</li>
-                  <li><strong>Root Guard:</strong> Prevents inferior BPDU reception</li>
-                  <li><strong>PortFast:</strong> Immediate forwarding for access ports</li>
-                  <li><strong>UDLD:</strong> UniDirectional Link Detection</li>
-                  <li><strong>Storm Control:</strong> Broadcast/multicast traffic limiting</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Firewall Protocols -->
-          <div class="cheatsheet-card" data-category="security">
-            <div class="card-header">
-              <i class="ri-shield-line"></i>
-              <h3>Firewall & Security Protocols</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="protocol-section">
-                <h4>Firewall Types & Technologies</h4>
-                <ul>
-                  <li><strong>Packet Filter:</strong> Layer 3/4 inspection, stateless filtering</li>
-                  <li><strong>Stateful Inspection:</strong> Connection state tracking, dynamic rules</li>
-                  <li><strong>Application Gateway:</strong> Layer 7 proxy, deep packet inspection</li>
-                  <li><strong>NAT Firewall:</strong> Network Address Translation with filtering</li>
-                  <li><strong>NGFW:</strong> Next Generation Firewall, integrated security</li>
-                  <li><strong>WAF:</strong> Web Application Firewall, HTTP/HTTPS protection</li>
-                  <li><strong>UTM:</strong> Unified Threat Management, all-in-one security</li>
-                </ul>
-              </div>
-              <div class="protocol-section">
-                <h4>Security Protocols & Standards</h4>
-                <ul>
-                  <li><strong>IPSec:</strong> IP Security suite, ESP/AH protocols</li>
-                  <li><strong>SSL/TLS:</strong> Secure Socket Layer/Transport Layer Security</li>
-                  <li><strong>WPA2/WPA3:</strong> WiFi Protected Access (AES encryption)</li>
-                  <li><strong>WEP:</strong> Wired Equivalent Privacy (deprecated, RC4)</li>
-                  <li><strong>802.1X:</strong> Port-based network access control (EAP)</li>
-                  <li><strong>RADIUS:</strong> Remote Authentication Dial-In User Service</li>
-                  <li><strong>TACACS+:</strong> Terminal Access Controller Access Control System</li>
-                  <li><strong>Kerberos:</strong> Network authentication protocol (ticket-based)</li>
-                </ul>
-              </div>
-              <div class="protocol-section">
-                <h4>Intrusion Detection & Prevention</h4>
-                <ul>
-                  <li><strong>NIDS:</strong> Network Intrusion Detection System</li>
-                  <li><strong>NIPS:</strong> Network Intrusion Prevention System</li>
-                  <li><strong>HIDS:</strong> Host-based Intrusion Detection System</li>
-                  <li><strong>HIPS:</strong> Host-based Intrusion Prevention System</li>
-                  <li><strong>Snort:</strong> Open source IDS/IPS engine</li>
-                  <li><strong>Suricata:</strong> High performance IDS/IPS/NSM engine</li>
-                  <li><strong>SIEM:</strong> Security Information Event Management</li>
-                </ul>
-              </div>
-              <div class="protocol-section">
-                <h4>Access Control & Authentication</h4>
-                <ul>
-                  <li><strong>ACL:</strong> Access Control Lists (standard/extended)</li>
-                  <li><strong>RBAC:</strong> Role-Based Access Control</li>
-                  <li><strong>MAC:</strong> Mandatory Access Control</li>
-                  <li><strong>DAC:</strong> Discretionary Access Control</li>
-                  <li><strong>LDAP:</strong> Lightweight Directory Access Protocol</li>
-                  <li><strong>Active Directory:</strong> Microsoft domain services</li>
-                  <li><strong>SSO:</strong> Single Sign-On authentication</li>
-                  <li><strong>MFA:</strong> Multi-Factor Authentication</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- IPv4 Addressing & Subnetting -->
-          <div class="cheatsheet-card" data-category="addressing">
-            <div class="card-header">
-              <i class="ri-ip-line"></i>
-              <h3>IPv4 Addressing & Subnetting</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="ip-section">
-                <h4>Classful Address Ranges (Legacy)</h4>
-                <ul>
-                  <li><strong>Class A:</strong> 1.0.0.0 - 126.255.255.255 (/8) - 16M hosts</li>
-                  <li><strong>Class B:</strong> 128.0.0.0 - 191.255.255.255 (/16) - 64K hosts</li>
-                  <li><strong>Class C:</strong> 192.0.0.0 - 223.255.255.255 (/24) - 254 hosts</li>
-                  <li><strong>Class D:</strong> 224.0.0.0 - 239.255.255.255 (Multicast)</li>
-                  <li><strong>Class E:</strong> 240.0.0.0 - 255.255.255.255 (Experimental/Reserved)</li>
-                </ul>
-              </div>
-              <div class="ip-section">
-                <h4>Private IPv4 Ranges (RFC 1918)</h4>
-                <ul>
-                  <li><code>10.0.0.0/8</code> - 10.0.0.0 to 10.255.255.255 (16.7M IPs)</li>
-                  <li><code>172.16.0.0/12</code> - 172.16.0.0 to 172.31.255.255 (1M IPs)</li>
-                  <li><code>192.168.0.0/16</code> - 192.168.0.0 to 192.168.255.255 (65K IPs)</li>
-                </ul>
-              </div>
-              <div class="ip-section">
-                <h4>Special & Bogon IPv4 Addresses</h4>
-                <ul>
-                  <li><code>127.0.0.0/8</code> - Loopback addresses (localhost)</li>
-                  <li><code>169.254.0.0/16</code> - Link-local (APIPA, auto-config)</li>
-                  <li><code>224.0.0.0/4</code> - Multicast (Class D)</li>
-                  <li><code>0.0.0.0/8</code> - "This" network (current network)</li>
-                  <li><code>255.255.255.255/32</code> - Limited broadcast</li>
-                  <li><code>192.0.2.0/24</code> - TEST-NET-1 (RFC 5737)</li>
-                  <li><code>198.51.100.0/24</code> - TEST-NET-2 (RFC 5737)</li>
-                  <li><code>203.0.113.0/24</code> - TEST-NET-3 (RFC 5737)</li>
-                  <li><code>192.0.0.0/24</code> - IANA IPv4 Special Purpose</li>
-                  <li><code>198.18.0.0/15</code> - Benchmark testing (RFC 2544)</li>
-                </ul>
-              </div>
-              <div class="ip-section">
-                <h4>Subnet Masks, CIDR & Wildcards</h4>
-                <div class="subnet-table-responsive">
-                  <table class="subnet-table">
-                    <thead>
-                      <tr>
-                        <th>CIDR</th>
-                        <th>Subnet Mask</th>
-                        <th>Wildcard Mask</th>
-                        <th>Hosts</th>
-                        <th>Networks</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>/8</td>
-                        <td>255.0.0.0</td>
-                        <td>0.255.255.255</td>
-                        <td>16,777,214</td>
-                        <td>256</td>
-                      </tr>
-                      <tr>
-                        <td>/9</td>
-                        <td>255.128.0.0</td>
-                        <td>0.127.255.255</td>
-                        <td>8,388,606</td>
-                        <td>512</td>
-                      </tr>
-                      <tr>
-                        <td>/10</td>
-                        <td>255.192.0.0</td>
-                        <td>0.63.255.255</td>
-                        <td>4,194,302</td>
-                        <td>1,024</td>
-                      </tr>
-                      <tr>
-                        <td>/11</td>
-                        <td>255.224.0.0</td>
-                        <td>0.31.255.255</td>
-                        <td>2,097,150</td>
-                        <td>2,048</td>
-                      </tr>
-                      <tr>
-                        <td>/12</td>
-                        <td>255.240.0.0</td>
-                        <td>0.15.255.255</td>
-                        <td>1,048,574</td>
-                        <td>4,096</td>
-                      </tr>
-                      <tr>
-                        <td>/13</td>
-                        <td>255.248.0.0</td>
-                        <td>0.7.255.255</td>
-                        <td>524,286</td>
-                        <td>8,192</td>
-                      </tr>
-                      <tr>
-                        <td>/14</td>
-                        <td>255.252.0.0</td>
-                        <td>0.3.255.255</td>
-                        <td>262,142</td>
-                        <td>16,384</td>
-                      </tr>
-                      <tr>
-                        <td>/15</td>
-                        <td>255.254.0.0</td>
-                        <td>0.1.255.255</td>
-                        <td>131,070</td>
-                        <td>32,768</td>
-                      </tr>
-                      <tr>
-                        <td>/16</td>
-                        <td>255.255.0.0</td>
-                        <td>0.0.255.255</td>
-                        <td>65,534</td>
-                        <td>65,536</td>
-                      </tr>
-                      <tr>
-                        <td>/17</td>
-                        <td>255.255.128.0</td>
-                        <td>0.0.127.255</td>
-                        <td>32,766</td>
-                        <td>131,072</td>
-                      </tr>
-                      <tr>
-                        <td>/18</td>
-                        <td>255.255.192.0</td>
-                        <td>0.0.63.255</td>
-                        <td>16,382</td>
-                        <td>262,144</td>
-                      </tr>
-                      <tr>
-                        <td>/19</td>
-                        <td>255.255.224.0</td>
-                        <td>0.0.31.255</td>
-                        <td>8,190</td>
-                        <td>524,288</td>
-                      </tr>
-                      <tr>
-                        <td>/20</td>
-                        <td>255.255.240.0</td>
-                        <td>0.0.15.255</td>
-                        <td>4,094</td>
-                        <td>1,048,576</td>
-                      </tr>
-                      <tr>
-                        <td>/21</td>
-                        <td>255.255.248.0</td>
-                        <td>0.0.7.255</td>
-                        <td>2,046</td>
-                        <td>2,097,152</td>
-                      </tr>
-                      <tr>
-                        <td>/22</td>
-                        <td>255.255.252.0</td>
-                        <td>0.0.3.255</td>
-                        <td>1,022</td>
-                        <td>4,194,304</td>
-                      </tr>
-                      <tr>
-                        <td>/23</td>
-                        <td>255.255.254.0</td>
-                        <td>0.0.1.255</td>
-                        <td>510</td>
-                        <td>8,388,608</td>
-                      </tr>
-                      <tr>
-                        <td>/24</td>
-                        <td>255.255.255.0</td>
-                        <td>0.0.0.255</td>
-                        <td>254</td>
-                        <td>16,777,216</td>
-                      </tr>
-                      <tr>
-                        <td>/25</td>
-                        <td>255.255.255.128</td>
-                        <td>0.0.0.127</td>
-                        <td>126</td>
-                        <td>33,554,432</td>
-                      </tr>
-                      <tr>
-                        <td>/26</td>
-                        <td>255.255.255.192</td>
-                        <td>0.0.0.63</td>
-                        <td>62</td>
-                        <td>67,108,864</td>
-                      </tr>
-                      <tr>
-                        <td>/27</td>
-                        <td>255.255.255.224</td>
-                        <td>0.0.0.31</td>
-                        <td>30</td>
-                        <td>134,217,728</td>
-                      </tr>
-                      <tr>
-                        <td>/28</td>
-                        <td>255.255.255.240</td>
-                        <td>0.0.0.15</td>
-                        <td>14</td>
-                        <td>268,435,456</td>
-                      </tr>
-                      <tr>
-                        <td>/29</td>
-                        <td>255.255.255.248</td>
-                        <td>0.0.0.7</td>
-                        <td>6</td>
-                        <td>536,870,912</td>
-                      </tr>
-                      <tr>
-                        <td>/30</td>
-                        <td>255.255.255.252</td>
-                        <td>0.0.0.3</td>
-                        <td>2</td>
-                        <td>1,073,741,824</td>
-                      </tr>
-                      <tr>
-                        <td>/31</td>
-                        <td>255.255.255.254</td>
-                        <td>0.0.0.1</td>
-                        <td>0*</td>
-                        <td>2,147,483,648</td>
-                      </tr>
-                      <tr>
-                        <td>/32</td>
-                        <td>255.255.255.255</td>
-                        <td>0.0.0.0</td>
-                        <td>1**</td>
-                        <td>4,294,967,296</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <small>*Point-to-point links (RFC 3021) **Host route</small>
-                </div>
-              </div>
-              <div class="ip-section">
-                <h4>Subnetting Quick Reference</h4>
-                <ul>
-                  <li><strong>Subnetting Formula:</strong> 2^n = subnets (n = borrowed bits)</li>
-                  <li><strong>Host Formula:</strong> 2^h - 2 = hosts (h = host bits)</li>
-                  <li><strong>Network ID:</strong> First address in subnet</li>
-                  <li><strong>Broadcast ID:</strong> Last address in subnet</li>
-                  <li><strong>Block Size:</strong> 256 - subnet mask octet value</li>
-                  <li><strong>VLSM:</strong> Variable Length Subnet Masking</li>
-                  <li><strong>FLSM:</strong> Fixed Length Subnet Masking</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- VPN Types & Technologies -->
-          <div class="cheatsheet-card" data-category="vpn">
-            <div class="card-header">
-              <i class="ri-shield-keyhole-line"></i>
-              <h3>VPN Types & Technologies</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="vpn-section">
-                <h4>VPN by Deployment Type</h4>
-                <ul>
-                  <li><strong>Site-to-Site VPN:</strong> Connects entire networks securely over internet</li>
-                  <li><strong>Remote Access VPN:</strong> Individual users connect to corporate network</li>
-                  <li><strong>Client-to-Site VPN:</strong> Software client connects to VPN server</li>
-                  <li><strong>Host-to-Host VPN:</strong> Direct secure connection between two devices</li>
-                  <li><strong>Extranet VPN:</strong> Secure access for business partners</li>
-                  <li><strong>Intranet VPN:</strong> Secure internal network connections</li>
-                </ul>
-              </div>
-              <div class="vpn-section">
-                <h4>VPN Protocols & Technologies</h4>
-                <ul>
-                  <li><strong>IPSec VPN:</strong> Layer 3 encryption, ESP/AH protocols, IKE key exchange</li>
-                  <li><strong>SSL/TLS VPN:</strong> Web-based, clientless access, HTTPS encryption</li>
-                  <li><strong>PPTP:</strong> Point-to-Point Tunneling (legacy, insecure, port 1723)</li>
-                  <li><strong>L2TP/IPSec:</strong> Layer 2 tunneling with IPSec encryption (port 1701)</li>
-                  <li><strong>OpenVPN:</strong> Open-source SSL/TLS based VPN (UDP 1194)</li>
-                  <li><strong>WireGuard:</strong> Modern, lightweight VPN protocol (UDP)</li>
-                  <li><strong>SSTP:</strong> Secure Socket Tunneling Protocol (Microsoft)</li>
-                  <li><strong>IKEv2:</strong> Internet Key Exchange version 2 (mobile-friendly)</li>
-                </ul>
-              </div>
-              <div class="vpn-section">
-                <h4>Cloud VPN Services & Solutions</h4>
-                <ul>
-                  <li><strong>AWS VPN:</strong> Site-to-Site & Client VPN, VPC connectivity</li>
-                  <li><strong>Azure VPN Gateway:</strong> Point-to-Site & Site-to-Site, ExpressRoute</li>
-                  <li><strong>Google Cloud VPN:</strong> Classic & HA VPN, Cloud Interconnect</li>
-                  <li><strong>Cisco AnyConnect:</strong> SSL VPN client, endpoint security</li>
-                  <li><strong>Fortinet FortiClient:</strong> SSL VPN solution with security fabric</li>
-                  <li><strong>Palo Alto GlobalProtect:</strong> Next-gen VPN with threat prevention</li>
-                  <li><strong>SonicWall NetExtender:</strong> SSL VPN thin client</li>
-                  <li><strong>Check Point VPN:</strong> Enterprise VPN with threat prevention</li>
-                </ul>
-              </div>
-              <div class="vpn-section">
-                <h4>How VPN Works (Step-by-Step)</h4>
-                <ol style="list-style-type: decimal; padding-left: 20px;">
-                  <li><strong>Tunnel Establishment:</strong> Secure encrypted tunnel created between endpoints</li>
-                  <li><strong>Authentication:</strong> User/device credentials verified (PSK, certificates, etc.)</li>
-                  <li><strong>Key Exchange:</strong> Cryptographic keys negotiated (IKE, ISAKMP)</li>
-                  <li><strong>Encapsulation:</strong> Original packets wrapped in VPN headers</li>
-                  <li><strong>Encryption:</strong> Data encrypted using agreed algorithms (AES, etc.)</li>
-                  <li><strong>Transmission:</strong> Encrypted packets sent through public network</li>
-                  <li><strong>Decryption:</strong> Data decrypted at destination endpoint</li>
-                  <li><strong>Delivery:</strong> Original packets delivered to final destination</li>
-                </ol>
-              </div>
-              <div class="vpn-section">
-                <h4>VPN Security & Encryption</h4>
-                <ul>
-                  <li><strong>AES:</strong> Advanced Encryption Standard (128, 192, 256-bit)</li>
-                  <li><strong>3DES:</strong> Triple Data Encryption Standard (legacy)</li>
-                  <li><strong>RSA:</strong> Public key cryptography for key exchange</li>
-                  <li><strong>SHA:</strong> Secure Hash Algorithm for data integrity</li>
-                  <li><strong>MD5:</strong> Message Digest 5 (deprecated, weak)</li>
-                  <li><strong>DH:</strong> Diffie-Hellman key exchange groups</li>
-                  <li><strong>Perfect Forward Secrecy:</strong> Unique keys per session</li>
-                  <li><strong>Split Tunneling:</strong> Selective traffic routing through VPN</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Network Servers & Services -->
-          <div class="cheatsheet-card" data-category="services">
-            <div class="card-header">
-              <i class="ri-server-line"></i>
-              <h3>Network Servers & Services</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="server-section">
-                <h4>Core Network Services</h4>
-                <ul>
-                  <li><strong>DNS Server:</strong> Domain name resolution, hierarchical database (port 53)</li>
-                  <li><strong>DHCP Server:</strong> Automatic IP address assignment (ports 67/68)</li>
-                  <li><strong>NTP Server:</strong> Network time synchronization (port 123)</li>
-                  <li><strong>RADIUS Server:</strong> Authentication, authorization, accounting (port 1812/1813)</li>
-                  <li><strong>LDAP Server:</strong> Directory services, user management (port 389/636)</li>
-                  <li><strong>WINS Server:</strong> Windows Internet Name Service (NetBIOS name resolution)</li>
-                  <li><strong>Syslog Server:</strong> Centralized logging service (port 514)</li>
-                </ul>
-              </div>
-              <div class="server-section">
-                <h4>Application & Web Servers</h4>
-                <ul>
-                  <li><strong>Web Server:</strong> Apache, Nginx, IIS - HTTP/HTTPS content (ports 80/443)</li>
-                  <li><strong>Mail Server:</strong> Exchange, Postfix - Email services (SMTP 25, POP3 110, IMAP 143)
-                  </li>
-                  <li><strong>Database Server:</strong> MySQL, PostgreSQL, SQL Server, Oracle</li>
-                  <li><strong>File Server:</strong> SMB/CIFS (445), NFS (2049), FTP (21) file sharing</li>
-                  <li><strong>Print Server:</strong> Centralized printing services (port 631 IPP)</li>
-                  <li><strong>Terminal Server:</strong> Remote desktop/application services (RDP 3389)</li>
-                  <li><strong>Media Server:</strong> Streaming services (RTSP, HTTP streaming)</li>
-                </ul>
-              </div>
-              <div class="server-section">
-                <h4>Proxy, Load Balancers & CDN</h4>
-                <ul>
-                  <li><strong>Forward Proxy:</strong> Client-side proxy, caching, content filtering</li>
-                  <li><strong>Reverse Proxy:</strong> Server-side proxy, load balancing, SSL termination</li>
-                  <li><strong>Load Balancer:</strong> F5, HAProxy, AWS ELB - traffic distribution</li>
-                  <li><strong>API Gateway:</strong> API management, rate limiting, authentication</li>
-                  <li><strong>CDN:</strong> Content Delivery Network (Cloudflare, AWS CloudFront)</li>
-                  <li><strong>Caching Server:</strong> Squid, Varnish - content caching</li>
-                </ul>
-              </div>
-              <div class="server-section">
-                <h4>Infrastructure & Management Servers</h4>
-                <ul>
-                  <li><strong>Domain Controller:</strong> Active Directory, user authentication</li>
-                  <li><strong>Certificate Authority:</strong> PKI certificate management</li>
-                  <li><strong>SNMP Manager:</strong> Network monitoring and management (port 161/162)</li>
-                  <li><strong>Backup Server:</strong> Data backup and recovery services</li>
-                  <li><strong>Virtualization Host:</strong> VMware, Hyper-V, KVM hypervisors</li>
-                  <li><strong>Container Registry:</strong> Docker Hub, Harbor - container images</li>
-                  <li><strong>Configuration Management:</strong> Ansible, Puppet, Chef servers</li>
-                </ul>
-              </div>
-              <div class="server-section">
-                <h4>Server Types by Purpose</h4>
-                <ul>
-                  <li><strong>Production Server:</strong> Live environment serving end users</li>
-                  <li><strong>Development Server:</strong> Testing and development environment</li>
-                  <li><strong>Staging Server:</strong> Pre-production testing environment</li>
-                  <li><strong>Test Server:</strong> Quality assurance and testing</li>
-                  <li><strong>Disaster Recovery:</strong> Backup site for business continuity</li>
-                  <li><strong>Edge Server:</strong> Distributed computing at network edge</li>
-                  <li><strong>Dedicated Server:</strong> Single-tenant physical server</li>
-                  <li><strong>Cloud Server:</strong> Virtual server in cloud infrastructure</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Public DNS Providers -->
-          <div class="cheatsheet-card" data-category="dns">
-            <div class="card-header">
-              <i class="ri-global-line"></i>
-              <h3>Public DNS Providers</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="dns-section">
-                <h4>Major Global DNS Providers</h4>
-                <ul>
-                  <li><strong>Google DNS:</strong> <code>8.8.8.8</code>, <code>8.8.4.4</code> (Fast, reliable)</li>
-                  <li><strong>Cloudflare:</strong> <code>1.1.1.1</code>, <code>1.0.0.1</code> (Privacy-focused, fast)
-                  </li>
-                  <li><strong>Quad9:</strong> <code>9.9.9.9</code>, <code>149.112.112.112</code> (Security filtering)
-                  </li>
-                  <li><strong>OpenDNS:</strong> <code>208.67.222.222</code>, <code>208.67.220.220</code> (Content
-                    filtering)</li>
-                  <li><strong>AdGuard DNS:</strong> <code>94.140.14.14</code>, <code>94.140.15.15</code> (Ad blocking)
-                  </li>
-                  <li><strong>Verisign DNS:</strong> <code>64.6.64.6</code>, <code>64.6.65.6</code> (Stable, secure)
-                  </li>
-                  <li><strong>Comodo DNS:</strong> <code>8.26.56.26</code>, <code>8.20.247.20</code> (Malware
-                    protection)</li>
-                </ul>
-              </div>
-              <div class="dns-section">
-                <h4>Regional & Country-Specific DNS</h4>
-                <ul>
-                  <li><strong>Yandex DNS (Russia):</strong> <code>77.88.8.8</code>, <code>77.88.8.1</code></li>
-                  <li><strong>Baidu DNS (China):</strong> <code>180.76.76.76</code></li>
-                  <li><strong>114 DNS (China):</strong> <code>114.114.114.114</code>, <code>114.114.115.115</code></li>
-                  <li><strong>Alibaba DNS (China):</strong> <code>223.5.5.5</code>, <code>223.6.6.6</code></li>
-                  <li><strong>CNNIC DNS (China):</strong> <code>1.2.4.8</code>, <code>210.2.4.8</code></li>
-                  <li><strong>360 DNS (China):</strong> <code>101.226.4.6</code>, <code>218.30.118.6</code></li>
-                  <li><strong>DNSPod (China):</strong> <code>119.29.29.29</code>, <code>182.254.116.116</code></li>
-                  <li><strong>Level3 DNS:</strong> <code>4.2.2.1</code>, <code>4.2.2.2</code>, <code>4.2.2.3</code>,
-                    <code>4.2.2.4</code>
-                  </li>
-                </ul>
-              </div>
-              <div class="dns-section">
-                <h4>Specialized & Filtered DNS Services</h4>
-                <ul>
-                  <li><strong>CleanBrowsing Family:</strong> <code>185.228.168.9</code>, <code>185.228.169.9</code></li>
-                  <li><strong>CleanBrowsing Adult:</strong> <code>185.228.168.10</code>, <code>185.228.169.11</code>
-                  </li>
-                  <li><strong>Norton ConnectSafe:</strong> <code>199.85.126.10</code>, <code>199.85.127.10</code></li>
-                  <li><strong>SafeDNS:</strong> <code>195.46.39.39</code>, <code>195.46.39.40</code></li>
-                  <li><strong>Alternate DNS:</strong> <code>76.76.19.19</code>, <code>76.223.100.101</code></li>
-                  <li><strong>DNS.Watch:</strong> <code>84.200.69.80</code>, <code>84.200.70.40</code></li>
-                  <li><strong>FreeDNS:</strong> <code>37.235.1.174</code>, <code>37.235.1.177</code></li>
-                  <li><strong>Neustar DNS:</strong> <code>156.154.70.1</code>, <code>156.154.71.1</code></li>
-                </ul>
-              </div>
-              <div class="dns-section">
-                <h4>DNS Features & Categories</h4>
-                <ul>
-                  <li><strong>Unfiltered:</strong> Google, Cloudflare, Verisign (raw DNS resolution)</li>
-                  <li><strong>Ad Blocking:</strong> AdGuard, NextDNS, Pi-hole (advertisement filtering)</li>
-                  <li><strong>Family Safe:</strong> OpenDNS Family, CleanBrowsing (parental controls)</li>
-                  <li><strong>Security:</strong> Quad9, Norton, Comodo (malware/phishing protection)</li>
-                  <li><strong>Privacy:</strong> Cloudflare, Quad9 (no logging, GDPR compliant)</li>
-                  <li><strong>Speed Optimized:</strong> Google, Cloudflare (global anycast networks)</li>
-                  <li><strong>Custom Filtering:</strong> OpenDNS, NextDNS (configurable policies)</li>
-                </ul>
-              </div>
-              <div class="dns-section">
-                <h4>DNS over HTTPS (DoH) & DNS over TLS (DoT)</h4>
-                <ul>
-                  <li><strong>Cloudflare DoH:</strong> <code>https://1.1.1.1/dns-query</code></li>
-                  <li><strong>Google DoH:</strong> <code>https://dns.google/dns-query</code></li>
-                  <li><strong>Quad9 DoH:</strong> <code>https://dns.quad9.net/dns-query</code></li>
-                  <li><strong>AdGuard DoH:</strong> <code>https://dns.adguard.com/dns-query</code></li>
-                  <li><strong>Cloudflare DoT:</strong> <code>1dot1dot1dot1.cloudflare-dns.com:853</code></li>
-                  <li><strong>Google DoT:</strong> <code>dns.google:853</code></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Network Devices -->
-          <div class="cheatsheet-card" data-category="devices">
-            <div class="card-header">
-              <i class="ri-router-line"></i>
-              <h3>Network Devices & Equipment</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="device-section">
-                <h4>Layer 1 Devices (Physical Layer)</h4>
-                <ul>
-                  <li><strong>Hub:</strong> Multi-port repeater, single collision domain, half-duplex</li>
-                  <li><strong>Repeater:</strong> Signal amplification, extends transmission distance</li>
-                  <li><strong>Media Converter:</strong> Converts between media types (copper to fiber)</li>
-                  <li><strong>Cables:</strong> Cat5e/6/6a/7/8, fiber optic (SM/MM), coaxial</li>
-                  <li><strong>Patch Panel:</strong> Cable management and organization</li>
-                  <li><strong>Transceiver:</strong> SFP/SFP+/QSFP+ modules for fiber connections</li>
-                </ul>
-              </div>
-              <div class="device-section">
-                <h4>Layer 2 Devices (Data Link Layer)</h4>
-                <ul>
-                  <li><strong>Switch:</strong> MAC address learning, VLAN support, full-duplex</li>
-                  <li><strong>Managed Switch:</strong> SNMP, VLANs, QoS, port mirroring</li>
-                  <li><strong>Unmanaged Switch:</strong> Plug-and-play, no configuration</li>
-                  <li><strong>Bridge:</strong> Connects network segments, reduces collision domains</li>
-                  <li><strong>Wireless Access Point:</strong> WiFi connectivity, 802.11 standards</li>
-                  <li><strong>NIC:</strong> Network Interface Card (Ethernet, WiFi, Bluetooth)</li>
-                </ul>
-              </div>
-              <div class="device-section">
-                <h4>Layer 3 Devices (Network Layer)</h4>
-                <ul>
-                  <li><strong>Router:</strong> Inter-network routing, IP forwarding, NAT</li>
-                  <li><strong>Layer 3 Switch:</strong> Routing + switching capabilities</li>
-                  <li><strong>Multilayer Switch:</strong> L2/L3/L4 processing, wire-speed routing</li>
-                  <li><strong>Core Router:</strong> High-speed backbone routing</li>
-                  <li><strong>Edge Router:</strong> Network boundary, ISP connections</li>
-                  <li><strong>SOHO Router:</strong> Small office/home router with WiFi</li>
-                </ul>
-              </div>
-              <div class="device-section">
-                <h4>Security Devices & Appliances</h4>
-                <ul>
-                  <li><strong>Firewall:</strong> Packet filtering, stateful inspection, application control</li>
-                  <li><strong>NGFW:</strong> Next-gen firewall with IPS, anti-malware, URL filtering</li>
-                  <li><strong>IDS/IPS:</strong> Intrusion detection/prevention systems</li>
-                  <li><strong>UTM Appliance:</strong> Unified threat management (all-in-one security)</li>
-                  <li><strong>VPN Concentrator:</strong> VPN tunnel termination and management</li>
-                  <li><strong>Web Security Gateway:</strong> HTTP/HTTPS traffic inspection</li>
-                  <li><strong>Email Security Gateway:</strong> Anti-spam, anti-phishing</li>
-                </ul>
-              </div>
-              <div class="device-section">
-                <h4>Specialized Network Devices</h4>
-                <ul>
-                  <li><strong>Load Balancer:</strong> Traffic distribution, high availability</li>
-                  <li><strong>WAN Accelerator:</strong> Bandwidth optimization, caching</li>
-                  <li><strong>Proxy Server:</strong> Web caching, content filtering</li>
-                  <li><strong>Network TAP:</strong> Traffic monitoring and analysis</li>
-                  <li><strong>Protocol Analyzer:</strong> Packet capture and analysis (Wireshark)</li>
-                  <li><strong>Network Scanner:</strong> Port scanning, vulnerability assessment</li>
-                  <li><strong>Wireless Controller:</strong> Centralized WiFi management</li>
-                  <li><strong>SD-WAN Appliance:</strong> Software-defined WAN optimization</li>
-                </ul>
-              </div>
-              <div class="device-section">
-                <h4>Network Infrastructure Components</h4>
-                <ul>
-                  <li><strong>Rack Cabinet:</strong> 19-inch standard equipment mounting</li>
-                  <li><strong>PDU:</strong> Power Distribution Unit for rack power management</li>
-                  <li><strong>UPS:</strong> Uninterruptible Power Supply for backup power</li>
-                  <li><strong>Cable Management:</strong> Cable trays, conduits, cable ties</li>
-                  <li><strong>Network Rack:</strong> Equipment organization and cooling</li>
-                  <li><strong>KVM Switch:</strong> Keyboard, Video, Mouse sharing</li>
-                  <li><strong>Console Server:</strong> Out-of-band management access</li>
-                  <li><strong>Environmental Monitor:</strong> Temperature, humidity, power monitoring</li>
-                </ul>
-              </div>
-              <div class="device-section">
-                <h4>Wireless & Mobile Devices</h4>
-                <ul>
-                  <li><strong>WiFi 6 AP:</strong> 802.11ax access points, high-density support</li>
-                  <li><strong>Outdoor AP:</strong> Weather-resistant wireless coverage</li>
-                  <li><strong>Mesh System:</strong> Distributed WiFi coverage (home/SMB)</li>
-                  <li><strong>WiFi Extender:</strong> Range extension, signal boosting</li>
-                  <li><strong>Cellular Gateway:</strong> 4G/5G internet connectivity</li>
-                  <li><strong>IoT Gateway:</strong> Internet of Things device connectivity</li>
-                  <li><strong>Bluetooth Gateway:</strong> BLE device connectivity</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Common Ports Section -->
-          <div class="cheatsheet-card">
-            <div class="card-header">
-              <i class="ri-door-line"></i>
-              <h3>Common Ports & Services</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="port-list">
-                <div class="port-item">
-                  <span class="port-number">22</span>
-                  <span class="port-service">SSH</span>
-                  <span class="port-protocol">TCP</span>
-                </div>
-                <div class="port-item">
-                  <span class="port-number">80</span>
-                  <span class="port-service">HTTP</span>
-                  <span class="port-protocol">TCP</span>
-                </div>
-                <div class="port-item">
-                  <span class="port-number">443</span>
-                  <span class="port-service">HTTPS</span>
-                  <span class="port-protocol">TCP</span>
-                </div>
-                <div class="port-item">
-                  <span class="port-number">53</span>
-                  <span class="port-service">DNS</span>
-                  <span class="port-protocol">TCP/UDP</span>
-                </div>
-                <div class="port-item">
-                  <span class="port-number">25</span>
-                  <span class="port-service">SMTP</span>
-                  <span class="port-protocol">TCP</span>
-                </div>
-                <div class="port-item">
-                  <span class="port-number">110</span>
-                  <span class="port-service">POP3</span>
-                  <span class="port-protocol">TCP</span>
-                </div>
-                <div class="port-item">
-                  <span class="port-number">143</span>
-                  <span class="port-service">IMAP</span>
-                  <span class="port-protocol">TCP</span>
-                </div>
-                <div class="port-item">
-                  <span class="port-number">21</span>
-                  <span class="port-service">FTP</span>
-                  <span class="port-protocol">TCP</span>
-                </div>
-                <div class="port-item">
-                  <span class="port-number">23</span>
-                  <span class="port-service">Telnet</span>
-                  <span class="port-protocol">TCP</span>
-                </div>
-                <div class="port-item">
-                  <span class="port-number">3389</span>
-                  <span class="port-service">RDP</span>
-                  <span class="port-protocol">TCP</span>
-                </div>
-                <div class="port-item">
-                  <span class="port-number">993</span>
-                  <span class="port-service">IMAPS</span>
-                  <span class="port-protocol">TCP</span>
-                </div>
-                <div class="port-item">
-                  <span class="port-number">995</span>
-                  <span class="port-service">POP3S</span>
-                  <span class="port-protocol">TCP</span>
-                </div>
-                <div class="port-item">
-                  <span class="port-number">161</span>
-                  <span class="port-service">SNMP</span>
-                  <span class="port-protocol">UDP</span>
-                </div>
-                <div class="port-item">
-                  <span class="port-number">69</span>
-                  <span class="port-service">TFTP</span>
-                  <span class="port-protocol">UDP</span>
-                </div>
-                <div class="port-item">
-                  <span class="port-number">123</span>
-                  <span class="port-service">NTP</span>
-                  <span class="port-protocol">UDP</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Network Commands -->
-          <div class="cheatsheet-card" data-category="commands">
-            <div class="card-header">
-              <i class="ri-terminal-line"></i>
-              <h3>Essential Commands</h3>
-            </div>
-            <div class="cheatsheet-content">
-              <div class="command-section">
-                <h4>Windows Commands</h4>
-                <ul>
-                  <li><code>ipconfig /all</code> - Show detailed IP configuration</li>
-                  <li><code>ping [host]</code> - Test connectivity</li>
-                  <li><code>tracert [host]</code> - Trace route to destination</li>
-                  <li><code>netstat -an</code> - Show all connections</li>
-                  <li><code>nslookup [domain]</code> - DNS lookup</li>
-                  <li><code>arp -a</code> - Show ARP table</li>
-                  <li><code>route print</code> - Show routing table</li>
-                  <li><code>pathping [host]</code> - Network path analysis</li>
-                </ul>
-              </div>
-              <div class="command-section">
-                <h4>Linux/Unix Commands</h4>
-                <ul>
-                  <li><code>ifconfig</code> - Network interface configuration</li>
-                  <li><code>ip addr show</code> - Show IP addresses</li>
-                  <li><code>ping [host]</code> - Test connectivity</li>
-                  <li><code>traceroute [host]</code> - Trace route</li>
-                  <li><code>netstat -tuln</code> - Show listening ports</li>
-                  <li><code>ss -tuln</code> - Modern netstat replacement</li>
-                  <li><code>dig [domain]</code> - DNS lookup utility</li>
-                  <li><code>tcpdump</code> - Packet capture</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <!-- Content will be added here -->
         </div>
-      </section>
+        <li><i class="ri-shuffle-line"></i><strong>Layer 2:</strong> Data Link - Switches, MAC addresses</li>
+        <li><i class="ri-route-line"></i><strong>Layer 3:</strong> Network - Routers, IP addresses</li>
+        <li><i class="ri-send-plane-line"></i><strong>Layer 4:</strong> Transport - TCP/UDP</li>
+        <li><i class="ri-links-line"></i><strong>Layer 5:</strong> Session - NetBIOS, PPTP</li>
+        <li><i class="ri-lock-line"></i><strong>Layer 6:</strong> Presentation - SSL/TLS, encryption</li>
+        <li><i class="ri-apps-line"></i><strong>Layer 7:</strong> Application - HTTP, FTP, SMTP</li>
+        </ul>
+    </div>
+    </div>
+    </div>
+
+
+
+
+
+    </div>
+    </section>
     </div>
   </main>
 
@@ -2500,120 +1571,94 @@
             <div class="tool-output" id="ipOutput"></div>
           `
         },
-        'universal-cipher': {
-          title: 'Universal Cipher - Multiple Encryption Algorithms',
+        'binary-text-converter': {
+          title: 'Binary Text Converter',
           content: `
-            <div class="tool-input">
-              <label>Text to encrypt/decrypt:</label>
-              <div class="input-with-buttons">
-                <textarea id="cipherInput" placeholder="Enter your text here..." rows="4"></textarea>
-                <div class="button-group">
-                  <button class="btn-small" onclick="pasteText('cipherInput')">
-                    <i class="ri-clipboard-line"></i>
-                    Paste
-                  </button>
-                  <button class="btn-small" onclick="clearInput('cipherInput')">
-                    <i class="ri-close-line"></i>
-                    Clear
-                  </button>
-                  <button class="btn-small" onclick="selectAllText('cipherInput')">
-                    <i class="ri-select-all-line"></i>
-                    Select All
+            <div class="tool-tabs">
+              <button class="tab-btn active" onclick="switchBinaryTab('text-to-binary')">
+                <i class="ri-code-s-slash-line"></i>
+                Text to Binary
+              </button>
+              <button class="tab-btn" onclick="switchBinaryTab('binary-to-text')">
+                <i class="ri-translate-line"></i>
+                Binary to Text
+              </button>
+            </div>
+            
+            <div id="binary-text-to-binary-tab" class="tab-content active">
+              <div class="tool-input">
+                <div class="input-with-buttons">
+                  <textarea id="textToBinaryInput" placeholder="Enter text to convert to binary..." rows="4"></textarea>
+                  <div class="button-group">
+                    <button class="btn-small" onclick="pasteText('textToBinaryInput')">
+                      <i class="ri-clipboard-line"></i>
+                      Paste
+                    </button>
+                    <button class="btn-small" onclick="clearInput('textToBinaryInput')">
+                      <i class="ri-close-line"></i>
+                      Clear
+                    </button>
+                    <button class="btn-small" onclick="selectAllText('textToBinaryInput')">
+                      <i class="ri-select-all-line"></i>
+                      Select All
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="tool-controls">
+                  <label>
+                    Binary Format:
+                    <select id="binaryFormat">
+                      <option value="8bit">8-bit (01000001)</option>
+                      <option value="spaced">Spaced (01000001 01000010)</option>
+                      <option value="dotted">Dotted (01000001.01000010)</option>
+                      <option value="dashed">Dashed (01000001-01000010)</option>
+                    </select>
+                  </label>
+                </div>
+                
+                <div class="tool-actions">
+                  <button class="btn-primary" onclick="convertTextToBinary()">
+                    <i class="ri-code-s-slash-line"></i>
+                    Convert to Binary
                   </button>
                 </div>
               </div>
               
-              <div class="tool-controls">
-                <label>
-                  Select Algorithm:
-                  <select id="cipherAlgorithm">
-                    <option value="atbash">Atbash Cipher</option>
-                    <option value="affine">Affine Cipher</option>
-                    <option value="beaufort">Beaufort Cipher</option>
-                    <option value="baconian">Baconian Cipher</option>
-                    <option value="caesar">Caesar Cipher</option>
-                    <option value="rot13">ROT13 Cipher</option>
-                    <option value="railfence">Rail Fence Cipher</option>
-                    <option value="scytale">Scytale Cipher</option>
-                    <option value="vigenere">Vigenère Cipher</option>
-                  </select>
-                </label>
-                
-                <label>
-                  Key/Parameters:
-                  <input type="text" id="cipherKey" placeholder="Enter key or shift value">
-                </label>
-              </div>
-              
-              <div class="tool-actions">
-                <button class="btn-primary" onclick="encryptCipherText()">
-                  <i class="ri-lock-line"></i>
-                  Encode
-                </button>
-                <button class="btn-primary" onclick="decryptCipherText()">
-                  <i class="ri-lock-unlock-line"></i>
-                  Decode
-                </button>
-              </div>
+              <div class="tool-output" id="textToBinaryOutput"></div>
             </div>
             
-            <div class="tool-output" id="cipherOutput"></div>
-          `,
-          init: function () {
-            const algorithm = document.getElementById('cipherAlgorithm');
-            const params = document.getElementById('cipherParameters');
-            const keyInput = document.getElementById('cipherKey');
-
-            algorithm.addEventListener('change', function () {
-              updateCipherParams(this.value);
-            });
-
-            function updateCipherParams(algo) {
-              switch (algo) {
-                case 'atbash':
-                case 'rot13':
-                  params.style.display = 'none';
-                  break;
-                case 'caesar':
-                  params.style.display = 'block';
-                  keyInput.placeholder = 'Enter shift value (1-25)';
-                  keyInput.type = 'number';
-                  keyInput.min = '1';
-                  keyInput.max = '25';
-                  keyInput.value = '3';
-                  break;
-                case 'affine':
-                  params.style.display = 'block';
-                  keyInput.placeholder = 'Enter a,b values (e.g., 5,8)';
-                  keyInput.type = 'text';
-                  keyInput.value = '5,8';
-                  break;
-                case 'railfence':
-                case 'scytale':
-                  params.style.display = 'block';
-                  keyInput.placeholder = 'Enter rail/column count';
-                  keyInput.type = 'number';
-                  keyInput.min = '2';
-                  keyInput.value = '3';
-                  break;
-                case 'beaufort':
-                case 'vigenere':
-                  params.style.display = 'block';
-                  keyInput.placeholder = 'Enter keyword (letters only)';
-                  keyInput.type = 'text';
-                  keyInput.value = 'KEY';
-                  break;
-                case 'baconian':
-                  params.style.display = 'block';
-                  keyInput.placeholder = 'Use A/B or 0/1 (default: A/B)';
-                  keyInput.type = 'text';
-                  keyInput.value = 'A,B';
-                  break;
-              }
-            }
-
-            updateCipherParams('atbash');
-          }
+            <div id="binary-binary-to-text-tab" class="tab-content">
+              <div class="tool-input">
+                <div class="input-with-buttons">
+                  <textarea id="binaryToTextInput" placeholder="Enter binary code to convert to text (e.g., 01001000 01100101 01101100 01101100 01101111)..." rows="4"></textarea>
+                  <div class="button-group">
+                    <button class="btn-small" onclick="pasteText('binaryToTextInput')">
+                      <i class="ri-clipboard-line"></i>
+                      Paste
+                    </button>
+                    <button class="btn-small" onclick="clearInput('binaryToTextInput')">
+                      <i class="ri-close-line"></i>
+                      Clear
+                    </button>
+                    <button class="btn-small" onclick="selectAllText('binaryToTextInput')">
+                      <i class="ri-select-all-line"></i>
+                      Select All
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="tool-actions">
+                  <button class="btn-primary" onclick="convertBinaryToText()">
+                    <i class="ri-translate-line"></i>
+                    Convert to Text
+                  </button>
+                </div>
+              </div>
+              
+              <div class="tool-output" id="binaryToTextOutput"></div>
+            </div>
+          `
         },
         'base-encoding': {
           title: 'Base Encoding - Multiple Base Formats',
@@ -2704,48 +1749,205 @@
           `
         },
         'number-converter': {
-          title: 'Number System Converter',
+          title: 'Enhanced Number System Converter',
           content: `
-            <div class="tool-input">
-              <div class="input-with-buttons">
-                <input type="text" id="numberInput" placeholder="Enter number to convert...">
-                <div class="button-group">
-                  <button class="btn-small" onclick="pasteText('numberInput')">
-                    <i class="ri-clipboard-line"></i>
-                    Paste
-                  </button>
-                  <button class="btn-small" onclick="clearInput('numberInput')">
-                    <i class="ri-close-line"></i>
-                    Clear
-                  </button>
-                  <button class="btn-small" onclick="selectAllText('numberInput')">
-                    <i class="ri-select-all-line"></i>
-                    Select All
+            <div class="tool-tabs">
+              <button class="tab-btn active" onclick="switchNumberTab('number-base')">
+                <i class="ri-calculator-line"></i>
+                Number Base Conversion
+              </button>
+              <button class="tab-btn" onclick="switchNumberTab('ascii-conversion')">
+                <i class="ri-file-text-line"></i>
+                ASCII Conversion
+              </button>
+            </div>
+            
+            <div id="number-number-base-tab" class="tab-content active">
+              <div class="tool-input">
+                <div class="input-with-buttons">
+                  <input type="text" id="numberInput" placeholder="Enter number to convert...">
+                  <div class="button-group">
+                    <button class="btn-small" onclick="pasteText('numberInput')">
+                      <i class="ri-clipboard-line"></i>
+                      Paste
+                    </button>
+                    <button class="btn-small" onclick="clearInput('numberInput')">
+                      <i class="ri-close-line"></i>
+                      Clear
+                    </button>
+                    <button class="btn-small" onclick="selectAllText('numberInput')">
+                      <i class="ri-select-all-line"></i>
+                      Select All
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="tool-controls">
+                  <label>
+                    Input Format:
+                    <select id="inputBase">
+                      <option value="2">Binary (Base 2)</option>
+                      <option value="10" selected>Decimal (Base 10)</option>
+                      <option value="16">Hexadecimal (Base 16)</option>
+                      <option value="8">Octal (Base 8)</option>
+                    </select>
+                  </label>
+                </div>
+                
+                <div class="tool-actions">
+                  <button class="btn-primary" onclick="convertNumber()">
+                    <i class="ri-calculator-line"></i>
+                    Convert All Bases
                   </button>
                 </div>
               </div>
               
-              <div class="tool-controls">
-                <label>
-                  Input Format:
-                  <select id="inputBase">
-                    <option value="2">Binary (Base 2)</option>
-                    <option value="10" selected>Decimal (Base 10)</option>
-                    <option value="16">Hexadecimal (Base 16)</option>
-                    <option value="8">Octal (Base 8)</option>
-                  </select>
-                </label>
-              </div>
-              
-              <div class="tool-actions">
-                <button class="btn-primary" onclick="convertNumber()">
-                  <i class="ri-calculator-line"></i>
-                  Convert All
-                </button>
-              </div>
+              <div class="tool-output" id="numberOutput"></div>
             </div>
             
-            <div class="tool-output" id="numberOutput"></div>
+            <div id="number-ascii-conversion-tab" class="tab-content">
+              <div class="tool-input">
+                <div class="input-with-buttons">
+                  <input type="text" id="asciiInput" placeholder="Enter text to convert to ASCII values...">
+                  <div class="button-group">
+                    <button class="btn-small" onclick="pasteText('asciiInput')">
+                      <i class="ri-clipboard-line"></i>
+                      Paste
+                    </button>
+                    <button class="btn-small" onclick="clearInput('asciiInput')">
+                      <i class="ri-close-line"></i>
+                      Clear
+                    </button>
+                    <button class="btn-small" onclick="selectAllText('asciiInput')">
+                      <i class="ri-select-all-line"></i>
+                      Select All
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="tool-actions">
+                  <button class="btn-primary" onclick="convertTextToASCII()">
+                    <i class="ri-hashtag"></i>
+                    Text to ASCII Values
+                  </button>
+                </div>
+              </div>
+              
+              <div class="tool-output" id="asciiOutput"></div>
+            </div>
+          `
+        },
+        'text-number-converter': {
+          title: 'Text Number Converter',
+          content: `
+            <div class="tool-tabs">
+              <button class="tab-btn active" onclick="switchTextNumberTab('text-to-numbers')">
+                <i class="ri-hashtag"></i>
+                Text to Numbers
+              </button>
+              <button class="tab-btn" onclick="switchTextNumberTab('numbers-to-text')">
+                <i class="ri-file-text-line"></i>
+                Numbers to Text
+              </button>
+            </div>
+            
+            <div id="textnum-text-to-numbers-tab" class="tab-content active">
+              <div class="tool-input">
+                <div class="input-with-buttons">
+                  <textarea id="textToNumberInput" placeholder="Enter text to convert to numbers..." rows="4"></textarea>
+                  <div class="button-group">
+                    <button class="btn-small" onclick="pasteText('textToNumberInput')">
+                      <i class="ri-clipboard-line"></i>
+                      Paste
+                    </button>
+                    <button class="btn-small" onclick="clearInput('textToNumberInput')">
+                      <i class="ri-close-line"></i>
+                      Clear
+                    </button>
+                    <button class="btn-small" onclick="selectAllText('textToNumberInput')">
+                      <i class="ri-select-all-line"></i>
+                      Select All
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="tool-controls">
+                  <label>
+                    Number Format:
+                    <select id="numberFormat">
+                      <option value="ascii">ASCII Values (65 66 67)</option>
+                      <option value="unicode">Unicode Values (65 66 67)</option>
+                      <option value="hex">Hexadecimal (41 42 43)</option>
+                      <option value="octal">Octal (101 102 103)</option>
+                      <option value="binary">Binary (01000001 01000010)</option>
+                    </select>
+                  </label>
+                  
+                  <label>
+                    Separator:
+                    <select id="numberSeparator">
+                      <option value=" ">Space (65 66 67)</option>
+                      <option value=",">Comma (65,66,67)</option>
+                      <option value="-">Dash (65-66-67)</option>
+                      <option value=".">Dot (65.66.67)</option>
+                      <option value="">None (656667)</option>
+                    </select>
+                  </label>
+                </div>
+                
+                <div class="tool-actions">
+                  <button class="btn-primary" onclick="convertTextToNumbers()">
+                    <i class="ri-hashtag"></i>
+                    Convert to Numbers
+                  </button>
+                </div>
+              </div>
+              
+              <div class="tool-output" id="textToNumberOutput"></div>
+            </div>
+            
+            <div id="textnum-numbers-to-text-tab" class="tab-content">
+              <div class="tool-input">
+                <div class="input-with-buttons">
+                  <textarea id="numberToTextInput" placeholder="Enter numbers to convert to text (e.g., 72 101 108 108 111)..." rows="4"></textarea>
+                  <div class="button-group">
+                    <button class="btn-small" onclick="pasteText('numberToTextInput')">
+                      <i class="ri-clipboard-line"></i>
+                      Paste
+                    </button>
+                    <button class="btn-small" onclick="clearInput('numberToTextInput')">
+                      <i class="ri-close-line"></i>
+                      Clear
+                    </button>
+                    <button class="btn-small" onclick="selectAllText('numberToTextInput')">
+                      <i class="ri-select-all-line"></i>
+                      Select All
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="tool-controls">
+                  <label>
+                    Input Format:
+                    <select id="inputNumberFormat">
+                      <option value="ascii">ASCII/Decimal (72 101 108)</option>
+                      <option value="hex">Hexadecimal (48 65 6C)</option>
+                      <option value="octal">Octal (110 145 154)</option>
+                      <option value="binary">Binary (01001000 01100101)</option>
+                    </select>
+                  </label>
+                </div>
+                
+                <div class="tool-actions">
+                  <button class="btn-primary" onclick="convertNumbersToText()">
+                    <i class="ri-file-text-line"></i>
+                    Convert to Text
+                  </button>
+                </div>
+              </div>
+              
+              <div class="tool-output" id="numberToTextOutput"></div>
+            </div>
           `
         },
         'qr-code-tool': {
@@ -3193,290 +2395,227 @@
       `;
     }
 
-    // Universal Cipher Functions
-    function encryptCipherText() {
-      const text = document.getElementById('cipherInput').value;
-      const algorithm = document.getElementById('cipherAlgorithm').value;
-      const key = document.getElementById('cipherKey').value;
-      const output = document.getElementById('cipherOutput');
+    // Binary Text Converter Functions
+    function convertTextToBinary() {
+      const text = document.getElementById('textToBinaryInput').value;
+      const format = document.getElementById('binaryFormat').value;
+      const output = document.getElementById('textToBinaryOutput');
 
       if (!text) {
-        output.innerHTML = '<div class="error">Please enter text to encrypt</div>';
+        output.innerHTML = '<div class="error">Please enter text to convert</div>';
+        return;
+      }
+
+      let binary = text.split('').map(char =>
+        char.charCodeAt(0).toString(2).padStart(8, '0')
+      );
+
+      let result = '';
+      switch (format) {
+        case '8bit':
+          result = binary.join('');
+          break;
+        case 'spaced':
+          result = binary.join(' ');
+          break;
+        case 'dotted':
+          result = binary.join('.');
+          break;
+        case 'dashed':
+          result = binary.join('-');
+          break;
+        default:
+          result = binary.join(' ');
+      }
+
+      outputResult('textToBinaryOutput', 'Binary:', result);
+    }
+
+    function convertBinaryToText() {
+      const binary = document.getElementById('binaryToTextInput').value;
+      const output = document.getElementById('binaryToTextOutput');
+
+      if (!binary) {
+        output.innerHTML = '<div class="error">Please enter binary to convert</div>';
+        return;
+      }
+
+      try {
+        // Handle different separators and clean up the input
+        let cleanBinary = binary.replace(/[\s.\-]/g, ' ').replace(/\s+/g, ' ').trim();
+
+        // If no spaces, try to split into 8-bit chunks
+        if (!cleanBinary.includes(' ') && cleanBinary.length % 8 === 0) {
+          cleanBinary = cleanBinary.match(/.{8}/g).join(' ');
+        }
+
+        const binaryGroups = cleanBinary.split(' ');
+        const text = binaryGroups.map(group => {
+          // Only process valid binary groups
+          if (/^[01]+$/.test(group) && group.length > 0) {
+            return String.fromCharCode(parseInt(group, 2));
+          }
+          return '';
+        }).join('');
+
+        if (!text) {
+          throw new Error('Invalid binary format');
+        }
+
+        outputResult('binaryToTextOutput', 'Text:', text);
+      } catch (error) {
+        output.innerHTML = '<div class="error">Invalid binary format. Please enter binary digits (0s and 1s) separated by spaces, dots, or dashes.</div>';
+      }
+    } function switchBinaryTab(tab) {
+      const tabs = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.tab-content');
+
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      document.querySelector(`[onclick="switchBinaryTab('${tab}')"]`).classList.add('active');
+      document.getElementById(`binary-${tab}-tab`).classList.add('active');
+    }
+
+    // Text Number Converter Functions
+    function convertTextToNumbers() {
+      const text = document.getElementById('textNumberInput').value;
+      const format = document.getElementById('textNumberFormat').value;
+      const output = document.getElementById('textNumberOutput');
+
+      if (!text) {
+        output.innerHTML = '<div class="error">Please enter text to convert</div>';
         return;
       }
 
       let result = '';
       try {
-        switch (algorithm) {
-          case 'atbash':
-            result = atbashCipher(text);
+        switch (format) {
+          case 'ascii':
+            result = text.split('').map(char => char.charCodeAt(0)).join(' ');
             break;
-          case 'affine':
-            const affineParams = key.split(',').map(x => parseInt(x.trim()));
-            result = affineCipher(text, affineParams[0] || 5, affineParams[1] || 8, true);
+          case 'unicode':
+            result = text.split('').map(char => char.codePointAt(0)).join(' ');
             break;
-          case 'beaufort':
-            result = beaufortCipher(text, key.toUpperCase(), true);
+          case 'hex':
+            result = text.split('').map(char => char.charCodeAt(0).toString(16).toUpperCase()).join(' ');
             break;
-          case 'baconian':
-            result = baconianCipher(text, true);
+          case 'octal':
+            result = text.split('').map(char => char.charCodeAt(0).toString(8)).join(' ');
             break;
-          case 'caesar':
-            result = caesarCipher(text, parseInt(key) || 3, true);
-            break;
-          case 'rot13':
-            result = rot13Cipher(text);
-            break;
-          case 'railfence':
-            result = railFenceCipher(text, parseInt(key) || 3, true);
-            break;
-          case 'scytale':
-            result = scytaleCipher(text, parseInt(key) || 3, true);
-            break;
-          case 'vigenere':
-            result = vigenereCipher(text, key.toUpperCase(), true);
+          case 'binary':
+            result = text.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
             break;
         }
-        outputResult('cipherOutput', `Encrypted (${algorithm.charAt(0).toUpperCase() + algorithm.slice(1)}):`, result);
+        outputResult('textNumberOutput', `${format.toUpperCase()} Values:`, result);
       } catch (error) {
-        output.innerHTML = `<div class="error">Encryption failed: ${error.message}</div>`;
+        output.innerHTML = `<div class="error">Conversion failed: ${error.message}</div>`;
       }
     }
 
-    function decryptCipherText() {
-      const text = document.getElementById('cipherInput').value;
-      const algorithm = document.getElementById('cipherAlgorithm').value;
-      const key = document.getElementById('cipherKey').value;
-      const output = document.getElementById('cipherOutput');
+    function convertNumbersToText() {
+      const numbers = document.getElementById('textNumberInput').value;
+      const format = document.getElementById('textNumberFormat').value;
+      const output = document.getElementById('textNumberOutput');
 
-      if (!text) {
-        output.innerHTML = '<div class="error">Please enter text to decrypt</div>';
+      if (!numbers) {
+        output.innerHTML = '<div class="error">Please enter numbers to convert</div>';
         return;
       }
 
-      let result = '';
       try {
-        switch (algorithm) {
-          case 'atbash':
-            result = atbashCipher(text); // Atbash is symmetric
+        const numberArray = numbers.trim().split(/\s+/);
+        let text = '';
+
+        switch (format) {
+          case 'ascii':
+          case 'unicode':
+            text = numberArray.map(num => String.fromCharCode(parseInt(num, 10))).join('');
             break;
-          case 'affine':
-            const affineParams = key.split(',').map(x => parseInt(x.trim()));
-            result = affineCipher(text, affineParams[0] || 5, affineParams[1] || 8, false);
+          case 'hex':
+            text = numberArray.map(num => String.fromCharCode(parseInt(num, 16))).join('');
             break;
-          case 'beaufort':
-            result = beaufortCipher(text, key.toUpperCase(), false);
+          case 'octal':
+            text = numberArray.map(num => String.fromCharCode(parseInt(num, 8))).join('');
             break;
-          case 'baconian':
-            result = baconianCipher(text, false);
-            break;
-          case 'caesar':
-            result = caesarCipher(text, parseInt(key) || 3, false);
-            break;
-          case 'rot13':
-            result = rot13Cipher(text); // ROT13 is symmetric
-            break;
-          case 'railfence':
-            result = railFenceCipher(text, parseInt(key) || 3, false);
-            break;
-          case 'scytale':
-            result = scytaleCipher(text, parseInt(key) || 3, false);
-            break;
-          case 'vigenere':
-            result = vigenereCipher(text, key.toUpperCase(), false);
+          case 'binary':
+            text = numberArray.map(num => String.fromCharCode(parseInt(num, 2))).join('');
             break;
         }
-        outputResult('cipherOutput', `Decrypted (${algorithm.charAt(0).toUpperCase() + algorithm.slice(1)}):`, result);
+
+        if (!text) {
+          throw new Error('Invalid number format');
+        }
+
+        outputResult('textNumberOutput', 'Text:', text);
       } catch (error) {
-        output.innerHTML = `<div class="error">Decryption failed: ${error.message}</div>`;
+        output.innerHTML = `<div class="error">Invalid ${format} format. Please enter valid ${format} numbers separated by spaces.</div>`;
       }
     }
 
-    // Cipher Algorithm Implementations
-    function atbashCipher(text) {
-      return text.replace(/[A-Za-z]/g, char => {
-        if (char >= 'A' && char <= 'Z') {
-          return String.fromCharCode('Z'.charCodeAt(0) - (char.charCodeAt(0) - 'A'.charCodeAt(0)));
-        } else {
-          return String.fromCharCode('z'.charCodeAt(0) - (char.charCodeAt(0) - 'a'.charCodeAt(0)));
-        }
-      });
+    function switchTextNumberTab(tab) {
+      const tabs = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.tab-content');
+
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      document.querySelector(`[onclick="switchTextNumberTab('${tab}')"]`).classList.add('active');
+      document.getElementById(`textnumber-${tab}-tab`).classList.add('active');
     }
 
-    function affineCipher(text, a, b, encrypt) {
-      const modInverse = (a, m) => {
-        for (let x = 1; x < m; x++) {
-          if ((a * x) % m === 1) return x;
-        }
-        return 1;
-      };
+    // Enhanced Number System Converter with ASCII support
+    function convertTextToASCII() {
+      const input = document.getElementById('numberInput').value.trim();
+      const output = document.getElementById('numberOutput');
 
-      return text.replace(/[A-Za-z]/g, char => {
-        const isUpper = char >= 'A' && char <= 'Z';
-        const base = isUpper ? 'A'.charCodeAt(0) : 'a'.charCodeAt(0);
-        let x = char.charCodeAt(0) - base;
-
-        let result;
-        if (encrypt) {
-          result = (a * x + b) % 26;
-        } else {
-          result = (modInverse(a, 26) * (x - b + 26)) % 26;
-        }
-
-        return String.fromCharCode(result + base);
-      });
-    }
-
-    function beaufortCipher(text, key, encrypt) {
-      if (!key) key = 'KEY';
-      let result = '';
-      let keyIndex = 0;
-
-      for (let i = 0; i < text.length; i++) {
-        const char = text[i];
-        if (char.match(/[A-Za-z]/)) {
-          const isUpper = char >= 'A' && char <= 'Z';
-          const base = isUpper ? 'A'.charCodeAt(0) : 'a'.charCodeAt(0);
-          const textNum = char.charCodeAt(0) - base;
-          const keyNum = key[keyIndex % key.length].charCodeAt(0) - 'A'.charCodeAt(0);
-
-          let resultNum;
-          if (encrypt) {
-            resultNum = (keyNum - textNum + 26) % 26;
-          } else {
-            resultNum = (keyNum - textNum + 26) % 26;
-          }
-
-          result += String.fromCharCode(resultNum + base);
-          keyIndex++;
-        } else {
-          result += char;
-        }
+      if (!input) {
+        output.innerHTML = '<div class="error">Please enter text to convert to ASCII</div>';
+        return;
       }
-      return result;
-    }
 
-    function baconianCipher(text, encrypt) {
-      const baconDict = {
-        'A': 'AAAAA', 'B': 'AAAAB', 'C': 'AAABA', 'D': 'AAABB', 'E': 'AABAA',
-        'F': 'AABAB', 'G': 'AABBA', 'H': 'AABBB', 'I': 'ABAAA', 'J': 'ABAAB',
-        'K': 'ABABA', 'L': 'ABABB', 'M': 'ABBAA', 'N': 'ABBAB', 'O': 'ABBBA',
-        'P': 'ABBBB', 'Q': 'BAAAA', 'R': 'BAAAB', 'S': 'BAABA', 'T': 'BAABB',
-        'U': 'BABAA', 'V': 'BABAB', 'W': 'BABBA', 'X': 'BABBB', 'Y': 'BBAAA', 'Z': 'BBAAB'
-      };
+      try {
+        const asciiValues = input.split('').map(char => char.charCodeAt(0));
+        let resultHTML = '<div class="number-conversions"><h4>ASCII Conversion</h4>';
 
-      if (encrypt) {
-        return text.toUpperCase().replace(/[A-Z]/g, char => baconDict[char] || char).replace(/[^AB]/g, '');
-      } else {
-        const reverseBacon = Object.fromEntries(Object.entries(baconDict).map(([k, v]) => [v, k]));
-        return text.match(/.{5}/g)?.map(code => reverseBacon[code] || '?').join('') || '';
+        asciiValues.forEach((ascii, index) => {
+          resultHTML += `
+            <div class="conversion-result">
+              <div class="conversion-label"><strong>Character "${input[index]}":</strong></div>
+              <div class="conversion-value">ASCII: ${ascii}</div>
+              <button class="btn-secondary copy-btn" onclick="copyToClipboard('${ascii}')">
+                <i class="ri-file-copy-line"></i>
+              </button>
+            </div>
+          `;
+        });
+
+        const allAscii = asciiValues.join(' ');
+        resultHTML += `
+          <div class="conversion-result">
+            <div class="conversion-label"><strong>All ASCII Values:</strong></div>
+            <div class="conversion-value">${allAscii}</div>
+            <button class="btn-secondary copy-btn" onclick="copyToClipboard('${allAscii}')">
+              <i class="ri-file-copy-line"></i>
+            </button>
+          </div>
+        </div>`;
+
+        output.innerHTML = resultHTML;
+      } catch (error) {
+        output.innerHTML = `<div class="error">Conversion failed: ${error.message}</div>`;
       }
     }
 
-    function caesarCipher(text, shift, encrypt) {
-      const actualShift = encrypt ? shift : -shift;
-      return text.replace(/[A-Za-z]/g, char => {
-        const isUpper = char >= 'A' && char <= 'Z';
-        const base = isUpper ? 'A'.charCodeAt(0) : 'a'.charCodeAt(0);
-        return String.fromCharCode(((char.charCodeAt(0) - base + actualShift + 26) % 26) + base);
-      });
-    }
+    function switchNumberTab(tab) {
+      const tabs = document.querySelectorAll('.tab-btn');
+      const contents = document.querySelectorAll('.tab-content');
 
-    function rot13Cipher(text) {
-      return text.replace(/[A-Za-z]/g, char => {
-        const isUpper = char >= 'A' && char <= 'Z';
-        const base = isUpper ? 'A'.charCodeAt(0) : 'a'.charCodeAt(0);
-        return String.fromCharCode(((char.charCodeAt(0) - base + 13) % 26) + base);
-      });
-    }
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
 
-    function railFenceCipher(text, rails, encrypt) {
-      if (encrypt) {
-        const fence = Array(rails).fill().map(() => []);
-        let rail = 0;
-        let direction = 1;
-
-        for (let i = 0; i < text.length; i++) {
-          fence[rail].push(text[i]);
-          rail += direction;
-          if (rail === rails - 1 || rail === 0) direction = -direction;
-        }
-
-        return fence.flat().join('');
-      } else {
-        // Simplified decryption
-        return text;
-      }
-    }
-
-    function scytaleCipher(text, cols, encrypt) {
-      if (encrypt) {
-        const rows = Math.ceil(text.length / cols);
-        const grid = Array(rows).fill().map(() => Array(cols).fill(''));
-
-        for (let i = 0; i < text.length; i++) {
-          const row = Math.floor(i / cols);
-          const col = i % cols;
-          grid[row][col] = text[i];
-        }
-
-        let result = '';
-        for (let col = 0; col < cols; col++) {
-          for (let row = 0; row < rows; row++) {
-            if (grid[row][col]) result += grid[row][col];
-          }
-        }
-        return result;
-      } else {
-        const rows = Math.ceil(text.length / cols);
-        const grid = Array(rows).fill().map(() => Array(cols).fill(''));
-
-        let index = 0;
-        for (let col = 0; col < cols; col++) {
-          for (let row = 0; row < rows; row++) {
-            if (index < text.length) {
-              grid[row][col] = text[index++];
-            }
-          }
-        }
-
-        let result = '';
-        for (let row = 0; row < rows; row++) {
-          for (let col = 0; col < cols; col++) {
-            if (grid[row][col]) result += grid[row][col];
-          }
-        }
-        return result;
-      }
-    }
-
-    function vigenereCipher(text, key, encrypt) {
-      if (!key) key = 'KEY';
-      let result = '';
-      let keyIndex = 0;
-
-      for (let i = 0; i < text.length; i++) {
-        const char = text[i];
-        if (char.match(/[A-Za-z]/)) {
-          const isUpper = char >= 'A' && char <= 'Z';
-          const base = isUpper ? 'A'.charCodeAt(0) : 'a'.charCodeAt(0);
-          const textNum = char.charCodeAt(0) - base;
-          const keyNum = key[keyIndex % key.length].charCodeAt(0) - 'A'.charCodeAt(0);
-
-          let resultNum;
-          if (encrypt) {
-            resultNum = (textNum + keyNum) % 26;
-          } else {
-            resultNum = (textNum - keyNum + 26) % 26;
-          }
-
-          result += String.fromCharCode(resultNum + base);
-          keyIndex++;
-        } else {
-          result += char;
-        }
-      }
-      return result;
+      document.querySelector(`[onclick="switchNumberTab('${tab}')"]`).classList.add('active');
+      document.getElementById(`number-${tab}-tab`).classList.add('active');
     }
 
     // Base Encoding Functions
