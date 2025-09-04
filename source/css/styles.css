@@ -1324,6 +1324,33 @@ img {
 
 .article-header {
   margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.article-url {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+}
+
+.url-label {
+  font-weight: 500;
+}
+
+.article-url code {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent);
 }
 
 .back-btn {
@@ -3783,5 +3810,127 @@ input[type="color"] {
   .subnet-table,
   .routing-table {
     font-size: 0.8rem;
+  }
+}
+
+/* Command Block Styles for Articles */
+.command-block {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.command-block:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px rgba(110, 231, 255, 0.1);
+}
+
+.command-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, rgba(110, 231, 255, 0.05) 0%, rgba(74, 222, 128, 0.03) 100%);
+  border-bottom: 1px solid var(--border);
+}
+
+.command-title {
+  font-weight: 600;
+  color: var(--fg);
+  font-size: 0.95rem;
+}
+
+.command-code {
+  display: block;
+  padding: 1.25rem;
+  background: var(--bg);
+  color: var(--accent);
+  font-family: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.6;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  border: none;
+  margin: 0;
+  overflow-x: auto;
+}
+
+.command-description {
+  padding: 1rem 1.25rem;
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.5;
+  border-top: 1px solid var(--border);
+  background: var(--panel);
+}
+
+.command-block .copy-btn {
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  min-width: auto;
+  height: auto;
+}
+
+.command-block .copy-btn:hover {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.command-block .copy-btn i {
+  font-size: 0.875rem;
+}
+
+/* Mobile responsiveness for command blocks */
+@media (max-width: 768px) {
+  .command-header {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .command-block .copy-btn {
+    align-self: flex-end;
+  }
+
+  .command-code {
+    font-size: 0.8rem;
+    padding: 1rem;
+  }
+
+  .command-description {
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .command-code {
+    font-size: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .command-description {
+    padding: 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .command-header {
+    padding: 0.75rem 1rem;
   }
 }

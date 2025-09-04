@@ -1043,41 +1043,6 @@
             </div>
           </div>
 
-          <!-- Third Card Placeholder -->
-          <div class="cover-card">
-            <div class="cover-image">
-              <img src="source/img/cover/1756477422.png" alt="Third Article Cover" />
-              <div class="cover-overlay">
-                <div class="cover-content">
-                  <h3>Coming Soon</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Fourth Card - Digital Philosophy -->
-          <div class="cover-card">
-            <div class="cover-image">
-              <img src="source/img/cover/1756478910.png" alt="Digital Philosophy Cover" />
-              <div class="cover-overlay">
-                <div class="cover-content">
-                  <h3>Digital Philosophy</h3>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Fifth Card - Future Tech -->
-          <div class="cover-card">
-            <div class="cover-image">
-              <img src="source/img/cover/a man and woman standing in front of a door.webp" alt="Future Tech Cover" />
-              <div class="cover-overlay">
-                <div class="cover-content">
-                  <h3>Future Tech</h3>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>
@@ -1148,21 +1113,178 @@
             <div class="article-text">
               <h1>Vimulation</h1>
 
-              <h2>1. Introduction to Vimulation</h2>
-              <p>Vimulation explores the concept of virtual simulation and its applications in modern technology. This
-                field combines virtual reality, artificial intelligence, and simulation theory to create immersive
-                experiences.</p>
+              <h2>Useful Networking Tips & Commands</h2>
+              <p>Here are some essential PowerShell commands and networking tools that can help with system diagnostics
+                and network testing:</p>
 
-              <h2>2. Core Principles</h2>
-              <p>The fundamental principles of vimulation involve creating realistic virtual environments that can
-                simulate real-world scenarios with high fidelity and interactive capabilities.</p>
+              <h3>Network Speed Testing</h3>
+              <div class="command-block">
+                <div class="command-header">
+                  <span class="command-title">Internet Speed Test</span>
+                  <button class="copy-btn"
+                    onclick="copyToClipboard('powershell -c &quot;irm asheroto.com/speedtest | iex&quot;')"
+                    title="Copy command">
+                    <i class="ri-file-copy-line"></i>
+                  </button>
+                </div>
+                <code class="command-code">powershell -c "irm asheroto.com/speedtest | iex"</code>
+                <p class="command-description">Runs an internet speed test directly from PowerShell using the
+                  asheroto.com speedtest script.</p>
+              </div>
 
-              <h2>3. Applications and Use Cases</h2>
-              <p>Vimulation has applications in training, education, entertainment, scientific research, and various
-                other fields where virtual environments can provide valuable insights or experiences.</p>
+              <div class="command-block">
+                <div class="command-header">
+                  <span class="command-title">Alternative Speed Test</span>
+                  <button class="copy-btn" onclick="copyToClipboard('irm asheroto.com/speedtest | iex')"
+                    title="Copy command">
+                    <i class="ri-file-copy-line"></i>
+                  </button>
+                </div>
+                <code class="command-code">irm asheroto.com/speedtest | iex</code>
+                <p class="command-description">Simplified version of the speed test command for direct execution.</p>
+              </div>
 
-              <p><em>This article will be expanded with your specific content when you provide the text to input.</em>
-              </p>
+              <h3>System Information</h3>
+              <div class="command-block">
+                <div class="command-header">
+                  <span class="command-title">Get System Information</span>
+                  <button class="copy-btn"
+                    onclick="copyToClipboard('powershell &quot;irm asheroto.com/Get-SystemInfo | iex&quot;')"
+                    title="Copy command">
+                    <i class="ri-file-copy-line"></i>
+                  </button>
+                </div>
+                <code class="command-code">powershell "irm asheroto.com/Get-SystemInfo | iex"</code>
+                <p class="command-description">Retrieves comprehensive system information including hardware, OS, and
+                  network details.</p>
+              </div>
+
+              <h3>Network Diagnostics</h3>
+              <div class="command-block">
+                <div class="command-header">
+                  <span class="command-title">IP Configuration</span>
+                  <button class="copy-btn" onclick="copyToClipboard('ipconfig /all')" title="Copy command">
+                    <i class="ri-file-copy-line"></i>
+                  </button>
+                </div>
+                <code class="command-code">ipconfig /all</code>
+                <p class="command-description">Displays detailed IP configuration for all network adapters.</p>
+              </div>
+
+              <div class="command-block">
+                <div class="command-header">
+                  <span class="command-title">Network Connectivity Test</span>
+                  <button class="copy-btn" onclick="copyToClipboard('ping google.com')" title="Copy command">
+                    <i class="ri-file-copy-line"></i>
+                  </button>
+                </div>
+                <code class="command-code">ping google.com</code>
+                <p class="command-description">Tests basic network connectivity to Google's servers.</p>
+              </div>
+
+              <div class="command-block">
+                <div class="command-header">
+                  <span class="command-title">DNS Lookup</span>
+                  <button class="copy-btn" onclick="copyToClipboard('nslookup google.com')" title="Copy command">
+                    <i class="ri-file-copy-line"></i>
+                  </button>
+                </div>
+                <code class="command-code">nslookup google.com</code>
+                <p class="command-description">Performs DNS lookup to resolve domain names to IP addresses.</p>
+              </div>
+
+              <div class="command-block">
+                <div class="command-header">
+                  <span class="command-title">Network Route Tracing</span>
+                  <button class="copy-btn" onclick="copyToClipboard('tracert google.com')" title="Copy command">
+                    <i class="ri-file-copy-line"></i>
+                  </button>
+                </div>
+                <code class="command-code">tracert google.com</code>
+                <p class="command-description">Traces the route packets take to reach a destination, showing each hop.
+                </p>
+              </div>
+
+              <h3>Advanced Network Commands</h3>
+              <div class="command-block">
+                <div class="command-header">
+                  <span class="command-title">Network Statistics</span>
+                  <button class="copy-btn" onclick="copyToClipboard('netstat -an')" title="Copy command">
+                    <i class="ri-file-copy-line"></i>
+                  </button>
+                </div>
+                <code class="command-code">netstat -an</code>
+                <p class="command-description">Shows all network connections and listening ports with addresses and port
+                  numbers in numerical form.</p>
+              </div>
+
+              <div class="command-block">
+                <div class="command-header">
+                  <span class="command-title">ARP Table</span>
+                  <button class="copy-btn" onclick="copyToClipboard('arp -a')" title="Copy command">
+                    <i class="ri-file-copy-line"></i>
+                  </button>
+                </div>
+                <code class="command-code">arp -a</code>
+                <p class="command-description">Displays the ARP (Address Resolution Protocol) table showing IP to MAC
+                  address mappings.</p>
+              </div>
+
+              <div class="command-block">
+                <div class="command-header">
+                  <span class="command-title">WiFi Profile Information</span>
+                  <button class="copy-btn" onclick="copyToClipboard('netsh wlan show profiles')" title="Copy command">
+                    <i class="ri-file-copy-line"></i>
+                  </button>
+                </div>
+                <code class="command-code">netsh wlan show profiles</code>
+                <p class="command-description">Lists all WiFi profiles stored on the system.</p>
+              </div>
+
+              <div class="command-block">
+                <div class="command-header">
+                  <span class="command-title">Port Scanner (PowerShell)</span>
+                  <button class="copy-btn"
+                    onclick="copyToClipboard('1..1024 | % {echo ((New-Object Net.Sockets.TcpClient).Connect(&quot;127.0.0.1&quot;,$_)) &quot;Port $_ is open&quot;} 2>$null')"
+                    title="Copy command">
+                    <i class="ri-file-copy-line"></i>
+                  </button>
+                </div>
+                <code
+                  class="command-code">1..1024 | % {echo ((New-Object Net.Sockets.TcpClient).Connect("127.0.0.1",$_)) "Port $_ is open"} 2>$null</code>
+                <p class="command-description">PowerShell-based port scanner to check open ports on localhost (ports
+                  1-1024).</p>
+              </div>
+
+              <h3>DNS and Connectivity Tools</h3>
+              <div class="command-block">
+                <div class="command-header">
+                  <span class="command-title">Flush DNS Cache</span>
+                  <button class="copy-btn" onclick="copyToClipboard('ipconfig /flushdns')" title="Copy command">
+                    <i class="ri-file-copy-line"></i>
+                  </button>
+                </div>
+                <code class="command-code">ipconfig /flushdns</code>
+                <p class="command-description">Clears the DNS resolver cache to resolve DNS-related connectivity issues.
+                </p>
+              </div>
+
+              <div class="command-block">
+                <div class="command-header">
+                  <span class="command-title">Test Specific Port</span>
+                  <button class="copy-btn" onclick="copyToClipboard('Test-NetConnection google.com -Port 443')"
+                    title="Copy command">
+                    <i class="ri-file-copy-line"></i>
+                  </button>
+                </div>
+                <code class="command-code">Test-NetConnection google.com -Port 443</code>
+                <p class="command-description">PowerShell command to test connectivity to a specific port (HTTPS port
+                  443 in this example).</p>
+              </div>
+
+              <p><strong>Note:</strong> These commands are particularly useful for network troubleshooting, system
+                administration, and security testing. Always ensure you have appropriate permissions before running
+                diagnostic commands on production systems.</p>
             </div>
           </div>
         </section>
@@ -1356,7 +1478,14 @@
       if (targetPage) {
         targetPage.classList.add('active');
         currentRoute = route;
-        history.pushState({ route }, '', `#${route}`);
+
+        // Update URL based on route type
+        if (route === 'article' && articleId) {
+          history.pushState({ route, articleId }, '', `/index.html#article/${articleId}`);
+        } else {
+          history.pushState({ route }, '', `/index.html#${route}`);
+        }
+
         updateActiveRail(route);
       }
 
@@ -1407,7 +1536,7 @@
 
       if (route === 'article' && routeParts[1]) {
         showPage('article', routeParts[1]);
-      } else if (['home', 'links', 'vnote'].includes(route)) {
+      } else if (['home', 'links', 'vtool', 'vnote'].includes(route)) {
         showPage(route);
       } else {
         showPage('home');
@@ -1438,18 +1567,6 @@
       'Think and Grow Rich': 'គិត និង កាយជាអ្នកមាន',
       'Cryptoeconomics': 'សេដ្ឋកិច្ចគ្រីបតូ'
     };
-
-    // Update router initialization 
-    function initRouter() {
-      const hash = window.location.hash.substring(1);
-      const route = hash;
-
-      if (['home', 'links', 'vtool', 'vnote'].includes(route)) {
-        showPage(route);
-      } else {
-        showPage('home');
-      }
-    }
 
     // Smooth scroll (updated for single page routing)
     document.querySelectorAll('a[href^="#"]:not([data-route])').forEach(a => {
