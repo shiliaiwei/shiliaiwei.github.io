@@ -57,7 +57,36 @@
         <div class="hero__grid">
           <div class="hero__media">
             <div class="avatar-frame" aria-hidden="true">
-              <img class="avatar" src="source/img/eirsvi.png" alt="Portrait of EIRSVi" />
+              <img class="avatar" src="source/img/eirsvi.svg" alt="Portrait of EIRSVi" draggable="false"
+                oncontextmenu="return false;" ondragstart="return false;" />
+
+              <!-- Image Protection Overlay -->
+              <div class="image-protection-overlay"></div>
+
+              <!-- TV Test Pattern Overlay -->
+              <div class="tv-pattern-overlay">
+                <div class="color-bars">
+                  <div class="bar bar-white"></div>
+                  <div class="bar bar-yellow"></div>
+                  <div class="bar bar-cyan"></div>
+                  <div class="bar bar-green"></div>
+                  <div class="bar bar-blue"></div>
+                  <div class="bar bar-magenta"></div>
+                  <div class="bar bar-red"></div>
+                </div>
+                <div class="lower-bars">
+                  <div class="bar bar-blue-dark"></div>
+                  <div class="bar bar-black-dark"></div>
+                  <div class="bar bar-magenta-dark"></div>
+                  <div class="bar bar-black-dark"></div>
+                  <div class="bar bar-cyan-dark"></div>
+                  <div class="bar bar-black-dark"></div>
+                  <div class="bar bar-white-dark"></div>
+                </div>
+              </div>
+
+              <!-- Glitch Effect Overlay -->
+              <div class="glitch-overlay"></div>
             </div>
           </div>
           <div class="hero__content">
