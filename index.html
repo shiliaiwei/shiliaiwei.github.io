@@ -63,28 +63,6 @@
               <!-- Image Protection Overlay -->
               <div class="image-protection-overlay"></div>
 
-              <!-- TV Test Pattern Overlay -->
-              <div class="tv-pattern-overlay">
-                <div class="color-bars">
-                  <div class="bar bar-white"></div>
-                  <div class="bar bar-yellow"></div>
-                  <div class="bar bar-cyan"></div>
-                  <div class="bar bar-green"></div>
-                  <div class="bar bar-blue"></div>
-                  <div class="bar bar-magenta"></div>
-                  <div class="bar bar-red"></div>
-                </div>
-                <div class="lower-bars">
-                  <div class="bar bar-blue-dark"></div>
-                  <div class="bar bar-black-dark"></div>
-                  <div class="bar bar-magenta-dark"></div>
-                  <div class="bar bar-black-dark"></div>
-                  <div class="bar bar-cyan-dark"></div>
-                  <div class="bar bar-black-dark"></div>
-                  <div class="bar bar-white-dark"></div>
-                </div>
-              </div>
-
               <!-- Glitch Effect Overlay -->
               <div class="glitch-overlay"></div>
             </div>
@@ -100,8 +78,10 @@
       <!-- SKILLS -->
       <section id="skills" class="section container">
         <div class="section__header">
-          <h2>Skills</h2>
-          <p>My technical expertise and personal interests</p>
+          <div class="section__header-content">
+            <h2>Skills</h2>
+            <p>My technical expertise and personal interests</p>
+          </div>
         </div>
         <div class="skills-container">
           <div class="all-skills">
@@ -143,8 +123,10 @@
     <div id="page-links" class="page-content">
       <section class="section container">
         <div class="section__header">
-          <h2>Curated Links & Resources</h2>
-          <p>A collection of powerful tools, resources, and platforms that enhance productivity and knowledge</p>
+          <div class="section__header-content">
+            <h2>Curated Links & Resources</h2>
+            <p>A collection of powerful tools, resources, and platforms that enhance productivity and knowledge</p>
+          </div>
         </div>
 
         <!-- Category Filter -->
@@ -1308,8 +1290,10 @@
     <div id="page-vtool" class="page-content">
       <section class="section container">
         <div class="section__header">
-          <h2>Tool Collection</h2>
-          <p>Web-based utility tools for developers, network engineers, and everyday tasks</p>
+          <div class="section__header-content">
+            <h2>Tool Collection</h2>
+            <p>Web-based utility tools for developers, network engineers, and everyday tasks</p>
+          </div>
         </div>
 
         <!-- Category Filter -->
@@ -1488,8 +1472,10 @@
     <div id="page-vnote" class="page-content">
       <section class="section container">
         <div class="section__header">
-          <h2>VN0TE</h2>
-          <p>Personal notes and articles collection</p>
+          <div class="section__header-content">
+            <h2>VN0TE</h2>
+            <p>Personal notes and articles collection</p>
+          </div>
         </div>
 
         <!-- Cover Cards Grid -->
@@ -1770,8 +1756,10 @@
     <div id="page-cheatsheet" class="page-content">
       <section class="section container">
         <div class="section__header">
-          <h2>Network Cheatsheet</h2>
-          <p>Essential networking reference guide for developers and system administrators</p>
+          <div class="section__header-content">
+            <h2>Network Cheatsheet</h2>
+            <p>Essential networking reference guide for developers and system administrators</p>
+          </div>
         </div>
 
         <!-- Filter System -->
@@ -1927,8 +1915,8 @@
       document.querySelector('.title').textContent = t.title;
       document.querySelector('.tagline').textContent = t.tagline;
       document.querySelector('.lede').textContent = t.lede;
-      document.querySelector('#skills .section__header h2').textContent = t.skillsTitle;
-      document.querySelector('#skills .section__header p').textContent = t.skillsDesc;
+      document.querySelector('#skills .section__header-content h2').textContent = t.skillsTitle;
+      document.querySelector('#skills .section__header-content p').textContent = t.skillsDesc;
     }
 
     // Initialize language content

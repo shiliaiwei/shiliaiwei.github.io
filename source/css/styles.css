@@ -358,88 +358,6 @@ img {
   pointer-events: none;
 }
 
-/* TV Test Pattern Overlay */
-.tv-pattern-overlay {
-  position: absolute;
-  top: 40%;
-  left: 20%;
-  width: 60%;
-  height: 25%;
-  z-index: 10;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-  opacity: 0.8;
-}
-
-.color-bars {
-  display: flex;
-  height: 75%;
-}
-
-.lower-bars {
-  display: flex;
-  height: 25%;
-}
-
-.bar {
-  flex: 1;
-  height: 100%;
-}
-
-/* TV Test Pattern Colors */
-.bar-white {
-  background: #ffffff;
-}
-
-.bar-yellow {
-  background: #ffff00;
-}
-
-.bar-cyan {
-  background: #00ffff;
-}
-
-.bar-green {
-  background: #00ff00;
-}
-
-.bar-magenta {
-  background: #ff00ff;
-}
-
-.bar-red {
-  background: #ff0000;
-}
-
-.bar-blue {
-  background: #0000ff;
-}
-
-.bar-black {
-  background: #000000;
-}
-
-.bar-blue-dark {
-  background: #0000aa;
-}
-
-.bar-black-dark {
-  background: #000000;
-}
-
-.bar-magenta-dark {
-  background: #aa00aa;
-}
-
-.bar-cyan-dark {
-  background: #00aaaa;
-}
-
-.bar-white-dark {
-  background: #aaaaaa;
-}
-
 /* Glitch Effect Overlay */
 .glitch-overlay {
   position: absolute;
@@ -479,6 +397,13 @@ img {
 
 .section__header {
   margin-bottom: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.section__header-content {
   background: linear-gradient(135deg,
       rgba(34, 197, 94, 0.15) 0%,
       rgba(16, 185, 129, 0.1) 25%,
@@ -488,15 +413,18 @@ img {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(74, 222, 128, 0.2);
   border-radius: 16px;
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   position: relative;
   overflow: hidden;
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  display: inline-block;
+  min-width: 300px;
+  max-width: 600px;
 }
 
-.section__header::before {
+.section__header-content::before {
   content: '';
   position: absolute;
   top: 0;
@@ -509,7 +437,7 @@ img {
       transparent);
 }
 
-.section__header::after {
+.section__header-content::after {
   content: '';
   position: absolute;
   top: 0;
@@ -1109,6 +1037,12 @@ img {
     width: 100%;
   }
 
+  .section__header-content {
+    min-width: 280px;
+    max-width: 90%;
+    padding: 1rem 1.5rem;
+  }
+
   .tag-cloud {
     gap: .5rem;
     justify-content: center;
@@ -1203,14 +1137,6 @@ img {
 
   .avatar::before {
     background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px;
-  }
-
-  .tv-pattern-overlay {
-    top: 35%;
-    left: 15%;
-    width: 70%;
-    height: 30%;
-    opacity: 0.75;
   }
 }
 
