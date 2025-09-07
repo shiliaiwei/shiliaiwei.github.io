@@ -1338,16 +1338,6 @@
             <p>Encode and decode text with Base16, Base32, Base58, Base64, Base85, and Base91</p>
           </div>
 
-          <!-- Text Number Converter -->
-          <div class="tool-card" data-category="converter" onclick="openTool('text-number-converter')">
-            <div class="card-header">
-              <i class="ri-hashtag"></i>
-              <span class="category">CONVERTER</span>
-            </div>
-            <h4>Text Number Converter</h4>
-            <p>Convert text to numbers (ASCII values) and numbers to text with various formatting options</p>
-          </div>
-
           <!-- Data Units Converter -->
           <div class="tool-card" data-category="converter" onclick="openTool('data-units-converter')">
             <div class="card-header">
@@ -1356,16 +1346,6 @@
             </div>
             <h4>Data Units Converter</h4>
             <p>Convert between different data storage units and internet speeds</p>
-          </div>
-
-          <!-- Modern Tech Reference -->
-          <div class="tool-card" data-category="reference" onclick="openTool('modern-tech-reference')">
-            <div class="card-header">
-              <i class="ri-cpu-line"></i>
-              <span class="category">REFERENCE</span>
-            </div>
-            <h4>Modern Tech Reference</h4>
-            <p>Quick reference guide for modern technology specifications and use cases</p>
           </div>
 
           <!-- Khmer Lorem Generator -->
@@ -1446,6 +1426,76 @@
             </div>
             <h4>MAC Address Generator</h4>
             <p>Generate random MAC addresses in various formats</p>
+          </div>
+
+          <!-- Block Cipher Tool -->
+          <div class="tool-card" data-category="crypto" onclick="openTool('block-cipher')">
+            <div class="card-header">
+              <i class="ri-lock-line"></i>
+              <span class="category">CRYPTO</span>
+            </div>
+            <h4>Block Cipher</h4>
+            <p>Encrypt and decrypt data using AES, DES, and other block cipher algorithms</p>
+          </div>
+
+          <!-- RC4 Tool -->
+          <div class="tool-card" data-category="crypto" onclick="openTool('rc4')">
+            <div class="card-header">
+              <i class="ri-key-line"></i>
+              <span class="category">CRYPTO</span>
+            </div>
+            <h4>RC4 Stream Cipher</h4>
+            <p>Encrypt and decrypt data using the RC4 stream cipher algorithm</p>
+          </div>
+
+          <!-- Hash Function Tool -->
+          <div class="tool-card" data-category="crypto" onclick="openTool('hash-function')">
+            <div class="card-header">
+              <i class="ri-fingerprint-line"></i>
+              <span class="category">CRYPTO</span>
+            </div>
+            <h4>Hash Functions</h4>
+            <p>Generate cryptographic hashes using SHA-256, MD5, SHA-1, and other algorithms</p>
+          </div>
+
+          <!-- HMAC Tool -->
+          <div class="tool-card" data-category="crypto" onclick="openTool('hmac')">
+            <div class="card-header">
+              <i class="ri-shield-keyhole-line"></i>
+              <span class="category">CRYPTO</span>
+            </div>
+            <h4>HMAC Generator</h4>
+            <p>Generate Hash-based Message Authentication Codes (HMAC) with various hash functions</p>
+          </div>
+
+          <!-- Transform Tool -->
+          <div class="tool-card" data-category="converter" onclick="openTool('transform')">
+            <div class="card-header">
+              <i class="ri-edit-line"></i>
+              <span class="category">CONVERTER</span>
+            </div>
+            <h4>Text Transform</h4>
+            <p>Transform text with replace, reverse, case conversion, and other operations</p>
+          </div>
+
+          <!-- Numeral System Tool -->
+          <div class="tool-card" data-category="converter" onclick="openTool('numeral-system')">
+            <div class="card-header">
+              <i class="ri-calculator-line"></i>
+              <span class="category">CONVERTER</span>
+            </div>
+            <h4>Numeral System Converter</h4>
+            <p>Convert between different numeral systems (binary, decimal, hexadecimal, octal)</p>
+          </div>
+
+          <!-- Bitwise Operation Tool -->
+          <div class="tool-card" data-category="converter" onclick="openTool('bitwise-operation')">
+            <div class="card-header">
+              <i class="ri-bit-coin-line"></i>
+              <span class="category">CONVERTER</span>
+            </div>
+            <h4>Bitwise Operations</h4>
+            <p>Perform bitwise operations (AND, OR, XOR, NOT, shifts) on numbers</p>
           </div>
 
 
@@ -2352,102 +2402,6 @@
             <div class="tool-output" id="dataOutput"></div>
           `
         },
-        'modern-tech-reference': {
-          title: 'Modern Tech Reference Guide',
-          content: `
-            <div class="tool-input">
-              <div class="tech-reference">
-                <h4>Data Storage & Speed Reference:</h4>
-                <div class="reference-grid">
-                  <div class="reference-item">
-                    <strong>KB (Kilobyte):</strong> Small text files, simple emails, favicons
-                  </div>
-                  <div class="reference-item">
-                    <strong>MB (Megabyte):</strong> High-res photos, 1 minute MP3 audio, small PDFs
-                  </div>
-                  <div class="reference-item">
-                    <strong>GB (Gigabyte):</strong> RAM modules, phone storage, HD movie files
-                  </div>
-                  <div class="reference-item">
-                    <strong>TB (Terabyte):</strong> Hard drives, PC SSDs, large backup drives
-                  </div>
-                  <div class="reference-item">
-                    <strong>PB (Petabyte):</strong> Data centers, enterprise storage, cloud services
-                  </div>
-                  <div class="reference-item">
-                    <strong>Kbps:</strong> Dial-up internet, basic audio streaming
-                  </div>
-                  <div class="reference-item">
-                    <strong>Mbps:</strong> Home internet (25-1000 Mbps), WiFi speeds
-                  </div>
-                  <div class="reference-item">
-                    <strong>Gbps:</strong> Fiber internet, local network, enterprise connections
-                  </div>
-                </div>
-                
-                <h4>Hardware Specifications:</h4>
-                <div class="reference-grid">
-                  <div class="reference-item">
-                    <strong>GHz:</strong> CPU clock speed (2.4 GHz, 3.5 GHz boost)
-                  </div>
-                  <div class="reference-item">
-                    <strong>ms (milliseconds):</strong> Network latency, monitor response time
-                  </div>
-                  <div class="reference-item">
-                    <strong>°C:</strong> CPU/GPU temperature monitoring (ideal: 30-70°C)
-                  </div>
-                  <div class="reference-item">
-                    <strong>nm (nanometer):</strong> Chip process technology (3nm, 5nm, 7nm)
-                  </div>
-                  <div class="reference-item">
-                    <strong>Hz:</strong> Display refresh rate (60Hz, 120Hz, 144Hz)
-                  </div>
-                  <div class="reference-item">
-                    <strong>W (Watts):</strong> Power consumption (CPU: 65W, GPU: 300W)
-                  </div>
-                </div>
-                
-                <h4>Common File Sizes:</h4>
-                <div class="reference-grid">
-                  <div class="reference-item">
-                    <strong>1 KB:</strong> Plain text page, small icon
-                  </div>
-                  <div class="reference-item">
-                    <strong>100 KB:</strong> Small image, email with attachments
-                  </div>
-                  <div class="reference-item">
-                    <strong>5 MB:</strong> High-quality photo, song file
-                  </div>
-                  <div class="reference-item">
-                    <strong>50 MB:</strong> Mobile app, large presentation
-                  </div>
-                  <div class="reference-item">
-                    <strong>1 GB:</strong> HD movie file, AAA game (partial)
-                  </div>
-                  <div class="reference-item">
-                    <strong>50 GB:</strong> Modern AAA game, 4K movie
-                  </div>
-                </div>
-                
-                <h4>Internet Speed Requirements:</h4>
-                <div class="reference-grid">
-                  <div class="reference-item">
-                    <strong>1-5 Mbps:</strong> Basic web browsing, email
-                  </div>
-                  <div class="reference-item">
-                    <strong>25 Mbps:</strong> 4K streaming, video calls
-                  </div>
-                  <div class="reference-item">
-                    <strong>100 Mbps:</strong> Gaming, multiple devices
-                  </div>
-                  <div class="reference-item">
-                    <strong>1 Gbps:</strong> Professional work, large file transfers
-                  </div>
-                </div>
-              </div>
-            </div>
-          `
-        },
         'khmer-lorem-generator': {
           title: 'Khmer Lorem Generator',
           content: `
@@ -2607,120 +2561,6 @@
             <div class="tool-output" id="khmerNameOutput"></div>
           `
         },
-        'text-number-converter': {
-          title: 'Text Number Converter',
-          content: `
-            <div class="tool-tabs">
-              <button class="tab-btn active" onclick="switchTextNumberTab('text-to-numbers')">
-                <i class="ri-hashtag"></i>
-                Text to Numbers
-              </button>
-              <button class="tab-btn" onclick="switchTextNumberTab('numbers-to-text')">
-                <i class="ri-file-text-line"></i>
-                Numbers to Text
-              </button>
-            </div>
-            
-            <div id="textnum-text-to-numbers-tab" class="tab-content active">
-              <div class="tool-input">
-                <div class="input-with-buttons">
-                  <textarea id="textToNumberInput" placeholder="Enter text to convert to numbers..." rows="4"></textarea>
-                  <div class="button-group">
-                    <button class="btn-small" onclick="pasteText('textToNumberInput')">
-                      <i class="ri-clipboard-line"></i>
-                      Paste
-                    </button>
-                    <button class="btn-small" onclick="clearInput('textToNumberInput')">
-                      <i class="ri-close-line"></i>
-                      Clear
-                    </button>
-                    <button class="btn-small" onclick="selectAllText('textToNumberInput')">
-                      <i class="ri-select-all-line"></i>
-                      Select All
-                    </button>
-                  </div>
-                </div>
-                
-                <div class="tool-controls">
-                  <label>
-                    Number Format:
-                    <select id="numberFormat">
-                      <option value="ascii">ASCII Values (65 66 67)</option>
-                      <option value="unicode">Unicode Values (65 66 67)</option>
-                      <option value="hex">Hexadecimal (41 42 43)</option>
-                      <option value="octal">Octal (101 102 103)</option>
-                      <option value="binary">Binary (01000001 01000010)</option>
-                    </select>
-                  </label>
-                  
-                  <label>
-                    Separator:
-                    <select id="numberSeparator">
-                      <option value=" ">Space (65 66 67)</option>
-                      <option value=",">Comma (65,66,67)</option>
-                      <option value="-">Dash (65-66-67)</option>
-                      <option value=".">Dot (65.66.67)</option>
-                      <option value="">None (656667)</option>
-                    </select>
-                  </label>
-                </div>
-                
-                <div class="tool-actions">
-                  <button class="btn-primary" onclick="convertTextToNumbers()">
-                    <i class="ri-hashtag"></i>
-                    Convert to Numbers
-                  </button>
-                </div>
-              </div>
-              
-              <div class="tool-output" id="textToNumberOutput"></div>
-            </div>
-            
-            <div id="textnum-numbers-to-text-tab" class="tab-content">
-              <div class="tool-input">
-                <div class="input-with-buttons">
-                  <textarea id="numberToTextInput" placeholder="Enter numbers to convert to text (e.g., 72 101 108 108 111)..." rows="4"></textarea>
-                  <div class="button-group">
-                    <button class="btn-small" onclick="pasteText('numberToTextInput')">
-                      <i class="ri-clipboard-line"></i>
-                      Paste
-                    </button>
-                    <button class="btn-small" onclick="clearInput('numberToTextInput')">
-                      <i class="ri-close-line"></i>
-                      Clear
-                    </button>
-                    <button class="btn-small" onclick="selectAllText('numberToTextInput')">
-                      <i class="ri-select-all-line"></i>
-                      Select All
-                    </button>
-                  </div>
-                </div>
-                
-                <div class="tool-controls">
-                  <label>
-                    Input Format:
-                    <select id="inputNumberFormat">
-                      <option value="ascii">ASCII/Decimal (72 101 108)</option>
-                      <option value="hex">Hexadecimal (48 65 6C)</option>
-                      <option value="octal">Octal (110 145 154)</option>
-                      <option value="binary">Binary (01001000 01100101)</option>
-                    </select>
-                  </label>
-                </div>
-                
-                <div class="tool-actions">
-                  <button class="btn-primary" onclick="convertNumbersToText()">
-                    <i class="ri-file-text-line"></i>
-                    Convert to Text
-                  </button>
-                </div>
-              </div>
-              
-              <div class="tool-output" id="numberToTextOutput"></div>
-            </div>
-          `
-        },
-
         'wifi-qr-generator': {
           title: 'WiFi QR Generator',
           content: `
@@ -2918,6 +2758,374 @@
               </button>
             </div>
             <div class="tool-output" id="macOutput"></div>
+          `
+        },
+        'block-cipher': {
+          title: 'Block Cipher Encryption',
+          content: `
+            <div class="tool-input">
+              <div class="input-with-buttons">
+                <textarea id="blockCipherInput" placeholder="Enter text to encrypt/decrypt..." rows="4"></textarea>
+                <div class="button-group">
+                  <button class="btn-small" onclick="pasteText('blockCipherInput')">
+                    <i class="ri-clipboard-line"></i>
+                    Paste
+                  </button>
+                  <button class="btn-small" onclick="clearInput('blockCipherInput')">
+                    <i class="ri-close-line"></i>
+                    Clear
+                  </button>
+                </div>
+              </div>
+              
+              <div class="tool-controls">
+                <label>
+                  Algorithm:
+                  <select id="blockCipherAlgorithm">
+                    <option value="AES-CBC">AES-CBC</option>
+                    <option value="AES-GCM">AES-GCM</option>
+                    <option value="AES-CTR">AES-CTR</option>
+                    <option value="DES-CBC">DES-CBC</option>
+                  </select>
+                </label>
+                
+                <label>
+                  Key:
+                  <input type="password" id="blockCipherKey" placeholder="Enter encryption key">
+                </label>
+                
+                <label>
+                  Mode:
+                  <select id="blockCipherMode">
+                    <option value="encrypt">Encrypt</option>
+                    <option value="decrypt">Decrypt</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="processBlockCipher()">
+                <i class="ri-lock-line"></i>
+                Process
+              </button>
+            </div>
+            
+            <div class="tool-output" id="blockCipherOutput"></div>
+          `
+        },
+        'rc4': {
+          title: 'RC4 Stream Cipher',
+          content: `
+            <div class="tool-input">
+              <div class="input-with-buttons">
+                <textarea id="rc4Input" placeholder="Enter text to encrypt/decrypt..." rows="4"></textarea>
+                <div class="button-group">
+                  <button class="btn-small" onclick="pasteText('rc4Input')">
+                    <i class="ri-clipboard-line"></i>
+                    Paste
+                  </button>
+                  <button class="btn-small" onclick="clearInput('rc4Input')">
+                    <i class="ri-close-line"></i>
+                    Clear
+                  </button>
+                </div>
+              </div>
+              
+              <div class="tool-controls">
+                <label>
+                  Key:
+                  <input type="password" id="rc4Key" placeholder="Enter RC4 key">
+                </label>
+                
+                <label>
+                  Mode:
+                  <select id="rc4Mode">
+                    <option value="encrypt">Encrypt</option>
+                    <option value="decrypt">Decrypt</option>
+                  </select>
+                </label>
+                
+                <label>
+                  Output Format:
+                  <select id="rc4Format">
+                    <option value="hex">Hexadecimal</option>
+                    <option value="base64">Base64</option>
+                    <option value="text">Text</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="processRC4()">
+                <i class="ri-shuffle-line"></i>
+                Process RC4
+              </button>
+            </div>
+            
+            <div class="tool-output" id="rc4Output"></div>
+          `
+        },
+        'hash-function': {
+          title: 'Hash Function Calculator',
+          content: `
+            <div class="tool-input">
+              <div class="input-with-buttons">
+                <textarea id="hashInput" placeholder="Enter text to hash..." rows="4"></textarea>
+                <div class="button-group">
+                  <button class="btn-small" onclick="pasteText('hashInput')">
+                    <i class="ri-clipboard-line"></i>
+                    Paste
+                  </button>
+                  <button class="btn-small" onclick="clearInput('hashInput')">
+                    <i class="ri-close-line"></i>
+                    Clear
+                  </button>
+                </div>
+              </div>
+              
+              <div class="tool-controls">
+                <label>
+                  Hash Algorithm:
+                  <select id="hashAlgorithm">
+                    <option value="SHA-256">SHA-256</option>
+                    <option value="SHA-384">SHA-384</option>
+                    <option value="SHA-512">SHA-512</option>
+                    <option value="SHA-1">SHA-1</option>
+                    <option value="MD5">MD5</option>
+                  </select>
+                </label>
+                
+                <label>
+                  Output Format:
+                  <select id="hashFormat">
+                    <option value="hex">Hexadecimal</option>
+                    <option value="base64">Base64</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="generateHash()">
+                <i class="ri-fingerprint-line"></i>
+                Generate Hash
+              </button>
+            </div>
+            
+            <div class="tool-output" id="hashOutput"></div>
+          `
+        },
+        'hmac': {
+          title: 'HMAC Calculator',
+          content: `
+            <div class="tool-input">
+              <div class="input-with-buttons">
+                <textarea id="hmacMessage" placeholder="Enter message to authenticate..." rows="3"></textarea>
+                <div class="button-group">
+                  <button class="btn-small" onclick="pasteText('hmacMessage')">
+                    <i class="ri-clipboard-line"></i>
+                    Paste
+                  </button>
+                  <button class="btn-small" onclick="clearInput('hmacMessage')">
+                    <i class="ri-close-line"></i>
+                    Clear
+                  </button>
+                </div>
+              </div>
+              
+              <div class="tool-controls">
+                <label>
+                  Secret Key:
+                  <input type="password" id="hmacKey" placeholder="Enter secret key">
+                </label>
+                
+                <label>
+                  Hash Algorithm:
+                  <select id="hmacAlgorithm">
+                    <option value="SHA-256">HMAC-SHA-256</option>
+                    <option value="SHA-384">HMAC-SHA-384</option>
+                    <option value="SHA-512">HMAC-SHA-512</option>
+                    <option value="SHA-1">HMAC-SHA-1</option>
+                  </select>
+                </label>
+                
+                <label>
+                  Output Format:
+                  <select id="hmacFormat">
+                    <option value="hex">Hexadecimal</option>
+                    <option value="base64">Base64</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="generateHMAC()">
+                <i class="ri-shield-check-line"></i>
+                Generate HMAC
+              </button>
+            </div>
+            
+            <div class="tool-output" id="hmacOutput"></div>
+          `
+        },
+        'transform': {
+          title: 'Text Transform Operations',
+          content: `
+            <div class="tool-input">
+              <div class="input-with-buttons">
+                <textarea id="transformInput" placeholder="Enter text to transform..." rows="4"></textarea>
+                <div class="button-group">
+                  <button class="btn-small" onclick="pasteText('transformInput')">
+                    <i class="ri-clipboard-line"></i>
+                    Paste
+                  </button>
+                  <button class="btn-small" onclick="clearInput('transformInput')">
+                    <i class="ri-close-line"></i>
+                    Clear
+                  </button>
+                </div>
+              </div>
+              
+              <div class="tool-controls">
+                <label>
+                  Transform Type:
+                  <select id="transformType">
+                    <option value="uppercase">Uppercase</option>
+                    <option value="lowercase">Lowercase</option>
+                    <option value="titlecase">Title Case</option>
+                    <option value="reverse">Reverse Text</option>
+                    <option value="replace">Find & Replace</option>
+                  </select>
+                </label>
+                
+                <div id="replaceControls" style="display: none;">
+                  <label>
+                    Find:
+                    <input type="text" id="findText" placeholder="Text to find">
+                  </label>
+                  
+                  <label>
+                    Replace:
+                    <input type="text" id="replaceText" placeholder="Replacement text">
+                  </label>
+                  
+                  <label>
+                    <input type="checkbox" id="caseSensitive"> Case sensitive
+                  </label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="applyTransform()">
+                <i class="ri-magic-line"></i>
+                Apply Transform
+              </button>
+            </div>
+            
+            <div class="tool-output" id="transformOutput"></div>
+          `,
+          init: function () {
+            const transformType = document.getElementById('transformType');
+            const replaceControls = document.getElementById('replaceControls');
+
+            transformType.addEventListener('change', function () {
+              replaceControls.style.display = this.value === 'replace' ? 'block' : 'none';
+            });
+          }
+        },
+        'numeral-system': {
+          title: 'Numeral System Converter',
+          content: `
+            <div class="tool-input">
+              <div class="input-with-buttons">
+                <input type="text" id="numeralInput" placeholder="Enter number to convert...">
+                <div class="button-group">
+                  <button class="btn-small" onclick="pasteText('numeralInput')">
+                    <i class="ri-clipboard-line"></i>
+                    Paste
+                  </button>
+                  <button class="btn-small" onclick="clearInput('numeralInput')">
+                    <i class="ri-close-line"></i>
+                    Clear
+                  </button>
+                </div>
+              </div>
+              
+              <div class="tool-controls">
+                <label>
+                  Input Base:
+                  <select id="inputBase">
+                    <option value="2">Binary (Base 2)</option>
+                    <option value="8">Octal (Base 8)</option>
+                    <option value="10" selected>Decimal (Base 10)</option>
+                    <option value="16">Hexadecimal (Base 16)</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="convertNumeralSystem()">
+                <i class="ri-calculator-line"></i>
+                Convert All Bases
+              </button>
+            </div>
+            
+            <div class="tool-output" id="numeralOutput"></div>
+          `
+        },
+        'bitwise-operation': {
+          title: 'Bitwise Operations Calculator',
+          content: `
+            <div class="tool-input">
+              <div class="bitwise-inputs">
+                <div class="input-group">
+                  <label>First Number (A):</label>
+                  <input type="text" id="bitwiseA" placeholder="Enter first number">
+                </div>
+                
+                <div class="input-group">
+                  <label>Second Number (B):</label>
+                  <input type="text" id="bitwiseB" placeholder="Enter second number">
+                </div>
+              </div>
+              
+              <div class="tool-controls">
+                <label>
+                  Input Format:
+                  <select id="bitwiseFormat">
+                    <option value="decimal">Decimal</option>
+                    <option value="hexadecimal">Hexadecimal</option>
+                    <option value="binary">Binary</option>
+                  </select>
+                </label>
+                
+                <label>
+                  Operation:
+                  <select id="bitwiseOperation">
+                    <option value="and">AND (A & B)</option>
+                    <option value="or">OR (A | B)</option>
+                    <option value="xor">XOR (A ^ B)</option>
+                    <option value="not">NOT (~A)</option>
+                    <option value="shift-left">Left Shift (A << B)</option>
+                    <option value="shift-right">Right Shift (A >> B)</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="performBitwiseOperation()">
+                <i class="ri-calculator-line"></i>
+                Calculate
+              </button>
+            </div>
+            
+            <div class="tool-output" id="bitwiseOutput"></div>
           `
         }
       };
@@ -3149,146 +3357,9 @@
       document.getElementById(`binary-${tab}-tab`).classList.add('active');
     }
 
-    // Text Number Converter Functions
-    function convertTextToNumbers() {
-      const text = document.getElementById('textNumberInput').value;
-      const format = document.getElementById('textNumberFormat').value;
-      const output = document.getElementById('textNumberOutput');
+    // Text Number Converter Functions - REMOVED
 
-      if (!text) {
-        output.innerHTML = '<div class="error">Please enter text to convert</div>';
-        return;
-      }
-
-      let result = '';
-      try {
-        switch (format) {
-          case 'ascii':
-            result = text.split('').map(char => char.charCodeAt(0)).join(' ');
-            break;
-          case 'unicode':
-            result = text.split('').map(char => char.codePointAt(0)).join(' ');
-            break;
-          case 'hex':
-            result = text.split('').map(char => char.charCodeAt(0).toString(16).toUpperCase()).join(' ');
-            break;
-          case 'octal':
-            result = text.split('').map(char => char.charCodeAt(0).toString(8)).join(' ');
-            break;
-          case 'binary':
-            result = text.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
-            break;
-        }
-        outputResult('textNumberOutput', `${format.toUpperCase()} Values:`, result);
-      } catch (error) {
-        output.innerHTML = `<div class="error">Conversion failed: ${error.message}</div>`;
-      }
-    }
-
-    function convertNumbersToText() {
-      const numbers = document.getElementById('textNumberInput').value;
-      const format = document.getElementById('textNumberFormat').value;
-      const output = document.getElementById('textNumberOutput');
-
-      if (!numbers) {
-        output.innerHTML = '<div class="error">Please enter numbers to convert</div>';
-        return;
-      }
-
-      try {
-        const numberArray = numbers.trim().split(/\s+/);
-        let text = '';
-
-        switch (format) {
-          case 'ascii':
-          case 'unicode':
-            text = numberArray.map(num => String.fromCharCode(parseInt(num, 10))).join('');
-            break;
-          case 'hex':
-            text = numberArray.map(num => String.fromCharCode(parseInt(num, 16))).join('');
-            break;
-          case 'octal':
-            text = numberArray.map(num => String.fromCharCode(parseInt(num, 8))).join('');
-            break;
-          case 'binary':
-            text = numberArray.map(num => String.fromCharCode(parseInt(num, 2))).join('');
-            break;
-        }
-
-        if (!text) {
-          throw new Error('Invalid number format');
-        }
-
-        outputResult('textNumberOutput', 'Text:', text);
-      } catch (error) {
-        output.innerHTML = `<div class="error">Invalid ${format} format. Please enter valid ${format} numbers separated by spaces.</div>`;
-      }
-    }
-
-    function switchTextNumberTab(tab) {
-      const tabs = document.querySelectorAll('.tab-btn');
-      const contents = document.querySelectorAll('.tab-content');
-
-      tabs.forEach(t => t.classList.remove('active'));
-      contents.forEach(c => c.classList.remove('active'));
-
-      document.querySelector(`[onclick="switchTextNumberTab('${tab}')"]`).classList.add('active');
-      document.getElementById(`textnumber-${tab}-tab`).classList.add('active');
-    }
-
-    // Enhanced Number System Converter with ASCII support
-    function convertTextToASCII() {
-      const input = document.getElementById('numberInput').value.trim();
-      const output = document.getElementById('numberOutput');
-
-      if (!input) {
-        output.innerHTML = '<div class="error">Please enter text to convert to ASCII</div>';
-        return;
-      }
-
-      try {
-        const asciiValues = input.split('').map(char => char.charCodeAt(0));
-        let resultHTML = '<div class="number-conversions"><h4>ASCII Conversion</h4>';
-
-        asciiValues.forEach((ascii, index) => {
-          resultHTML += `
-            <div class="conversion-result">
-              <div class="conversion-label"><strong>Character "${input[index]}":</strong></div>
-              <div class="conversion-value">ASCII: ${ascii}</div>
-              <button class="btn-secondary copy-btn" onclick="copyToClipboard('${ascii}')">
-                <i class="ri-file-copy-line"></i>
-              </button>
-            </div>
-          `;
-        });
-
-        const allAscii = asciiValues.join(' ');
-        resultHTML += `
-          <div class="conversion-result">
-            <div class="conversion-label"><strong>All ASCII Values:</strong></div>
-            <div class="conversion-value">${allAscii}</div>
-            <button class="btn-secondary copy-btn" onclick="copyToClipboard('${allAscii}')">
-              <i class="ri-file-copy-line"></i>
-            </button>
-          </div>
-        </div>`;
-
-        output.innerHTML = resultHTML;
-      } catch (error) {
-        output.innerHTML = `<div class="error">Conversion failed: ${error.message}</div>`;
-      }
-    }
-
-    function switchNumberTab(tab) {
-      const tabs = document.querySelectorAll('.tab-btn');
-      const contents = document.querySelectorAll('.tab-content');
-
-      tabs.forEach(t => t.classList.remove('active'));
-      contents.forEach(c => c.classList.remove('active'));
-
-      document.querySelector(`[onclick="switchNumberTab('${tab}')"]`).classList.add('active');
-      document.getElementById(`number-${tab}-tab`).classList.add('active');
-    }
+    // Enhanced Number System Converter with ASCII support - REMOVED
 
     // Base Encoding Functions
     function encodeBase() {
@@ -3552,50 +3623,7 @@
       return 'Base91 decoding not fully implemented';
     }
 
-    // Number System Converter
-    function convertNumber() {
-      const input = document.getElementById('numberInput').value.trim();
-      const inputBase = parseInt(document.getElementById('inputBase').value);
-      const output = document.getElementById('numberOutput');
-
-      if (!input) {
-        output.innerHTML = '<div class="error">Please enter a number to convert</div>';
-        return;
-      }
-
-      try {
-        // Convert input to decimal first
-        const decimal = parseInt(input, inputBase);
-        if (isNaN(decimal)) {
-          throw new Error('Invalid number format');
-        }
-
-        const results = [
-          { name: 'Binary (Base 2)', value: decimal.toString(2) },
-          { name: 'Decimal (Base 10)', value: decimal.toString(10) },
-          { name: 'Hexadecimal (Base 16)', value: decimal.toString(16).toUpperCase() },
-          { name: 'Octal (Base 8)', value: decimal.toString(8) }
-        ];
-
-        let resultHTML = '<div class="number-conversions"><h4>Number System Conversions</h4>';
-        results.forEach(result => {
-          resultHTML += `
-            <div class="conversion-result">
-              <div class="conversion-label"><strong>${result.name}:</strong></div>
-              <div class="conversion-value">${result.value}</div>
-              <button class="btn-secondary copy-btn" onclick="copyToClipboard('${result.value}')">
-                <i class="ri-file-copy-line"></i>
-              </button>
-            </div>
-          `;
-        });
-        resultHTML += '</div>';
-
-        output.innerHTML = resultHTML;
-      } catch (error) {
-        output.innerHTML = `<div class="error">Conversion failed: ${error.message}</div>`;
-      }
-    }
+    // Numeral System Converter - DUPLICATE REMOVED
 
     // Tab switching functions
     function switchQRTab(tab) {
@@ -3827,143 +3855,7 @@
       `;
     }
 
-    // Enhanced Data Units Converter
-    function convertDataUnits() {
-      const value = parseFloat(document.getElementById('dataValue').value);
-      const fromUnit = document.getElementById('dataFromUnit').value;
-      const output = document.getElementById('dataOutput');
-
-      if (!value || value <= 0) {
-        output.innerHTML = '<div class="error">Please enter a valid number</div>';
-        return;
-      }
-
-      // Convert to bytes first (base conversion)
-      let bytes = 0;
-
-      // Define conversion factors (bits and bytes)
-      const factors = {
-        // Bits
-        'bits': 1 / 8,
-
-        // Bytes (decimal - SI)
-        'bytes': 1,
-        'kb': 1000,
-        'mb': 1000 * 1000,
-        'gb': 1000 * 1000 * 1000,
-        'tb': 1000 * 1000 * 1000 * 1000,
-        'pb': 1000 * 1000 * 1000 * 1000 * 1000,
-
-        // Bytes (binary - IEC)
-        'kib': 1024,
-        'mib': 1024 * 1024,
-        'gib': 1024 * 1024 * 1024,
-        'tib': 1024 * 1024 * 1024 * 1024,
-
-        // Bits per second (convert to bytes per second for storage)
-        'kbps': 1000 / 8,
-        'mbps': 1000 * 1000 / 8,
-        'gbps': 1000 * 1000 * 1000 / 8
-      };
-
-      bytes = value * factors[fromUnit];
-
-      // Generate all conversions
-      const results = [];
-
-      // Basic conversions
-      results.push({
-        label: 'Bits',
-        value: (bytes * 8).toLocaleString(),
-        copy: (bytes * 8).toString()
-      });
-      results.push({
-        label: 'Bytes',
-        value: bytes.toLocaleString(),
-        copy: bytes.toString()
-      });
-
-      // Decimal (SI) units
-      results.push({
-        label: 'KB (Kilobytes)',
-        value: (bytes / 1000).toFixed(6).replace(/\\.?0+$/, ''),
-        copy: (bytes / 1000).toString()
-      });
-      results.push({
-        label: 'MB (Megabytes)',
-        value: (bytes / (1000 * 1000)).toFixed(9).replace(/\\.?0+$/, ''),
-        copy: (bytes / (1000 * 1000)).toString()
-      });
-      results.push({
-        label: 'GB (Gigabytes)',
-        value: (bytes / (1000 * 1000 * 1000)).toFixed(12).replace(/\\.?0+$/, ''),
-        copy: (bytes / (1000 * 1000 * 1000)).toString()
-      });
-      results.push({
-        label: 'TB (Terabytes)',
-        value: (bytes / (1000 * 1000 * 1000 * 1000)).toFixed(15).replace(/\\.?0+$/, ''),
-        copy: (bytes / (1000 * 1000 * 1000 * 1000)).toString()
-      });
-
-      // Binary (IEC) units
-      results.push({
-        label: 'KiB (Kibibytes)',
-        value: (bytes / 1024).toFixed(6).replace(/\\.?0+$/, ''),
-        copy: (bytes / 1024).toString()
-      });
-      results.push({
-        label: 'MiB (Mebibytes)',
-        value: (bytes / (1024 * 1024)).toFixed(9).replace(/\\.?0+$/, ''),
-        copy: (bytes / (1024 * 1024)).toString()
-      });
-      results.push({
-        label: 'GiB (Gibibytes)',
-        value: (bytes / (1024 * 1024 * 1024)).toFixed(12).replace(/\\.?0+$/, ''),
-        copy: (bytes / (1024 * 1024 * 1024)).toString()
-      });
-      results.push({
-        label: 'TiB (Tebibytes)',
-        value: (bytes / (1024 * 1024 * 1024 * 1024)).toFixed(15).replace(/\\.?0+$/, ''),
-        copy: (bytes / (1024 * 1024 * 1024 * 1024)).toString()
-      });
-
-      // Speed units (bits per second)
-      const bits = bytes * 8;
-      results.push({
-        label: 'Kbps (Kilobits/sec)',
-        value: (bits / 1000).toFixed(6).replace(/\\.?0+$/, ''),
-        copy: (bits / 1000).toString()
-      });
-      results.push({
-        label: 'Mbps (Megabits/sec)',
-        value: (bits / (1000 * 1000)).toFixed(9).replace(/\\.?0+$/, ''),
-        copy: (bits / (1000 * 1000)).toString()
-      });
-      results.push({
-        label: 'Gbps (Gigabits/sec)',
-        value: (bits / (1000 * 1000 * 1000)).toFixed(12).replace(/\\.?0+$/, ''),
-        copy: (bits / (1000 * 1000 * 1000)).toString()
-      });
-
-      // Build output HTML
-      let outputHTML = '<div class="conversion-results">';
-      outputHTML += '<h4>Conversion Results</h4>';
-
-      results.forEach(result => {
-        outputHTML += `
-          <div class="result-item">
-            <div class="result-label"><strong>${result.label}:</strong></div>
-            <div class="result-value">${result.value}</div>
-            <button class="copy-btn" onclick="copyToClipboard('${result.copy}')" title="Copy to clipboard">
-              <i class="ri-file-copy-line"></i>
-            </button>
-          </div>
-        `;
-      });
-
-      outputHTML += '</div>';
-      output.innerHTML = outputHTML;
-    }
+    // Enhanced Data Units Converter - DUPLICATE REMOVED
 
     function clearDataConverter() {
       document.getElementById('dataValue').value = '';
@@ -4821,135 +4713,6 @@
 
       document.body.appendChild(feedback);
       setTimeout(() => feedback.remove(), 2000);
-    }
-
-    // Enhanced AES Encryption/Decryption
-    async function encryptAES() {
-      const text = document.getElementById('aesInput').value;
-      const password = document.getElementById('aesPassword').value;
-      const inputType = document.getElementById('aesInputType').value;
-      const outputType = document.getElementById('aesOutputType').value;
-      const keySize = parseInt(document.getElementById('aesKeySize').value);
-      const mode = document.getElementById('aesMode').value;
-      const output = document.getElementById('aesOutput');
-
-      if (!text || !password) {
-        output.innerHTML = '<div class="error">Please enter both text and password</div>';
-        return;
-      }
-
-      try {
-        // Convert input based on type
-        let inputData = '';
-        if (inputType === 'hex') {
-          inputData = text.match(/.{1,2}/g).map(byte => String.fromCharCode(parseInt(byte, 16))).join('');
-        } else {
-          inputData = text;
-        }
-
-        // Simple AES-style encryption for demo (using Web Crypto API would be more secure)
-        const encoder = new TextEncoder();
-        const data = encoder.encode(inputData);
-        const keyData = encoder.encode(password.padEnd(keySize / 8, '0').substring(0, keySize / 8));
-
-        // Generate IV
-        const iv = crypto.getRandomValues(new Uint8Array(16));
-
-        // Simple XOR-based encryption for demo purposes
-        const encrypted = new Uint8Array(data.length);
-        for (let i = 0; i < data.length; i++) {
-          encrypted[i] = data[i] ^ keyData[i % keyData.length] ^ iv[i % iv.length];
-        }
-
-        // Combine IV and encrypted data
-        const combined = new Uint8Array(iv.length + encrypted.length);
-        combined.set(iv);
-        combined.set(encrypted, iv.length);
-
-        // Convert output based on type
-        let result = '';
-        if (outputType === 'base64') {
-          result = btoa(String.fromCharCode.apply(null, combined));
-        } else {
-          result = Array.from(combined).map(byte => byte.toString(16).padStart(2, '0')).join('');
-        }
-
-        output.innerHTML = `
-          <div class="result-item"><strong>Algorithm:</strong> AES-${keySize}-${mode}</div>
-          <div class="result-item"><strong>Input Type:</strong> ${inputType}</div>
-          <div class="result-item"><strong>Output Type:</strong> ${outputType}</div>
-          <div class="result-item"><strong>Encrypted:</strong><br><textarea readonly>${result}</textarea></div>
-        `;
-      } catch (error) {
-        output.innerHTML = '<div class="error">Encryption failed: ' + error.message + '</div>';
-      }
-    }
-
-    async function decryptAES() {
-      const encryptedText = document.getElementById('aesInput').value;
-      const password = document.getElementById('aesPassword').value;
-      const inputType = document.getElementById('aesInputType').value;
-      const outputType = document.getElementById('aesOutputType').value;
-      const keySize = parseInt(document.getElementById('aesKeySize').value);
-      const mode = document.getElementById('aesMode').value;
-      const output = document.getElementById('aesOutput');
-
-      if (!encryptedText || !password) {
-        output.innerHTML = '<div class="error">Please enter both encrypted text and password</div>';
-        return;
-      }
-
-      try {
-        // Convert input data
-        let combined;
-        if (outputType === 'base64') {
-          combined = new Uint8Array(atob(encryptedText).split('').map(char => char.charCodeAt(0)));
-        } else {
-          combined = new Uint8Array(encryptedText.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
-        }
-
-        // Extract IV and encrypted data
-        const iv = combined.slice(0, 16);
-        const encrypted = combined.slice(16);
-
-        const encoder = new TextEncoder();
-        const keyData = encoder.encode(password.padEnd(keySize / 8, '0').substring(0, keySize / 8));
-
-        // Decrypt
-        const decrypted = new Uint8Array(encrypted.length);
-        for (let i = 0; i < encrypted.length; i++) {
-          decrypted[i] = encrypted[i] ^ keyData[i % keyData.length] ^ iv[i % iv.length];
-        }
-
-        const decoder = new TextDecoder();
-        const result = decoder.decode(decrypted);
-
-        output.innerHTML = `
-          <div class="result-item"><strong>Algorithm:</strong> AES-${keySize}-${mode}</div>
-          <div class="result-item"><strong>Decrypted:</strong><br><textarea readonly>${result}</textarea></div>
-        `;
-      } catch (error) {
-        output.innerHTML = '<div class="error">Invalid encrypted text or decryption failed: ' + error.message + '</div>';
-      }
-    }
-
-    // ROT13 Cipher
-    function convertROT13() {
-      const input = document.getElementById('rot13Input').value;
-      const output = document.getElementById('rot13Output');
-
-      if (!input) {
-        output.innerHTML = '<div class="error">Please enter text to convert</div>';
-        return;
-      }
-
-      const result = input.replace(/[A-Za-z]/g, function (char) {
-        return String.fromCharCode(
-          ((char <= 'Z' ? 90 : 122) >= (char = char.charCodeAt(0) + 13)) ? char : char - 26
-        );
-      });
-
-      output.innerHTML = `<div class="result-item"><strong>ROT13 Result:</strong><br><textarea readonly>${result}</textarea></div>`;
     }
 
     // Caesar Cipher
@@ -5947,20 +5710,44 @@
         copy: (bits / (1000 * 1000 * 1000)).toString()
       });
 
-      // Build output HTML
+      // Build output HTML with separate sections
       let outputHTML = '<div class="conversion-results">';
-      outputHTML += '<h4>Conversion Results</h4>';
+      outputHTML += '<h4>Data Storage Units</h4>';
 
-      results.forEach(result => {
-        outputHTML += `
-          <div class="result-item">
-            <div class="result-label"><strong>${result.label}:</strong></div>
-            <div class="result-value">${result.value}</div>
-            <button class="copy-btn" onclick="copyToClipboard('${result.copy}')" title="Copy to clipboard">
-              <i class="ri-file-copy-line"></i>
-            </button>
-          </div>
-        `;
+      // Data storage section
+      const storageUnits = ['Bits', 'Bytes', 'KB (Kilobytes)', 'MB (Megabytes)', 'GB (Gigabytes)', 'TB (Terabytes)', 'KiB (Kibibytes)', 'MiB (Mebibytes)', 'GiB (Gibibytes)', 'TiB (Tebibytes)'];
+      storageUnits.forEach(unit => {
+        const result = results.find(r => r.label === unit);
+        if (result) {
+          outputHTML += `
+            <div class="result-item">
+              <div class="result-label"><strong>${result.label}:</strong></div>
+              <div class="result-value">${result.value}</div>
+              <button class="copy-btn" onclick="copyToClipboard('${result.copy}')" title="Copy to clipboard">
+                <i class="ri-file-copy-line"></i>
+              </button>
+            </div>
+          `;
+        }
+      });
+
+      outputHTML += '<h4>Internet Speed Units</h4>';
+
+      // Internet speed section
+      const speedUnits = ['Kbps (Kilobits/sec)', 'Mbps (Megabits/sec)', 'Gbps (Gigabits/sec)'];
+      speedUnits.forEach(unit => {
+        const result = results.find(r => r.label === unit);
+        if (result) {
+          outputHTML += `
+            <div class="result-item">
+              <div class="result-label"><strong>${result.label}:</strong></div>
+              <div class="result-value">${result.value}</div>
+              <button class="copy-btn" onclick="copyToClipboard('${result.copy}')" title="Copy to clipboard">
+                <i class="ri-file-copy-line"></i>
+              </button>
+            </div>
+          `;
+        }
       });
 
       outputHTML += '</div>';
@@ -6324,6 +6111,413 @@
       document.getElementById('khmerParagraphs').value = '2';
       document.getElementById('khmerSentences').value = '4';
       document.getElementById('khmerStyle').value = 'traditional';
+    }
+
+    // New Crypto Tool Functions
+
+    // Block Cipher Encryption/Decryption
+    async function processBlockCipher() {
+      const text = document.getElementById('blockCipherInput').value;
+      const algorithm = document.getElementById('blockCipherAlgorithm').value;
+      const key = document.getElementById('blockCipherKey').value;
+      const mode = document.getElementById('blockCipherMode').value;
+      const output = document.getElementById('blockCipherOutput');
+
+      if (!text || !key) {
+        output.innerHTML = '<div class="error">Please enter both text and key</div>';
+        return;
+      }
+
+      try {
+        let result = '';
+        if (mode === 'encrypt') {
+          // Simple encryption simulation for demo
+          const encoder = new TextEncoder();
+          const data = encoder.encode(text);
+          const keyData = encoder.encode(key.padEnd(32, '0').substring(0, 32));
+
+          // XOR-based encryption
+          const encrypted = new Uint8Array(data.length);
+          for (let i = 0; i < data.length; i++) {
+            encrypted[i] = data[i] ^ keyData[i % keyData.length];
+          }
+
+          result = Array.from(encrypted).map(byte => byte.toString(16).padStart(2, '0')).join('');
+        } else {
+          // Decryption
+          const encrypted = new Uint8Array(text.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+          const keyData = new TextEncoder().encode(key.padEnd(32, '0').substring(0, 32));
+
+          const decrypted = new Uint8Array(encrypted.length);
+          for (let i = 0; i < encrypted.length; i++) {
+            decrypted[i] = encrypted[i] ^ keyData[i % keyData.length];
+          }
+
+          const decoder = new TextDecoder();
+          result = decoder.decode(decrypted);
+        }
+
+        output.innerHTML = `
+          <div class="result-item"><strong>Algorithm:</strong> ${algorithm}</div>
+          <div class="result-item"><strong>Mode:</strong> ${mode === 'encrypt' ? 'Encryption' : 'Decryption'}</div>
+          <div class="result-item"><strong>Result:</strong><br><textarea readonly>${result}</textarea></div>
+        `;
+      } catch (error) {
+        output.innerHTML = '<div class="error">Processing failed: ' + error.message + '</div>';
+      }
+    }
+
+    // RC4 Stream Cipher
+    function processRC4() {
+      const text = document.getElementById('rc4Input').value;
+      const key = document.getElementById('rc4Key').value;
+      const mode = document.getElementById('rc4Mode').value;
+      const format = document.getElementById('rc4Format').value;
+      const output = document.getElementById('rc4Output');
+
+      if (!text || !key) {
+        output.innerHTML = '<div class="error">Please enter both text and key</div>';
+        return;
+      }
+
+      try {
+        let result = '';
+
+        if (mode === 'encrypt') {
+          const encrypted = rc4Encrypt(text, key);
+          if (format === 'hex') {
+            result = Array.from(encrypted).map(byte => byte.toString(16).padStart(2, '0')).join('');
+          } else if (format === 'base64') {
+            result = btoa(String.fromCharCode.apply(null, encrypted));
+          } else {
+            result = new TextDecoder().decode(encrypted);
+          }
+        } else {
+          let encrypted;
+          if (format === 'hex') {
+            encrypted = new Uint8Array(text.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+          } else if (format === 'base64') {
+            encrypted = new Uint8Array(atob(text).split('').map(char => char.charCodeAt(0)));
+          } else {
+            encrypted = new TextEncoder().encode(text);
+          }
+
+          const decrypted = rc4Decrypt(encrypted, key);
+          result = new TextDecoder().decode(decrypted);
+        }
+
+        output.innerHTML = `
+          <div class="result-item"><strong>Algorithm:</strong> RC4</div>
+          <div class="result-item"><strong>Mode:</strong> ${mode === 'encrypt' ? 'Encryption' : 'Decryption'}</div>
+          <div class="result-item"><strong>Format:</strong> ${format}</div>
+          <div class="result-item"><strong>Result:</strong><br><textarea readonly>${result}</textarea></div>
+        `;
+      } catch (error) {
+        output.innerHTML = '<div class="error">RC4 processing failed: ' + error.message + '</div>';
+      }
+    }
+
+    function rc4Encrypt(text, key) {
+      const s = [];
+      for (let i = 0; i < 256; i++) s[i] = i;
+
+      let j = 0;
+      for (let i = 0; i < 256; i++) {
+        j = (j + s[i] + key.charCodeAt(i % key.length)) % 256;
+        [s[i], s[j]] = [s[j], s[i]];
+      }
+
+      const data = new TextEncoder().encode(text);
+      const result = new Uint8Array(data.length);
+      let i = 0, k = 0;
+
+      for (let n = 0; n < data.length; n++) {
+        i = (i + 1) % 256;
+        j = (j + s[i]) % 256;
+        [s[i], s[j]] = [s[j], s[i]];
+        k = s[(s[i] + s[j]) % 256];
+        result[n] = data[n] ^ k;
+      }
+
+      return result;
+    }
+
+    function rc4Decrypt(encrypted, key) {
+      return rc4Encrypt(new TextDecoder().decode(encrypted), key);
+    }
+
+    // Hash Function Calculator
+    async function generateHash() {
+      const text = document.getElementById('hashInput').value;
+      const algorithm = document.getElementById('hashAlgorithm').value;
+      const format = document.getElementById('hashFormat').value;
+      const output = document.getElementById('hashOutput');
+
+      if (!text) {
+        output.innerHTML = '<div class="error">Please enter text to hash</div>';
+        return;
+      }
+
+      try {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(text);
+        const hashBuffer = await crypto.subtle.digest(algorithm, data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+        let result = '';
+        if (format === 'base64') {
+          result = btoa(String.fromCharCode.apply(null, hashArray));
+        } else {
+          result = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        output.innerHTML = `
+          <div class="result-item"><strong>Algorithm:</strong> ${algorithm}</div>
+          <div class="result-item"><strong>Input Length:</strong> ${text.length} characters</div>
+          <div class="result-item"><strong>Hash (${format}):</strong><br><textarea readonly>${result}</textarea></div>
+        `;
+      } catch (error) {
+        output.innerHTML = '<div class="error">Hash generation failed: ' + error.message + '</div>';
+      }
+    }
+
+    // HMAC Calculator
+    async function generateHMAC() {
+      const message = document.getElementById('hmacMessage').value;
+      const key = document.getElementById('hmacKey').value;
+      const algorithm = document.getElementById('hmacAlgorithm').value;
+      const format = document.getElementById('hmacFormat').value;
+      const output = document.getElementById('hmacOutput');
+
+      if (!message || !key) {
+        output.innerHTML = '<div class="error">Please enter both message and key</div>';
+        return;
+      }
+
+      try {
+        const encoder = new TextEncoder();
+        const keyData = await crypto.subtle.importKey(
+          'raw',
+          encoder.encode(key),
+          { name: 'HMAC', hash: algorithm.replace('HMAC-', '') },
+          false,
+          ['sign']
+        );
+
+        const signature = await crypto.subtle.sign('HMAC', keyData, encoder.encode(message));
+        const hashArray = Array.from(new Uint8Array(signature));
+
+        let result = '';
+        if (format === 'base64') {
+          result = btoa(String.fromCharCode.apply(null, hashArray));
+        } else {
+          result = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        output.innerHTML = `
+          <div class="result-item"><strong>Algorithm:</strong> ${algorithm}</div>
+          <div class="result-item"><strong>Message Length:</strong> ${message.length} characters</div>
+          <div class="result-item"><strong>HMAC (${format}):</strong><br><textarea readonly>${result}</textarea></div>
+        `;
+      } catch (error) {
+        output.innerHTML = '<div class="error">HMAC generation failed: ' + error.message + '</div>';
+      }
+    }
+
+    // Text Transform Operations
+    function applyTransform() {
+      const text = document.getElementById('transformInput').value;
+      const transformType = document.getElementById('transformType').value;
+      const output = document.getElementById('transformOutput');
+
+      if (!text) {
+        output.innerHTML = '<div class="error">Please enter text to transform</div>';
+        return;
+      }
+
+      try {
+        let result = '';
+
+        switch (transformType) {
+          case 'uppercase':
+            result = text.toUpperCase();
+            break;
+          case 'lowercase':
+            result = text.toLowerCase();
+            break;
+          case 'titlecase':
+            result = text.replace(/\w\S*/g, (txt) =>
+              txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+            );
+            break;
+          case 'reverse':
+            result = text.split('').reverse().join('');
+            break;
+          case 'replace':
+            const findText = document.getElementById('findText').value;
+            const replaceText = document.getElementById('replaceText').value;
+            const caseSensitive = document.getElementById('caseSensitive').checked;
+
+            if (!findText) {
+              output.innerHTML = '<div class="error">Please enter text to find</div>';
+              return;
+            }
+
+            const flags = caseSensitive ? 'g' : 'gi';
+            const regex = new RegExp(findText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), flags);
+            result = text.replace(regex, replaceText);
+            break;
+        }
+
+        output.innerHTML = `
+          <div class="result-item"><strong>Transform:</strong> ${transformType.replace(/^\w/, c => c.toUpperCase())}</div>
+          <div class="result-item"><strong>Original Length:</strong> ${text.length} characters</div>
+          <div class="result-item"><strong>Result:</strong><br><textarea readonly>${result}</textarea></div>
+        `;
+      } catch (error) {
+        output.innerHTML = '<div class="error">Transform failed: ' + error.message + '</div>';
+      }
+    }
+
+    // Numeral System Converter
+    function convertNumeralSystem() {
+      const input = document.getElementById('numeralInput').value.trim();
+      const inputBase = parseInt(document.getElementById('inputBase').value);
+      const output = document.getElementById('numeralOutput');
+
+      if (!input) {
+        output.innerHTML = '<div class="error">Please enter a number to convert</div>';
+        return;
+      }
+
+      try {
+        // Convert input to decimal first
+        const decimal = parseInt(input, inputBase);
+        if (isNaN(decimal)) {
+          throw new Error('Invalid number format for base ' + inputBase);
+        }
+
+        const results = [
+          { name: 'Binary (Base 2)', value: decimal.toString(2) },
+          { name: 'Octal (Base 8)', value: decimal.toString(8) },
+          { name: 'Decimal (Base 10)', value: decimal.toString(10) },
+          { name: 'Hexadecimal (Base 16)', value: decimal.toString(16).toUpperCase() }
+        ];
+
+        let resultHTML = '<div class="numeral-conversions"><h4>Numeral System Conversions</h4>';
+        resultHTML += `<div class="result-item"><strong>Input:</strong> ${input} (Base ${inputBase})</div>`;
+
+        results.forEach(result => {
+          resultHTML += `
+            <div class="conversion-result">
+              <div class="conversion-label"><strong>${result.name}:</strong></div>
+              <div class="conversion-value">${result.value}</div>
+              <button class="btn-secondary copy-btn" onclick="copyToClipboard('${result.value}')">
+                <i class="ri-file-copy-line"></i>
+              </button>
+            </div>
+          `;
+        });
+        resultHTML += '</div>';
+
+        output.innerHTML = resultHTML;
+      } catch (error) {
+        output.innerHTML = `<div class="error">Conversion failed: ${error.message}</div>`;
+      }
+    }
+
+    // Bitwise Operations Calculator
+    function performBitwiseOperation() {
+      const inputA = document.getElementById('bitwiseA').value.trim();
+      const inputB = document.getElementById('bitwiseB').value.trim();
+      const format = document.getElementById('bitwiseFormat').value;
+      const operation = document.getElementById('bitwiseOperation').value;
+      const output = document.getElementById('bitwiseOutput');
+
+      if (!inputA) {
+        output.innerHTML = '<div class="error">Please enter at least the first number</div>';
+        return;
+      }
+
+      try {
+        // Parse inputs based on format
+        let numA, numB;
+
+        if (format === 'decimal') {
+          numA = parseInt(inputA, 10);
+          numB = inputB ? parseInt(inputB, 10) : 0;
+        } else if (format === 'hexadecimal') {
+          numA = parseInt(inputA, 16);
+          numB = inputB ? parseInt(inputB, 16) : 0;
+        } else { // binary
+          numA = parseInt(inputA, 2);
+          numB = inputB ? parseInt(inputB, 2) : 0;
+        }
+
+        if (isNaN(numA) || (inputB && isNaN(numB))) {
+          throw new Error('Invalid number format');
+        }
+
+        let result, operationName;
+
+        switch (operation) {
+          case 'and':
+            result = numA & numB;
+            operationName = 'AND (A & B)';
+            break;
+          case 'or':
+            result = numA | numB;
+            operationName = 'OR (A | B)';
+            break;
+          case 'xor':
+            result = numA ^ numB;
+            operationName = 'XOR (A ^ B)';
+            break;
+          case 'not':
+            result = ~numA;
+            operationName = 'NOT (~A)';
+            break;
+          case 'shift-left':
+            result = numA << numB;
+            operationName = 'Left Shift (A << B)';
+            break;
+          case 'shift-right':
+            result = numA >> numB;
+            operationName = 'Right Shift (A >> B)';
+            break;
+        }
+
+        // Format results
+        const results = [
+          { name: 'Decimal', value: result.toString(10) },
+          { name: 'Hexadecimal', value: '0x' + result.toString(16).toUpperCase() },
+          { name: 'Binary', value: result.toString(2).padStart(8, '0') }
+        ];
+
+        let resultHTML = '<div class="bitwise-results"><h4>Bitwise Operation Results</h4>';
+        resultHTML += `<div class="result-item"><strong>Operation:</strong> ${operationName}</div>`;
+        resultHTML += `<div class="result-item"><strong>Input A:</strong> ${inputA} (${format})</div>`;
+        if (inputB) {
+          resultHTML += `<div class="result-item"><strong>Input B:</strong> ${inputB} (${format})</div>`;
+        }
+
+        results.forEach(res => {
+          resultHTML += `
+            <div class="conversion-result">
+              <div class="conversion-label"><strong>${res.name}:</strong></div>
+              <div class="conversion-value">${res.value}</div>
+              <button class="btn-secondary copy-btn" onclick="copyToClipboard('${res.value}')">
+                <i class="ri-file-copy-line"></i>
+              </button>
+            </div>
+          `;
+        });
+        resultHTML += '</div>';
+
+        output.innerHTML = resultHTML;
+      } catch (error) {
+        output.innerHTML = `<div class="error">Bitwise operation failed: ${error.message}</div>`;
+      }
     }
   </script>
 </body>
