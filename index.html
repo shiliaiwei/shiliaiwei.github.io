@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>\V/</title>
+  <title>EIRSVi • Developer Tools & Generators</title>
 
   <!-- Mobile Browser Theme Colors -->
   <meta name="theme-color" content="#1e293b" />
@@ -12,10 +12,15 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
 
+  <!-- Mobile-First Responsive Meta -->
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="source/css/styles.css" />
+
   <meta name="description" content="EIRSVi • Developer — To Be Educated Is To Be Changed" />
 </head>
 
@@ -1349,13 +1354,32 @@
           </div>
 
           <!-- Khmer Lorem Generator -->
-          <div class="tool-card" data-category="generator" onclick="openTool('khmer-lorem-generator')">
+          <div class="tool-card modern-card" data-category="generator" onclick="openTool('khmer-lorem-generator')">
             <div class="card-header">
               <i class="ri-file-text-line"></i>
               <span class="category">GENERATOR</span>
             </div>
             <h4>Khmer Lorem Generator</h4>
-            <p>Generate Khmer paragraph text with traditional and modern words for design mockups</p>
+            <p>Generate authentic Khmer Lorem Ipsum text with traditional and modern words for design mockups</p>
+            <div class="tool-features">
+              <span class="feature-tag">Short/Medium/Long</span>
+              <span class="feature-tag">Copy Function</span>
+            </div>
+          </div>
+
+          <!-- English Paragraph Generator -->
+          <div class="tool-card modern-card" data-category="generator"
+            onclick="openTool('english-paragraph-generator')">
+            <div class="card-header">
+              <i class="ri-english-input"></i>
+              <span class="category">GENERATOR</span>
+            </div>
+            <h4>English Paragraph Generator</h4>
+            <p>Generate readable English paragraphs with various styles and lengths for content creation</p>
+            <div class="tool-features">
+              <span class="feature-tag">Multiple Styles</span>
+              <span class="feature-tag">Instant Copy</span>
+            </div>
           </div>
 
           <!-- Enhanced QR Code Generator -->
@@ -1406,16 +1430,6 @@
             </div>
             <h4>Color Palette Generator</h4>
             <p>Generate harmonious color palettes from a base color</p>
-          </div>
-
-          <!-- Lorem Ipsum Generator -->
-          <div class="tool-card" data-category="generator" onclick="openTool('lorem-generator')">
-            <div class="card-header">
-              <i class="ri-file-text-line"></i>
-              <span class="category">GENERATOR</span>
-            </div>
-            <h4>Lorem Ipsum Generator</h4>
-            <p>Generate placeholder text for design and development projects</p>
           </div>
 
           <!-- MAC Address Generator -->
@@ -2434,6 +2448,60 @@
             <div class="tool-output" id="khmerLoremOutput"></div>
           `
         },
+        'english-paragraph-generator': {
+          title: 'English Paragraph Generator',
+          content: `
+            <div class="tool-input">
+              <div class="tool-controls">
+                <label>
+                  Number of Paragraphs:
+                  <select id="englishParagraphs">
+                    <option value="1">1 Paragraph</option>
+                    <option value="2" selected>2 Paragraphs</option>
+                    <option value="3">3 Paragraphs</option>
+                    <option value="4">4 Paragraphs</option>
+                    <option value="5">5 Paragraphs</option>
+                    <option value="10">10 Paragraphs</option>
+                  </select>
+                </label>
+                
+                <label>
+                  Paragraph Style:
+                  <select id="englishStyle">
+                    <option value="lorem" selected>Lorem Ipsum (Classic)</option>
+                    <option value="professional">Professional Business</option>
+                    <option value="academic">Academic Research</option>
+                    <option value="creative">Creative Writing</option>
+                    <option value="technical">Technical Documentation</option>
+                    <option value="casual">Casual Conversation</option>
+                  </select>
+                </label>
+                
+                <label>
+                  Paragraph Length:
+                  <select id="englishLength">
+                    <option value="short">Short (3-4 sentences)</option>
+                    <option value="medium" selected>Medium (5-6 sentences)</option>
+                    <option value="long">Long (7-10 sentences)</option>
+                  </select>
+                </label>
+              </div>
+              
+              <div class="tool-actions">
+                <button class="btn-primary" onclick="generateEnglishParagraphs()">
+                  <i class="ri-english-input"></i>
+                  Generate English Text
+                </button>
+                <button class="btn-secondary" onclick="clearEnglishParagraphs()">
+                  <i class="ri-refresh-line"></i>
+                  Reset
+                </button>
+              </div>
+            </div>
+            
+            <div class="tool-output" id="englishParagraphOutput"></div>
+          `
+        },
         'qr-code-generator': {
           title: 'QR Code Generator',
           content: `
@@ -2457,25 +2525,39 @@
               </div>
               
               <div class="tool-controls">
-                <label>
-                  QR Code Size:
-                  <select id="qrSize">
-                    <option value="150x150">Small (150x150)</option>
-                    <option value="200x200" selected>Medium (200x200)</option>
-                    <option value="300x300">Large (300x300)</option>
-                    <option value="400x400">Extra Large (400x400)</option>
-                  </select>
-                </label>
+                <div class="control-row">
+                  <label>
+                    QR Code Size:
+                    <select id="qrSize">
+                      <option value="150x150">Small (150x150)</option>
+                      <option value="200x200" selected>Medium (200x200)</option>
+                      <option value="300x300">Large (300x300)</option>
+                      <option value="400x400">Extra Large (400x400)</option>
+                    </select>
+                  </label>
+                  
+                  <label>
+                    Error Correction:
+                    <select id="qrErrorCorrection">
+                      <option value="L">Low (7%)</option>
+                      <option value="M" selected>Medium (15%)</option>
+                      <option value="Q">Quartile (25%)</option>
+                      <option value="H">High (30%)</option>
+                    </select>
+                  </label>
+                </div>
                 
-                <label>
-                  Error Correction:
-                  <select id="qrErrorCorrection">
-                    <option value="L">Low (7%)</option>
-                    <option value="M" selected>Medium (15%)</option>
-                    <option value="Q">Quartile (25%)</option>
-                    <option value="H">High (30%)</option>
-                  </select>
-                </label>
+                <div class="control-row">
+                  <label>
+                    Foreground Color:
+                    <input type="color" id="qrForegroundColor" value="#000000">
+                  </label>
+                  
+                  <label>
+                    Background Color:
+                    <input type="color" id="qrBackgroundColor" value="#ffffff">
+                  </label>
+                </div>
               </div>
             </div>
             
@@ -2483,6 +2565,10 @@
               <button class="btn-primary" onclick="generateQRCode()">
                 <i class="ri-qr-code-line"></i>
                 Generate QR Code
+              </button>
+              <button class="btn-secondary" onclick="clearQRGenerator()">
+                <i class="ri-refresh-line"></i>
+                Clear All
               </button>
             </div>
             
@@ -2494,30 +2580,53 @@
           content: `
             <div class="tool-input">
               <div class="tool-controls">
-                <label>
-                  Name Type:
-                  <select id="khmerNameType">
-                    <option value="male">Male Names</option>
-                    <option value="female">Female Names</option>
-                    <option value="both" selected>Mixed (Male & Female)</option>
-                  </select>
-                </label>
+                <div class="control-row">
+                  <label>
+                    Name Type:
+                    <select id="khmerNameType">
+                      <option value="male">Male Names</option>
+                      <option value="female">Female Names</option>
+                      <option value="both" selected>Mixed (Male & Female)</option>
+                    </select>
+                  </label>
+                  
+                  <label>
+                    Number of Names:
+                    <select id="khmerNameCount">
+                      <option value="1">1 Name</option>
+                      <option value="3">3 Names</option>
+                      <option value="5" selected>5 Names</option>
+                      <option value="10">10 Names</option>
+                      <option value="20">20 Names</option>
+                    </select>
+                  </label>
+                </div>
                 
-                <label>
-                  Number of Names:
-                  <select id="khmerNameCount">
-                    <option value="1">1 Name</option>
-                    <option value="3">3 Names</option>
-                    <option value="5" selected>5 Names</option>
-                    <option value="10">10 Names</option>
-                    <option value="20">20 Names</option>
-                  </select>
-                </label>
+                <div class="control-row">
+                  <label>
+                    Name Style:
+                    <select id="khmerNameStyle">
+                      <option value="traditional" selected>Traditional Names</option>
+                      <option value="modern">Modern Names</option>
+                      <option value="mixed">Mixed Traditional & Modern</option>
+                    </select>
+                  </label>
+                  
+                  <label>
+                    Display Format:
+                    <select id="khmerDisplayFormat">
+                      <option value="detailed" selected>Detailed (Khmer + Latin + Meaning)</option>
+                      <option value="khmer">Khmer Script Only</option>
+                      <option value="latin">Latin Only</option>
+                      <option value="simple">Simple (Khmer + Latin)</option>
+                    </select>
+                  </label>
+                </div>
                 
                 <div class="checkbox-group">
                   <label><input type="checkbox" id="includeLocation" checked> Include Cambodia Location</label>
-                  <label><input type="checkbox" id="includeLatin" checked> Include Latin Transliteration</label>
-                  <label><input type="checkbox" id="includeFullName" checked> Generate Full Names</label>
+                  <label><input type="checkbox" id="includeFullName" checked> Generate Full Names (First + Last)</label>
+                  <label><input type="checkbox" id="includePronunciation"> Include Pronunciation Guide</label>
                 </div>
               </div>
             </div>
@@ -2529,13 +2638,24 @@
               </button>
               <button class="btn-secondary" onclick="generateCambodiaLocation()">
                 <i class="ri-map-pin-line"></i>
-                Generate Location Only
+                Location Only
+              </button>
+              <button class="btn-secondary" onclick="clearKhmerNames()">
+                <i class="ri-refresh-line"></i>
+                Clear
               </button>
             </div>
             
             <div class="cambodia-info">
-              <h4>About Khmer Names:</h4>
-              <p>Traditional Khmer names often have meanings related to nature, virtues, or wishes for the child. Family names typically come after given names in Cambodian culture.</p>
+              <h4><i class="ri-information-line"></i> About Khmer Names:</h4>
+              <p>Traditional Khmer names often reflect nature, virtues, hopes, or Buddhist concepts. In Cambodian culture, the family name typically follows the given name, and names carry deep cultural significance and meaning.</p>
+              <div class="name-examples">
+                <strong>Popular Elements:</strong>
+                <span class="tag">ចន្ទ (Chan - Moon)</span>
+                <span class="tag">សុខ (Sok - Happiness)</span>
+                <span class="tag">រតន (Roth - Gem)</span>
+                <span class="tag">ធារា (Thea - River)</span>
+              </div>
             </div>
             
             <div class="tool-output" id="khmerNameOutput"></div>
@@ -2545,33 +2665,100 @@
           title: 'WiFi QR Generator',
           content: `
             <div class="tool-input">
-              <div class="input-with-buttons">
-                <input type="text" id="wifiSSID" placeholder="Network Name (SSID)">
-                <div class="button-group">
-                  <button class="btn-small btn-paste" onclick="pasteText('wifiSSID')">
-                    <i class="ri-clipboard-line"></i>
-                    Paste
-                  </button>
-                  <button class="btn-small btn-clear" onclick="clearInput('wifiSSID')">
-                    <i class="ri-close-line"></i>
-                    Clear
-                  </button>
+              <div class="wifi-form">
+                <div class="form-group">
+                  <label for="wifiSSID">
+                    <i class="ri-wifi-line"></i>
+                    Network Name (SSID):
+                  </label>
+                  <div class="input-with-buttons">
+                    <input type="text" id="wifiSSID" placeholder="Enter your WiFi network name" required>
+                    <div class="button-group">
+                      <button class="btn-small" onclick="pasteText('wifiSSID')" title="Paste">
+                        <i class="ri-clipboard-line"></i>
+                      </button>
+                      <button class="btn-small" onclick="clearInput('wifiSSID')" title="Clear">
+                        <i class="ri-close-line"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="wifiPassword">
+                    <i class="ri-lock-line"></i>
+                    Password:
+                  </label>
+                  <div class="password-input">
+                    <input type="password" id="wifiPassword" placeholder="Enter WiFi password">
+                    <button type="button" class="toggle-password" onclick="togglePasswordVisibility('wifiPassword')" title="Show/Hide Password">
+                      <i class="ri-eye-line"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label for="wifiSecurity">
+                    <i class="ri-shield-line"></i>
+                    Security Type:
+                  </label>
+                  <select id="wifiSecurity">
+                    <option value="WPA">WPA/WPA2 (Recommended)</option>
+                    <option value="WPA3">WPA3 (Latest)</option>
+                    <option value="WEP">WEP (Legacy)</option>
+                    <option value="nopass">No Password (Open Network)</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label>
+                    <i class="ri-settings-line"></i>
+                    QR Code Options:
+                  </label>
+                  <div class="wifi-options">
+                    <label class="checkbox-label">
+                      <input type="checkbox" id="wifiHidden">
+                      <span>Hidden Network (SSID not broadcast)</span>
+                    </label>
+                    <div class="size-selector">
+                      <label for="wifiQRSize">Size:</label>
+                      <select id="wifiQRSize">
+                        <option value="200x200" selected>Medium (200x200)</option>
+                        <option value="300x300">Large (300x300)</option>
+                        <option value="400x400">Extra Large (400x400)</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
-              
-              <input type="password" id="wifiPassword" placeholder="Password">
-              <select id="wifiSecurity">
-                <option value="WPA">WPA/WPA2</option>
-                <option value="WEP">WEP</option>
-                <option value="nopass">No Password</option>
-              </select>
             </div>
+            
             <div class="tool-actions">
               <button class="btn-primary" onclick="generateWiFiQR()">
-                <i class="ri-wifi-line"></i>
-                Generate WiFi QR
+                <i class="ri-qr-code-line"></i>
+                Generate WiFi QR Code
+              </button>
+              <button class="btn-secondary" onclick="previewWiFiConfig()">
+                <i class="ri-eye-line"></i>
+                Preview Config
+              </button>
+              <button class="btn-secondary" onclick="clearWiFiForm()">
+                <i class="ri-refresh-line"></i>
+                Clear Form
               </button>
             </div>
+            
+            <div class="wifi-info">
+              <h4><i class="ri-information-line"></i> How to Use:</h4>
+              <ol>
+                <li>Enter your WiFi network name and password</li>
+                <li>Select the correct security type</li>
+                <li>Generate and scan the QR code with any device</li>
+                <li>Device will automatically connect to your WiFi!</li>
+              </ol>
+              <p><strong>Compatible with:</strong> Android, iOS 11+, and most modern devices</p>
+            </div>
+            
             <div class="tool-output" id="wifiQROutput"></div>
           `
         },
@@ -2698,22 +2885,6 @@
               }
             });
           }
-        },
-        'lorem-generator': {
-          title: 'Lorem Ipsum Generator',
-          content: `
-            <div class="tool-input">
-              <input type="number" id="loremParagraphs" placeholder="Number of paragraphs" value="3" min="1" max="20">
-              <input type="number" id="loremSentences" placeholder="Sentences per paragraph" value="5" min="1" max="15">
-            </div>
-            <div class="tool-actions">
-              <button class="btn-primary" onclick="generateLorem()">
-                <i class="ri-file-text-line"></i>
-                Generate Lorem
-              </button>
-            </div>
-            <div class="tool-output" id="loremOutput"></div>
-          `
         },
         'mac-generator': {
           title: 'MAC Address Generator',
@@ -3709,10 +3880,66 @@
     }
 
     // WiFi QR Generator
+    // Enhanced WiFi QR Generator
+    function togglePasswordVisibility(inputId) {
+      const input = document.getElementById(inputId);
+      const button = input.nextElementSibling;
+      const icon = button.querySelector('i');
+
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'ri-eye-off-line';
+      } else {
+        input.type = 'password';
+        icon.className = 'ri-eye-line';
+      }
+    }
+
+    function clearWiFiForm() {
+      document.getElementById('wifiSSID').value = '';
+      document.getElementById('wifiPassword').value = '';
+      document.getElementById('wifiSecurity').selectedIndex = 0;
+      document.getElementById('wifiHidden').checked = false;
+      document.getElementById('wifiQRSize').value = '200x200';
+      document.getElementById('wifiQROutput').innerHTML = '';
+    }
+
+    function previewWiFiConfig() {
+      const ssid = document.getElementById('wifiSSID').value;
+      const password = document.getElementById('wifiPassword').value;
+      const security = document.getElementById('wifiSecurity').value;
+      const hidden = document.getElementById('wifiHidden').checked;
+      const output = document.getElementById('wifiQROutput');
+
+      if (!ssid) {
+        output.innerHTML = '<div class="error">Please enter WiFi SSID to preview</div>';
+        return;
+      }
+
+      const wifiString = `WIFI:T:${security};S:${ssid};P:${password};H:${hidden};`;
+
+      output.innerHTML = `
+        <div class="wifi-result">
+          <h4><i class="ri-wifi-line"></i> WiFi Configuration Preview</h4>
+          <div class="wifi-config-preview">
+            <strong>Network Name (SSID):</strong> ${ssid}<br>
+            <strong>Password:</strong> ${password ? '•'.repeat(password.length) : 'No password'}<br>
+            <strong>Security:</strong> ${getSecurityLabel(security)}<br>
+            <strong>Hidden Network:</strong> ${hidden ? 'Yes' : 'No'}<br><br>
+            <strong>WiFi String:</strong><br>
+            <code>${wifiString}</code>
+          </div>
+          <p><strong>Note:</strong> Generate the QR code to share these settings securely.</p>
+        </div>
+      `;
+    }
+
     function generateWiFiQR() {
       const ssid = document.getElementById('wifiSSID').value;
       const password = document.getElementById('wifiPassword').value;
       const security = document.getElementById('wifiSecurity').value;
+      const hidden = document.getElementById('wifiHidden')?.checked || false;
+      const size = document.getElementById('wifiQRSize')?.value || '200x200';
       const output = document.getElementById('wifiQROutput');
 
       if (!ssid) {
@@ -3720,16 +3947,91 @@
         return;
       }
 
-      let wifiString = `WIFI:T:${security};S:${ssid};P:${password};H:false;`;
-      const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(wifiString)}`;
+      // Validate password requirements
+      if (security !== 'nopass' && !password) {
+        output.innerHTML = '<div class="error">Password is required for secured networks</div>';
+        return;
+      }
+
+      const wifiString = `WIFI:T:${security};S:${ssid};P:${password};H:${hidden};`;
+      const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}&ecc=M&data=${encodeURIComponent(wifiString)}`;
+
+      const timestamp = new Date().toISOString().slice(0, 19).replace(/[-:T]/g, '');
+      const filename = `wifi_${ssid.replace(/[^a-zA-Z0-9]/g, '_')}_${timestamp}.png`;
 
       output.innerHTML = `
-        <div class="qr-result">
-          <img src="${qrApiUrl}" alt="WiFi QR Code" style="max-width: 200px; border-radius: 8px;">
-          <div class="result-item"><strong>Network:</strong> ${ssid}</div>
-          <div class="result-item"><strong>Security:</strong> ${security}</div>
+        <div class="wifi-result">
+          <h4><i class="ri-wifi-line"></i> WiFi QR Code Generated</h4>
+          <img src="${qrApiUrl}" alt="WiFi QR Code" style="max-width: 100%; border-radius: 8px; margin: 1rem 0;">
+          
+          <div class="qr-info">
+            <div class="qr-info-item">
+              <strong>Network Name:</strong>
+              <div>${ssid}</div>
+            </div>
+            <div class="qr-info-item">
+              <strong>Security:</strong>
+              <div>${getSecurityLabel(security)}</div>
+            </div>
+            <div class="qr-info-item">
+              <strong>Password:</strong>
+              <div>${security === 'nopass' ? 'No password required' : '•'.repeat(password.length)}</div>
+            </div>
+            <div class="qr-info-item">
+              <strong>Hidden Network:</strong>
+              <div>${hidden ? 'Yes' : 'No'}</div>
+            </div>
+          </div>
+          
+          <div class="qr-actions">
+            <button class="btn-secondary" onclick="downloadQRCode('${qrApiUrl}', '${filename}')">
+              <i class="ri-download-line"></i>
+              Download QR
+            </button>
+            <button class="btn-secondary" onclick="copyToClipboard('${wifiString}')">
+              <i class="ri-clipboard-line"></i>
+              Copy Config
+            </button>
+            <button class="btn-secondary" onclick="shareWiFiQR('${ssid}', '${qrApiUrl}')">
+              <i class="ri-share-line"></i>
+              Share
+            </button>
+          </div>
+          
+          <div class="wifi-instructions">
+            <p><strong>Instructions:</strong></p>
+            <ol>
+              <li>Open camera app on your device</li>
+              <li>Point camera at the QR code</li>
+              <li>Tap the WiFi notification that appears</li>
+              <li>Your device will connect automatically!</li>
+            </ol>
+          </div>
         </div>
       `;
+    }
+
+    function getSecurityLabel(security) {
+      const labels = {
+        'WPA': 'WPA/WPA2',
+        'WPA3': 'WPA3',
+        'WEP': 'WEP (Legacy)',
+        'nopass': 'Open Network'
+      };
+      return labels[security] || security;
+    }
+
+    function shareWiFiQR(ssid, imageUrl) {
+      if (navigator.share) {
+        navigator.share({
+          title: `WiFi: ${ssid}`,
+          text: `Connect to ${ssid} using this QR code`,
+          url: imageUrl
+        }).catch(error => console.error('Share failed:', error));
+      } else {
+        copyToClipboard(imageUrl);
+        showNotification('WiFi QR URL copied to clipboard!', 'success');
+      }
     }
 
     // Enhanced Data Units Converter - DUPLICATE REMOVED
@@ -4691,41 +4993,6 @@
       output.innerHTML = `<div class="result-item"><strong>Generated MAC:</strong><br><textarea readonly>${mac}</textarea></div>`;
     }
 
-    // Lorem Ipsum Generator
-    function generateLorem() {
-      const paragraphs = parseInt(document.getElementById('loremParagraphs').value) || 3;
-      const sentences = parseInt(document.getElementById('loremSentences').value) || 5;
-      const output = document.getElementById('loremOutput');
-
-      const loremWords = [
-        'lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit',
-        'sed', 'do', 'eiusmod', 'tempor', 'incididunt', 'ut', 'labore', 'et', 'dolore',
-        'magna', 'aliqua', 'enim', 'ad', 'minim', 'veniam', 'quis', 'nostrud',
-        'exercitation', 'ullamco', 'laboris', 'nisi', 'aliquip', 'ex', 'ea', 'commodo',
-        'consequat', 'duis', 'aute', 'irure', 'in', 'reprehenderit', 'voluptate',
-        'velit', 'esse', 'cillum', 'fugiat', 'nulla', 'pariatur', 'excepteur', 'sint',
-        'occaecat', 'cupidatat', 'non', 'proident', 'sunt', 'culpa', 'qui', 'officia',
-        'deserunt', 'mollit', 'anim', 'id', 'est', 'laborum'
-      ];
-
-      let result = '';
-      for (let p = 0; p < paragraphs; p++) {
-        let paragraph = '';
-        for (let s = 0; s < sentences; s++) {
-          let sentence = '';
-          const sentenceLength = Math.floor(Math.random() * 10) + 5;
-          for (let w = 0; w < sentenceLength; w++) {
-            const word = loremWords[Math.floor(Math.random() * loremWords.length)];
-            sentence += (w === 0 ? word.charAt(0).toUpperCase() + word.slice(1) : word) + ' ';
-          }
-          paragraph += sentence.trim() + '. ';
-        }
-        result += paragraph.trim() + '\\n\\n';
-      }
-
-      output.innerHTML = `<div class="result-item"><strong>Generated Lorem Ipsum:</strong><br><textarea readonly>${result}</textarea></div>`;
-    }
-
     // UUID Generator
     function generateUUIDs() {
       const count = parseInt(document.getElementById('uuidCount').value) || 5;
@@ -5638,10 +5905,21 @@
     }
 
     // Enhanced QR Code Generator (Simplified)
+    function clearQRGenerator() {
+      document.getElementById('qrInput').value = 'https://eirsvi.github.io';
+      document.getElementById('qrSize').value = '200x200';
+      document.getElementById('qrErrorCorrection').value = 'M';
+      document.getElementById('qrForegroundColor').value = '#000000';
+      document.getElementById('qrBackgroundColor').value = '#ffffff';
+      document.getElementById('qrGeneratorOutput').innerHTML = '';
+    }
+
     function generateQRCode() {
       const input = document.getElementById('qrInput').value;
       const size = document.getElementById('qrSize')?.value || '200x200';
       const errorCorrection = document.getElementById('qrErrorCorrection')?.value || 'M';
+      const foregroundColor = document.getElementById('qrForegroundColor')?.value.replace('#', '') || '000000';
+      const backgroundColor = document.getElementById('qrBackgroundColor')?.value.replace('#', '') || 'ffffff';
       const output = document.getElementById('qrGeneratorOutput');
 
       if (!input) {
@@ -5649,198 +5927,497 @@
         return;
       }
 
-      const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}&ecc=${errorCorrection}&data=${encodeURIComponent(input)}`;
+      // Build QR API URL with color support
+      const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}&ecc=${errorCorrection}&color=${foregroundColor}&bgcolor=${backgroundColor}&data=${encodeURIComponent(input)}`;
+
+      const timestamp = new Date().toISOString().slice(0, 19).replace(/[-:T]/g, '');
+      const filename = `qrcode_${timestamp}.png`;
+
       output.innerHTML = `
         <div class="qr-result">
-          <img src="${qrApiUrl}" alt="QR Code" style="max-width: 100%; border-radius: 8px;">
-          <div class="result-item">
-            <strong>Data:</strong> ${input.length > 50 ? input.substring(0, 50) + '...' : input}
+          <img src="${qrApiUrl}" alt="QR Code" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+          
+          <div class="qr-info">
+            <div class="qr-info-item">
+              <strong>Data:</strong>
+              <div>${input.length > 60 ? input.substring(0, 60) + '...' : input}</div>
+            </div>
+            <div class="qr-info-item">
+              <strong>Size:</strong>
+              <div>${size}</div>
+            </div>
+            <div class="qr-info-item">
+              <strong>Error Correction:</strong>
+              <div>${getErrorCorrectionLabel(errorCorrection)}</div>
+            </div>
+            <div class="qr-info-item">
+              <strong>Colors:</strong>
+              <div>
+                <span style="display: inline-block; width: 12px; height: 12px; background: #${foregroundColor}; border-radius: 2px; margin-right: 4px;"></span>
+                Foreground
+                <br>
+                <span style="display: inline-block; width: 12px; height: 12px; background: #${backgroundColor}; border: 1px solid #ccc; border-radius: 2px; margin-right: 4px;"></span>
+                Background
+              </div>
+            </div>
           </div>
-          <div class="result-item"><strong>Size:</strong> ${size}</div>
-          <div class="result-item"><strong>Error Correction:</strong> ${errorCorrection}</div>
-          <div class="button-group" style="margin-top: 1rem;">
-            <button class="btn-secondary" onclick="downloadQR('${qrApiUrl}', 'qrcode.png')">
+          
+          <div class="qr-actions">
+            <button class="btn-secondary" onclick="downloadQRCode('${qrApiUrl}', '${filename}')">
               <i class="ri-download-line"></i>
-              Download
+              Download PNG
             </button>
             <button class="btn-secondary" onclick="copyToClipboard('${input}')">
               <i class="ri-clipboard-line"></i>
               Copy Data
+            </button>
+            <button class="btn-secondary" onclick="copyQRImage('${qrApiUrl}')">
+              <i class="ri-image-line"></i>
+              Copy Image
+            </button>
+            <button class="btn-secondary" onclick="shareQRCode('${input}', '${qrApiUrl}')">
+              <i class="ri-share-line"></i>
+              Share
             </button>
           </div>
         </div>
       `;
     }
 
-    // Khmer Name Generator
+    function clearQRGenerator() {
+      document.getElementById('qrInput').value = 'https://eirsvi.github.io';
+      document.getElementById('qrSize').value = '200x200';
+      document.getElementById('qrErrorCorrection').value = 'M';
+      document.getElementById('qrForegroundColor').value = '#000000';
+      document.getElementById('qrBackgroundColor').value = '#ffffff';
+      document.getElementById('qrGeneratorOutput').innerHTML = '';
+    }
+
+    function copyQRImage(url) {
+      fetch(url)
+        .then(response => response.blob())
+        .then(blob => {
+          navigator.clipboard.write([
+            new ClipboardItem({ 'image/png': blob })
+          ]).then(() => {
+            showNotification('QR Code image copied to clipboard!', 'success');
+          });
+        })
+        .catch(error => {
+          console.error('Copy failed:', error);
+          showNotification('Failed to copy image. Try downloading instead.', 'error');
+        });
+    }
+
+    function shareQRCode(data, imageUrl) {
+      if (navigator.share) {
+        navigator.share({
+          title: 'QR Code',
+          text: `QR Code for: ${data}`,
+          url: imageUrl
+        }).catch(error => console.error('Share failed:', error));
+      } else {
+        // Fallback: copy URL to clipboard
+        copyToClipboard(imageUrl);
+        showNotification('QR Code URL copied to clipboard!', 'success');
+      }
+    }
+
+    function getErrorCorrectionLabel(level) {
+      const labels = {
+        'L': 'Low (7%)',
+        'M': 'Medium (15%)',
+        'Q': 'Quartile (25%)',
+        'H': 'High (30%)'
+      };
+      return labels[level] || level;
+    }
+
+    function downloadQRCode(url, filename) {
+      fetch(url)
+        .then(response => response.blob())
+        .then(blob => {
+          const a = document.createElement('a');
+          const objectUrl = URL.createObjectURL(blob);
+          a.href = objectUrl;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(objectUrl);
+        })
+        .catch(error => {
+          console.error('Download failed:', error);
+          // Fallback to direct link
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = filename;
+          a.click();
+        });
+    }
+
+    // Download canvas as image
+    function downloadCanvasAsImage(canvasId, filename) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) {
+        showNotification('QR code not found', 'error');
+        return;
+      }
+
+      try {
+        canvas.toBlob(blob => {
+          const a = document.createElement('a');
+          const url = URL.createObjectURL(blob);
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          showNotification('QR code downloaded successfully!', 'success');
+        }, 'image/png');
+      } catch (error) {
+        console.error('Download failed:', error);
+        showNotification('Failed to download QR code', 'error');
+      }
+    }
+
+    // Copy canvas image to clipboard
+    function copyCanvasImage(canvasId) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) {
+        showNotification('QR code not found', 'error');
+        return;
+      }
+
+      try {
+        canvas.toBlob(blob => {
+          navigator.clipboard.write([
+            new ClipboardItem({ 'image/png': blob })
+          ]).then(() => {
+            showNotification('QR code image copied to clipboard!', 'success');
+          }).catch(error => {
+            console.error('Copy failed:', error);
+            showNotification('Failed to copy image to clipboard', 'error');
+          });
+        }, 'image/png');
+      } catch (error) {
+        console.error('Copy failed:', error);
+        showNotification('Failed to copy image', 'error');
+      }
+    }
+
+    // Share QR canvas
+    function shareQRCanvas(data, canvasId) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) {
+        showNotification('QR code not found', 'error');
+        return;
+      }
+
+      if (navigator.share) {
+        canvas.toBlob(blob => {
+          const file = new File([blob], 'qrcode.png', { type: 'image/png' });
+          navigator.share({
+            title: 'QR Code',
+            text: `QR Code for: ${data}`,
+            files: [file]
+          }).catch(error => {
+            console.error('Share failed:', error);
+            // Fallback to copying data
+            copyToClipboard(data);
+            showNotification('QR data copied to clipboard!', 'success');
+          });
+        }, 'image/png');
+      } else {
+        // Fallback: copy data to clipboard
+        copyToClipboard(data);
+        showNotification('QR data copied to clipboard!', 'success');
+      }
+    }
+
+    function copyQRImage(url) {
+      fetch(url)
+        .then(response => response.blob())
+        .then(blob => {
+          navigator.clipboard.write([
+            new ClipboardItem({ 'image/png': blob })
+          ]).then(() => {
+            showNotification('QR Code image copied to clipboard!', 'success');
+          });
+        })
+        .catch(error => {
+          console.error('Copy failed:', error);
+          showNotification('Failed to copy image. Try downloading instead.', 'error');
+        });
+    }
+
+    function shareQRCode(data, imageUrl) {
+      if (navigator.share) {
+        navigator.share({
+          title: 'QR Code',
+          text: `QR Code for: ${data}`,
+          url: imageUrl
+        }).catch(error => console.error('Share failed:', error));
+      } else {
+        // Fallback: copy URL to clipboard
+        copyToClipboard(imageUrl);
+        showNotification('QR Code URL copied to clipboard!', 'success');
+      }
+    }
+
+    // Enhanced Khmer Name Generator
+    function clearKhmerNames() {
+      document.getElementById('khmerNameType').selectedIndex = 2; // Mixed
+      document.getElementById('khmerNameCount').value = '5';
+      document.getElementById('khmerNameStyle').selectedIndex = 0; // Traditional
+      document.getElementById('khmerDisplayFormat').selectedIndex = 0; // Detailed
+      document.getElementById('includeLocation').checked = true;
+      document.getElementById('includeFullName').checked = true;
+      document.getElementById('includePronunciation').checked = false;
+      document.getElementById('khmerNameOutput').innerHTML = '';
+    }
+
     function generateKhmerNames() {
       const nameType = document.getElementById('khmerNameType').value;
       const nameCount = parseInt(document.getElementById('khmerNameCount').value);
+      const nameStyle = document.getElementById('khmerNameStyle').value;
+      const displayFormat = document.getElementById('khmerDisplayFormat').value;
       const includeLocation = document.getElementById('includeLocation').checked;
-      const includeLatin = document.getElementById('includeLatin').checked;
       const includeFullName = document.getElementById('includeFullName').checked;
+      const includePronunciation = document.getElementById('includePronunciation').checked;
       const output = document.getElementById('khmerNameOutput');
 
+      // Enhanced name datasets
       const khmerMaleNames = [
-        { khmer: 'សុខា', latin: 'Sokha', meaning: 'happiness' },
-        { khmer: 'រតនា', latin: 'Rattana', meaning: 'precious stone' },
-        { khmer: 'ចិន្តា', latin: 'Chenda', meaning: 'thought' },
-        { khmer: 'កុសល', latin: 'Kosal', meaning: 'skilled' },
-        { khmer: 'វុធ្ធី', latin: 'Vutthy', meaning: 'wisdom' },
-        { khmer: 'ប៉ៅ', latin: 'Pov', meaning: 'precious' },
-        { khmer: 'សុវណ្ណ', latin: 'Sovann', meaning: 'gold' },
-        { khmer: 'បុត្រា', latin: 'Botra', meaning: 'son' },
-        { khmer: 'ពិសាច', latin: 'Pisach', meaning: 'bright' },
-        { khmer: 'សម្បត្តិ', latin: 'Sambath', meaning: 'wealth' },
-        { khmer: 'វាសនា', latin: 'Veasna', meaning: 'fate' },
-        { khmer: 'ធីតា', latin: 'Theata', meaning: 'angel' },
-        { khmer: 'ភាព', latin: 'Pheap', meaning: 'brightness' },
-        { khmer: 'មុនី', latin: 'Muni', meaning: 'sage' },
-        { khmer: 'រាជ', latin: 'Reach', meaning: 'king' }
+        { khmer: 'សុខា', latin: 'Sokha', meaning: 'happiness', pronunciation: 'SO-kha', style: 'traditional' },
+        { khmer: 'រតនា', latin: 'Rattana', meaning: 'precious stone', pronunciation: 'rat-ta-NA', style: 'traditional' },
+        { khmer: 'ចិន្តា', latin: 'Chenda', meaning: 'thought', pronunciation: 'chin-DA', style: 'traditional' },
+        { khmer: 'កុសល', latin: 'Kosal', meaning: 'skilled', pronunciation: 'ko-SAL', style: 'traditional' },
+        { khmer: 'វុធ្ធី', latin: 'Vutthy', meaning: 'wisdom', pronunciation: 'vut-THY', style: 'traditional' },
+        { khmer: 'ប៉ៅ', latin: 'Pov', meaning: 'precious', pronunciation: 'POV', style: 'traditional' },
+        { khmer: 'សុវណ្ណ', latin: 'Sovann', meaning: 'gold', pronunciation: 'so-VANN', style: 'traditional' },
+        { khmer: 'បុត្រា', latin: 'Botra', meaning: 'son', pronunciation: 'bot-RA', style: 'traditional' },
+        { khmer: 'ពិសាច', latin: 'Pisach', meaning: 'bright', pronunciation: 'pi-SACH', style: 'traditional' },
+        { khmer: 'សម្បត្តិ', latin: 'Sambath', meaning: 'wealth', pronunciation: 'sam-BATH', style: 'traditional' },
+        { khmer: 'ណារីន', latin: 'Narin', meaning: 'soft', pronunciation: 'na-RIN', style: 'modern' },
+        { khmer: 'ក្រិស', latin: 'Kris', meaning: 'sword', pronunciation: 'KRIS', style: 'modern' },
+        { khmer: 'អាឡិន', latin: 'Alin', meaning: 'noble', pronunciation: 'a-LIN', style: 'modern' },
+        { khmer: 'ធីណូ', latin: 'Thino', meaning: 'wise', pronunciation: 'thi-NO', style: 'modern' },
+        { khmer: 'វិបុល', latin: 'Vipul', meaning: 'abundant', pronunciation: 'vi-PUL', style: 'modern' }
       ];
 
       const khmerFemaleNames = [
-        { khmer: 'គន្ធា', latin: 'Kunthea', meaning: 'fragrance' },
-        { khmer: 'ច័ន្ទមុនី', latin: 'Chan Mony', meaning: 'moon gem' },
-        { khmer: 'បុស្ប៉ា', latin: 'Bopa', meaning: 'flower' },
-        { khmer: 'រស្មី', latin: 'Rasmey', meaning: 'ray of light' },
-        { khmer: 'ស្រីពេញ', latin: 'Srey Pov', meaning: 'fulfilled woman' },
-        { khmer: 'មាលី', latin: 'Malee', meaning: 'jasmine' },
-        { khmer: 'នាង', latin: 'Neang', meaning: 'lady' },
-        { khmer: 'ដារា', latin: 'Dara', meaning: 'star' },
-        { khmer: 'ចាន់ធីតា', latin: 'Chan Theata', meaning: 'moon angel' },
-        { khmer: 'ភ័ណ្ឌី', latin: 'Pheandy', meaning: 'crystal' },
-        { khmer: 'មុំ', latin: 'Mom', meaning: 'corner' },
-        { khmer: 'សុវត្ថី', latin: 'Sovattey', meaning: 'well-being' },
-        { khmer: 'រីតា', latin: 'Rita', meaning: 'brave' },
-        { khmer: 'កញ្ញា', latin: 'Kanha', meaning: 'young woman' },
-        { khmer: 'ស្រីនេត្រ', latin: 'Srey Neth', meaning: 'beautiful eyes' }
+        { khmer: 'គន្ធា', latin: 'Kunthea', meaning: 'fragrance', pronunciation: 'kun-THEA', style: 'traditional' },
+        { khmer: 'ច័ន្ទមុនី', latin: 'Chan Mony', meaning: 'moon gem', pronunciation: 'chan mo-NY', style: 'traditional' },
+        { khmer: 'បុស្ប៉ា', latin: 'Bopa', meaning: 'flower', pronunciation: 'bo-PA', style: 'traditional' },
+        { khmer: 'រស្មី', latin: 'Rasmey', meaning: 'ray of light', pronunciation: 'ras-MEY', style: 'traditional' },
+        { khmer: 'ស្រីពេញ', latin: 'Srey Pov', meaning: 'fulfilled woman', pronunciation: 'srey POV', style: 'traditional' },
+        { khmer: 'មាលី', latin: 'Malee', meaning: 'jasmine', pronunciation: 'ma-LEE', style: 'traditional' },
+        { khmer: 'នាង', latin: 'Neang', meaning: 'lady', pronunciation: 'NEANG', style: 'traditional' },
+        { khmer: 'ដារា', latin: 'Dara', meaning: 'star', pronunciation: 'da-RA', style: 'traditional' },
+        { khmer: 'ចាន់ធីតា', latin: 'Chan Theata', meaning: 'moon angel', pronunciation: 'chan thee-a-TA', style: 'traditional' },
+        { khmer: 'ភ័ណ្ឌី', latin: 'Pheandy', meaning: 'crystal', pronunciation: 'phean-DY', style: 'traditional' },
+        { khmer: 'ហេលីណា', latin: 'Helena', meaning: 'light', pronunciation: 'he-li-NA', style: 'modern' },
+        { khmer: 'ជេស្សិកា', latin: 'Jessica', meaning: 'wealthy', pronunciation: 'jes-si-KA', style: 'modern' },
+        { khmer: 'ម៉ារីសា', latin: 'Marisa', meaning: 'of the sea', pronunciation: 'ma-ri-SA', style: 'modern' },
+        { khmer: 'លីណា', latin: 'Lina', meaning: 'tender', pronunciation: 'li-NA', style: 'modern' },
+        { khmer: 'សុវណ្ណី', latin: 'Sovannary', meaning: 'golden girl', pronunciation: 'so-van-na-RY', style: 'modern' }
       ];
 
       const khmerSurnames = [
-        { khmer: 'ហេង', latin: 'Heng' },
-        { khmer: 'លីម', latin: 'Lim' },
-        { khmer: 'ខាន់', latin: 'Khan' },
-        { khmer: 'ចៅ', latin: 'Chau' },
-        { khmer: 'ថុង', latin: 'Thong' },
-        { khmer: 'ម៉ែន', latin: 'Men' },
-        { khmer: 'សេង', latin: 'Seng' },
-        { khmer: 'ផន', latin: 'Phan' },
-        { khmer: 'អ៊ុំ', latin: 'Um' },
-        { khmer: 'តាន់', latin: 'Tan' },
-        { khmer: 'យិន', latin: 'Yin' },
-        { khmer: 'ហុក', latin: 'Hok' },
-        { khmer: 'គីម', latin: 'Kim' },
-        { khmer: 'ចៀន', latin: 'Chien' },
-        { khmer: 'សូ', latin: 'So' }
+        { khmer: 'ហេង', latin: 'Heng', meaning: 'fortunate' },
+        { khmer: 'លីម', latin: 'Lim', meaning: 'sharp' },
+        { khmer: 'ខាន់', latin: 'Khan', meaning: 'brave' },
+        { khmer: 'ចៅ', latin: 'Chau', meaning: 'grandchild' },
+        { khmer: 'ថុង', latin: 'Thong', meaning: 'gold' },
+        { khmer: 'ម៉ែន', latin: 'Men', meaning: 'mother' },
+        { khmer: 'សេង', latin: 'Seng', meaning: 'lion' },
+        { khmer: 'ផន', latin: 'Phan', meaning: 'sky' },
+        { khmer: 'អ៊ុំ', latin: 'Um', meaning: 'embrace' },
+        { khmer: 'តាន់', latin: 'Tan', meaning: 'palm tree' },
+        { khmer: 'យិន', latin: 'Yin', meaning: 'music' },
+        { khmer: 'ហុក', latin: 'Hok', meaning: 'six' },
+        { khmer: 'គីម', latin: 'Kim', meaning: 'needle' },
+        { khmer: 'ចៀន', latin: 'Chien', meaning: 'victory' },
+        { khmer: 'សូ', latin: 'So', meaning: 'white' }
       ];
 
       const cambodiaLocations = [
-        'Phnom Penh (ភ្នំពេញ)',
-        'Siem Reap (សៀមរាប)',
-        'Battambang (បាត់ដំបង)',
-        'Sihanoukville (ព្រះសីហនុ)',
-        'Kampong Cham (កំពង់ចាម)',
-        'Kampong Thom (កំពង់ធំ)',
-        'Kampot (កំពត)',
-        'Kep (កែប)',
-        'Banteay Meanchey (បន្ទាយមានជ័យ)',
-        'Pursat (ពោធិ៍សាត់)',
-        'Takeo (តាកែវ)',
-        'Kandal (កណ្តាល)',
-        'Preah Vihear (ព្រះវិហារ)',
-        'Mondulkiri (មណ្ឌលគិរី)',
-        'Ratanakiri (រតនគិរី)',
-        'Stung Treng (ស្ទឹងត្រែង)',
-        'Kratie (ក្រចេះ)',
-        'Koh Kong (កោះកុង)',
-        'Preah Sihanouk (ព្រះសីហនុ)',
-        'Pailin (ប៉ៃលិន)',
-        'Tbong Khmum (ត្បូងឃ្មុំ)',
-        'Svay Rieng (ស្វាយរៀង)',
-        'Prey Veng (ព្រៃវែង)',
-        'Kampong Speu (កំពង់ស្ពឺ)',
-        'Kampong Chhnang (កំពង់ឆ្នាំង)'
+        { name: 'Phnom Penh', khmer: 'ភ្នំពេញ' },
+        { name: 'Siem Reap', khmer: 'សៀមរាប' },
+        { name: 'Battambang', khmer: 'បាត់ដំបង' },
+        { name: 'Sihanoukville', khmer: 'ព្រះសីហនុ' },
+        { name: 'Kampong Cham', khmer: 'កំពង់ចាម' },
+        { name: 'Kampong Thom', khmer: 'កំពង់ធំ' },
+        { name: 'Kampot', khmer: 'កំពត' },
+        { name: 'Kep', khmer: 'កែប' },
+        { name: 'Banteay Meanchey', khmer: 'បន្ទាយមានជ័យ' },
+        { name: 'Pursat', khmer: 'ពោធិ៍សាត់' },
+        { name: 'Takeo', khmer: 'តាកែវ' },
+        { name: 'Kandal', khmer: 'កណ្តាល' },
+        { name: 'Preah Vihear', khmer: 'ព្រះវិហារ' },
+        { name: 'Mondulkiri', khmer: 'មណ្ឌលគិរី' },
+        { name: 'Ratanakiri', khmer: 'រតនគិរី' }
       ];
 
-      let names = [];
-      let selectedFirstNames = [];
-      let selectedSurnames = [];
+      // Filter names by style if not mixed
+      let availableMaleNames = khmerMaleNames;
+      let availableFemaleNames = khmerFemaleNames;
 
-      // Select name pools based on type
-      if (nameType === 'male') {
-        selectedFirstNames = khmerMaleNames;
-      } else if (nameType === 'female') {
-        selectedFirstNames = khmerFemaleNames;
-      } else {
-        selectedFirstNames = [...khmerMaleNames, ...khmerFemaleNames];
+      if (nameStyle === 'traditional') {
+        availableMaleNames = khmerMaleNames.filter(name => name.style === 'traditional');
+        availableFemaleNames = khmerFemaleNames.filter(name => name.style === 'traditional');
+      } else if (nameStyle === 'modern') {
+        availableMaleNames = khmerMaleNames.filter(name => name.style === 'modern');
+        availableFemaleNames = khmerFemaleNames.filter(name => name.style === 'modern');
       }
 
-      selectedSurnames = khmerSurnames;
+      let selectedFirstNames = [];
+      if (nameType === 'male') {
+        selectedFirstNames = availableMaleNames;
+      } else if (nameType === 'female') {
+        selectedFirstNames = availableFemaleNames;
+      } else {
+        selectedFirstNames = [...availableMaleNames, ...availableFemaleNames];
+      }
 
       // Generate names
+      let names = [];
       for (let i = 0; i < nameCount; i++) {
         const firstName = selectedFirstNames[Math.floor(Math.random() * selectedFirstNames.length)];
-        const surname = selectedSurnames[Math.floor(Math.random() * selectedSurnames.length)];
+        const surname = khmerSurnames[Math.floor(Math.random() * khmerSurnames.length)];
         const location = cambodiaLocations[Math.floor(Math.random() * cambodiaLocations.length)];
 
-        const nameObj = {
+        names.push({
           firstName,
           surname,
           location,
           isFromMale: khmerMaleNames.includes(firstName)
-        };
-
-        names.push(nameObj);
+        });
       }
 
-      // Build output HTML
-      let outputHTML = '<div class="khmer-names-result">';
-      outputHTML += '<h4>Generated Khmer Names</h4>';
+      // Build output based on display format
+      let outputHTML = `
+        <div class="khmer-names-result">
+          <div class="tool-output-header">
+            <h4><i class="ri-user-line"></i> Generated Khmer Names</h4>
+            <div class="result-info">
+              ${nameCount} ${nameType === 'both' ? 'mixed' : nameType} ${nameStyle} names
+            </div>
+          </div>
+          <div class="name-grid">
+      `;
 
       names.forEach((nameObj, index) => {
-        const gender = nameObj.isFromMale ? '👨 Male' : '👩 Female';
+        const genderIcon = nameObj.isFromMale ? '👨' : '👩';
+        const genderText = nameObj.isFromMale ? 'Male' : 'Female';
 
-        outputHTML += `
-          <div class="name-result-item">
-            <div class="name-header">
-              <strong>Name ${index + 1}</strong>
-              <span class="gender-badge">${gender}</span>
-            </div>
-        `;
+        outputHTML += `<div class="name-card">`;
 
-        if (includeFullName) {
-          const fullKhmerName = `${nameObj.firstName.khmer} ${nameObj.surname.khmer}`;
-          const fullLatinName = `${nameObj.firstName.latin} ${nameObj.surname.latin}`;
-
+        // Display based on format
+        if (displayFormat === 'detailed') {
           outputHTML += `
-            <div class="name-display">
-              <div class="khmer-name">${fullKhmerName}</div>
-              ${includeLatin ? `<div class="latin-name">${fullLatinName}</div>` : ''}
-            </div>
+            <div class="name-type">${genderIcon} ${genderText}</div>
+            <div class="khmer-script">${includeFullName ? `${nameObj.firstName.khmer} ${nameObj.surname.khmer}` : nameObj.firstName.khmer}</div>
+            <div class="latin-name">${includeFullName ? `${nameObj.firstName.latin} ${nameObj.surname.latin}` : nameObj.firstName.latin}</div>
+            <div class="name-meaning">"${nameObj.firstName.meaning}"</div>
           `;
-        } else {
+          if (includePronunciation) {
+            outputHTML += `<div class="pronunciation">🗣️ ${nameObj.firstName.pronunciation}</div>`;
+          }
+        } else if (displayFormat === 'khmer') {
           outputHTML += `
-            <div class="name-display">
-              <div class="khmer-name">${nameObj.firstName.khmer}</div>
-              ${includeLatin ? `<div class="latin-name">${nameObj.firstName.latin}</div>` : ''}
-            </div>
+            <div class="name-type">${genderIcon} ${genderText}</div>
+            <div class="khmer-script">${includeFullName ? `${nameObj.firstName.khmer} ${nameObj.surname.khmer}` : nameObj.firstName.khmer}</div>
           `;
-        }
-
-        if (nameObj.firstName.meaning) {
-          outputHTML += `<div class="name-meaning">Meaning: ${nameObj.firstName.meaning}</div>`;
+        } else if (displayFormat === 'latin') {
+          outputHTML += `
+            <div class="name-type">${genderIcon} ${genderText}</div>
+            <div class="latin-name">${includeFullName ? `${nameObj.firstName.latin} ${nameObj.surname.latin}` : nameObj.firstName.latin}</div>
+          `;
+        } else if (displayFormat === 'simple') {
+          outputHTML += `
+            <div class="name-type">${genderIcon} ${genderText}</div>
+            <div class="khmer-script">${includeFullName ? `${nameObj.firstName.khmer} ${nameObj.surname.khmer}` : nameObj.firstName.khmer}</div>
+            <div class="latin-name">${includeFullName ? `${nameObj.firstName.latin} ${nameObj.surname.latin}` : nameObj.firstName.latin}</div>
+          `;
         }
 
         if (includeLocation) {
-          outputHTML += `<div class="name-location">📍 ${nameObj.location}</div>`;
+          outputHTML += `<div class="location">📍 ${nameObj.location.name}</div>`;
         }
 
         outputHTML += '</div>';
       });
 
-      outputHTML += '</div>';
+      outputHTML += `
+          </div>
+          <div class="result-actions">
+            <button class="btn-secondary" onclick="copyKhmerNames()">
+              <i class="ri-clipboard-line"></i>
+              Copy All Names
+            </button>
+            <button class="btn-secondary" onclick="generateKhmerNames()">
+              <i class="ri-refresh-line"></i>
+              Generate More
+            </button>
+          </div>
+        </div>
+      `;
+
       output.innerHTML = outputHTML;
+    }
+
+    function copyKhmerNames() {
+      const nameCards = document.querySelectorAll('.name-card');
+      let namesList = [];
+
+      nameCards.forEach((card, index) => {
+        const khmerName = card.querySelector('.khmer-script')?.textContent || '';
+        const latinName = card.querySelector('.latin-name')?.textContent || '';
+        const meaning = card.querySelector('.name-meaning')?.textContent || '';
+        const location = card.querySelector('.location')?.textContent || '';
+
+        let nameString = `${index + 1}. ${khmerName}`;
+        if (latinName) nameString += ` (${latinName})`;
+        if (meaning) nameString += ` - ${meaning}`;
+        if (location) nameString += ` - ${location}`;
+
+        namesList.push(nameString);
+      });
+
+      const namesText = namesList.join('\n');
+      copyToClipboard(namesText);
+      showNotification('Khmer names copied to clipboard!', 'success');
+    }
+
+    // Enhanced notification system
+    function showNotification(message, type = 'info') {
+      // Remove existing notifications
+      const existingNotifications = document.querySelectorAll('.notification');
+      existingNotifications.forEach(notif => notif.remove());
+
+      const notification = document.createElement('div');
+      notification.className = `notification notification-${type}`;
+
+      const icon = type === 'success' ? 'ri-check-line' :
+        type === 'error' ? 'ri-close-line' :
+          type === 'warning' ? 'ri-alert-line' : 'ri-information-line';
+
+      notification.innerHTML = `
+        <i class="${icon}"></i>
+        <span>${message}</span>
+      `;
+
+      document.body.appendChild(notification);
+
+      // Auto remove after 3 seconds
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.remove();
+        }
+      }, 3000);
     }
 
     function generateCambodiaLocation() {
@@ -6729,6 +7306,241 @@
 
       // Auto-generate with random text and font
       generateASCIIArt();
+    }
+
+    // ===============================================
+    // KHMER LOREM GENERATOR FUNCTIONS
+    // ===============================================
+
+    function generateKhmerLorem() {
+      const paragraphs = parseInt(document.getElementById('khmerParagraphs').value);
+      const sentences = parseInt(document.getElementById('khmerSentences').value);
+      const style = document.getElementById('khmerStyle').value;
+
+      const khmerWords = {
+        traditional: [
+          'ខ្មែរ', 'ព្រះ', 'រាជ', 'អនុក្រិត', 'ធម៌', 'សាស្រ្ត', 'វប្បធម៌', 'ប្រពៃណី', 'ស្រុក', 'ទេស', 'ភូមិ', 'ខេត្ត',
+          'ថ្ងៃ', 'យប់', 'ព្រឹក', 'រសៀល', 'ល្ងាច', 'មធ្យម', 'ឆ្នាំ', 'ខែ', 'សប្តាហ៍', 'ម៉ោង', 'នាទី', 'វិនាទី',
+          'ដី', 'ទឹក', 'ភ្លើង', 'ខ្យល់', 'ព្រះអាទិត្យ', 'ព្រះចន្ទ', 'តារា', 'មេឃ', 'ភ្លៀង', 'ព្រះ', 'ទេវតា', 'នាគ',
+          'មនុស្ស', 'កូន', 'ឪពុក', 'ម្តាយ', 'បង', 'ប្អូន', 'ក្រុមគ្រួសារ', 'សំណេះសំណាល', 'មិត្តភ័ព្វ', 'សហគមន៍',
+          'បាន', 'គិត', 'ស្រឡាញ់', 'ជួយ', 'រៀន', 'បង្រៀន', 'ធ្វើការ', 'លេង', 'ញ៉ាំ', 'ផឹក', 'គេង', 'ដើរ', 'រត់',
+          'ស្អាត', 'ពិរោះ', 'ល្អ', 'អាក្រក់', 'ថ្មី', 'ចាស់', 'ធំ', 'តូច', 'យឺត', 'លឿន', 'កក់', 'ត្រជាក់', 'ក្តៅ'
+        ],
+        modern: [
+          'បច្ចេកវិទ្យា', 'កុំព្យូទ័រ', 'ទូរស័ព្ទ', 'អ៊ីនធឺណិត', 'គេហទំព័រ', 'កម្មវិធី', 'ប្រព័ន្ធ', 'ទិន្នន័យ', 'ព័ត៌មាន',
+          'ការអភិវឌ្ឍ', 'ការអប់រំ', 'សកលវិទ្យាល័យ', 'អាជីវកម្ម', 'កម្មសិក្សា', 'ការងារ', 'ការគ្រប់គ្រង', 'គម្រោង',
+          'រូបិយវត្ថុ', 'ធនាគារ', 'ឥណទាន', 'ការវិនិយោគ', 'ការទូទាត់', 'ចំណូល', 'ចំណាយ', 'ថវិកា', 'សន្សំ',
+          'យានយន្ត', 'ម៉ូតូ', 'ឡាន', 'កង់', 'ថ្នល់', 'ស្ពាន', 'អាកាសយានដ្ឋាន', 'រថភ្លើង', 'ការដឹកជញ្ជូន',
+          'សុខភាព', 'វេជ្ជសាស្រ្ត', 'មន្ទីរពេទ្យ', 'វេជ្ជបណ្ឌិត', 'គិលានុបដ្ឋាយិកា', 'ថ្នាំ', 'ការព្យាបាល', 'ការពិនិត្យ',
+          'បរិស្ថាន', 'ធម្មជាតិ', 'ការកាត់បន្ថយ', 'ការធ្វើអោយកន្លង', 'ការកែលម្អ', 'ការអភិរក្ស', 'ការថែរក្សា'
+        ]
+      };
+
+      const selectedWords = style === 'mixed'
+        ? [...khmerWords.traditional, ...khmerWords.modern]
+        : khmerWords[style] || khmerWords.traditional;
+
+      function getRandomWord() {
+        return selectedWords[Math.floor(Math.random() * selectedWords.length)];
+      }
+
+      function generateSentence() {
+        const sentenceLength = Math.floor(Math.random() * 8) + 5; // 5-12 words
+        let sentence = '';
+
+        for (let i = 0; i < sentenceLength; i++) {
+          sentence += getRandomWord();
+          if (i < sentenceLength - 1) {
+            sentence += ' ';
+          }
+        }
+
+        return sentence + '។';
+      }
+
+      let result = '';
+
+      for (let p = 0; p < paragraphs; p++) {
+        let paragraph = '';
+
+        for (let s = 0; s < sentences; s++) {
+          paragraph += generateSentence();
+          if (s < sentences - 1) {
+            paragraph += ' ';
+          }
+        }
+
+        result += paragraph;
+        if (p < paragraphs - 1) {
+          result += '\n\n';
+        }
+      }
+
+      displayOutput('khmerLoremOutput', result, 'Generated Khmer Lorem Ipsum');
+    }
+
+    function clearKhmerLorem() {
+      document.getElementById('khmerLoremOutput').innerHTML = '';
+    }
+
+    // ===============================================
+    // ENGLISH PARAGRAPH GENERATOR FUNCTIONS
+    // ===============================================
+
+    function generateEnglishParagraphs() {
+      const paragraphs = parseInt(document.getElementById('englishParagraphs').value);
+      const style = document.getElementById('englishStyle').value;
+      const length = document.getElementById('englishLength').value;
+
+      const templates = {
+        lorem: {
+          words: ['lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'sed', 'do', 'eiusmod', 'tempor', 'incididunt', 'ut', 'labore', 'et', 'dolore', 'magna', 'aliqua', 'enim', 'ad', 'minim', 'veniam', 'quis', 'nostrud', 'exercitation', 'ullamco', 'laboris', 'nisi', 'aliquip', 'ex', 'ea', 'commodo', 'consequat', 'duis', 'aute', 'irure', 'in', 'reprehenderit', 'voluptate', 'velit', 'esse', 'cillum', 'fugiat', 'nulla', 'pariatur', 'excepteur', 'sint', 'occaecat', 'cupidatat', 'non', 'proident', 'sunt', 'culpa', 'qui', 'officia', 'deserunt', 'mollit', 'anim', 'id', 'est', 'laborum'],
+          starters: ['Lorem ipsum', 'Sed do eiusmod', 'Ut enim ad', 'Duis aute irure', 'Excepteur sint']
+        },
+        professional: {
+          words: ['business', 'strategy', 'development', 'implementation', 'analysis', 'growth', 'innovation', 'efficiency', 'productivity', 'management', 'leadership', 'team', 'collaboration', 'communication', 'results', 'performance', 'objectives', 'goals', 'metrics', 'data', 'insights', 'solutions', 'processes', 'optimization', 'improvement', 'quality', 'standards', 'excellence', 'customer', 'service', 'satisfaction', 'value', 'proposition', 'competitive', 'advantage', 'market', 'industry', 'trends', 'opportunities', 'challenges', 'risk', 'mitigation', 'planning', 'execution', 'monitoring', 'evaluation', 'success', 'achievement', 'milestone', 'deadline', 'budget', 'resources', 'allocation', 'investment', 'return', 'profitability', 'revenue', 'cost', 'savings', 'efficiency'],
+          starters: ['Our organization', 'The business strategy', 'Market analysis indicates', 'Implementation of', 'Professional development']
+        },
+        academic: {
+          words: ['research', 'study', 'analysis', 'methodology', 'hypothesis', 'evidence', 'findings', 'conclusion', 'theory', 'framework', 'literature', 'review', 'scholarly', 'academic', 'peer-reviewed', 'empirical', 'quantitative', 'qualitative', 'data', 'statistics', 'correlation', 'causation', 'significance', 'validity', 'reliability', 'sample', 'population', 'variables', 'control', 'experimental', 'observation', 'survey', 'interview', 'questionnaire', 'measurement', 'assessment', 'evaluation', 'interpretation', 'discussion', 'implications', 'limitations', 'future', 'directions', 'recommendation', 'citation', 'reference', 'bibliography', 'publication', 'journal', 'conference', 'proceedings', 'dissertation', 'thesis', 'manuscript', 'abstract', 'introduction', 'methods', 'results', 'discussion', 'conclusion'],
+          starters: ['Research indicates that', 'The study demonstrates', 'According to recent findings', 'Empirical evidence suggests', 'Academic literature shows']
+        },
+        creative: {
+          words: ['imagination', 'creativity', 'inspiration', 'artistic', 'beautiful', 'magnificent', 'extraordinary', 'wonderful', 'amazing', 'incredible', 'fantastic', 'marvelous', 'spectacular', 'breathtaking', 'stunning', 'gorgeous', 'elegant', 'graceful', 'charming', 'delightful', 'enchanting', 'magical', 'mystical', 'mysterious', 'intriguing', 'fascinating', 'captivating', 'mesmerizing', 'spellbinding', 'dream', 'vision', 'journey', 'adventure', 'exploration', 'discovery', 'wandering', 'traveling', 'soaring', 'flying', 'dancing', 'singing', 'painting', 'writing', 'creating', 'crafting', 'designing', 'building', 'shaping', 'forming', 'molding', 'transforming', 'evolving', 'growing', 'blossoming', 'flourishing', 'thriving', 'radiating', 'glowing', 'shining', 'sparkling', 'twinkling', 'glittering'],
+          starters: ['Once upon a time', 'In a world of wonder', 'Through the lens of imagination', 'Creative spirits dance', 'The artistic journey unfolds']
+        },
+        technical: {
+          words: ['system', 'architecture', 'infrastructure', 'implementation', 'configuration', 'deployment', 'maintenance', 'optimization', 'performance', 'scalability', 'reliability', 'security', 'protocol', 'interface', 'API', 'framework', 'library', 'module', 'component', 'service', 'application', 'database', 'server', 'client', 'network', 'connectivity', 'bandwidth', 'latency', 'throughput', 'processing', 'computation', 'algorithm', 'function', 'method', 'procedure', 'operation', 'execution', 'runtime', 'compile', 'debugging', 'testing', 'validation', 'verification', 'documentation', 'specification', 'requirements', 'analysis', 'design', 'development', 'integration', 'workflow', 'pipeline', 'automation', 'monitoring', 'logging', 'metrics', 'analytics', 'reporting', 'troubleshooting', 'resolution', 'upgrade', 'migration', 'backup', 'recovery'],
+          starters: ['The system architecture', 'Technical implementation requires', 'Configuration parameters indicate', 'Performance optimization involves', 'Database connectivity ensures']
+        },
+        casual: {
+          words: ['awesome', 'cool', 'great', 'nice', 'fun', 'interesting', 'amazing', 'wonderful', 'fantastic', 'brilliant', 'excellent', 'perfect', 'incredible', 'outstanding', 'remarkable', 'impressive', 'beautiful', 'lovely', 'charming', 'delightful', 'enjoyable', 'pleasant', 'comfortable', 'relaxing', 'peaceful', 'calm', 'quiet', 'gentle', 'smooth', 'easy', 'simple', 'straightforward', 'clear', 'obvious', 'natural', 'normal', 'regular', 'typical', 'common', 'usual', 'ordinary', 'standard', 'basic', 'fundamental', 'essential', 'important', 'significant', 'meaningful', 'valuable', 'useful', 'helpful', 'beneficial', 'positive', 'good', 'better', 'best', 'superior', 'excellent', 'quality', 'fine', 'decent', 'solid', 'reliable', 'trustworthy', 'honest', 'genuine', 'authentic', 'real', 'true'],
+          starters: ['Hey there', 'So basically', 'You know what', 'The thing is', 'Pretty much everyone knows']
+        }
+      };
+
+      const selectedTemplate = templates[style] || templates.lorem;
+      const sentenceCounts = {
+        short: { min: 3, max: 4 },
+        medium: { min: 5, max: 6 },
+        long: { min: 7, max: 10 }
+      };
+
+      function getRandomWord() {
+        return selectedTemplate.words[Math.floor(Math.random() * selectedTemplate.words.length)];
+      }
+
+      function getRandomStarter() {
+        return selectedTemplate.starters[Math.floor(Math.random() * selectedTemplate.starters.length)];
+      }
+
+      function generateSentence(isFirst = false) {
+        const wordCount = Math.floor(Math.random() * 10) + 8; // 8-17 words
+        let sentence = '';
+
+        if (isFirst && Math.random() > 0.3) {
+          sentence = getRandomStarter();
+        } else {
+          sentence = getRandomWord();
+        }
+
+        for (let i = 1; i < wordCount; i++) {
+          sentence += ' ' + getRandomWord();
+        }
+
+        // Capitalize first letter
+        sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1);
+
+        return sentence + '.';
+      }
+
+      let result = '';
+      const sentenceRange = sentenceCounts[length];
+
+      for (let p = 0; p < paragraphs; p++) {
+        let paragraph = '';
+        const sentenceCount = Math.floor(Math.random() * (sentenceRange.max - sentenceRange.min + 1)) + sentenceRange.min;
+
+        for (let s = 0; s < sentenceCount; s++) {
+          paragraph += generateSentence(s === 0);
+          if (s < sentenceCount - 1) {
+            paragraph += ' ';
+          }
+        }
+
+        result += paragraph;
+        if (p < paragraphs - 1) {
+          result += '\n\n';
+        }
+      }
+
+      displayOutput('englishParagraphOutput', result, 'Generated English Paragraphs');
+    }
+
+    function clearEnglishParagraphs() {
+      document.getElementById('englishParagraphOutput').innerHTML = '';
+    }
+
+    // ===============================================
+    // UTILITY FUNCTIONS FOR GENERATORS
+    // ===============================================
+
+    function displayOutput(outputId, content, title) {
+      const output = document.getElementById(outputId);
+      if (!output) return;
+
+      output.innerHTML = `
+        <div class="tool-output-header">
+          <h4>${title}</h4>
+          <div class="output-actions">
+            <button class="btn-secondary btn-small" onclick="copyGeneratedText('${outputId}')">
+              <i class="ri-clipboard-line"></i>
+              Copy Text
+            </button>
+            <button class="btn-secondary btn-small" onclick="selectGeneratedText('${outputId}')">
+              <i class="ri-select-all-line"></i>
+              Select All
+            </button>
+          </div>
+        </div>
+        <div class="generated-content" id="${outputId}_content">${content}</div>
+      `;
+    }
+
+    function copyGeneratedText(outputId) {
+      const contentElement = document.getElementById(outputId + '_content');
+      if (!contentElement) return;
+
+      const text = contentElement.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        // Show success feedback
+        const button = event.target.closest('button');
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="ri-check-line"></i> Copied!';
+        button.style.background = '#22c55e';
+        button.style.color = 'white';
+
+        setTimeout(() => {
+          button.innerHTML = originalText;
+          button.style.background = '';
+          button.style.color = '';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+        // Fallback for older browsers
+        selectGeneratedText(outputId);
+      });
+    }
+
+    function selectGeneratedText(outputId) {
+      const contentElement = document.getElementById(outputId + '_content');
+      if (!contentElement) return;
+
+      const range = document.createRange();
+      range.selectNodeContents(contentElement);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
     }
   </script>
 </body>
