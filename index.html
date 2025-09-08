@@ -2780,15 +2780,26 @@
               <div class="tool-input">
                 <div class="range-input">
                   <label>Password Length: <span id="passLengthDisplay">16</span> characters</label>
-                  <input type="range" id="passLength" min="8" max="64" value="16">
+                  <input type="range" id="passLength" min="8" max="64" value="16" oninput="updatePasswordLength()">
                 </div>
                 
                 <div class="checkbox-group">
-                  <label><input type="checkbox" id="includeUpper" checked> Uppercase Letters (A-Z)</label>
-                  <label><input type="checkbox" id="includeLower" checked> Lowercase Letters (a-z)</label>
-                  <label><input type="checkbox" id="includeNumbers" checked> Numbers (0-9)</label>
-                  <label><input type="checkbox" id="includeSymbols"> Special Characters (!@#$%^&*)</label>
-                  <label><input type="checkbox" id="excludeSimilar"> Exclude Similar Characters (0,O,l,1,I)</label>
+                  <label><input type="checkbox" id="includeUpper" checked onchange="updatePasswordStrength()"> Uppercase Letters (A-Z)</label>
+                  <label><input type="checkbox" id="includeLower" checked onchange="updatePasswordStrength()"> Lowercase Letters (a-z)</label>
+                  <label><input type="checkbox" id="includeNumbers" checked onchange="updatePasswordStrength()"> Numbers (0-9)</label>
+                  <label><input type="checkbox" id="includeSymbols" onchange="updatePasswordStrength()"> Special Characters (!@#$%^&*)</label>
+                  <label><input type="checkbox" id="excludeSimilar" onchange="updatePasswordStrength()"> Exclude Similar Characters (0,O,l,1,I)</label>
+                </div>
+                
+                <div class="strength-indicator">
+                  <label>Estimated Strength:</label>
+                  <div class="strength-bar">
+                    <div class="strength-fill" id="strengthFill"></div>
+                  </div>
+                  <div class="strength-info">
+                    <span id="strengthText">Strong</span>
+                    <span id="strengthEntropy">~67 bits</span>
+                  </div>
                 </div>
               </div>
               
@@ -2797,6 +2808,10 @@
                   <i class="ri-key-line"></i>
                   Generate Random Password
                 </button>
+                <button class="btn-secondary" onclick="generateMultiplePasswords()">
+                  <i class="ri-stack-line"></i>
+                  Generate 5 Options
+                </button>
               </div>
             </div>
             
@@ -2804,7 +2819,7 @@
               <div class="tool-input">
                 <div class="range-input">
                   <label>Number of Words: <span id="wordCountDisplay">4</span></label>
-                  <input type="range" id="wordCount" min="3" max="8" value="4">
+                  <input type="range" id="wordCount" min="3" max="8" value="4" oninput="updateWordCount()">
                 </div>
                 
                 <div class="checkbox-group">
@@ -2832,6 +2847,10 @@
                   <i class="ri-brain-line"></i>
                   Generate Memorable Password
                 </button>
+                <button class="btn-secondary" onclick="generateMultipleMemorablePasswords()">
+                  <i class="ri-stack-line"></i>
+                  Generate 5 Options
+                </button>
               </div>
             </div>
             
@@ -2846,6 +2865,7 @@
             if (slider) {
               slider.addEventListener('input', function () {
                 display.textContent = this.value;
+                updatePasswordStrength();
               });
             }
 
@@ -2854,22 +2874,65 @@
                 wordDisplay.textContent = this.value;
               });
             }
+
+            // Initialize strength indicator
+            setTimeout(() => updatePasswordStrength(), 100);
           }
         },
         'color-palette': {
           title: 'Color Palette Generator',
           content: `
             <div class="tool-input">
-              <input type="color" id="baseColor" value="#22c55e">
-              <input type="text" id="colorHex" placeholder="#22c55e" value="#22c55e">
+              <div class="color-input-section">
+                <label>Base Color:</label>
+                <div class="color-input-group">
+                  <input type="color" id="baseColor" value="#22c55e">
+                  <input type="text" id="colorHex" placeholder="#22c55e" value="#22c55e">
+                </div>
+              </div>
+              
+              <div class="tool-controls">
+                <label>
+                  Palette Type:
+                  <select id="paletteType">
+                    <option value="complementary">Complementary</option>
+                    <option value="triadic">Triadic</option>
+                    <option value="analogous" selected>Analogous</option>
+                    <option value="monochromatic">Monochromatic</option>
+                    <option value="tetradic">Tetradic (Square)</option>
+                    <option value="split-complementary">Split Complementary</option>
+                  </select>
+                </label>
+                
+                <label>
+                  Number of Colors:
+                  <select id="colorCount">
+                    <option value="3">3 Colors</option>
+                    <option value="4">4 Colors</option>
+                    <option value="5" selected>5 Colors</option>
+                    <option value="6">6 Colors</option>
+                    <option value="8">8 Colors</option>
+                  </select>
+                </label>
+              </div>
             </div>
+            
             <div class="tool-actions">
-              <button class="btn-primary" onclick="generatePalette()">
+              <button class="btn-primary" onclick="generateColorPalette()">
                 <i class="ri-palette-line"></i>
                 Generate Palette
               </button>
+              <button class="btn-secondary" onclick="randomizeCurrentPalette()">
+                <i class="ri-shuffle-line"></i>
+                Random Color
+              </button>
+              <button class="btn-secondary" onclick="savePalette()">
+                <i class="ri-save-line"></i>
+                Save Palette
+              </button>
             </div>
-            <div class="tool-output" id="colorOutput"></div>
+            
+            <div class="tool-output" id="colorPaletteOutput"></div>
           `,
           init: function () {
             const colorInput = document.getElementById('baseColor');
@@ -2877,13 +2940,18 @@
 
             colorInput.addEventListener('change', function () {
               hexInput.value = this.value;
+              generateColorPalette();
             });
 
             hexInput.addEventListener('input', function () {
               if (this.value.match(/^#[0-9A-Fa-f]{6}$/)) {
                 colorInput.value = this.value;
+                generateColorPalette();
               }
             });
+
+            // Auto-generate initial palette
+            setTimeout(() => generateColorPalette(), 100);
           }
         },
         'mac-generator': {
@@ -4538,6 +4606,57 @@
       `;
     }
 
+    function generateMultiplePasswords() {
+      const length = parseInt(document.getElementById('passLength').value);
+      const includeUpper = document.getElementById('includeUpper').checked;
+      const includeLower = document.getElementById('includeLower').checked;
+      const includeNumbers = document.getElementById('includeNumbers').checked;
+      const includeSymbols = document.getElementById('includeSymbols').checked;
+      const excludeSimilar = document.getElementById('excludeSimilar').checked;
+      const output = document.getElementById('passwordOutput');
+
+      let charset = '';
+      if (includeUpper) charset += excludeSimilar ? 'ABCDEFGHJKMNPQRSTUVWXYZ' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      if (includeLower) charset += excludeSimilar ? 'abcdefghjkmnpqrstuvwxyz' : 'abcdefghijklmnopqrstuvwxyz';
+      if (includeNumbers) charset += excludeSimilar ? '23456789' : '0123456789';
+      if (includeSymbols) charset += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+      if (!charset) {
+        output.innerHTML = '<div class="error">Please select at least one character type</div>';
+        return;
+      }
+
+      let passwordsHtml = '<div class="password-options"><h4>Password Options (Choose One):</h4>';
+
+      for (let i = 1; i <= 5; i++) {
+        let password = '';
+        for (let j = 0; j < length; j++) {
+          password += charset.charAt(Math.floor(Math.random() * charset.length));
+        }
+
+        const strength = calculatePasswordStrength(password);
+        const strengthClass = strength.score >= 4 ? 'strong' : strength.score >= 2 ? 'medium' : 'weak';
+
+        passwordsHtml += `
+          <div class="password-option">
+            <div class="password-display">
+              <span class="password-text">${password}</span>
+              <div class="password-actions">
+                <button class="btn-small" onclick="copyToClipboard('${password}')">
+                  <i class="ri-clipboard-line"></i>
+                  Copy
+                </button>
+                <span class="strength-${strengthClass}">${strength.label}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      passwordsHtml += '</div>';
+      output.innerHTML = passwordsHtml;
+    }
+
     function generateMemorablePassword() {
       const wordCount = parseInt(document.getElementById('wordCount').value);
       const capitalizeWords = document.getElementById('capitalizeWords').checked;
@@ -4607,6 +4726,152 @@
       `;
     }
 
+    function generateMultipleMemorablePasswords() {
+      const wordCount = parseInt(document.getElementById('wordCount').value);
+      const capitalizeWords = document.getElementById('capitalizeWords').checked;
+      const includeNumbers = document.getElementById('includeNumbers2').checked;
+      const includeSymbols = document.getElementById('includeSymbols2').checked;
+      const separator = document.getElementById('wordSeparator').value;
+      const output = document.getElementById('passwordOutput');
+
+      const words = [
+        'apple', 'beach', 'chair', 'dream', 'eagle', 'forest', 'guitar', 'happy',
+        'island', 'jungle', 'kitten', 'lemon', 'magic', 'nature', 'ocean', 'piano',
+        'quiet', 'river', 'sunset', 'tiger', 'umbrella', 'violet', 'winter', 'yellow',
+        'zebra', 'bridge', 'castle', 'dragon', 'engine', 'flower', 'garden', 'hammer',
+        'iceberg', 'jacket', 'kitchen', 'ladder', 'mountain', 'notebook', 'orange',
+        'pencil', 'rainbow', 'silver', 'thunder', 'universe', 'village', 'window'
+      ];
+
+      let passwordsHtml = '<div class="password-options"><h4>Memorable Password Options (Choose One):</h4>';
+
+      for (let i = 1; i <= 5; i++) {
+        let selectedWords = [];
+        for (let j = 0; j < wordCount; j++) {
+          let word = words[Math.floor(Math.random() * words.length)];
+          if (capitalizeWords) {
+            word = word.charAt(0).toUpperCase() + word.slice(1);
+          }
+          selectedWords.push(word);
+        }
+
+        let password = selectedWords.join(separator);
+
+        if (includeNumbers) {
+          const randomNumbers = Math.floor(Math.random() * 999) + 1;
+          password += (separator || '') + randomNumbers;
+        }
+
+        if (includeSymbols) {
+          const symbols = '!@#$%^&*';
+          const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+          password += randomSymbol;
+        }
+
+        const strength = calculatePasswordStrength(password);
+        const strengthClass = strength.score >= 4 ? 'strong' : strength.score >= 2 ? 'medium' : 'weak';
+
+        passwordsHtml += `
+          <div class="password-option">
+            <div class="password-display">
+              <span class="password-text">${password}</span>
+              <div class="password-actions">
+                <button class="btn-small" onclick="copyToClipboard('${password}')">
+                  <i class="ri-clipboard-line"></i>
+                  Copy
+                </button>
+                <span class="strength-${strengthClass}">${strength.label}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      passwordsHtml += '</div>';
+      output.innerHTML = passwordsHtml;
+    }
+
+    function updatePasswordLength() {
+      const slider = document.getElementById('passLength');
+      const display = document.getElementById('passLengthDisplay');
+      if (slider && display) {
+        display.textContent = slider.value;
+        updatePasswordStrength();
+      }
+    }
+
+    function updateWordCount() {
+      const slider = document.getElementById('wordCount');
+      const display = document.getElementById('wordCountDisplay');
+      if (slider && display) {
+        display.textContent = slider.value;
+      }
+    }
+
+    function updatePasswordStrength() {
+      const length = parseInt(document.getElementById('passLength')?.value || 16);
+      const includeUpper = document.getElementById('includeUpper')?.checked || false;
+      const includeLower = document.getElementById('includeLower')?.checked || false;
+      const includeNumbers = document.getElementById('includeNumbers')?.checked || false;
+      const includeSymbols = document.getElementById('includeSymbols')?.checked || false;
+      const excludeSimilar = document.getElementById('excludeSimilar')?.checked || false;
+
+      let charsetSize = 0;
+      if (includeUpper) charsetSize += excludeSimilar ? 23 : 26;
+      if (includeLower) charsetSize += excludeSimilar ? 23 : 26;
+      if (includeNumbers) charsetSize += excludeSimilar ? 8 : 10;
+      if (includeSymbols) charsetSize += 25;
+
+      if (charsetSize === 0) {
+        charsetSize = 1; // Prevent log of 0
+      }
+
+      const entropy = Math.log2(Math.pow(charsetSize, length));
+      let strengthLevel, strengthText;
+
+      if (entropy < 28) {
+        strengthLevel = 'weak';
+        strengthText = 'Weak';
+      } else if (entropy < 50) {
+        strengthLevel = 'fair';
+        strengthText = 'Fair';
+      } else if (entropy < 70) {
+        strengthLevel = 'good';
+        strengthText = 'Good';
+      } else {
+        strengthLevel = 'strong';
+        strengthText = 'Strong';
+      }
+
+      const strengthFill = document.getElementById('strengthFill');
+      const strengthTextEl = document.getElementById('strengthText');
+      const strengthEntropy = document.getElementById('strengthEntropy');
+
+      if (strengthFill) {
+        strengthFill.className = `strength-fill ${strengthLevel}`;
+      }
+
+      if (strengthTextEl) {
+        strengthTextEl.textContent = strengthText;
+        strengthTextEl.className = `strength-${strengthLevel}`;
+      }
+
+      if (strengthEntropy) {
+        strengthEntropy.textContent = `~${Math.round(entropy)} bits`;
+      }
+    }
+
+    function switchPasswordTab(tab) {
+      const tabs = document.querySelectorAll('#toolModalContent .tab-btn');
+      const contents = document.querySelectorAll('#toolModalContent .tab-content');
+
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      document.querySelector(`#toolModalContent .tab-btn[onclick="switchPasswordTab('${tab}')"]`).classList.add('active');
+      document.getElementById(`password-${tab}-tab`).classList.add('active');
+    }
+
     function calculatePasswordStrength(password) {
       let score = 0;
       let feedback = [];
@@ -4630,6 +4895,317 @@
       else label = 'Very Strong';
 
       return { score, label, feedback };
+    }
+
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('generatedPassword');
+      const toggleIcon = document.getElementById('passwordToggleIcon');
+      const toggleBtn = toggleIcon.closest('button');
+
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.className = 'ri-eye-off-line';
+        toggleBtn.innerHTML = '<i class="ri-eye-off-line" id="passwordToggleIcon"></i> Hide';
+      } else {
+        passwordInput.type = 'password';
+        toggleIcon.className = 'ri-eye-line';
+        toggleBtn.innerHTML = '<i class="ri-eye-line" id="passwordToggleIcon"></i> Show';
+      }
+    }
+
+    // Color Palette Generator Functions
+    function generateColorPalette() {
+      const baseColor = document.getElementById('baseColor').value;
+      const paletteType = document.getElementById('paletteType').value;
+      const colorCount = parseInt(document.getElementById('colorCount').value);
+      const output = document.getElementById('colorPaletteOutput');
+
+      const colors = generatePaletteColors(baseColor, paletteType, colorCount);
+      displayColorPalette(colors, paletteType, output);
+    }
+
+    function generatePaletteColors(baseColor, type, count) {
+      const hsl = hexToHsl(baseColor);
+      const colors = [baseColor];
+
+      switch (type) {
+        case 'complementary':
+          colors.push(hslToHex((hsl.h + 180) % 360, hsl.s, hsl.l));
+          // Add analogous colors if more than 2 needed
+          for (let i = 2; i < count; i++) {
+            const angle = (i - 1) * 30;
+            colors.push(hslToHex((hsl.h + angle) % 360, hsl.s, hsl.l));
+          }
+          break;
+
+        case 'triadic':
+          colors.push(hslToHex((hsl.h + 120) % 360, hsl.s, hsl.l));
+          colors.push(hslToHex((hsl.h + 240) % 360, hsl.s, hsl.l));
+          // Add split-complementary if more colors needed
+          for (let i = 3; i < count; i++) {
+            const angle = 150 + (i - 3) * 15;
+            colors.push(hslToHex((hsl.h + angle) % 360, hsl.s, hsl.l));
+          }
+          break;
+
+        case 'analogous':
+          for (let i = 1; i < count; i++) {
+            const angle = i * 30;
+            colors.push(hslToHex((hsl.h + angle) % 360, hsl.s, hsl.l));
+          }
+          break;
+
+        case 'monochromatic':
+          for (let i = 1; i < count; i++) {
+            const lightness = Math.max(10, Math.min(90, hsl.l + (i * 15) - 30));
+            colors.push(hslToHex(hsl.h, hsl.s, lightness));
+          }
+          break;
+
+        case 'tetradic':
+          colors.push(hslToHex((hsl.h + 90) % 360, hsl.s, hsl.l));
+          colors.push(hslToHex((hsl.h + 180) % 360, hsl.s, hsl.l));
+          colors.push(hslToHex((hsl.h + 270) % 360, hsl.s, hsl.l));
+          // Add variations if more colors needed
+          for (let i = 4; i < count; i++) {
+            const angle = (i - 4) * 45;
+            colors.push(hslToHex((hsl.h + angle) % 360, hsl.s * 0.8, hsl.l));
+          }
+          break;
+
+        case 'split-complementary':
+          colors.push(hslToHex((hsl.h + 150) % 360, hsl.s, hsl.l));
+          colors.push(hslToHex((hsl.h + 210) % 360, hsl.s, hsl.l));
+          // Add analogous variations
+          for (let i = 3; i < count; i++) {
+            const angle = (i - 3) * 30;
+            colors.push(hslToHex((hsl.h + angle) % 360, hsl.s, hsl.l));
+          }
+          break;
+
+        default:
+          // Random palette
+          for (let i = 1; i < count; i++) {
+            const randomHue = Math.floor(Math.random() * 360);
+            const randomSat = Math.floor(Math.random() * 50) + 50;
+            const randomLight = Math.floor(Math.random() * 40) + 30;
+            colors.push(hslToHex(randomHue, randomSat, randomLight));
+          }
+      }
+
+      return colors.slice(0, count);
+    }
+
+    function displayColorPalette(colors, type, output) {
+      let paletteHtml = `
+        <div class="palette-result">
+          <div class="palette-header">
+            <h4>${type.charAt(0).toUpperCase() + type.slice(1)} Color Palette</h4>
+            <div class="palette-actions">
+              <button class="btn-small" onclick="randomizeCurrentPalette()">
+                <i class="ri-shuffle-line"></i>
+                Randomize
+              </button>
+              <button class="btn-small" onclick="savePalette()">
+                <i class="ri-save-line"></i>
+                Save
+              </button>
+              <button class="btn-small" onclick="exportPalette('css')">
+                <i class="ri-file-code-line"></i>
+                Export CSS
+              </button>
+            </div>
+          </div>
+          <div class="color-palette">
+      `;
+
+      colors.forEach((color, index) => {
+        const rgb = hexToRgb(color);
+        const hsl = hexToHsl(color);
+
+        paletteHtml += `
+          <div class="color-swatch" data-color="${color}">
+            <div class="color-preview" style="background-color: ${color};" onclick="copyToClipboard('${color}')"></div>
+            <div class="color-info">
+              <div class="color-hex">${color.toUpperCase()}</div>
+              <div class="color-formats">
+                <div class="color-format">RGB(${rgb.r}, ${rgb.g}, ${rgb.b})</div>
+                <div class="color-format">HSL(${Math.round(hsl.h)}, ${Math.round(hsl.s)}%, ${Math.round(hsl.l)}%)</div>
+              </div>
+              <div class="color-actions">
+                <button class="btn-mini" onclick="copyToClipboard('${color}')" title="Copy HEX">
+                  <i class="ri-clipboard-line"></i>
+                </button>
+                <button class="btn-mini" onclick="copyToClipboard('rgb(${rgb.r}, ${rgb.g}, ${rgb.b})')" title="Copy RGB">
+                  RGB
+                </button>
+                <button class="btn-mini" onclick="adjustColor(${index})" title="Adjust Color">
+                  <i class="ri-palette-line"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      paletteHtml += `
+          </div>
+          <div class="palette-details">
+            <div class="detail-item">
+              <strong>Colors:</strong> ${colors.length}
+            </div>
+            <div class="detail-item">
+              <strong>Type:</strong> ${type}
+            </div>
+            <div class="detail-item">
+              <strong>Generated:</strong> ${new Date().toLocaleTimeString()}
+            </div>
+          </div>
+        </div>
+      `;
+
+      output.innerHTML = paletteHtml;
+
+      // Store current palette for manipulation
+      window.currentPalette = { colors, type };
+    }
+
+    function randomizeCurrentPalette() {
+      const baseColor = '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+      document.getElementById('baseColor').value = baseColor;
+      generateColorPalette();
+    }
+
+    function savePalette() {
+      if (!window.currentPalette) {
+        showNotification('No palette to save', 'error');
+        return;
+      }
+
+      const savedPalettes = JSON.parse(localStorage.getItem('savedPalettes') || '[]');
+      const paletteData = {
+        ...window.currentPalette,
+        name: `${window.currentPalette.type} - ${new Date().toLocaleDateString()}`,
+        timestamp: Date.now()
+      };
+
+      savedPalettes.push(paletteData);
+      localStorage.setItem('savedPalettes', JSON.stringify(savedPalettes));
+
+      showNotification('Palette saved successfully!', 'success');
+    }
+
+    function exportPalette(format) {
+      if (!window.currentPalette) {
+        showNotification('No palette to export', 'error');
+        return;
+      }
+
+      const colors = window.currentPalette.colors;
+      let exportContent = '';
+
+      switch (format) {
+        case 'css':
+          exportContent = ':root {\n';
+          colors.forEach((color, index) => {
+            exportContent += `  --color-${index + 1}: ${color};\n`;
+          });
+          exportContent += '}';
+          break;
+
+        case 'scss':
+          colors.forEach((color, index) => {
+            exportContent += `$color-${index + 1}: ${color};\n`;
+          });
+          break;
+
+        case 'json':
+          exportContent = JSON.stringify(colors, null, 2);
+          break;
+      }
+
+      // Create download link
+      const blob = new Blob([exportContent], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `palette-${window.currentPalette.type}.${format}`;
+      a.click();
+      URL.revokeObjectURL(url);
+
+      showNotification(`Palette exported as ${format.toUpperCase()}!`, 'success');
+    }
+
+    // Color utility functions
+    function hexToRgb(hex) {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      } : null;
+    }
+
+    function hexToHsl(hex) {
+      const rgb = hexToRgb(hex);
+      if (!rgb) return { h: 0, s: 0, l: 0 };
+
+      const r = rgb.r / 255;
+      const g = rgb.g / 255;
+      const b = rgb.b / 255;
+
+      const max = Math.max(r, g, b);
+      const min = Math.min(r, g, b);
+      let h, s, l = (max + min) / 2;
+
+      if (max === min) {
+        h = s = 0;
+      } else {
+        const d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch (max) {
+          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+          case g: h = (b - r) / d + 2; break;
+          case b: h = (r - g) / d + 4; break;
+        }
+        h /= 6;
+      }
+
+      return { h: h * 360, s: s * 100, l: l * 100 };
+    }
+
+    function hslToHex(h, s, l) {
+      h = h % 360;
+      s = s / 100;
+      l = l / 100;
+
+      const c = (1 - Math.abs(2 * l - 1)) * s;
+      const x = c * (1 - Math.abs((h / 60) % 2 - 1));
+      const m = l - c / 2;
+      let r = 0, g = 0, b = 0;
+
+      if (0 <= h && h < 60) {
+        r = c; g = x; b = 0;
+      } else if (60 <= h && h < 120) {
+        r = x; g = c; b = 0;
+      } else if (120 <= h && h < 180) {
+        r = 0; g = c; b = x;
+      } else if (180 <= h && h < 240) {
+        r = 0; g = x; b = c;
+      } else if (240 <= h && h < 300) {
+        r = x; g = 0; b = c;
+      } else if (300 <= h && h < 360) {
+        r = c; g = 0; b = x;
+      }
+
+      r = Math.round((r + m) * 255);
+      g = Math.round((g + m) * 255);
+      b = Math.round((b + m) * 255);
+
+      return "#" + [r, g, b].map(x => {
+        const hex = x.toString(16);
+        return hex.length === 1 ? "0" + hex : hex;
+      }).join("");
     }
 
     function togglePasswordVisibility() {
@@ -4706,98 +5282,6 @@
     }
 
     // Enhanced AES Encryption/Decryption
-    function generatePalette() {
-      const baseColor = document.getElementById('baseColor').value;
-      const output = document.getElementById('colorOutput');
-
-      // Convert hex to HSL
-      const hsl = hexToHsl(baseColor);
-      const colors = [];
-
-      // Generate complementary, triadic, and analogous colors
-      colors.push({ name: 'Base', hex: baseColor, hsl: hsl });
-      colors.push({ name: 'Complementary', hex: hslToHex((hsl.h + 180) % 360, hsl.s, hsl.l), hsl: { h: (hsl.h + 180) % 360, s: hsl.s, l: hsl.l } });
-      colors.push({ name: 'Triadic 1', hex: hslToHex((hsl.h + 120) % 360, hsl.s, hsl.l), hsl: { h: (hsl.h + 120) % 360, s: hsl.s, l: hsl.l } });
-      colors.push({ name: 'Triadic 2', hex: hslToHex((hsl.h + 240) % 360, hsl.s, hsl.l), hsl: { h: (hsl.h + 240) % 360, s: hsl.s, l: hsl.l } });
-      colors.push({ name: 'Analogous 1', hex: hslToHex((hsl.h + 30) % 360, hsl.s, hsl.l), hsl: { h: (hsl.h + 30) % 360, s: hsl.s, l: hsl.l } });
-      colors.push({ name: 'Analogous 2', hex: hslToHex((hsl.h - 30 + 360) % 360, hsl.s, hsl.l), hsl: { h: (hsl.h - 30 + 360) % 360, s: hsl.s, l: hsl.l } });
-
-      let paletteHTML = '<div class="color-palette">';
-      colors.forEach(color => {
-        paletteHTML += `
-          <div class="color-swatch">
-            <div class="color-preview" style="background-color: ${color.hex}"></div>
-            <div class="color-info">
-              <strong>${color.name}</strong><br>
-              ${color.hex}<br>
-              HSL(${Math.round(color.hsl.h)}, ${Math.round(color.hsl.s)}%, ${Math.round(color.hsl.l)}%)
-            </div>
-          </div>
-        `;
-      });
-      paletteHTML += '</div>';
-
-      output.innerHTML = paletteHTML;
-    }
-
-    // Color conversion utilities
-    function hexToHsl(hex) {
-      const r = parseInt(hex.substr(1, 2), 16) / 255;
-      const g = parseInt(hex.substr(3, 2), 16) / 255;
-      const b = parseInt(hex.substr(5, 2), 16) / 255;
-
-      const max = Math.max(r, g, b);
-      const min = Math.min(r, g, b);
-      let h, s, l = (max + min) / 2;
-
-      if (max === min) {
-        h = s = 0;
-      } else {
-        const d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch (max) {
-          case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-          case g: h = (b - r) / d + 2; break;
-          case b: h = (r - g) / d + 4; break;
-        }
-        h /= 6;
-      }
-
-      return { h: h * 360, s: s * 100, l: l * 100 };
-    }
-
-    function hslToHex(h, s, l) {
-      h /= 360;
-      s /= 100;
-      l /= 100;
-
-      const hue2rgb = (p, q, t) => {
-        if (t < 0) t += 1;
-        if (t > 1) t -= 1;
-        if (t < 1 / 6) return p + (q - p) * 6 * t;
-        if (t < 1 / 2) return q;
-        if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
-        return p;
-      };
-
-      let r, g, b;
-      if (s === 0) {
-        r = g = b = l;
-      } else {
-        const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-        const p = 2 * l - q;
-        r = hue2rgb(p, q, h + 1 / 3);
-        g = hue2rgb(p, q, h);
-        b = hue2rgb(p, q, h - 1 / 3);
-      }
-
-      const toHex = (c) => {
-        const hex = Math.round(c * 255).toString(16);
-        return hex.length === 1 ? '0' + hex : hex;
-      };
-
-      return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
-    }
 
     // JSON Formatter
     function formatJSON() {
