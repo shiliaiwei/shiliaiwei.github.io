@@ -2856,102 +2856,249 @@
           `
         },
         'password-generator': {
-          title: 'Password Generator - Secure & Memorable',
+          title: 'Password Generator',
           content: `
-            <div class="tool-tabs">
-              <button class="tab-btn active" onclick="switchPasswordTab('random')">
-                <i class="ri-shuffle-line"></i>
-                Random Password
-              </button>
-              <button class="tab-btn" onclick="switchPasswordTab('memorable')">
-                <i class="ri-brain-line"></i>
-                Memorable Password
-              </button>
-            </div>
-            
-            <div id="password-random-tab" class="tab-content active">
-              <div class="tool-input">
-                <div class="range-input">
-                  <label>Password Length: <span id="passLengthDisplay">16</span> characters</label>
-                  <input type="range" id="passLength" min="8" max="64" value="16" oninput="updatePasswordLength()">
+            <div class="password-generator-modern">
+              <!-- Header Section -->
+              <div class="generator-header">
+                <div class="generator-tabs">
+                  <button class="tab-button active" data-tab="secure" onclick="switchPasswordTab('secure')">
+                    <i class="ri-shield-keyhole-line"></i>
+                    <span>Secure</span>
+                  </button>
+                  <button class="tab-button" data-tab="memorable" onclick="switchPasswordTab('memorable')">
+                    <i class="ri-brain-line"></i>
+                    <span>Memorable</span>
+                  </button>
                 </div>
-                
-                <div class="checkbox-group">
-                  <label><input type="checkbox" id="includeUpper" checked onchange="updatePasswordStrength(); updatePreview()"> Uppercase Letters (A-Z)</label>
-                  <label><input type="checkbox" id="includeLower" checked onchange="updatePasswordStrength(); updatePreview()"> Lowercase Letters (a-z)</label>
-                  <label><input type="checkbox" id="includeNumbers" checked onchange="updatePasswordStrength(); updatePreview()"> Numbers (0-9)</label>
-                  <label><input type="checkbox" id="includeSymbols" onchange="updatePasswordStrength(); updatePreview()"> Special Characters (!@#$%^&*)</label>
-                  <label><input type="checkbox" id="excludeSimilar" onchange="updatePasswordStrength(); updatePreview()"> Exclude Similar Characters (0,O,l,1,I)</label>
-                </div>
-                
-                <div class="character-preview" id="characterPreview" style="margin-top: 1rem; padding: 0.75rem; background: var(--bg-secondary); border-radius: 6px; font-family: monospace; font-size: 0.875rem; color: var(--fg-weak);">
-                  Available characters: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
-                </div>
-                
-                <div class="strength-indicator">
-                  <label>Estimated Strength:</label>
-                  <div class="strength-bar">
-                    <div class="strength-fill" id="strengthFill"></div>
+              </div>
+
+              <!-- Secure Password Tab -->
+              <div id="secure-tab" class="tab-panel active">
+                <div class="password-config">
+                  <!-- Length Setting -->
+                  <div class="config-section">
+                    <div class="section-header">
+                      <h3>Password Length</h3>
+                      <span class="length-value" id="lengthValue">16</span>
+                    </div>
+                    <div class="length-slider-container">
+                      <input type="range" id="passwordLength" min="8" max="128" value="16" class="length-slider" oninput="updateLength()">
+                      <div class="slider-labels">
+                        <span>8</span>
+                        <span>Short</span>
+                        <span>Medium</span>
+                        <span>Long</span>
+                        <span>128</span>
+                      </div>
+                    </div>
                   </div>
-                  <div class="strength-info">
-                    <span id="strengthText">Strong</span>
-                    <span id="strengthEntropy">~67 bits</span>
+
+                  <!-- Character Types -->
+                  <div class="config-section">
+                    <div class="section-header">
+                      <h3>Character Types</h3>
+                      <span class="selected-count" id="selectedCount">3 selected</span>
+                    </div>
+                    <div class="character-options">
+                      <label class="character-option">
+                        <input type="checkbox" id="useUppercase" checked onchange="updateCharacterSet()">
+                        <div class="option-content">
+                          <div class="option-icon">A</div>
+                          <div class="option-details">
+                            <div class="option-title">Uppercase</div>
+                            <div class="option-example">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</div>
+                          </div>
+                        </div>
+                      </label>
+
+                      <label class="character-option">
+                        <input type="checkbox" id="useLowercase" checked onchange="updateCharacterSet()">
+                        <div class="option-content">
+                          <div class="option-icon">a</div>
+                          <div class="option-details">
+                            <div class="option-title">Lowercase</div>
+                            <div class="option-example">a b c d e f g h i j k l m n o p q r s t u v w x y z</div>
+                          </div>
+                        </div>
+                      </label>
+
+                      <label class="character-option">
+                        <input type="checkbox" id="useNumbers" checked onchange="updateCharacterSet()">
+                        <div class="option-content">
+                          <div class="option-icon">1</div>
+                          <div class="option-details">
+                            <div class="option-title">Numbers</div>
+                            <div class="option-example">0 1 2 3 4 5 6 7 8 9</div>
+                          </div>
+                        </div>
+                      </label>
+
+                      <label class="character-option">
+                        <input type="checkbox" id="useSymbols" onchange="updateCharacterSet()">
+                        <div class="option-content">
+                          <div class="option-icon">@</div>
+                          <div class="option-details">
+                            <div class="option-title">Symbols</div>
+                            <div class="option-example">! @ # $ % ^ & * ( ) - _ = + [ ] { } | \\ : ; " ' < > , . ? /</div>
+                          </div>
+                        </div>
+                      </label>
+
+                      <label class="character-option advanced">
+                        <input type="checkbox" id="excludeSimilar" onchange="updateCharacterSet()">
+                        <div class="option-content">
+                          <div class="option-icon">⚠</div>
+                          <div class="option-details">
+                            <div class="option-title">Exclude Similar</div>
+                            <div class="option-example">Remove: 0 O o l I 1</div>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Strength Indicator -->
+                  <div class="config-section">
+                    <div class="strength-section">
+                      <div class="strength-header">
+                        <h3>Security Strength</h3>
+                        <span class="strength-label" id="strengthLabel">Very Strong</span>
+                      </div>
+                      <div class="strength-bar-container">
+                        <div class="strength-bar">
+                          <div class="strength-progress" id="strengthProgress"></div>
+                        </div>
+                        <div class="strength-details">
+                          <span id="entropyBits">95 bits</span>
+                          <span id="crackTime">10^28 years to crack</span>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
+
+                <!-- Generate Buttons -->
+                <div class="generate-actions">
+                  <button class="btn-generate-primary" onclick="generateSecurePassword()">
+                    <i class="ri-key-2-line"></i>
+                    Generate Password
+                  </button>
+                  <button class="btn-generate-secondary" onclick="generateMultipleSecurePasswords()">
+                    <i class="ri-stack-line"></i>
+                    Generate 5 Options
+                  </button>
+                </div>
               </div>
-              
-              <div class="tool-actions">
-                <button class="btn-primary" onclick="generateRandomPassword()">
-                  <i class="ri-key-line"></i>
-                  Generate Random Password
-                </button>
-                <button class="btn-secondary" onclick="generateMultiplePasswords()">
-                  <i class="ri-stack-line"></i>
-                  Generate 5 Options
-                </button>
+
+              <!-- Memorable Password Tab -->
+              <div id="memorable-tab" class="tab-panel">
+                <div class="password-config">
+                  <!-- Word Count Setting -->
+                  <div class="config-section">
+                    <div class="section-header">
+                      <h3>Number of Words</h3>
+                      <span class="length-value" id="wordCountValue">4</span>
+                    </div>
+                    <div class="length-slider-container">
+                      <input type="range" id="wordCount" min="2" max="8" value="4" class="length-slider" oninput="updateWordCount()">
+                      <div class="slider-labels">
+                        <span>2</span>
+                        <span>Simple</span>
+                        <span>Balanced</span>
+                        <span>Complex</span>
+                        <span>8</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Memorable Options -->
+                  <div class="config-section">
+                    <div class="section-header">
+                      <h3>Options</h3>
+                    </div>
+                    <div class="memorable-options">
+                      <label class="memorable-option">
+                        <input type="checkbox" id="capitalizeFirst" checked onchange="updateMemorablePreview()">
+                        <div class="option-content">
+                          <div class="option-icon">Aa</div>
+                          <div class="option-details">
+                            <div class="option-title">Capitalize Words</div>
+                            <div class="option-example">Forest → Forest</div>
+                          </div>
+                        </div>
+                      </label>
+
+                      <label class="memorable-option">
+                        <input type="checkbox" id="addNumbers" checked onchange="updateMemorablePreview()">
+                        <div class="option-content">
+                          <div class="option-icon">1#</div>
+                          <div class="option-details">
+                            <div class="option-title">Add Numbers</div>
+                            <div class="option-example">Forest → Forest24</div>
+                          </div>
+                        </div>
+                      </label>
+
+                      <label class="memorable-option">
+                        <input type="checkbox" id="addSymbols" onchange="updateMemorablePreview()">
+                        <div class="option-content">
+                          <div class="option-icon">@#</div>
+                          <div class="option-details">
+                            <div class="option-title">Add Symbols</div>
+                            <div class="option-example">Forest → Forest!</div>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Separator Setting -->
+                  <div class="config-section">
+                    <div class="section-header">
+                      <h3>Word Separator</h3>
+                    </div>
+                    <div class="separator-options">
+                      <label class="separator-option">
+                        <input type="radio" name="separator" value="-" checked onchange="updateMemorablePreview()">
+                        <div class="separator-display">word-word</div>
+                        <div class="separator-name">Hyphen</div>
+                      </label>
+                      <label class="separator-option">
+                        <input type="radio" name="separator" value="_" onchange="updateMemorablePreview()">
+                        <div class="separator-display">word_word</div>
+                        <div class="separator-name">Underscore</div>
+                      </label>
+                      <label class="separator-option">
+                        <input type="radio" name="separator" value="." onchange="updateMemorablePreview()">
+                        <div class="separator-display">word.word</div>
+                        <div class="separator-name">Dot</div>
+                      </label>
+                      <label class="separator-option">
+                        <input type="radio" name="separator" value="" onchange="updateMemorablePreview()">
+                        <div class="separator-display">wordword</div>
+                        <div class="separator-name">None</div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Generate Buttons -->
+                <div class="generate-actions">
+                  <button class="btn-generate-primary" onclick="generateMemorablePassword()">
+                    <i class="ri-brain-line"></i>
+                    Generate Memorable
+                  </button>
+                  <button class="btn-generate-secondary" onclick="generateMultipleMemorablePasswords()">
+                    <i class="ri-stack-line"></i>
+                    Generate 5 Options
+                  </button>
+                </div>
               </div>
+
+              <!-- Results Section -->
+              <div class="password-results" id="passwordResults"></div>
             </div>
-            
-            <div id="password-memorable-tab" class="tab-content">
-              <div class="tool-input">
-                <div class="range-input">
-                  <label>Number of Words: <span id="wordCountDisplay">4</span></label>
-                  <input type="range" id="wordCount" min="3" max="8" value="4" oninput="updateWordCount()">
-                </div>
-                
-                <div class="checkbox-group">
-                  <label><input type="checkbox" id="capitalizeWords" checked> Capitalize First Letter</label>
-                  <label><input type="checkbox" id="includeNumbers2" checked> Include Numbers</label>
-                  <label><input type="checkbox" id="includeSymbols2"> Include Special Characters</label>
-                </div>
-                
-                <div class="tool-controls">
-                  <label>
-                    Word Separator:
-                    <select id="wordSeparator">
-                      <option value="-">Hyphen (-)</option>
-                      <option value="_">Underscore (_)</option>
-                      <option value=".">Dot (.)</option>
-                      <option value="">No Separator</option>
-                      <option value=" ">Space</option>
-                    </select>
-                  </label>
-                </div>
-              </div>
-              
-              <div class="tool-actions">
-                <button class="btn-primary" onclick="generateMemorablePassword()">
-                  <i class="ri-brain-line"></i>
-                  Generate Memorable Password
-                </button>
-                <button class="btn-secondary" onclick="generateMultipleMemorablePasswords()">
-                  <i class="ri-stack-line"></i>
-                  Generate 5 Options
-                </button>
-              </div>
-            </div>
-            
-            <div class="tool-output" id="passwordOutput"></div>
           `,
           init: function () {
             const slider = document.getElementById('passLength');
@@ -2972,22 +3119,22 @@
               });
             }
 
-            // Add event listeners to checkboxes
-            const checkboxes = ['includeUpper', 'includeLower', 'includeNumbers', 'includeSymbols', 'excludeSimilar'];
+            // Add event listeners to checkboxes for new IDs
+            const checkboxes = ['useUppercase', 'useLowercase', 'useNumbers', 'useSymbols', 'excludeSimilar'];
             checkboxes.forEach(id => {
               const checkbox = document.getElementById(id);
               if (checkbox) {
                 checkbox.addEventListener('change', function () {
-                  updatePasswordStrength();
-                  updatePreview();
+                  updateCharacterSet();
+                  updateStrengthIndicator();
                 });
               }
             });
 
-            // Initialize strength indicator and preview
+            // Initialize displays
             setTimeout(() => {
-              updatePasswordStrength();
-              updatePreview();
+              updateCharacterSet();
+              updateStrengthIndicator();
             }, 200);
           }
         },
@@ -4842,11 +4989,11 @@
 
     function generateMemorablePassword() {
       const wordCount = parseInt(document.getElementById('wordCount').value);
-      const capitalizeWords = document.getElementById('capitalizeWords').checked;
-      const includeNumbers = document.getElementById('includeNumbers2').checked;
-      const includeSymbols = document.getElementById('includeSymbols2').checked;
-      const separator = document.getElementById('wordSeparator').value;
-      const output = document.getElementById('passwordOutput');
+      const capitalizeWords = document.getElementById('capitalizeFirst').checked;
+      const includeNumbers = document.getElementById('addNumbers').checked;
+      const includeSymbols = document.getElementById('addSymbols').checked;
+      const separator = document.querySelector('input[name="separator"]:checked').value;
+      const output = document.getElementById('passwordResults');
 
       // Common memorable words
       const words = [
@@ -4889,7 +5036,7 @@
             <strong>Generated Memorable Password:</strong>
             <div class="password-display">
               <input type="text" value="${password}" readonly id="generatedPassword">
-              <button class="btn-small" onclick="copyToClipboard('${password}')">
+              <button class="btn-small" onclick="copyPasswordText()">
                 <i class="ri-clipboard-line"></i>
                 Copy
               </button>
@@ -4911,11 +5058,11 @@
 
     function generateMultipleMemorablePasswords() {
       const wordCount = parseInt(document.getElementById('wordCount').value);
-      const capitalizeWords = document.getElementById('capitalizeWords').checked;
-      const includeNumbers = document.getElementById('includeNumbers2').checked;
-      const includeSymbols = document.getElementById('includeSymbols2').checked;
-      const separator = document.getElementById('wordSeparator').value;
-      const output = document.getElementById('passwordOutput');
+      const capitalizeWords = document.getElementById('capitalizeFirst').checked;
+      const includeNumbers = document.getElementById('addNumbers').checked;
+      const includeSymbols = document.getElementById('addSymbols').checked;
+      const separator = document.querySelector('input[name="separator"]:checked').value;
+      const output = document.getElementById('passwordResults');
 
       const words = [
         'apple', 'beach', 'chair', 'dream', 'eagle', 'forest', 'guitar', 'happy',
@@ -4957,9 +5104,9 @@
         passwordsHtml += `
           <div class="password-option">
             <div class="password-display">
-              <span class="password-text">${password}</span>
+              <input type="text" value="${password}" readonly class="password-option-input">
               <div class="password-actions">
-                <button class="btn-small" onclick="copyToClipboard('${password}')">
+                <button class="btn-small" onclick="copyPasswordOption(this)">
                   <i class="ri-clipboard-line"></i>
                   Copy
                 </button>
@@ -5070,14 +5217,274 @@
     }
 
     function switchPasswordTab(tab) {
-      const tabs = document.querySelectorAll('#toolModalContent .tab-btn');
-      const contents = document.querySelectorAll('#toolModalContent .tab-content');
+      // Remove active class from all tab buttons
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabPanels = document.querySelectorAll('.tab-panel');
 
-      tabs.forEach(t => t.classList.remove('active'));
-      contents.forEach(c => c.classList.remove('active'));
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      tabPanels.forEach(panel => panel.classList.remove('active'));
 
-      document.querySelector(`#toolModalContent .tab-btn[onclick="switchPasswordTab('${tab}')"]`).classList.add('active');
-      document.getElementById(`password-${tab}-tab`).classList.add('active');
+      // Add active class to selected tab and panel
+      const selectedButton = document.querySelector(`[data-tab="${tab}"]`);
+      const selectedPanel = document.getElementById(`${tab}-tab`);
+
+      if (selectedButton) selectedButton.classList.add('active');
+      if (selectedPanel) selectedPanel.classList.add('active');
+    }
+
+    // Modern Password Generator Functions
+    function updateLength() {
+      const slider = document.getElementById('passwordLength');
+      const display = document.getElementById('lengthValue');
+      if (slider && display) {
+        display.textContent = slider.value;
+        updateStrengthIndicator();
+      }
+    }
+
+    function updateCharacterSet() {
+      const useUppercase = document.getElementById('useUppercase')?.checked || false;
+      const useLowercase = document.getElementById('useLowercase')?.checked || false;
+      const useNumbers = document.getElementById('useNumbers')?.checked || false;
+      const useSymbols = document.getElementById('useSymbols')?.checked || false;
+      const excludeSimilar = document.getElementById('excludeSimilar')?.checked || false;
+
+      // Update selected count
+      const selectedCount = [useUppercase, useLowercase, useNumbers, useSymbols].filter(Boolean).length;
+      const countDisplay = document.getElementById('selectedCount');
+      if (countDisplay) {
+        countDisplay.textContent = `${selectedCount} selected`;
+      }
+
+      updateStrengthIndicator();
+    }
+
+    function updateStrengthIndicator() {
+      const length = parseInt(document.getElementById('passwordLength')?.value || 16);
+      const useUppercase = document.getElementById('useUppercase')?.checked || false;
+      const useLowercase = document.getElementById('useLowercase')?.checked || false;
+      const useNumbers = document.getElementById('useNumbers')?.checked || false;
+      const useSymbols = document.getElementById('useSymbols')?.checked || false;
+      const excludeSimilar = document.getElementById('excludeSimilar')?.checked || false;
+
+      let charsetSize = 0;
+      if (useUppercase) charsetSize += excludeSimilar ? 23 : 26;
+      if (useLowercase) charsetSize += excludeSimilar ? 23 : 26;
+      if (useNumbers) charsetSize += excludeSimilar ? 8 : 10;
+      if (useSymbols) charsetSize += 32;
+
+      if (charsetSize === 0) charsetSize = 1;
+
+      const entropy = Math.log2(Math.pow(charsetSize, length));
+      let strengthLevel, strengthText, strengthPercent;
+
+      if (entropy < 28) {
+        strengthLevel = 'weak';
+        strengthText = 'Weak';
+        strengthPercent = 25;
+      } else if (entropy < 50) {
+        strengthLevel = 'fair';
+        strengthText = 'Fair';
+        strengthPercent = 50;
+      } else if (entropy < 75) {
+        strengthLevel = 'good';
+        strengthText = 'Good';
+        strengthPercent = 75;
+      } else {
+        strengthLevel = 'strong';
+        strengthText = 'Very Strong';
+        strengthPercent = 100;
+      }
+
+      // Update strength display
+      const strengthLabel = document.getElementById('strengthLabel');
+      const strengthProgress = document.getElementById('strengthProgress');
+      const entropyBits = document.getElementById('entropyBits');
+      const crackTime = document.getElementById('crackTime');
+
+      if (strengthLabel) {
+        strengthLabel.textContent = strengthText;
+        strengthLabel.className = `strength-label ${strengthLevel}`;
+      }
+
+      if (strengthProgress) {
+        strengthProgress.style.width = `${strengthPercent}%`;
+      }
+
+      if (entropyBits) {
+        entropyBits.textContent = `${Math.round(entropy)} bits`;
+      }
+
+      if (crackTime) {
+        const years = Math.pow(2, entropy) / (2 * 1000000000); // Assuming 1 billion guesses per second
+        if (years < 1) {
+          crackTime.textContent = 'Less than a year';
+        } else if (years < 1000) {
+          crackTime.textContent = `${Math.round(years)} years`;
+        } else {
+          crackTime.textContent = `10^${Math.floor(Math.log10(years))} years`;
+        }
+      }
+    }
+
+    function updateMemorablePreview() {
+      // This function can be implemented to show a preview of memorable password format
+      console.log('Memorable preview updated');
+    }
+
+    function generateSecurePassword() {
+      const length = parseInt(document.getElementById('passwordLength')?.value || 16);
+      const useUppercase = document.getElementById('useUppercase')?.checked;
+      const useLowercase = document.getElementById('useLowercase')?.checked;
+      const useNumbers = document.getElementById('useNumbers')?.checked;
+      const useSymbols = document.getElementById('useSymbols')?.checked;
+      const excludeSimilar = document.getElementById('excludeSimilar')?.checked;
+
+      let charset = '';
+      if (useUppercase) charset += excludeSimilar ? 'ABCDEFGHJKMNPQRSTUVWXYZ' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      if (useLowercase) charset += excludeSimilar ? 'abcdefghjkmnpqrstuvwxyz' : 'abcdefghijklmnopqrstuvwxyz';
+      if (useNumbers) charset += excludeSimilar ? '23456789' : '0123456789';
+      if (useSymbols) charset += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+      if (charset.length === 0) {
+        showPasswordResult('Please select at least one character type', 'error');
+        return;
+      }
+
+      let password = '';
+      for (let i = 0; i < length; i++) {
+        password += charset.charAt(Math.floor(Math.random() * charset.length));
+      }
+
+      showPasswordResult(password, 'success');
+    }
+
+    function generateMultipleSecurePasswords() {
+      const length = parseInt(document.getElementById('passwordLength')?.value || 16);
+      const useUppercase = document.getElementById('useUppercase')?.checked;
+      const useLowercase = document.getElementById('useLowercase')?.checked;
+      const useNumbers = document.getElementById('useNumbers')?.checked;
+      const useSymbols = document.getElementById('useSymbols')?.checked;
+      const excludeSimilar = document.getElementById('excludeSimilar')?.checked;
+
+      let charset = '';
+      if (useUppercase) charset += excludeSimilar ? 'ABCDEFGHJKMNPQRSTUVWXYZ' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      if (useLowercase) charset += excludeSimilar ? 'abcdefghjkmnpqrstuvwxyz' : 'abcdefghijklmnopqrstuvwxyz';
+      if (useNumbers) charset += excludeSimilar ? '23456789' : '0123456789';
+      if (useSymbols) charset += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+      if (charset.length === 0) {
+        showPasswordResult('Please select at least one character type', 'error');
+        return;
+      }
+
+      const passwords = [];
+      for (let i = 0; i < 5; i++) {
+        let password = '';
+        for (let j = 0; j < length; j++) {
+          password += charset.charAt(Math.floor(Math.random() * charset.length));
+        }
+        passwords.push(password);
+      }
+
+      showMultiplePasswordResults(passwords);
+    }
+
+    function showMultiplePasswordResults(passwords) {
+      const resultsDiv = document.getElementById('passwordResults');
+      if (!resultsDiv) {
+        return;
+      }
+
+      let resultHtml = '<div class="multiple-passwords">';
+      passwords.forEach((password, index) => {
+        resultHtml += `
+          <div class="password-result success">
+            <div class="result-header">
+              <h4>Password ${index + 1}</h4>
+              <div class="result-actions">
+                <button onclick="copyToClipboard('${password}')" class="btn-copy">
+                  <i class="ri-file-copy-line"></i>
+                  Copy
+                </button>
+              </div>
+            </div>
+            <div class="password-display">
+              <code>${password}</code>
+            </div>
+          </div>
+        `;
+      });
+      resultHtml += '</div>';
+
+      resultsDiv.innerHTML = resultHtml;
+    }
+
+    function showPasswordResult(password, type) {
+      const resultsDiv = document.getElementById('passwordResults');
+      if (!resultsDiv) {
+        return;
+      }
+
+      const isError = type === 'error';
+
+      const resultHtml = `
+        <div class="password-result ${type}">
+          <div class="result-header">
+            <h4>${isError ? 'Error' : 'Generated Password'}</h4>
+            ${!isError ? `
+            <div class="result-actions">
+              <button onclick="copyGeneratedPassword()" class="btn-copy" data-password="${password}">
+                <i class="ri-file-copy-line"></i>
+                Copy
+              </button>
+            </div>
+            ` : ''}
+          </div>
+          <div class="password-display">
+            <code id="generatedPasswordText">${password}</code>
+          </div>
+        </div>
+      `;
+
+      resultsDiv.innerHTML = resultHtml;
+
+      // Store password for copying
+      window.currentPassword = password;
+    }
+
+    function copyGeneratedPassword() {
+      if (window.currentPassword) {
+        copyToClipboard(window.currentPassword);
+
+        // Visual feedback
+        const copyBtn = document.querySelector('.btn-copy');
+        if (copyBtn) {
+          const originalText = copyBtn.innerHTML;
+          copyBtn.innerHTML = '<i class="ri-check-line"></i> Copied!';
+          setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+          }, 2000);
+        }
+      }
+    }
+
+    function copyPasswordToClipboard(password) {
+      copyToClipboard(password);
+    }
+
+    function copyPasswordText() {
+      const passwordInput = document.getElementById('generatedPassword');
+      if (passwordInput) {
+        copyToClipboard(passwordInput.value);
+      }
+    }
+
+    function copyPasswordOption(button) {
+      const passwordInput = button.closest('.password-display').querySelector('.password-option-input');
+      if (passwordInput) {
+        copyToClipboard(passwordInput.value);
+      }
     }
 
     function calculatePasswordStrength(password) {
