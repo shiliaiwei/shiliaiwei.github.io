@@ -2877,11 +2877,15 @@
                 </div>
                 
                 <div class="checkbox-group">
-                  <label><input type="checkbox" id="includeUpper" checked onchange="updatePasswordStrength()"> Uppercase Letters (A-Z)</label>
-                  <label><input type="checkbox" id="includeLower" checked onchange="updatePasswordStrength()"> Lowercase Letters (a-z)</label>
-                  <label><input type="checkbox" id="includeNumbers" checked onchange="updatePasswordStrength()"> Numbers (0-9)</label>
-                  <label><input type="checkbox" id="includeSymbols" onchange="updatePasswordStrength()"> Special Characters (!@#$%^&*)</label>
-                  <label><input type="checkbox" id="excludeSimilar" onchange="updatePasswordStrength()"> Exclude Similar Characters (0,O,l,1,I)</label>
+                  <label><input type="checkbox" id="includeUpper" checked onchange="updatePasswordStrength(); updatePreview()"> Uppercase Letters (A-Z)</label>
+                  <label><input type="checkbox" id="includeLower" checked onchange="updatePasswordStrength(); updatePreview()"> Lowercase Letters (a-z)</label>
+                  <label><input type="checkbox" id="includeNumbers" checked onchange="updatePasswordStrength(); updatePreview()"> Numbers (0-9)</label>
+                  <label><input type="checkbox" id="includeSymbols" onchange="updatePasswordStrength(); updatePreview()"> Special Characters (!@#$%^&*)</label>
+                  <label><input type="checkbox" id="excludeSimilar" onchange="updatePasswordStrength(); updatePreview()"> Exclude Similar Characters (0,O,l,1,I)</label>
+                </div>
+                
+                <div class="character-preview" id="characterPreview" style="margin-top: 1rem; padding: 0.75rem; background: var(--bg-secondary); border-radius: 6px; font-family: monospace; font-size: 0.875rem; color: var(--fg-weak);">
+                  Available characters: ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
                 </div>
                 
                 <div class="strength-indicator">
@@ -2968,8 +2972,23 @@
               });
             }
 
-            // Initialize strength indicator
-            setTimeout(() => updatePasswordStrength(), 100);
+            // Add event listeners to checkboxes
+            const checkboxes = ['includeUpper', 'includeLower', 'includeNumbers', 'includeSymbols', 'excludeSimilar'];
+            checkboxes.forEach(id => {
+              const checkbox = document.getElementById(id);
+              if (checkbox) {
+                checkbox.addEventListener('change', function () {
+                  updatePasswordStrength();
+                  updatePreview();
+                });
+              }
+            });
+
+            // Initialize strength indicator and preview
+            setTimeout(() => {
+              updatePasswordStrength();
+              updatePreview();
+            }, 200);
           }
         },
         'color-palette': {
@@ -3926,17 +3945,6 @@
 
       document.querySelector(`[onclick="switchQRTab('${tab}')"]`).classList.add('active');
       document.getElementById(`qr-${tab}-tab`).classList.add('active');
-    }
-
-    function switchPasswordTab(tab) {
-      const tabs = document.querySelectorAll('.tab-btn');
-      const contents = document.querySelectorAll('.tab-content');
-
-      tabs.forEach(t => t.classList.remove('active'));
-      contents.forEach(c => c.classList.remove('active'));
-
-      document.querySelector(`[onclick="switchPasswordTab('${tab}')"]`).classList.add('active');
-      document.getElementById(`password-${tab}-tab`).classList.add('active');
     }
 
     // QR Code Generator (Updated for merged tool)
@@ -4980,6 +4988,31 @@
       const display = document.getElementById('wordCountDisplay');
       if (slider && display) {
         display.textContent = slider.value;
+      }
+    }
+
+    function updatePreview() {
+      const includeUpper = document.getElementById('includeUpper')?.checked || false;
+      const includeLower = document.getElementById('includeLower')?.checked || false;
+      const includeNumbers = document.getElementById('includeNumbers')?.checked || false;
+      const includeSymbols = document.getElementById('includeSymbols')?.checked || false;
+      const excludeSimilar = document.getElementById('excludeSimilar')?.checked || false;
+
+      let charset = '';
+      if (includeUpper) charset += excludeSimilar ? 'ABCDEFGHJKMNPQRSTUVWXYZ' : 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      if (includeLower) charset += excludeSimilar ? 'abcdefghjkmnpqrstuvwxyz' : 'abcdefghijklmnopqrstuvwxyz';
+      if (includeNumbers) charset += excludeSimilar ? '23456789' : '0123456789';
+      if (includeSymbols) charset += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+      const preview = document.getElementById('characterPreview');
+      if (preview) {
+        if (charset) {
+          preview.innerHTML = `<strong>Available characters (${charset.length}):</strong><br>${charset}`;
+          preview.style.color = 'var(--fg)';
+        } else {
+          preview.innerHTML = '<strong style="color: var(--danger);">⚠️ No character types selected! Please select at least one option.</strong>';
+          preview.style.color = 'var(--danger)';
+        }
       }
     }
 

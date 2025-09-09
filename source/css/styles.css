@@ -2136,13 +2136,14 @@ img {
   background: rgba(255, 255, 255, 0.04);
   color: var(--fg);
   border-radius: 12px;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   display: grid;
   place-items: center;
   cursor: pointer;
   transition: all 0.2s ease;
   flex-shrink: 0;
+  font-size: 20px;
 
   /* Mobile touch optimization */
   touch-action: manipulation;
@@ -2153,6 +2154,7 @@ img {
 .tool-modal__close:active {
   background: var(--accent);
   color: var(--bg);
+  border-color: var(--accent);
   transform: scale(1.05);
 }
 
@@ -2499,11 +2501,39 @@ img {
   color: var(--fg-weak);
   font-size: 0.875rem;
   cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.checkbox-group label:hover {
+  color: var(--fg);
+  background-color: rgba(34, 197, 94, 0.05);
+}
+
+.checkbox-group label:has(input:checked) {
+  color: var(--fg);
+  background-color: rgba(34, 197, 94, 0.1);
+  font-weight: 500;
 }
 
 .checkbox-group input[type="checkbox"] {
-  width: auto;
+  width: 20px;
+  height: 20px;
   margin: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.checkbox-group label:hover {
+  color: var(--fg);
+}
+
+.checkbox-group label:hover input[type="checkbox"] {
+  outline: 2px solid rgba(34, 197, 94, 0.3);
+  outline-offset: 2px;
 }
 
 .tool-actions {
