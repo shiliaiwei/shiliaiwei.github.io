@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EIRSVi • Developer Tools & Generators</title>
+  <title>EIRSVi </title>
 
   <!-- Mobile Browser Theme Colors -->
   <meta name="theme-color" content="#1e293b" />
@@ -1343,14 +1343,24 @@
             <p>Encode and decode text with Base16, Base32, Base58, Base64, Base85, and Base91</p>
           </div>
 
-          <!-- Data Units Converter -->
-          <div class="tool-card" data-category="converter" onclick="openTool('data-units-converter')">
+          <!-- Speed Internet Converter -->
+          <div class="tool-card" data-category="converter" onclick="openTool('speed-internet-converter')">
+            <div class="card-header">
+              <i class="ri-speed-line"></i>
+              <span class="category">CONVERTER</span>
+            </div>
+            <h4>Speed Internet Converter</h4>
+            <p>Convert between different internet speed units (Mbps, Kbps, Gbps, MB/s, KB/s)</p>
+          </div>
+
+          <!-- Data Storage Converter -->
+          <div class="tool-card" data-category="converter" onclick="openTool('data-storage-converter')">
             <div class="card-header">
               <i class="ri-hard-drive-line"></i>
               <span class="category">CONVERTER</span>
             </div>
-            <h4>Data Units Converter</h4>
-            <p>Convert between different data storage units and internet speeds</p>
+            <h4>Data Storage Converter</h4>
+            <p>Convert between different data storage units (bytes, KB, MB, GB, TB, PB)</p>
           </div>
 
           <!-- Khmer Lorem Generator -->
@@ -1462,36 +1472,35 @@
             <p>Generate Hash-based Message Authentication Codes (HMAC) with various hash functions</p>
           </div>
 
-          <!-- Transform Tool -->
-          <div class="tool-card" data-category="converter" onclick="openTool('transform')">
+          <!-- Caesar Cipher Tool -->
+          <div class="tool-card" data-category="crypto" onclick="openTool('caesar-cipher')">
             <div class="card-header">
-              <i class="ri-edit-line"></i>
-              <span class="category">CONVERTER</span>
+              <i class="ri-shield-star-line"></i>
+              <span class="category">CRYPTO</span>
             </div>
-            <h4>Text Transform</h4>
-            <p>Transform text with replace, reverse, case conversion, and other operations</p>
+            <h4>Caesar Cipher</h4>
+            <p>Encode and decode text using Caesar cipher with customizable shift values</p>
           </div>
 
-          <!-- Numeral System Tool -->
-          <div class="tool-card" data-category="converter" onclick="openTool('numeral-system')">
+          <!-- ROT13 Tool -->
+          <div class="tool-card" data-category="crypto" onclick="openTool('rot13')">
             <div class="card-header">
-              <i class="ri-calculator-line"></i>
-              <span class="category">CONVERTER</span>
+              <i class="ri-refresh-line"></i>
+              <span class="category">CRYPTO</span>
             </div>
-            <h4>Numeral System Converter</h4>
-            <p>Convert between different numeral systems (binary, decimal, hexadecimal, octal)</p>
+            <h4>ROT13 Encoder</h4>
+            <p>Encode and decode text using ROT13 cipher for simple text obfuscation</p>
           </div>
 
-          <!-- Bitwise Operation Tool -->
-          <div class="tool-card" data-category="converter" onclick="openTool('bitwise-operation')">
+          <!-- Morse Code Tool -->
+          <div class="tool-card" data-category="crypto" onclick="openTool('morse-code')">
             <div class="card-header">
-              <i class="ri-bit-coin-line"></i>
-              <span class="category">CONVERTER</span>
+              <i class="ri-radio-line"></i>
+              <span class="category">CRYPTO</span>
             </div>
-            <h4>Bitwise Operations</h4>
-            <p>Perform bitwise operations (AND, OR, XOR, NOT, shifts) on numbers</p>
+            <h4>Morse Code</h4>
+            <p>Convert text to Morse code and decode Morse code back to text</p>
           </div>
-
 
       </section>
 
@@ -2175,24 +2184,55 @@
           title: 'IPv4 Calculator - Network Configuration',
           content: `
             <div class="tool-input">
-              <label>IP Address with CIDR:</label>
-              <input type="text" id="ipInput" placeholder="192.168.1.1/24" value="192.168.1.1/24">
+              <div class="input-grid">
+                <div class="input-group">
+                  <label>IP Address:</label>
+                  <input type="text" id="ipAddress" placeholder="192.168.1.1">
+                </div>
+                
+                <div class="input-group">
+                  <label>Subnet Mask:</label>
+                  <select id="subnetMask">
+                    <option value="8">/8 (255.0.0.0)</option>
+                    <option value="16">/16 (255.255.0.0)</option>
+                    <option value="24" selected>/24 (255.255.255.0)</option>
+                    <option value="25">/25 (255.255.255.128)</option>
+                    <option value="26">/26 (255.255.255.192)</option>
+                    <option value="27">/27 (255.255.255.224)</option>
+                    <option value="28">/28 (255.255.255.240)</option>
+                    <option value="29">/29 (255.255.255.248)</option>
+                    <option value="30">/30 (255.255.255.252)</option>
+                  </select>
+                </div>
+                
+                <div class="input-group">
+                  <label>Configuration Name:</label>
+                  <input type="text" id="configName" placeholder="e.g., Office Network">
+                </div>
+              </div>
             </div>
+            
             <div class="tool-actions">
               <button class="btn-primary" onclick="calculateIP()">
                 <i class="ri-calculator-line"></i>
                 Calculate Network
               </button>
-              <button class="btn-secondary" onclick="generateIPRange()">
-                <i class="ri-list-line"></i>
-                Show IP Range
+              <button class="btn-secondary" onclick="saveConfiguration()">
+                <i class="ri-save-line"></i>
+                Save Configuration
               </button>
-              <button class="btn-secondary" onclick="clearInput('ipInput')">
+              <button class="btn-secondary" onclick="clearIPCalculator()">
                 <i class="ri-close-line"></i>
                 Clear
               </button>
             </div>
+            
             <div class="tool-output" id="ipOutput"></div>
+            
+            <div class="saved-configurations" id="savedConfigurations">
+              <h4>Saved Configurations</h4>
+              <div id="configurationsList"></div>
+            </div>
           `
         },
         'binary-text-converter': {
@@ -2335,19 +2375,19 @@
             <div class="tool-output" id="baseOutput"></div>
           `
         },
-        'data-units-converter': {
-          title: 'Data Units Converter',
+        'speed-internet-converter': {
+          title: 'Speed Internet Converter',
           content: `
             <div class="tool-input">
               <div class="converter-section">
                 <div class="input-with-buttons">
-                  <input type="number" id="dataValue" placeholder="Enter value to convert..." min="0" step="any">
+                  <input type="number" id="speedValue" placeholder="Enter speed value..." min="0" step="any">
                   <div class="button-group">
-                    <button class="btn-small" onclick="pasteText('dataValue')">
+                    <button class="btn-small" onclick="pasteText('speedValue')">
                       <i class="ri-clipboard-line"></i>
                       Paste
                     </button>
-                    <button class="btn-small" onclick="clearDataConverter()">
+                    <button class="btn-small" onclick="clearSpeedConverter()">
                       <i class="ri-close-line"></i>
                       Clear
                     </button>
@@ -2357,43 +2397,112 @@
                 <div class="tool-controls">
                   <label>
                     From Unit:
-                    <select id="dataFromUnit">
-                      <optgroup label="Data Storage">
-                        <option value="bits">Bits</option>
-                        <option value="bytes">Bytes</option>
-                        <option value="kb" selected>KB (Kilobytes)</option>
-                        <option value="mb">MB (Megabytes)</option>
-                        <option value="gb">GB (Gigabytes)</option>
-                        <option value="tb">TB (Terabytes)</option>
-                        <option value="pb">PB (Petabytes)</option>
-                        <option value="kib">KiB (Kibibytes)</option>
-                        <option value="mib">MiB (Mebibytes)</option>
-                        <option value="gib">GiB (Gibibytes)</option>
-                        <option value="tib">TiB (Tebibytes)</option>
-                      </optgroup>
-                      <optgroup label="Internet Speed">
-                        <option value="kbps">Kbps (Kilobits/sec)</option>
-                        <option value="mbps">Mbps (Megabits/sec)</option>
-                        <option value="gbps">Gbps (Gigabits/sec)</option>
-                      </optgroup>
+                    <select id="speedFromUnit">
+                      <option value="bps">bps (bits per second)</option>
+                      <option value="kbps">Kbps (kilobits per second)</option>
+                      <option value="mbps" selected>Mbps (megabits per second)</option>
+                      <option value="gbps">Gbps (gigabits per second)</option>
+                      <option value="bps-byte">B/s (bytes per second)</option>
+                      <option value="kbps-byte">KB/s (kilobytes per second)</option>
+                      <option value="mbps-byte">MB/s (megabytes per second)</option>
+                      <option value="gbps-byte">GB/s (gigabytes per second)</option>
+                    </select>
+                  </label>
+                  
+                  <label>
+                    To Unit:
+                    <select id="speedToUnit">
+                      <option value="bps">bps (bits per second)</option>
+                      <option value="kbps">Kbps (kilobits per second)</option>
+                      <option value="mbps">Mbps (megabits per second)</option>
+                      <option value="gbps" selected>Gbps (gigabits per second)</option>
+                      <option value="bps-byte">B/s (bytes per second)</option>
+                      <option value="kbps-byte">KB/s (kilobytes per second)</option>
+                      <option value="mbps-byte">MB/s (megabytes per second)</option>
+                      <option value="gbps-byte">GB/s (gigabytes per second)</option>
                     </select>
                   </label>
                 </div>
                 
                 <div class="tool-actions">
-                  <button class="btn-primary" onclick="convertDataUnits()">
-                    <i class="ri-calculator-line"></i>
-                    Convert All Units
-                  </button>
-                  <button class="btn-secondary" onclick="clearDataConverter()">
-                    <i class="ri-refresh-line"></i>
-                    Reset
+                  <button class="btn-primary" onclick="convertSpeed()">
+                    <i class="ri-speed-line"></i>
+                    Convert Speed
                   </button>
                 </div>
               </div>
             </div>
             
-            <div class="tool-output" id="dataOutput"></div>
+            <div class="tool-output" id="speedOutput"></div>
+          `
+        },
+        'data-storage-converter': {
+          title: 'Data Storage Converter',
+          content: `
+            <div class="tool-input">
+              <div class="converter-section">
+                <div class="input-with-buttons">
+                  <input type="number" id="storageValue" placeholder="Enter storage value..." min="0" step="any">
+                  <div class="button-group">
+                    <button class="btn-small" onclick="pasteText('storageValue')">
+                      <i class="ri-clipboard-line"></i>
+                      Paste
+                    </button>
+                    <button class="btn-small" onclick="clearStorageConverter()">
+                      <i class="ri-close-line"></i>
+                      Clear
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="tool-controls">
+                  <label>
+                    From Unit:
+                    <select id="storageFromUnit">
+                      <option value="bit">bit</option>
+                      <option value="byte" selected>byte (B)</option>
+                      <option value="kilobyte">kilobyte (KB)</option>
+                      <option value="megabyte">megabyte (MB)</option>
+                      <option value="gigabyte">gigabyte (GB)</option>
+                      <option value="terabyte">terabyte (TB)</option>
+                      <option value="petabyte">petabyte (PB)</option>
+                      <option value="exabyte">exabyte (EB)</option>
+                      <option value="kibibyte">kibibyte (KiB)</option>
+                      <option value="mebibyte">mebibyte (MiB)</option>
+                      <option value="gibibyte">gibibyte (GiB)</option>
+                      <option value="tebibyte">tebibyte (TiB)</option>
+                    </select>
+                  </label>
+                  
+                  <label>
+                    To Unit:
+                    <select id="storageToUnit">
+                      <option value="bit">bit</option>
+                      <option value="byte">byte (B)</option>
+                      <option value="kilobyte">kilobyte (KB)</option>
+                      <option value="megabyte" selected>megabyte (MB)</option>
+                      <option value="gigabyte">gigabyte (GB)</option>
+                      <option value="terabyte">terabyte (TB)</option>
+                      <option value="petabyte">petabyte (PB)</option>
+                      <option value="exabyte">exabyte (EB)</option>
+                      <option value="kibibyte">kibibyte (KiB)</option>
+                      <option value="mebibyte">mebibyte (MiB)</option>
+                      <option value="gibibyte">gibibyte (GiB)</option>
+                      <option value="tebibyte">tebibyte (TiB)</option>
+                    </select>
+                  </label>
+                </div>
+                
+                <div class="tool-actions">
+                  <button class="btn-primary" onclick="convertStorage()">
+                    <i class="ri-hard-drive-line"></i>
+                    Convert Storage
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tool-output" id="storageOutput"></div>
           `
         },
         'khmer-lorem-generator': {
@@ -2958,25 +3067,51 @@
           title: 'MAC Address Generator',
           content: `
             <div class="tool-input">
-              <select id="macFormat">
-                <option value="colon">XX:XX:XX:XX:XX:XX</option>
-                <option value="dash">XX-XX-XX-XX-XX-XX</option>
-                <option value="dot">XXXX.XXXX.XXXX</option>
-                <option value="none">XXXXXXXXXXXX</option>
-              </select>
-              <select id="macType">
-                <option value="random">Random MAC</option>
-                <option value="local">Locally Administered</option>
-                <option value="unicast">Unicast</option>
-              </select>
+              <div class="input-grid">
+                <div class="input-group">
+                  <label>Format:</label>
+                  <select id="macFormat">
+                    <option value="colon">XX:XX:XX:XX:XX:XX</option>
+                    <option value="dash">XX-XX-XX-XX-XX-XX</option>
+                    <option value="dot">XXXX.XXXX.XXXX</option>
+                    <option value="none">XXXXXXXXXXXX</option>
+                  </select>
+                </div>
+                
+                <div class="input-group">
+                  <label>Type:</label>
+                  <select id="macType">
+                    <option value="random">Random MAC</option>
+                    <option value="local">Locally Administered</option>
+                    <option value="unicast">Unicast</option>
+                    <option value="multicast">Multicast</option>
+                  </select>
+                </div>
+                
+                <div class="input-group">
+                  <label>Quantity:</label>
+                  <input type="number" id="macQuantity" value="1" min="1" max="100" placeholder="1-100">
+                </div>
+              </div>
             </div>
+            
             <div class="tool-actions">
               <button class="btn-primary" onclick="generateMAC()">
                 <i class="ri-wifi-line"></i>
-                Generate MAC
+                Generate MAC Address(es)
+              </button>
+              <button class="btn-secondary" onclick="clearMACGenerator()">
+                <i class="ri-close-line"></i>
+                Clear
               </button>
             </div>
+            
             <div class="tool-output" id="macOutput"></div>
+            
+            <div class="mac-history" id="macHistory">
+              <h4>Generated Addresses History</h4>
+              <div id="macHistoryList"></div>
+            </div>
           `
         },
         'block-cipher': {
@@ -3087,18 +3222,18 @@
             <div class="tool-output" id="hmacOutput"></div>
           `
         },
-        'transform': {
-          title: 'Text Transform Operations',
+        'caesar-cipher': {
+          title: 'Caesar Cipher',
           content: `
             <div class="tool-input">
               <div class="input-with-buttons">
-                <textarea id="transformInput" placeholder="Enter text to transform..." rows="4"></textarea>
+                <textarea id="caesarInput" placeholder="Enter text to encode/decode..." rows="4"></textarea>
                 <div class="button-group">
-                  <button class="btn-small" onclick="pasteText('transformInput')">
+                  <button class="btn-small" onclick="pasteText('caesarInput')">
                     <i class="ri-clipboard-line"></i>
                     Paste
                   </button>
-                  <button class="btn-small" onclick="clearInput('transformInput')">
+                  <button class="btn-small" onclick="clearInput('caesarInput')">
                     <i class="ri-close-line"></i>
                     Clear
                   </button>
@@ -3107,141 +3242,119 @@
               
               <div class="tool-controls">
                 <label>
-                  Transform Type:
-                  <select id="transformType">
-                    <option value="uppercase">Uppercase</option>
-                    <option value="lowercase">Lowercase</option>
-                    <option value="titlecase">Title Case</option>
-                    <option value="reverse">Reverse Text</option>
-                    <option value="replace">Find & Replace</option>
+                  Shift Value:
+                  <input type="number" id="caesarShift" value="3" min="1" max="25" placeholder="1-25">
+                </label>
+                
+                <label>
+                  Mode:
+                  <select id="caesarMode">
+                    <option value="encode">Encode</option>
+                    <option value="decode">Decode</option>
                   </select>
                 </label>
                 
-                <div id="replaceControls" style="display: none;">
-                  <label>
-                    Find:
-                    <input type="text" id="findText" placeholder="Text to find">
-                  </label>
-                  
-                  <label>
-                    Replace:
-                    <input type="text" id="replaceText" placeholder="Replacement text">
-                  </label>
-                  
-                  <label>
-                    <input type="checkbox" id="caseSensitive"> Case sensitive
-                  </label>
-                </div>
-              </div>
-            </div>
-            
-            <div class="tool-actions">
-              <button class="btn-primary" onclick="applyTransform()">
-                <i class="ri-magic-line"></i>
-                Apply Transform
-              </button>
-            </div>
-            
-            <div class="tool-output" id="transformOutput"></div>
-          `,
-          init: function () {
-            const transformType = document.getElementById('transformType');
-            const replaceControls = document.getElementById('replaceControls');
-
-            transformType.addEventListener('change', function () {
-              replaceControls.style.display = this.value === 'replace' ? 'block' : 'none';
-            });
-          }
-        },
-        'numeral-system': {
-          title: 'Numeral System Converter',
-          content: `
-            <div class="tool-input">
-              <div class="input-with-buttons">
-                <input type="text" id="numeralInput" placeholder="Enter number to convert...">
-                <div class="button-group">
-                  <button class="btn-small" onclick="pasteText('numeralInput')">
-                    <i class="ri-clipboard-line"></i>
-                    Paste
-                  </button>
-                  <button class="btn-small" onclick="clearInput('numeralInput')">
-                    <i class="ri-close-line"></i>
-                    Clear
-                  </button>
-                </div>
-              </div>
-              
-              <div class="tool-controls">
                 <label>
-                  Input Base:
-                  <select id="inputBase">
-                    <option value="2">Binary (Base 2)</option>
-                    <option value="8">Octal (Base 8)</option>
-                    <option value="10" selected>Decimal (Base 10)</option>
-                    <option value="16">Hexadecimal (Base 16)</option>
-                  </select>
+                  <input type="checkbox" id="caesarPreserveCase" checked> Preserve case
                 </label>
               </div>
             </div>
             
             <div class="tool-actions">
-              <button class="btn-primary" onclick="convertNumeralSystem()">
-                <i class="ri-calculator-line"></i>
-                Convert All Bases
+              <button class="btn-primary" onclick="processCaesar()">
+                <i class="ri-shield-star-line"></i>
+                Process
               </button>
             </div>
             
-            <div class="tool-output" id="numeralOutput"></div>
+            <div class="tool-output" id="caesarOutput"></div>
           `
         },
-        'bitwise-operation': {
-          title: 'Bitwise Operations Calculator',
+        'rot13': {
+          title: 'ROT13 Encoder/Decoder',
           content: `
             <div class="tool-input">
-              <div class="bitwise-inputs">
-                <div class="input-group">
-                  <label>First Number (A):</label>
-                  <input type="text" id="bitwiseA" placeholder="Enter first number">
-                </div>
-                
-                <div class="input-group">
-                  <label>Second Number (B):</label>
-                  <input type="text" id="bitwiseB" placeholder="Enter second number">
+              <div class="input-with-buttons">
+                <textarea id="rot13Input" placeholder="Enter text to encode/decode with ROT13..." rows="4"></textarea>
+                <div class="button-group">
+                  <button class="btn-small" onclick="pasteText('rot13Input')">
+                    <i class="ri-clipboard-line"></i>
+                    Paste
+                  </button>
+                  <button class="btn-small" onclick="clearInput('rot13Input')">
+                    <i class="ri-close-line"></i>
+                    Clear
+                  </button>
                 </div>
               </div>
               
               <div class="tool-controls">
                 <label>
-                  Input Format:
-                  <select id="bitwiseFormat">
-                    <option value="decimal">Decimal</option>
-                    <option value="hexadecimal">Hexadecimal</option>
-                    <option value="binary">Binary</option>
+                  <input type="checkbox" id="rot13PreserveCase" checked> Preserve case
+                </label>
+                
+                <label>
+                  <input type="checkbox" id="rot13NumbersOnly"> Numbers only (ROT5)
+                </label>
+              </div>
+            </div>
+            
+            <div class="tool-actions">
+              <button class="btn-primary" onclick="processROT13()">
+                <i class="ri-refresh-line"></i>
+                Convert
+              </button>
+            </div>
+            
+            <div class="tool-output" id="rot13Output"></div>
+          `
+        },
+        'morse-code': {
+          title: 'Morse Code Converter',
+          content: `
+            <div class="tool-input">
+              <div class="input-with-buttons">
+                <textarea id="morseInput" placeholder="Enter text or Morse code (use dots, dashes, and spaces)..." rows="4"></textarea>
+                <div class="button-group">
+                  <button class="btn-small" onclick="pasteText('morseInput')">
+                    <i class="ri-clipboard-line"></i>
+                    Paste
+                  </button>
+                  <button class="btn-small" onclick="clearInput('morseInput')">
+                    <i class="ri-close-line"></i>
+                    Clear
+                  </button>
+                </div>
+              </div>
+              
+              <div class="tool-controls">
+                <label>
+                  Mode:
+                  <select id="morseMode">
+                    <option value="encode">Text to Morse</option>
+                    <option value="decode">Morse to Text</option>
                   </select>
                 </label>
                 
                 <label>
-                  Operation:
-                  <select id="bitwiseOperation">
-                    <option value="and">AND (A & B)</option>
-                    <option value="or">OR (A | B)</option>
-                    <option value="xor">XOR (A ^ B)</option>
-                    <option value="not">NOT (~A)</option>
-                    <option value="shift-left">Left Shift (A << B)</option>
-                    <option value="shift-right">Right Shift (A >> B)</option>
+                  Separator:
+                  <select id="morseSeparator">
+                    <option value=" ">Space</option>
+                    <option value=" / ">Space-Slash-Space</option>
+                    <option value="|">Pipe</option>
                   </select>
                 </label>
               </div>
             </div>
             
             <div class="tool-actions">
-              <button class="btn-primary" onclick="performBitwiseOperation()">
-                <i class="ri-calculator-line"></i>
-                Calculate
+              <button class="btn-primary" onclick="processMorse()">
+                <i class="ri-radio-line"></i>
+                Convert
               </button>
             </div>
             
-            <div class="tool-output" id="bitwiseOutput"></div>
+            <div class="tool-output" id="morseOutput"></div>
           `
         }
       };
@@ -3300,6 +3413,18 @@
       element.focus();
       element.select();
       showMessage('Text selected!', 'success');
+    }
+
+    function selectTextInElement(selector) {
+      const element = document.querySelector(selector);
+      if (element) {
+        const range = document.createRange();
+        range.selectNodeContents(element);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        showMessage('Text selected!', 'success');
+      }
     }
 
     function copyToClipboard(text) {
@@ -3407,24 +3532,54 @@
       );
 
       let result = '';
+      let formatName = '';
       switch (format) {
         case '8bit':
           result = binary.join('');
+          formatName = '8-bit blocks';
           break;
         case 'spaced':
           result = binary.join(' ');
+          formatName = 'Space separated';
           break;
         case 'dotted':
           result = binary.join('.');
+          formatName = 'Dot separated';
           break;
         case 'dashed':
           result = binary.join('-');
+          formatName = 'Dash separated';
           break;
         default:
           result = binary.join(' ');
+          formatName = 'Space separated';
       }
 
-      outputResult('textToBinaryOutput', 'Binary:', result);
+      const charCount = text.length;
+      const binaryLength = result.length;
+
+      output.innerHTML = `
+        <div class="result-item">
+          <strong>Binary Result:</strong>
+          <div class="binary-format-display">${result}</div>
+          <div class="converter-actions">
+            <button class="btn-small" onclick="copyToClipboard('${result.replace(/'/g, "\\'")}')">
+              <i class="ri-clipboard-line"></i>
+              Copy Binary
+            </button>
+            <button class="btn-small" onclick="selectTextInElement('.binary-format-display')">
+              <i class="ri-select-all-line"></i>
+              Select All
+            </button>
+          </div>
+        </div>
+        <div class="converter-info">
+          <span class="info-badge">Format: ${formatName}</span>
+          <span class="info-badge">Characters: ${charCount}</span>
+          <span class="info-badge">Binary Length: ${binaryLength}</span>
+          <span class="info-badge">Bits: ${charCount * 8}</span>
+        </div>
+      `;
     }
 
     function convertBinaryToText() {
@@ -3438,7 +3593,7 @@
 
       try {
         // Handle different separators and clean up the input
-        let cleanBinary = binary.replace(/[\s.\-]/g, ' ').replace(/\s+/g, ' ').trim();
+        let cleanBinary = binary.replace(/[\s.\-_,]/g, ' ').replace(/\s+/g, ' ').trim();
 
         // If no spaces, try to split into 8-bit chunks
         if (!cleanBinary.includes(' ') && cleanBinary.length % 8 === 0) {
@@ -3446,21 +3601,56 @@
         }
 
         const binaryGroups = cleanBinary.split(' ');
-        const text = binaryGroups.map(group => {
+        let text = '';
+        let invalidGroups = [];
+
+        for (let i = 0; i < binaryGroups.length; i++) {
+          const group = binaryGroups[i];
           // Only process valid binary groups
           if (/^[01]+$/.test(group) && group.length > 0) {
-            return String.fromCharCode(parseInt(group, 2));
+            if (group.length <= 8) {
+              const charCode = parseInt(group, 2);
+              if (charCode >= 0 && charCode <= 255) {
+                text += String.fromCharCode(charCode);
+              } else {
+                invalidGroups.push(group);
+              }
+            } else {
+              invalidGroups.push(group);
+            }
+          } else if (group.length > 0) {
+            invalidGroups.push(group);
           }
-          return '';
-        }).join('');
-
-        if (!text) {
-          throw new Error('Invalid binary format');
         }
 
-        outputResult('binaryToTextOutput', 'Text:', text);
+        if (text.length === 0) {
+          throw new Error('No valid binary sequences found');
+        }
+
+        let resultHtml = `
+          <div class="result-item">
+            <strong>Converted Text:</strong>
+            <div class="output-text">
+              <textarea readonly rows="3">${text}</textarea>
+              <button class="btn-small" onclick="copyToClipboard('${text.replace(/'/g, "\\'")}')">
+                <i class="ri-clipboard-line"></i>
+                Copy
+              </button>
+            </div>
+          </div>
+        `;
+
+        if (invalidGroups.length > 0) {
+          resultHtml += `
+            <div class="result-item warning">
+              <strong>Warning:</strong> Some binary sequences were invalid or skipped: ${invalidGroups.slice(0, 3).join(', ')}${invalidGroups.length > 3 ? '...' : ''}
+            </div>
+          `;
+        }
+
+        output.innerHTML = resultHtml;
       } catch (error) {
-        output.innerHTML = '<div class="error">Invalid binary format. Please enter binary digits (0s and 1s) separated by spaces, dots, or dashes.</div>';
+        output.innerHTML = '<div class="error">Invalid binary format. Please enter binary digits (0s and 1s) separated by spaces, dots, or dashes. Each group should be 8 bits or less.</div>';
       }
     } function switchBinaryTab(tab) {
       const tabs = document.querySelectorAll('.tab-btn');
@@ -3490,29 +3680,61 @@
 
       try {
         let result = '';
+        let formatName = '';
+
         switch (format) {
           case 'base16':
             result = Array.from(text).map(char =>
               char.charCodeAt(0).toString(16).padStart(2, '0')
             ).join('').toUpperCase();
+            formatName = 'Base16 (Hexadecimal)';
             break;
           case 'base32':
             result = base32Encode(text);
+            formatName = 'Base32';
             break;
           case 'base58':
             result = base58Encode(text);
+            formatName = 'Base58';
             break;
           case 'base64':
             result = btoa(unescape(encodeURIComponent(text)));
+            formatName = 'Base64';
             break;
           case 'base85':
             result = base85Encode(text);
+            formatName = 'Base85 (ASCII85)';
             break;
           case 'base91':
             result = base91Encode(text);
+            formatName = 'Base91';
             break;
         }
-        outputResult('baseOutput', `${format.toUpperCase()} Encoded:`, result);
+
+        const compressionRatio = (result.length / text.length).toFixed(2);
+
+        output.innerHTML = `
+          <div class="result-item">
+            <strong>${formatName} Encoded:</strong>
+            <div class="base-encoding-display">${result}</div>
+            <div class="converter-actions">
+              <button class="btn-small" onclick="copyToClipboard('${result.replace(/'/g, "\\'")}')">
+                <i class="ri-clipboard-line"></i>
+                Copy Encoded
+              </button>
+              <button class="btn-small" onclick="selectTextInElement('.base-encoding-display')">
+                <i class="ri-select-all-line"></i>
+                Select All
+              </button>
+            </div>
+          </div>
+          <div class="converter-info">
+            <span class="info-badge">Original: ${text.length} chars</span>
+            <span class="info-badge">Encoded: ${result.length} chars</span>
+            <span class="info-badge">Ratio: ${compressionRatio}x</span>
+            <span class="info-badge">Format: ${formatName}</span>
+          </div>
+        `;
       } catch (error) {
         output.innerHTML = `<div class="error">Encoding failed: ${error.message}</div>`;
       }
@@ -3530,29 +3752,57 @@
 
       try {
         let result = '';
+        let formatName = '';
+
         switch (format) {
           case 'base16':
             result = text.match(/.{2}/g)?.map(hex =>
               String.fromCharCode(parseInt(hex, 16))
             ).join('') || '';
+            formatName = 'Base16 (Hexadecimal)';
             break;
           case 'base32':
             result = base32Decode(text);
+            formatName = 'Base32';
             break;
           case 'base58':
             result = base58Decode(text);
+            formatName = 'Base58';
             break;
           case 'base64':
             result = decodeURIComponent(escape(atob(text)));
+            formatName = 'Base64';
             break;
           case 'base85':
             result = base85Decode(text);
+            formatName = 'Base85 (ASCII85)';
             break;
           case 'base91':
             result = base91Decode(text);
+            formatName = 'Base91';
             break;
         }
-        outputResult('baseOutput', `${format.toUpperCase()} Decoded:`, result);
+
+        const compressionRatio = (text.length / result.length).toFixed(2);
+
+        output.innerHTML = `
+          <div class="result-item">
+            <strong>${formatName} Decoded:</strong>
+            <div class="output-text">
+              <textarea readonly rows="3">${result}</textarea>
+              <button class="btn-small" onclick="copyToClipboard('${result.replace(/'/g, "\\'")}')">
+                <i class="ri-clipboard-line"></i>
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="converter-info">
+            <span class="info-badge">Encoded: ${text.length} chars</span>
+            <span class="info-badge">Decoded: ${result.length} chars</span>
+            <span class="info-badge">Ratio: ${compressionRatio}x</span>
+            <span class="info-badge">Format: ${formatName}</span>
+          </div>
+        `;
       } catch (error) {
         output.innerHTML = `<div class="error">Decoding failed: Invalid ${format.toUpperCase()} format</div>`;
       }
@@ -3735,8 +3985,36 @@
     }
 
     function base91Decode(str) {
-      // Simplified Base91 decode - actual implementation is complex
-      return 'Base91 decoding not fully implemented';
+      const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!#$%&()*+,./:;<=>?@[]^_`{|}~"';
+      let result = '';
+      let v = -1;
+      let b = 0;
+      let n = 0;
+
+      for (let i = 0; i < str.length; i++) {
+        const c = alphabet.indexOf(str[i]);
+        if (c === -1) continue;
+
+        if (v < 0) {
+          v = c;
+          continue;
+        }
+
+        v += (c + 1) * 91;
+        b += (c & 8191) > 88 ? 13 : 14;
+
+        while (b > 7) {
+          result += String.fromCharCode(v & 255);
+          v >>= 8;
+          b -= 8;
+        }
+      }
+
+      if (v >= 0) {
+        result += String.fromCharCode(v & 255);
+      }
+
+      return result;
     }
 
     // Numeral System Converter - DUPLICATE REMOVED
@@ -8025,6 +8303,828 @@
       const selection = window.getSelection();
       selection.removeAllRanges();
       selection.addRange(range);
+    }
+
+    // ===============================================
+    // SPEED INTERNET CONVERTER
+    // ===============================================
+
+    function convertSpeed() {
+      const input = document.getElementById('speedInput').value.trim();
+      const fromUnit = document.getElementById('speedFromUnit').value;
+      const toUnit = document.getElementById('speedToUnit').value;
+      const output = document.getElementById('speedOutput');
+
+      if (!input) {
+        output.innerHTML = '<div class="error-message">Please enter a value to convert.</div>';
+        return;
+      }
+
+      const value = parseFloat(input);
+      if (isNaN(value)) {
+        output.innerHTML = '<div class="error-message">Please enter a valid number.</div>';
+        return;
+      }
+
+      // Convert to bits per second (base unit)
+      const toBps = {
+        'bps': 1,
+        'kbps': 1000,
+        'mbps': 1000000,
+        'gbps': 1000000000,
+        'tbps': 1000000000000,
+        'Bps': 8,
+        'KBps': 8000,
+        'MBps': 8000000,
+        'GBps': 8000000000,
+        'TBps': 8000000000000
+      };
+
+      // Convert from bps to target unit
+      const fromBps = {
+        'bps': 1,
+        'kbps': 1000,
+        'mbps': 1000000,
+        'gbps': 1000000000,
+        'tbps': 1000000000000,
+        'Bps': 8,
+        'KBps': 8000,
+        'MBps': 8000000,
+        'GBps': 8000000000,
+        'TBps': 8000000000000
+      };
+
+      const bps = value * toBps[fromUnit];
+      const result = bps / fromBps[toUnit];
+
+      const unitNames = {
+        'bps': 'bits per second',
+        'kbps': 'kilobits per second',
+        'mbps': 'megabits per second',
+        'gbps': 'gigabits per second',
+        'tbps': 'terabits per second',
+        'Bps': 'bytes per second',
+        'KBps': 'kilobytes per second',
+        'MBps': 'megabytes per second',
+        'GBps': 'gigabytes per second',
+        'TBps': 'terabytes per second'
+      };
+
+      output.innerHTML = `
+        <div class="tool-output-header">
+          <h4>Speed Conversion Result</h4>
+          <div class="output-actions">
+            <button class="btn-secondary btn-small" onclick="copyToClipboard('${result}')">
+              <i class="ri-clipboard-line"></i>
+              Copy
+            </button>
+          </div>
+        </div>
+        <div class="conversion-result">
+          <div class="conversion-line">
+            <strong>${value} ${unitNames[fromUnit]}</strong> equals
+          </div>
+          <div class="conversion-value">
+            ${formatNumber(result)} ${unitNames[toUnit]}
+          </div>
+        </div>
+      `;
+    }
+
+    function clearSpeedConverter() {
+      document.getElementById('speedInput').value = '';
+      document.getElementById('speedOutput').innerHTML = '';
+    }
+
+    // ===============================================
+    // DATA STORAGE CONVERTER
+    // ===============================================
+
+    function convertStorage() {
+      const input = document.getElementById('storageInput').value.trim();
+      const fromUnit = document.getElementById('storageFromUnit').value;
+      const toUnit = document.getElementById('storageToUnit').value;
+      const output = document.getElementById('storageOutput');
+
+      if (!input) {
+        output.innerHTML = '<div class="error-message">Please enter a value to convert.</div>';
+        return;
+      }
+
+      const value = parseFloat(input);
+      if (isNaN(value)) {
+        output.innerHTML = '<div class="error-message">Please enter a valid number.</div>';
+        return;
+      }
+
+      // Convert to bytes (base unit) - using binary (1024) for most units
+      const toBytes = {
+        'bit': 1 / 8,
+        'byte': 1,
+        'KB': 1024,
+        'MB': 1024 * 1024,
+        'GB': 1024 * 1024 * 1024,
+        'TB': 1024 * 1024 * 1024 * 1024,
+        'PB': 1024 * 1024 * 1024 * 1024 * 1024,
+        'EB': 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
+        'kB': 1000,          // decimal
+        'MB-dec': 1000 * 1000, // decimal megabyte
+        'GB-dec': 1000 * 1000 * 1000, // decimal gigabyte
+        'TB-dec': 1000 * 1000 * 1000 * 1000 // decimal terabyte
+      };
+
+      const bytes = value * toBytes[fromUnit];
+      const result = bytes / toBytes[toUnit];
+
+      const unitNames = {
+        'bit': 'bits',
+        'byte': 'bytes',
+        'KB': 'kilobytes (binary)',
+        'MB': 'megabytes (binary)',
+        'GB': 'gigabytes (binary)',
+        'TB': 'terabytes (binary)',
+        'PB': 'petabytes (binary)',
+        'EB': 'exabytes (binary)',
+        'kB': 'kilobytes (decimal)',
+        'MB-dec': 'megabytes (decimal)',
+        'GB-dec': 'gigabytes (decimal)',
+        'TB-dec': 'terabytes (decimal)'
+      };
+
+      output.innerHTML = `
+        <div class="tool-output-header">
+          <h4>Storage Conversion Result</h4>
+          <div class="output-actions">
+            <button class="btn-secondary btn-small" onclick="copyToClipboard('${result}')">
+              <i class="ri-clipboard-line"></i>
+              Copy
+            </button>
+          </div>
+        </div>
+        <div class="conversion-result">
+          <div class="conversion-line">
+            <strong>${value} ${unitNames[fromUnit]}</strong> equals
+          </div>
+          <div class="conversion-value">
+            ${formatNumber(result)} ${unitNames[toUnit]}
+          </div>
+        </div>
+      `;
+    }
+
+    function clearStorageConverter() {
+      document.getElementById('storageInput').value = '';
+      document.getElementById('storageOutput').innerHTML = '';
+    }
+
+    // Helper function to format numbers nicely
+    function formatNumber(num) {
+      if (num === 0) return '0';
+      if (Math.abs(num) >= 1e12) return num.toExponential(6);
+      if (Math.abs(num) >= 1000000) return num.toLocaleString(undefined, { maximumFractionDigits: 2 });
+      if (Math.abs(num) >= 1) return num.toLocaleString(undefined, { maximumFractionDigits: 6 });
+      return num.toExponential(6);
+    }
+
+    // Helper function to copy result to clipboard
+    function copyToClipboard(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text.toString()).then(() => {
+          showMessage('Copied to clipboard!', 'success');
+        }).catch(err => {
+          showMessage('Failed to copy to clipboard', 'error');
+        });
+      } else {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          showMessage('Copied to clipboard!', 'success');
+        } catch (err) {
+          showMessage('Failed to copy to clipboard', 'error');
+        }
+        document.body.removeChild(textArea);
+      }
+    }
+
+    // ===============================================
+    // CRYPTO FUNCTIONS
+    // ===============================================
+
+    // Block Cipher Functions
+    async function processBlockCipher() {
+      const input = document.getElementById('blockCipherInput').value;
+      const algorithm = document.getElementById('blockCipherAlgorithm').value;
+      const key = document.getElementById('blockCipherKey').value;
+      const mode = document.getElementById('blockCipherMode').value;
+      const output = document.getElementById('blockCipherOutput');
+
+      if (!input || !key) {
+        output.innerHTML = '<div class="error-message">Please enter both text and key.</div>';
+        return;
+      }
+
+      try {
+        let result;
+        if (mode === 'encrypt') {
+          result = await encryptText(input, key, algorithm);
+        } else {
+          result = await decryptText(input, key, algorithm);
+        }
+
+        output.innerHTML = `
+          <div class="tool-output-header">
+            <h4>${mode === 'encrypt' ? 'Encrypted' : 'Decrypted'} Result</h4>
+            <div class="output-actions">
+              <button class="btn-secondary btn-small" onclick="copyToClipboard('${result}')">
+                <i class="ri-clipboard-line"></i>
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="cipher-result">
+            <div class="result-text">${result}</div>
+          </div>
+        `;
+      } catch (error) {
+        output.innerHTML = `<div class="error-message">Error: ${error.message}</div>`;
+      }
+    }
+
+    async function encryptText(text, password, algorithm) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(text);
+      const passwordBuffer = encoder.encode(password);
+
+      // Generate key from password
+      const keyMaterial = await crypto.subtle.importKey(
+        'raw', passwordBuffer, 'PBKDF2', false, ['deriveKey']
+      );
+
+      const salt = crypto.getRandomValues(new Uint8Array(16));
+      const key = await crypto.subtle.deriveKey(
+        { name: 'PBKDF2', salt, iterations: 100000, hash: 'SHA-256' },
+        keyMaterial,
+        { name: 'AES-GCM', length: 256 },
+        false,
+        ['encrypt']
+      );
+
+      const iv = crypto.getRandomValues(new Uint8Array(12));
+      const encrypted = await crypto.subtle.encrypt(
+        { name: 'AES-GCM', iv },
+        key,
+        data
+      );
+
+      const result = new Uint8Array(salt.length + iv.length + encrypted.byteLength);
+      result.set(salt, 0);
+      result.set(iv, salt.length);
+      result.set(new Uint8Array(encrypted), salt.length + iv.length);
+
+      return btoa(String.fromCharCode(...result));
+    }
+
+    async function decryptText(encryptedText, password, algorithm) {
+      try {
+        const encoder = new TextEncoder();
+        const decoder = new TextDecoder();
+        const data = new Uint8Array(atob(encryptedText).split('').map(c => c.charCodeAt(0)));
+
+        const salt = data.slice(0, 16);
+        const iv = data.slice(16, 28);
+        const encrypted = data.slice(28);
+
+        const passwordBuffer = encoder.encode(password);
+        const keyMaterial = await crypto.subtle.importKey(
+          'raw', passwordBuffer, 'PBKDF2', false, ['deriveKey']
+        );
+
+        const key = await crypto.subtle.deriveKey(
+          { name: 'PBKDF2', salt, iterations: 100000, hash: 'SHA-256' },
+          keyMaterial,
+          { name: 'AES-GCM', length: 256 },
+          false,
+          ['decrypt']
+        );
+
+        const decrypted = await crypto.subtle.decrypt(
+          { name: 'AES-GCM', iv },
+          key,
+          encrypted
+        );
+
+        return decoder.decode(decrypted);
+      } catch (error) {
+        throw new Error('Decryption failed. Check your key and input.');
+      }
+    }
+
+    // Caesar Cipher Functions
+    function processCaesar() {
+      const input = document.getElementById('caesarInput').value;
+      const shift = parseInt(document.getElementById('caesarShift').value);
+      const mode = document.getElementById('caesarMode').value;
+      const preserveCase = document.getElementById('caesarPreserveCase').checked;
+      const output = document.getElementById('caesarOutput');
+
+      if (!input) {
+        output.innerHTML = '<div class="error-message">Please enter text to process.</div>';
+        return;
+      }
+
+      const actualShift = mode === 'decode' ? -shift : shift;
+      const result = caesarCipher(input, actualShift, preserveCase);
+
+      output.innerHTML = `
+        <div class="tool-output-header">
+          <h4>Caesar Cipher Result</h4>
+          <div class="output-actions">
+            <button class="btn-secondary btn-small" onclick="copyToClipboard('${result}')">
+              <i class="ri-clipboard-line"></i>
+              Copy
+            </button>
+          </div>
+        </div>
+        <div class="cipher-result">
+          <div class="result-text">${result}</div>
+        </div>
+      `;
+    }
+
+    function caesarCipher(text, shift, preserveCase) {
+      return text.split('').map(char => {
+        if (char.match(/[a-zA-Z]/)) {
+          const isUpperCase = char === char.toUpperCase();
+          const charCode = char.toLowerCase().charCodeAt(0);
+          const shifted = ((charCode - 97 + shift + 26) % 26) + 97;
+          const shiftedChar = String.fromCharCode(shifted);
+          return preserveCase && isUpperCase ? shiftedChar.toUpperCase() : shiftedChar;
+        }
+        return char;
+      }).join('');
+    }
+
+    // ROT13 Functions
+    function processROT13() {
+      const input = document.getElementById('rot13Input').value;
+      const preserveCase = document.getElementById('rot13PreserveCase').checked;
+      const numbersOnly = document.getElementById('rot13NumbersOnly').checked;
+      const output = document.getElementById('rot13Output');
+
+      if (!input) {
+        output.innerHTML = '<div class="error-message">Please enter text to process.</div>';
+        return;
+      }
+
+      const result = numbersOnly ? rot5(input) : rot13(input, preserveCase);
+
+      output.innerHTML = `
+        <div class="tool-output-header">
+          <h4>${numbersOnly ? 'ROT5' : 'ROT13'} Result</h4>
+          <div class="output-actions">
+            <button class="btn-secondary btn-small" onclick="copyToClipboard('${result}')">
+              <i class="ri-clipboard-line"></i>
+              Copy
+            </button>
+          </div>
+        </div>
+        <div class="cipher-result">
+          <div class="result-text">${result}</div>
+        </div>
+      `;
+    }
+
+    function rot13(text, preserveCase) {
+      return text.split('').map(char => {
+        if (char.match(/[a-zA-Z]/)) {
+          const isUpperCase = char === char.toUpperCase();
+          const charCode = char.toLowerCase().charCodeAt(0);
+          const shifted = ((charCode - 97 + 13) % 26) + 97;
+          const shiftedChar = String.fromCharCode(shifted);
+          return preserveCase && isUpperCase ? shiftedChar.toUpperCase() : shiftedChar;
+        }
+        return char;
+      }).join('');
+    }
+
+    function rot5(text) {
+      return text.split('').map(char => {
+        if (char.match(/[0-9]/)) {
+          const digit = parseInt(char);
+          return ((digit + 5) % 10).toString();
+        }
+        return char;
+      }).join('');
+    }
+
+    // Morse Code Functions
+    function processMorse() {
+      const input = document.getElementById('morseInput').value;
+      const mode = document.getElementById('morseMode').value;
+      const separator = document.getElementById('morseSeparator').value;
+      const output = document.getElementById('morseOutput');
+
+      if (!input) {
+        output.innerHTML = '<div class="error-message">Please enter text or Morse code.</div>';
+        return;
+      }
+
+      let result;
+      try {
+        if (mode === 'encode') {
+          result = textToMorse(input, separator);
+        } else {
+          result = morseToText(input);
+        }
+
+        output.innerHTML = `
+          <div class="tool-output-header">
+            <h4>Morse Code Result</h4>
+            <div class="output-actions">
+              <button class="btn-secondary btn-small" onclick="copyToClipboard('${result}')">
+                <i class="ri-clipboard-line"></i>
+                Copy
+              </button>
+            </div>
+          </div>
+          <div class="cipher-result">
+            <div class="result-text">${result}</div>
+          </div>
+        `;
+      } catch (error) {
+        output.innerHTML = `<div class="error-message">Error: ${error.message}</div>`;
+      }
+    }
+
+    const morseCodeMap = {
+      'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---',
+      'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-',
+      'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..', '0': '-----', '1': '.----', '2': '..---',
+      '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.'
+    };
+
+    const reverseMorseMap = Object.fromEntries(Object.entries(morseCodeMap).map(([k, v]) => [v, k]));
+
+    function textToMorse(text, separator) {
+      return text.toUpperCase().split('').map(char => {
+        if (char === ' ') return '/';
+        return morseCodeMap[char] || char;
+      }).join(separator);
+    }
+
+    function morseToText(morse) {
+      // Clean up the input and split by separators
+      const cleaned = morse.replace(/\s+/g, ' ').trim();
+      const codes = cleaned.split(/[\s\/\|]+/);
+
+      return codes.map(code => {
+        if (code === '' || code === '/') return ' ';
+        return reverseMorseMap[code] || '?';
+      }).join('');
+    }
+
+    // ===============================================
+    // NETWORK FUNCTIONS
+    // ===============================================
+
+    // IPv4 Calculator Functions
+    function calculateIP() {
+      const ipAddress = document.getElementById('ipAddress').value.trim();
+      const subnetMask = parseInt(document.getElementById('subnetMask').value);
+      const output = document.getElementById('ipOutput');
+
+      if (!ipAddress) {
+        output.innerHTML = '<div class="error-message">Please enter an IP address.</div>';
+        return;
+      }
+
+      try {
+        const ipParts = ipAddress.split('.').map(part => parseInt(part));
+        if (ipParts.length !== 4 || ipParts.some(part => isNaN(part) || part < 0 || part > 255)) {
+          throw new Error('Invalid IP address format');
+        }
+
+        const calculations = calculateNetworkInfo(ipParts, subnetMask);
+
+        output.innerHTML = `
+          <div class="tool-output-header">
+            <h4>Network Calculation Results</h4>
+          </div>
+          <div class="network-results">
+            <div class="result-grid">
+              <div class="result-item">
+                <label>IP Address:</label>
+                <span>${ipAddress}</span>
+              </div>
+              <div class="result-item">
+                <label>Subnet Mask:</label>
+                <span>${calculations.subnetMask} (/${subnetMask})</span>
+              </div>
+              <div class="result-item">
+                <label>Network Address:</label>
+                <span>${calculations.networkAddress}</span>
+              </div>
+              <div class="result-item">
+                <label>Broadcast Address:</label>
+                <span>${calculations.broadcastAddress}</span>
+              </div>
+              <div class="result-item">
+                <label>First Host:</label>
+                <span>${calculations.firstHost}</span>
+              </div>
+              <div class="result-item">
+                <label>Last Host:</label>
+                <span>${calculations.lastHost}</span>
+              </div>
+              <div class="result-item">
+                <label>Total Hosts:</label>
+                <span>${calculations.totalHosts}</span>
+              </div>
+              <div class="result-item">
+                <label>Usable Hosts:</label>
+                <span>${calculations.usableHosts}</span>
+              </div>
+              <div class="result-item">
+                <label>Network Class:</label>
+                <span>${calculations.networkClass}</span>
+              </div>
+              <div class="result-item">
+                <label>IP Type:</label>
+                <span>${calculations.ipType}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      } catch (error) {
+        output.innerHTML = `<div class="error-message">Error: ${error.message}</div>`;
+      }
+    }
+
+    function calculateNetworkInfo(ipParts, cidr) {
+      const ip = (ipParts[0] << 24) + (ipParts[1] << 16) + (ipParts[2] << 8) + ipParts[3];
+      const mask = (0xFFFFFFFF << (32 - cidr)) >>> 0;
+      const network = (ip & mask) >>> 0;
+      const broadcast = (network | (0xFFFFFFFF >>> cidr)) >>> 0;
+
+      const subnetMask = [
+        (mask >>> 24) & 0xFF,
+        (mask >>> 16) & 0xFF,
+        (mask >>> 8) & 0xFF,
+        mask & 0xFF
+      ].join('.');
+
+      const networkAddress = [
+        (network >>> 24) & 0xFF,
+        (network >>> 16) & 0xFF,
+        (network >>> 8) & 0xFF,
+        network & 0xFF
+      ].join('.');
+
+      const broadcastAddress = [
+        (broadcast >>> 24) & 0xFF,
+        (broadcast >>> 16) & 0xFF,
+        (broadcast >>> 8) & 0xFF,
+        broadcast & 0xFF
+      ].join('.');
+
+      const firstHost = [
+        (network >>> 24) & 0xFF,
+        (network >>> 16) & 0xFF,
+        (network >>> 8) & 0xFF,
+        (network & 0xFF) + 1
+      ].join('.');
+
+      const lastHost = [
+        (broadcast >>> 24) & 0xFF,
+        (broadcast >>> 16) & 0xFF,
+        (broadcast >>> 8) & 0xFF,
+        (broadcast & 0xFF) - 1
+      ].join('.');
+
+      const totalHosts = Math.pow(2, 32 - cidr);
+      const usableHosts = totalHosts > 2 ? totalHosts - 2 : 0;
+
+      let networkClass = 'Unknown';
+      if (ipParts[0] >= 1 && ipParts[0] <= 126) networkClass = 'A';
+      else if (ipParts[0] >= 128 && ipParts[0] <= 191) networkClass = 'B';
+      else if (ipParts[0] >= 192 && ipParts[0] <= 223) networkClass = 'C';
+      else if (ipParts[0] >= 224 && ipParts[0] <= 239) networkClass = 'D (Multicast)';
+      else if (ipParts[0] >= 240 && ipParts[0] <= 255) networkClass = 'E (Reserved)';
+
+      let ipType = 'Public';
+      if ((ipParts[0] === 10) ||
+        (ipParts[0] === 172 && ipParts[1] >= 16 && ipParts[1] <= 31) ||
+        (ipParts[0] === 192 && ipParts[1] === 168) ||
+        (ipParts[0] === 169 && ipParts[1] === 254)) {
+        ipType = 'Private';
+      } else if (ipParts[0] === 127) {
+        ipType = 'Loopback';
+      }
+
+      return {
+        subnetMask, networkAddress, broadcastAddress, firstHost, lastHost,
+        totalHosts, usableHosts, networkClass, ipType
+      };
+    }
+
+    function saveConfiguration() {
+      const ipAddress = document.getElementById('ipAddress').value.trim();
+      const subnetMask = document.getElementById('subnetMask').value;
+      const configName = document.getElementById('configName').value.trim();
+
+      if (!ipAddress || !configName) {
+        showMessage('Please enter IP address and configuration name', 'error');
+        return;
+      }
+
+      const config = {
+        name: configName,
+        ip: ipAddress,
+        subnet: subnetMask,
+        timestamp: new Date().toLocaleString()
+      };
+
+      let savedConfigs = JSON.parse(localStorage.getItem('ipConfigurations') || '[]');
+      savedConfigs.push(config);
+      localStorage.setItem('ipConfigurations', JSON.stringify(savedConfigs));
+
+      updateConfigurationsList();
+      showMessage('Configuration saved!', 'success');
+    }
+
+    function updateConfigurationsList() {
+      const list = document.getElementById('configurationsList');
+      const savedConfigs = JSON.parse(localStorage.getItem('ipConfigurations') || '[]');
+
+      if (savedConfigs.length === 0) {
+        list.innerHTML = '<p>No saved configurations</p>';
+        return;
+      }
+
+      list.innerHTML = savedConfigs.map((config, index) => `
+        <div class="config-item">
+          <div class="config-info">
+            <strong>${config.name}</strong><br>
+            ${config.ip}/${config.subnet}<br>
+            <small>${config.timestamp}</small>
+          </div>
+          <div class="config-actions">
+            <button class="btn-small" onclick="loadConfiguration(${index})">Load</button>
+            <button class="btn-small" onclick="deleteConfiguration(${index})">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function loadConfiguration(index) {
+      const savedConfigs = JSON.parse(localStorage.getItem('ipConfigurations') || '[]');
+      const config = savedConfigs[index];
+
+      document.getElementById('ipAddress').value = config.ip;
+      document.getElementById('subnetMask').value = config.subnet;
+      document.getElementById('configName').value = config.name;
+
+      showMessage('Configuration loaded!', 'success');
+    }
+
+    function deleteConfiguration(index) {
+      let savedConfigs = JSON.parse(localStorage.getItem('ipConfigurations') || '[]');
+      savedConfigs.splice(index, 1);
+      localStorage.setItem('ipConfigurations', JSON.stringify(savedConfigs));
+      updateConfigurationsList();
+      showMessage('Configuration deleted!', 'success');
+    }
+
+    function clearIPCalculator() {
+      document.getElementById('ipAddress').value = '';
+      document.getElementById('configName').value = '';
+      document.getElementById('ipOutput').innerHTML = '';
+    }
+
+    // MAC Address Generator Functions
+    let macHistory = [];
+
+    function generateMAC() {
+      const format = document.getElementById('macFormat').value;
+      const type = document.getElementById('macType').value;
+      const quantity = parseInt(document.getElementById('macQuantity').value);
+      const output = document.getElementById('macOutput');
+
+      if (quantity < 1 || quantity > 100) {
+        output.innerHTML = '<div class="error-message">Quantity must be between 1 and 100.</div>';
+        return;
+      }
+
+      const addresses = [];
+      for (let i = 0; i < quantity; i++) {
+        addresses.push(generateSingleMAC(format, type));
+      }
+
+      // Add to history
+      macHistory.push(...addresses);
+      if (macHistory.length > 500) {
+        macHistory = macHistory.slice(-500); // Keep last 500
+      }
+
+      output.innerHTML = `
+        <div class="tool-output-header">
+          <h4>Generated MAC Address${quantity > 1 ? 'es' : ''}</h4>
+          <div class="output-actions">
+            <button class="btn-secondary btn-small" onclick="copyAllMACs()">
+              <i class="ri-clipboard-line"></i>
+              Copy All
+            </button>
+          </div>
+        </div>
+        <div class="mac-results">
+          ${addresses.map((mac, index) => `
+            <div class="mac-item">
+              <span class="mac-address">${mac}</span>
+              <button class="btn-small" onclick="copyToClipboard('${mac}')">
+                <i class="ri-clipboard-line"></i>
+              </button>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      updateMACHistory();
+    }
+
+    function generateSingleMAC(format, type) {
+      let mac = '';
+
+      // Generate 6 bytes (48 bits)
+      for (let i = 0; i < 6; i++) {
+        let byte = Math.floor(Math.random() * 256);
+
+        // Apply type-specific modifications
+        if (i === 0) {
+          switch (type) {
+            case 'local':
+              byte |= 0x02; // Set locally administered bit
+              byte &= 0xFE; // Clear multicast bit
+              break;
+            case 'unicast':
+              byte &= 0xFE; // Clear multicast bit
+              break;
+            case 'multicast':
+              byte |= 0x01; // Set multicast bit
+              break;
+          }
+        }
+
+        mac += byte.toString(16).padStart(2, '0').toUpperCase();
+      }
+
+      // Apply formatting
+      switch (format) {
+        case 'colon':
+          return mac.match(/.{2}/g).join(':');
+        case 'dash':
+          return mac.match(/.{2}/g).join('-');
+        case 'dot':
+          return mac.match(/.{4}/g).join('.');
+        case 'none':
+        default:
+          return mac;
+      }
+    }
+
+    function copyAllMACs() {
+      const macItems = document.querySelectorAll('.mac-address');
+      const addresses = Array.from(macItems).map(item => item.textContent);
+      copyToClipboard(addresses.join('\\n'));
+    }
+
+    function updateMACHistory() {
+      const historyList = document.getElementById('macHistoryList');
+      if (!historyList) return;
+
+      if (macHistory.length === 0) {
+        historyList.innerHTML = '<p>No addresses generated yet</p>';
+        return;
+      }
+
+      const recent = macHistory.slice(-20); // Show last 20
+      historyList.innerHTML = recent.reverse().map(mac => `
+        <div class="history-item">
+          <span>${mac}</span>
+          <button class="btn-small" onclick="copyToClipboard('${mac}')">
+            <i class="ri-clipboard-line"></i>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function clearMACGenerator() {
+      document.getElementById('macOutput').innerHTML = '';
+      document.getElementById('macQuantity').value = '1';
     }
   </script>
 </body>

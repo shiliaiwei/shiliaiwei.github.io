@@ -1985,17 +1985,17 @@ img {
   letter-spacing: 0.5px;
 }
 
-/* Category Colors */
+/* Category Colors - Unified Design */
 .tool-card[data-category="network"] .category {
-  background: rgba(59, 130, 246, 0.15);
-  color: #3b82f6;
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
 }
 
 .tool-card[data-category="crypto"] .category {
-  background: rgba(251, 191, 36, 0.15);
-  color: #fbbf24;
-  border: 1px solid rgba(251, 191, 36, 0.3);
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
 }
 
 .tool-card[data-category="generator"] .category {
@@ -2005,24 +2005,24 @@ img {
 }
 
 .tool-card[data-category="converter"] .category {
-  background: rgba(6, 182, 212, 0.15);
-  color: #06b6d4;
-  border: 1px solid rgba(6, 182, 212, 0.3);
-}
-
-.tool-card[data-category="stats"] .category {
-  background: rgba(34, 197, 94, 0.1);
+  background: rgba(34, 197, 94, 0.15);
   color: #22c55e;
   border: 1px solid rgba(34, 197, 94, 0.3);
 }
 
-/* Category specific icon colors */
+.tool-card[data-category="stats"] .category {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+/* Category specific icon colors - Unified */
 .tool-card[data-category="network"] .card-header i {
-  color: #3b82f6;
+  color: #22c55e;
 }
 
 .tool-card[data-category="crypto"] .card-header i {
-  color: #fbbf24;
+  color: #22c55e;
 }
 
 .tool-card[data-category="generator"] .card-header i {
@@ -2030,7 +2030,7 @@ img {
 }
 
 .tool-card[data-category="converter"] .card-header i {
-  color: #06b6d4;
+  color: #22c55e;
 }
 
 .tool-card[data-category="stats"] .card-header i {
@@ -6167,5 +6167,398 @@ input[type="color"] {
   .password-option .password-actions {
     width: 100%;
     justify-content: space-between;
+  }
+}
+
+/* Converter-specific styles */
+.output-text {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.output-text textarea {
+  flex: 1;
+  min-height: 60px;
+  resize: vertical;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+  color: var(--fg);
+}
+
+.output-text textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.result-item.warning {
+  background: rgba(255, 193, 7, 0.1);
+  border-left: 4px solid #ffc107;
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 12px;
+}
+
+.result-item.warning strong {
+  color: #ffc107;
+}
+
+/* Binary format display */
+.binary-format-display {
+  font-family: 'Courier New', monospace;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  word-break: break-all;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+
+/* Base encoding format display */
+.base-encoding-display {
+  font-family: 'Courier New', monospace;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  word-break: break-all;
+  line-height: 1.6;
+  margin: 8px 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Converter info badges */
+.converter-info {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+
+.info-badge {
+  background: rgba(110, 231, 255, 0.1);
+  border: 1px solid rgba(110, 231, 255, 0.3);
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+/* Enhanced button group for converters */
+.converter-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+/* ===============================================
+   CRYPTO TOOLS STYLES
+   =============================================== */
+
+/* Cipher result display */
+.cipher-result {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+}
+
+.result-text {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  word-break: break-all;
+  color: var(--accent);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(110, 231, 255, 0.2);
+}
+
+/* Block cipher specific styles */
+.cipher-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.cipher-mode-selector {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.cipher-mode-selector button {
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cipher-mode-selector button.active {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+}
+
+/* ===============================================
+   NETWORK TOOLS STYLES
+   =============================================== */
+
+/* Input grid for network tools */
+.input-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--fg-weak);
+}
+
+.input-group input,
+.input-group select {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--fg);
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+/* Network results display */
+.network-results {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.result-item label {
+  font-weight: 500;
+  color: var(--fg-weak);
+  font-size: 14px;
+}
+
+.result-item span {
+  font-family: 'Courier New', monospace;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Saved configurations */
+.saved-configurations,
+.mac-history {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.saved-configurations h4,
+.mac-history h4 {
+  color: var(--fg-weak);
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.config-item,
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.config-info {
+  flex: 1;
+}
+
+.config-info strong {
+  color: var(--fg);
+  font-size: 14px;
+}
+
+.config-info small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.config-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* MAC Address specific styles */
+.mac-results {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.mac-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.mac-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mac-address {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.history-item span {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: var(--fg);
+}
+
+/* Error messages for crypto/network tools */
+.error-message {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  padding: 12px;
+  border-radius: 6px;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+/* Success messages */
+.success-message {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #86efac;
+  padding: 12px;
+  border-radius: 6px;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+/* Tool output headers enhancement */
+.tool-output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tool-output-header h4 {
+  color: var(--fg);
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.output-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .input-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .result-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .result-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .config-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .config-actions {
+    width: 100%;
+    justify-content: flex-end;
   }
 }
