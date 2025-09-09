@@ -1472,26 +1472,6 @@
             <p>Generate Hash-based Message Authentication Codes (HMAC) with various hash functions</p>
           </div>
 
-          <!-- Caesar Cipher Tool -->
-          <div class="tool-card" data-category="crypto" onclick="openTool('caesar-cipher')">
-            <div class="card-header">
-              <i class="ri-shield-star-line"></i>
-              <span class="category">CRYPTO</span>
-            </div>
-            <h4>Caesar Cipher</h4>
-            <p>Encode and decode text using Caesar cipher with customizable shift values</p>
-          </div>
-
-          <!-- ROT13 Tool -->
-          <div class="tool-card" data-category="crypto" onclick="openTool('rot13')">
-            <div class="card-header">
-              <i class="ri-refresh-line"></i>
-              <span class="category">CRYPTO</span>
-            </div>
-            <h4>ROT13 Encoder</h4>
-            <p>Encode and decode text using ROT13 cipher for simple text obfuscation</p>
-          </div>
-
           <!-- Morse Code Tool -->
           <div class="tool-card" data-category="crypto" onclick="openTool('morse-code')">
             <div class="card-header">
@@ -2471,6 +2451,8 @@
                       <option value="mebibyte">mebibyte (MiB)</option>
                       <option value="gibibyte">gibibyte (GiB)</option>
                       <option value="tebibyte">tebibyte (TiB)</option>
+                      <option value="pebibyte">pebibyte (PiB)</option>
+                      <option value="exbibyte">exbibyte (EiB)</option>
                     </select>
                   </label>
                   
@@ -2489,6 +2471,8 @@
                       <option value="mebibyte">mebibyte (MiB)</option>
                       <option value="gibibyte">gibibyte (GiB)</option>
                       <option value="tebibyte">tebibyte (TiB)</option>
+                      <option value="pebibyte">pebibyte (PiB)</option>
+                      <option value="exbibyte">exbibyte (EiB)</option>
                     </select>
                   </label>
                 </div>
@@ -3220,93 +3204,6 @@
             </div>
             
             <div class="tool-output" id="hmacOutput"></div>
-          `
-        },
-        'caesar-cipher': {
-          title: 'Caesar Cipher',
-          content: `
-            <div class="tool-input">
-              <div class="input-with-buttons">
-                <textarea id="caesarInput" placeholder="Enter text to encode/decode..." rows="4"></textarea>
-                <div class="button-group">
-                  <button class="btn-small" onclick="pasteText('caesarInput')">
-                    <i class="ri-clipboard-line"></i>
-                    Paste
-                  </button>
-                  <button class="btn-small" onclick="clearInput('caesarInput')">
-                    <i class="ri-close-line"></i>
-                    Clear
-                  </button>
-                </div>
-              </div>
-              
-              <div class="tool-controls">
-                <label>
-                  Shift Value:
-                  <input type="number" id="caesarShift" value="3" min="1" max="25" placeholder="1-25">
-                </label>
-                
-                <label>
-                  Mode:
-                  <select id="caesarMode">
-                    <option value="encode">Encode</option>
-                    <option value="decode">Decode</option>
-                  </select>
-                </label>
-                
-                <label>
-                  <input type="checkbox" id="caesarPreserveCase" checked> Preserve case
-                </label>
-              </div>
-            </div>
-            
-            <div class="tool-actions">
-              <button class="btn-primary" onclick="processCaesar()">
-                <i class="ri-shield-star-line"></i>
-                Process
-              </button>
-            </div>
-            
-            <div class="tool-output" id="caesarOutput"></div>
-          `
-        },
-        'rot13': {
-          title: 'ROT13 Encoder/Decoder',
-          content: `
-            <div class="tool-input">
-              <div class="input-with-buttons">
-                <textarea id="rot13Input" placeholder="Enter text to encode/decode with ROT13..." rows="4"></textarea>
-                <div class="button-group">
-                  <button class="btn-small" onclick="pasteText('rot13Input')">
-                    <i class="ri-clipboard-line"></i>
-                    Paste
-                  </button>
-                  <button class="btn-small" onclick="clearInput('rot13Input')">
-                    <i class="ri-close-line"></i>
-                    Clear
-                  </button>
-                </div>
-              </div>
-              
-              <div class="tool-controls">
-                <label>
-                  <input type="checkbox" id="rot13PreserveCase" checked> Preserve case
-                </label>
-                
-                <label>
-                  <input type="checkbox" id="rot13NumbersOnly"> Numbers only (ROT5)
-                </label>
-              </div>
-            </div>
-            
-            <div class="tool-actions">
-              <button class="btn-primary" onclick="processROT13()">
-                <i class="ri-refresh-line"></i>
-                Convert
-              </button>
-            </div>
-            
-            <div class="tool-output" id="rot13Output"></div>
           `
         },
         'morse-code': {
@@ -8310,7 +8207,7 @@
     // ===============================================
 
     function convertSpeed() {
-      const input = document.getElementById('speedInput').value.trim();
+      const input = document.getElementById('speedValue').value.trim();
       const fromUnit = document.getElementById('speedFromUnit').value;
       const toUnit = document.getElementById('speedToUnit').value;
       const output = document.getElementById('speedOutput');
@@ -8333,11 +8230,11 @@
         'mbps': 1000000,
         'gbps': 1000000000,
         'tbps': 1000000000000,
-        'Bps': 8,
-        'KBps': 8000,
-        'MBps': 8000000,
-        'GBps': 8000000000,
-        'TBps': 8000000000000
+        'bps-byte': 8,
+        'kbps-byte': 8000,
+        'mbps-byte': 8000000,
+        'gbps-byte': 8000000000,
+        'tbps-byte': 8000000000000
       };
 
       // Convert from bps to target unit
@@ -8347,11 +8244,11 @@
         'mbps': 1000000,
         'gbps': 1000000000,
         'tbps': 1000000000000,
-        'Bps': 8,
-        'KBps': 8000,
-        'MBps': 8000000,
-        'GBps': 8000000000,
-        'TBps': 8000000000000
+        'bps-byte': 8,
+        'kbps-byte': 8000,
+        'mbps-byte': 8000000,
+        'gbps-byte': 8000000000,
+        'tbps-byte': 8000000000000
       };
 
       const bps = value * toBps[fromUnit];
@@ -8363,11 +8260,11 @@
         'mbps': 'megabits per second',
         'gbps': 'gigabits per second',
         'tbps': 'terabits per second',
-        'Bps': 'bytes per second',
-        'KBps': 'kilobytes per second',
-        'MBps': 'megabytes per second',
-        'GBps': 'gigabytes per second',
-        'TBps': 'terabytes per second'
+        'bps-byte': 'bytes per second',
+        'kbps-byte': 'kilobytes per second',
+        'mbps-byte': 'megabytes per second',
+        'gbps-byte': 'gigabytes per second',
+        'tbps-byte': 'terabytes per second'
       };
 
       output.innerHTML = `
@@ -8392,7 +8289,7 @@
     }
 
     function clearSpeedConverter() {
-      document.getElementById('speedInput').value = '';
+      document.getElementById('speedValue').value = '';
       document.getElementById('speedOutput').innerHTML = '';
     }
 
@@ -8401,7 +8298,7 @@
     // ===============================================
 
     function convertStorage() {
-      const input = document.getElementById('storageInput').value.trim();
+      const input = document.getElementById('storageValue').value.trim();
       const fromUnit = document.getElementById('storageFromUnit').value;
       const toUnit = document.getElementById('storageToUnit').value;
       const output = document.getElementById('storageOutput');
@@ -8421,16 +8318,18 @@
       const toBytes = {
         'bit': 1 / 8,
         'byte': 1,
-        'KB': 1024,
-        'MB': 1024 * 1024,
-        'GB': 1024 * 1024 * 1024,
-        'TB': 1024 * 1024 * 1024 * 1024,
-        'PB': 1024 * 1024 * 1024 * 1024 * 1024,
-        'EB': 1024 * 1024 * 1024 * 1024 * 1024 * 1024,
-        'kB': 1000,          // decimal
-        'MB-dec': 1000 * 1000, // decimal megabyte
-        'GB-dec': 1000 * 1000 * 1000, // decimal gigabyte
-        'TB-dec': 1000 * 1000 * 1000 * 1000 // decimal terabyte
+        'kilobyte': 1000,          // decimal kilobyte
+        'megabyte': 1000 * 1000,   // decimal megabyte
+        'gigabyte': 1000 * 1000 * 1000, // decimal gigabyte
+        'terabyte': 1000 * 1000 * 1000 * 1000, // decimal terabyte
+        'petabyte': 1000 * 1000 * 1000 * 1000 * 1000, // decimal petabyte
+        'exabyte': 1000 * 1000 * 1000 * 1000 * 1000 * 1000, // decimal exabyte
+        'kibibyte': 1024,          // binary
+        'mebibyte': 1024 * 1024,   // binary
+        'gibibyte': 1024 * 1024 * 1024, // binary
+        'tebibyte': 1024 * 1024 * 1024 * 1024, // binary
+        'pebibyte': 1024 * 1024 * 1024 * 1024 * 1024, // binary
+        'exbibyte': 1024 * 1024 * 1024 * 1024 * 1024 * 1024 // binary
       };
 
       const bytes = value * toBytes[fromUnit];
@@ -8439,16 +8338,18 @@
       const unitNames = {
         'bit': 'bits',
         'byte': 'bytes',
-        'KB': 'kilobytes (binary)',
-        'MB': 'megabytes (binary)',
-        'GB': 'gigabytes (binary)',
-        'TB': 'terabytes (binary)',
-        'PB': 'petabytes (binary)',
-        'EB': 'exabytes (binary)',
-        'kB': 'kilobytes (decimal)',
-        'MB-dec': 'megabytes (decimal)',
-        'GB-dec': 'gigabytes (decimal)',
-        'TB-dec': 'terabytes (decimal)'
+        'kilobyte': 'kilobytes (decimal)',
+        'megabyte': 'megabytes (decimal)',
+        'gigabyte': 'gigabytes (decimal)',
+        'terabyte': 'terabytes (decimal)',
+        'petabyte': 'petabytes (decimal)',
+        'exabyte': 'exabytes (decimal)',
+        'kibibyte': 'kibibytes (binary)',
+        'mebibyte': 'mebibytes (binary)',
+        'gibibyte': 'gibibytes (binary)',
+        'tebibyte': 'tebibytes (binary)',
+        'pebibyte': 'pebibytes (binary)',
+        'exbibyte': 'exbibytes (binary)'
       };
 
       output.innerHTML = `
@@ -8473,7 +8374,7 @@
     }
 
     function clearStorageConverter() {
-      document.getElementById('storageInput').value = '';
+      document.getElementById('storageValue').value = '';
       document.getElementById('storageOutput').innerHTML = '';
     }
 
@@ -8622,104 +8523,6 @@
       } catch (error) {
         throw new Error('Decryption failed. Check your key and input.');
       }
-    }
-
-    // Caesar Cipher Functions
-    function processCaesar() {
-      const input = document.getElementById('caesarInput').value;
-      const shift = parseInt(document.getElementById('caesarShift').value);
-      const mode = document.getElementById('caesarMode').value;
-      const preserveCase = document.getElementById('caesarPreserveCase').checked;
-      const output = document.getElementById('caesarOutput');
-
-      if (!input) {
-        output.innerHTML = '<div class="error-message">Please enter text to process.</div>';
-        return;
-      }
-
-      const actualShift = mode === 'decode' ? -shift : shift;
-      const result = caesarCipher(input, actualShift, preserveCase);
-
-      output.innerHTML = `
-        <div class="tool-output-header">
-          <h4>Caesar Cipher Result</h4>
-          <div class="output-actions">
-            <button class="btn-secondary btn-small" onclick="copyToClipboard('${result}')">
-              <i class="ri-clipboard-line"></i>
-              Copy
-            </button>
-          </div>
-        </div>
-        <div class="cipher-result">
-          <div class="result-text">${result}</div>
-        </div>
-      `;
-    }
-
-    function caesarCipher(text, shift, preserveCase) {
-      return text.split('').map(char => {
-        if (char.match(/[a-zA-Z]/)) {
-          const isUpperCase = char === char.toUpperCase();
-          const charCode = char.toLowerCase().charCodeAt(0);
-          const shifted = ((charCode - 97 + shift + 26) % 26) + 97;
-          const shiftedChar = String.fromCharCode(shifted);
-          return preserveCase && isUpperCase ? shiftedChar.toUpperCase() : shiftedChar;
-        }
-        return char;
-      }).join('');
-    }
-
-    // ROT13 Functions
-    function processROT13() {
-      const input = document.getElementById('rot13Input').value;
-      const preserveCase = document.getElementById('rot13PreserveCase').checked;
-      const numbersOnly = document.getElementById('rot13NumbersOnly').checked;
-      const output = document.getElementById('rot13Output');
-
-      if (!input) {
-        output.innerHTML = '<div class="error-message">Please enter text to process.</div>';
-        return;
-      }
-
-      const result = numbersOnly ? rot5(input) : rot13(input, preserveCase);
-
-      output.innerHTML = `
-        <div class="tool-output-header">
-          <h4>${numbersOnly ? 'ROT5' : 'ROT13'} Result</h4>
-          <div class="output-actions">
-            <button class="btn-secondary btn-small" onclick="copyToClipboard('${result}')">
-              <i class="ri-clipboard-line"></i>
-              Copy
-            </button>
-          </div>
-        </div>
-        <div class="cipher-result">
-          <div class="result-text">${result}</div>
-        </div>
-      `;
-    }
-
-    function rot13(text, preserveCase) {
-      return text.split('').map(char => {
-        if (char.match(/[a-zA-Z]/)) {
-          const isUpperCase = char === char.toUpperCase();
-          const charCode = char.toLowerCase().charCodeAt(0);
-          const shifted = ((charCode - 97 + 13) % 26) + 97;
-          const shiftedChar = String.fromCharCode(shifted);
-          return preserveCase && isUpperCase ? shiftedChar.toUpperCase() : shiftedChar;
-        }
-        return char;
-      }).join('');
-    }
-
-    function rot5(text) {
-      return text.split('').map(char => {
-        if (char.match(/[0-9]/)) {
-          const digit = parseInt(char);
-          return ((digit + 5) % 10).toString();
-        }
-        return char;
-      }).join('');
     }
 
     // Morse Code Functions
