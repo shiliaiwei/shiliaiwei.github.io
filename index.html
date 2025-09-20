@@ -24,6 +24,10 @@
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="source/css/styles.css" />
   <link rel="stylesheet" href="source/css/profile-grid.css" />
+  <link rel="stylesheet" href="source/css/profile-search.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Koh+Santepheap:wght@400;700&display=swap" rel="stylesheet" />
 
   <meta name="description" content="EIRSVi • Developer — To Be Educated Is To Be Changed" />
   <link rel="stylesheet" href="source/css/category-counter.css" />
@@ -2553,19 +2557,112 @@
 
           const container = document.getElementById('profilesContainer');
           
-          profiles.forEach(profile => {
+          // Create search input
+          const searchContainer = document.createElement('div');
+          searchContainer.className = 'search-container';
+          searchContainer.innerHTML = `
+            <input type="text" id="profileSearch" placeholder="Search by name or ID..." class="search-input">
+          `;
+          container.parentNode.insertBefore(searchContainer, container);
+
+          const searchInput = document.getElementById('profileSearch');
+
+          // Sort profiles alphabetically by name
+          profiles.sort((a, b) => a.name.localeCompare(b.name));
+
+          // Function to generate a gradient based on text
+          const generateGradient = (text) => {
+            let hash = 0;
+            for (let i = 0; i < text.length; i++) {
+              hash = text.charCodeAt(i) + ((hash << 5) - hash);
+            }
+            
+            const hue1 = hash % 360;
+            const hue2 = (hue1 + 40) % 360; // Complementary color
+            
+            return `linear-gradient(135deg, 
+              hsla(${hue1}, 80%, 85%, 0.8) 0%,
+              hsla(${hue2}, 70%, 80%, 0.8) 100%)`;
+          };
+
+          // Function to determine if text is Khmer
+          const isKhmer = (text) => {
+            return /[\u1780-\u17FF]/.test(text);
+          };
+
+          // Function to get font family based on text type
+          const getFontFamily = (text, isIcon = false) => {
+            if (isIcon) {
+              return isKhmer(text) ? 'Koh Santepheap' : 'Black Ops One';
+            }
+            return isKhmer(text) ? 'Koh Santepheap' : 'Ubuntu';
+          };
+
+          // Function to get the last name or full name
+          const getDisplayName = (fullName) => {
+            const nameParts = fullName.trim().split(' ');
+            return nameParts.length > 1 ? nameParts[nameParts.length - 1] : fullName;
+          };
+
+          // Store original profiles for search filtering
+          const createProfileElement = (profile) => {
             const div = document.createElement('a');
-            div.href = `https://${profile.link}`;
+            div.href = `${profile.id}`; // Using only the ID as link
             div.target = '_blank';
             div.rel = 'noopener noreferrer';
             div.className = 'profile-item';
+            
+            // Get the first character of the name
+            const firstChar = profile.name.charAt(0);
+            const gradient = generateGradient(profile.name);
+            const displayName = getDisplayName(profile.name);
+            const iconFont = getFontFamily(firstChar, true);
+            const nameFont = getFontFamily(displayName);
+            
             div.innerHTML = `
-              <div class="profile-icon">
-                <i class="ri-user-3-line"></i>
+              <div class="profile-icon glassmorphism" style="background: ${gradient};">
+                <span style="font-family: '${iconFont}', system-ui; color: #000000;">${firstChar}</span>
               </div>
-              <p class="profile-name">${profile.name}</p>
+              <p class="profile-name" style="font-family: '${nameFont}', system-ui;" title="${profile.name}">${displayName.toUpperCase()}</p>
+              <div class="profile-tooltip">${profile.name}</div>
             `;
-            container.appendChild(div);
+            return div;
+          };
+
+          // Search functionality
+          searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            container.innerHTML = ''; // Clear current profiles
+
+            profiles
+              .filter(profile => {
+                // Search in full name and ID
+                return profile.name.toLowerCase().includes(searchTerm) || 
+                       profile.id.includes(searchTerm);
+              })
+              .forEach(profile => {
+                container.appendChild(createProfileElement(profile));
+              });
+          });
+
+          // Initial render
+          profiles.forEach(profile => {
+            container.appendChild(createProfileElement(profile));
+          });
+
+          // Search functionality
+          searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            container.innerHTML = ''; // Clear current profiles
+
+            profiles
+              .filter(profile => 
+                profile.name.toLowerCase().includes(searchTerm) || 
+                profile.id.includes(searchTerm)
+              )
+              .forEach(profile => {
+                container.appendChild(createProfileElement(profile));
+              });
           });
         });
       </script>
