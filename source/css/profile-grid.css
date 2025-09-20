@@ -1,0 +1,54 @@
+.profile-grid {
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.profiles-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.profile-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: var(--body-color);
+  border-radius: .5rem;
+  text-decoration: none;
+  color: var(--title-color);
+  transition: all .3s ease;
+}
+
+.profile-item:hover {
+  transform: translateY(-3px);
+  background: var(--text-color-light);
+}
+
+.profile-icon {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--title-color-light);
+  border-radius: 50%;
+  margin-bottom: .5rem;
+}
+
+.profile-icon i {
+  font-size: 1.5rem;
+  color: var(--title-color);
+}
+
+.profile-name {
+  font-size: .875rem;
+  text-align: center;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
