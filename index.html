@@ -28,25 +28,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Koh+Santepheap:wght@400;700&display=swap" rel="stylesheet" />
-
-  <meta name="description" content="EIRSVi • Developer — To Be Educated Is To Be Changed" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Khmer:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=P22+Cezanne&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="source/css/category-counter.css" />
-  <link rel="stylesheet" href="source/css/profile-grid.css" />
+  <link rel="stylesheet" href="source/css/ordinari.css" />
 </head>
 
 <body>
   <script src="source/js/category-counter.js"></script>
+  <script src="source/js/ordinari.js"></script>
   <a class="skip-link" href="#main">Skip to content</a>
-  <!--
-   git  add . && git commit -m "update" && git push origin docs
-   -->
+
   <nav class="top-rail" aria-label="Primary">
     <a class="rail-item" href="#home" data-route="home" aria-label="Home"><i class="ri-home-5-fill"
         aria-hidden="true"></i></a>
     <a class="rail-item" href="#vnote" data-route="vnote" aria-label="VNote"><i class="ri-book-open-fill"></i></a>
     <a class="rail-item" href="#vtool" data-route="vtool" aria-label="VTool"><i class="ri-tools-fill"></i></a>
     <a class="rail-item" href="#links" data-route="links" aria-label="Links"><i class="ri-links-fill"></i></a>
-    <a class="rail-item" href="#excluding" data-route="excluding" aria-label="Excluding"><i class="ri-user-3-line"></i></a>
+    <a class="rail-item" href="#ordinari" data-route="ordinari" aria-label="Ordinari"><i class="ri-group-line"></i></a>
   </nav>
 
   <header class="site-header">
@@ -2351,6 +2350,29 @@
       </div>
     </div>
 
+    <!-- ORDINARI PAGE -->
+    <div id="page-ordinari" class="page-content">
+      <section class="ordinari-container">
+        <div class="ordinari-header">
+          <h1>Ordinari</h1>
+          <p>Profile Grid with CSS grid-auto-flow: dense</p>
+        </div>
+        
+        <div class="ordinari-search">
+          <input type="text" id="searchInput" class="search-input" placeholder="Search by name or ID...">
+        </div>
+        
+        <div class="profile-grid">
+          <!-- Profile cards will be dynamically inserted here -->
+        </div>
+      </section>
+    </div>
+
+    <!-- User Detail Modal -->
+    <div id="user-modal" class="modal">
+      <!-- Modal content will be dynamically inserted here -->
+    </div>
+
     <!-- EXCLUDING PAGE -->
     <div id="page-excluding" class="page-content">
       <section class="section container">
@@ -2761,7 +2783,7 @@
         </section>
       </div>
 
-      <!-- Vimulation Article -->
+      <!-- VNOTE PAGE -->
       <div id="article-vimulation" class="article-content">
         <section class="section container">
           <div class="article-header">
