@@ -1,3 +1,88 @@
+/* Fake info styling for modal */
+.profile-fakeinfo {
+  margin-top: 1.2rem;
+  margin-bottom: 0.5rem;
+  padding: 0.7rem 0.5rem 0.7rem 0.5rem;
+  background: #222b;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px #0001;
+}
+.profile-fakeinfo-row {
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+.profile-fakeinfo-row .label {
+  min-width: 120px;
+  color: #ff0050;
+  font-weight: 500;
+  margin-right: 0.5em;
+}
+.profile-fakeinfo-row span:last-child {
+  font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', 'Ubuntu Mono', monospace;
+  color: #1877F2;
+  letter-spacing: 0.5px;
+}
+/* Beautiful modal and icon styles for user popup */
+.beautiful-modal {
+  padding: 1.5rem 1rem 1.5rem 1rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #18181b 80%, #1877F2 100%);
+  box-shadow: 0 8px 32px #0005, 0 0 0 4px #1877F222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.profile-detail-meta {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  width: 100%;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-detail-id, .profile-detail-gender {
+  font-size: 1.1rem;
+  margin: 0.2rem 0;
+  color: #fff;
+}
+
+.profile-detail-id .label, .profile-detail-gender .label {
+  color: #1877F2;
+  font-weight: bold;
+  margin-right: 0.3em;
+}
+
+.beautiful-icons {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.beautiful-icons a {
+  color: #1877F2;
+  background: #fff;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  box-shadow: 0 2px 8px #0002;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.beautiful-icons a:hover {
+  background: #ff0050;
+  color: #fff;
+  transform: scale(1.12);
+}
 .ordinari-container {
   padding: 1rem;
   max-width: 1200px;

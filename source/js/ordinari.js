@@ -319,42 +319,77 @@ function createProfileCards(users) {
 // Show user details in modal
 function showUserDetails(user) {
   const modal = document.getElementById('user-modal');
-  const modalContent = document.querySelector('.modal-content');
-  
-  // Social links based on user ID (example: Facebook, Telegram, X, YouTube, TikTok, GitHub)
+  let modalContent = document.querySelector('.modal-content');
+  if (!modalContent) {
+    modalContent = document.createElement('div');
+    modalContent.className = 'modal-content';
+    modal.appendChild(modalContent);
+  }
+
+  // Social links (show only if valid for this user)
   const id = user.id;
-  const socialLinks = [
-    { icon: 'fa-brands fa-telegram', label: 'Telegram', url: `https://t.me/${id}` },
-    { icon: 'fa-brands fa-x-twitter', label: 'X/Twitter', url: `https://x.com/${id}` },
-    { icon: 'fa-brands fa-youtube', label: 'YouTube', url: `https://youtube.com/@${id}` },
-    { icon: 'fa-brands fa-tiktok', label: 'TikTok', url: `https://www.tiktok.com/@${id}` },
-    { icon: 'fa-brands fa-github', label: 'GitHub', url: `https://github.com/${id}` },
+  const socialIcons = [
+    { icon: 'ri-facebook-circle-fill', label: 'Facebook' },
+    { icon: 'ri-tiktok-fill', label: 'TikTok' },
+    { icon: 'ri-twitter-x-fill', label: 'X' },
+    { icon: 'ri-github-fill', label: 'GitHub' },
+    { icon: 'ri-youtube-fill', label: 'YouTube' },
+    { icon: 'ri-telegram-fill', label: 'Telegram' },
   ];
+
+  // Age is not available in data, so skip if not present
+  const age = user.age ? `<p><span class="label">Age:</span> ${user.age}</p>` : '';
+
+  // Helper to generate redacted fake info
+  function redactFake(val) {
+    if (!val) return '';
+    const keep = Math.max(2, Math.floor(val.length / 2));
+    return val.slice(0, keep) + ' ***** ##$$$';
+  }
+
+  // Generate fake info fields
+  const fakeInfo = [
+    { label: 'Date of Birth', value: redactFake('19' + (70 + Math.floor(Math.random()*30)) + '-0' + (1 + Math.floor(Math.random()*9)) + '-' + (10 + Math.floor(Math.random()*19))) },
+    { label: 'Height', value: redactFake((150 + Math.floor(Math.random()*40)) + ' cm') },
+    { label: 'Weight', value: redactFake((45 + Math.floor(Math.random()*55)) + ' kg') },
+    { label: 'Hair', value: redactFake(['Black','Brown','Blonde','Red','Gray'][Math.floor(Math.random()*5)]) },
+    { label: 'Eye', value: redactFake(['Brown','Blue','Green','Hazel','Gray'][Math.floor(Math.random()*5)]) },
+    { label: 'Race', value: redactFake(['Asian','White','Black','Latino','Mixed'][Math.floor(Math.random()*5)]) },
+    { label: 'Occupation', value: redactFake(['Engineer','Teacher','Artist','Worker','Student','Unknown'][Math.floor(Math.random()*6)]) },
+    { label: 'Marital Status', value: redactFake(['Single','Married','Divorced','Widowed'][Math.floor(Math.random()*4)]) },
+    { label: 'Social Security Number', value: redactFake((100 + Math.floor(Math.random()*900)) + '-' + (10 + Math.floor(Math.random()*90)) + '-' + (1000 + Math.floor(Math.random()*9000))) },
+    { label: 'Last Known City', value: redactFake(['Phnom Penh','Siem Reap','Battambang','Unknown','Kampot','Takeo'][Math.floor(Math.random()*6)]) },
+    { label: 'Last Seen Date', value: redactFake('202' + Math.floor(Math.random()*4) + '-0' + (1 + Math.floor(Math.random()*9)) + '-' + (10 + Math.floor(Math.random()*19))) },
+  ];
+
   modalContent.innerHTML = `
     <button class="modal-close">&times;</button>
-    <div class="profile-detail">
-      <div class="profile-detail-circle" style="background: hsl(${user.id.slice(-3) * 1.4}, 70%, 40%);">
+    <div class="profile-detail beautiful-modal">
+      <div class="profile-detail-circle" style="background: hsl(${user.id.slice(-3) * 1.4}, 70%, 40%); box-shadow: 0 0 0 4px #1877F2, 0 2px 16px #0002;">
         <div class="initial">${user.initial}</div>
       </div>
-      <h2 class="profile-detail-name">${user.firstName}</h2>
-      <p class="profile-detail-fullname">${user.fullName}</p>
-      <div class="profile-detail-info">
-        <p><span class="label">ID:</span> ${user.id}</p>
-        <p><span class="label">Gender:</span> ${user.gender || 'Not specified'}</p>
+      <div class="profile-detail-meta">
+        <h2 class="profile-detail-name">${user.fullName}</h2>
+        <div class="profile-detail-id"><span class="label">ID:</span> <span>${user.id}</span></div>
+        <div class="profile-detail-gender"><span class="label">Sex:</span> <span>${user.gender ? (user.gender === 'm' ? 'Male' : 'Female') : 'Not specified'}</span></div>
+        ${age}
+        <div class="profile-fakeinfo">
+          ${fakeInfo.map(f => `<div class='profile-fakeinfo-row'><span class='label'>${f.label}:</span> <span>${f.value}</span></div>`).join('')}
+        </div>
       </div>
-      <div class="profile-social-icons">
-        ${socialLinks.map(s => `<a href="${s.url}" target="_blank" rel="noopener" aria-label="${s.label}"><i class="${s.icon}"></i></a>`).join('')}
+      <div class="profile-social-icons beautiful-icons">
+        ${socialIcons.map(s => `<span class="icon-only" title="${s.label}"><i class="${s.icon}"></i></span>`).join('')}
       </div>
     </div>
   `;
-  
+
   modal.classList.add('active');
-  
+
   // Add close event
   modal.querySelector('.modal-close').addEventListener('click', () => {
     modal.classList.remove('active');
   });
-  
+
   // Close when clicking outside content
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
