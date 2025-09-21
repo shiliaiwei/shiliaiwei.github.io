@@ -308,7 +308,6 @@ function createProfileCards(users) {
       <div class="profile-circle" style="background: hsl(${user.id.slice(-3) * 1.4}, 70%, 40%);">
         <div class="initial">${user.initial}</div>
       </div>
-      <div class="profile-name">${user.firstName}</div>
       <div class="profile-tooltip">${user.fullName}</div>
     `;
     
@@ -322,6 +321,15 @@ function showUserDetails(user) {
   const modal = document.getElementById('user-modal');
   const modalContent = document.querySelector('.modal-content');
   
+  // Social links based on user ID (example: Facebook, Telegram, X, YouTube, TikTok, GitHub)
+  const id = user.id;
+  const socialLinks = [
+    { icon: 'fa-brands fa-telegram', label: 'Telegram', url: `https://t.me/${id}` },
+    { icon: 'fa-brands fa-x-twitter', label: 'X/Twitter', url: `https://x.com/${id}` },
+    { icon: 'fa-brands fa-youtube', label: 'YouTube', url: `https://youtube.com/@${id}` },
+    { icon: 'fa-brands fa-tiktok', label: 'TikTok', url: `https://www.tiktok.com/@${id}` },
+    { icon: 'fa-brands fa-github', label: 'GitHub', url: `https://github.com/${id}` },
+  ];
   modalContent.innerHTML = `
     <button class="modal-close">&times;</button>
     <div class="profile-detail">
@@ -330,21 +338,12 @@ function showUserDetails(user) {
       </div>
       <h2 class="profile-detail-name">${user.firstName}</h2>
       <p class="profile-detail-fullname">${user.fullName}</p>
-      
       <div class="profile-detail-info">
         <p><span class="label">ID:</span> ${user.id}</p>
-        <p><span class="label">Initial:</span> ${user.initial}</p>
-        <p><span class="label">First Name:</span> ${user.firstName}</p>
-        <p><span class="label">Full Name:</span> ${user.fullName}</p>
         <p><span class="label">Gender:</span> ${user.gender || 'Not specified'}</p>
       </div>
-      
       <div class="profile-social-icons">
-        <a href="#" aria-label="TikTok"><i class="ri-tiktok-fill"></i></a>
-        <a href="#" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
-        <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
-        <a href="#" aria-label="Instagram"><i class="ri-instagram-fill"></i></a>
-        <a href="#" aria-label="Telegram"><i class="ri-telegram-fill"></i></a>
+        ${socialLinks.map(s => `<a href="${s.url}" target="_blank" rel="noopener" aria-label="${s.label}"><i class="${s.icon}"></i></a>`).join('')}
       </div>
     </div>
   `;
