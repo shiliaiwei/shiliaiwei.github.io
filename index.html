@@ -44,6 +44,8 @@
   <a class="rail-item" href="#vnote" data-route="vnote" aria-label="VNote"><i class="ri-book-open-fill"></i></a>
   <a class="rail-item" href="#vtool" data-route="vtool" aria-label="VTool"><i class="ri-tools-fill"></i></a>
   <a class="rail-item" href="#links" data-route="links" aria-label="Links"><i class="ri-links-fill"></i></a>
+  <!-- Theme/Grid Demo Menu Icon -->
+  <a class="rail-item" href="#theme" data-route="theme" aria-label="Theme/Grid Demo"><i class="ri-layout-grid-fill"></i></a>
   </nav>
 
   <header class="site-header">
@@ -129,6 +131,310 @@
             </div>
           </div>
         </div>
+      </section>
+    </div>
+
+    <!-- THEME/GRID DEMO PAGE -->
+    <div id="page-theme" class="page-content">
+      <section class="section container">
+        <div class="section__header">
+          <div class="section__header-content">
+            <h2>Theme & Grid Demo</h2>
+            <p>Explore dynamic CSS grid, SPA logic, and encryption features. Responsive, dense, and beautiful.</p>
+          </div>
+        </div>
+        <div class="theme-grid-demo" id="themeGridDemo">
+          <!-- Dynamic grid content will be rendered here by JS -->
+          <div id="ordinaryPeopleGrid" class="people-grid"></div>
+          <div id="personPopup" class="person-popup" style="display:none;"></div>
+        </div>
+  <style>
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-auto-flow: dense;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .person-card {
+      background: var(--card-bg, #181818cc);
+      border-radius: 1.1rem;
+      box-shadow: 0 2px 8px 0 #0002;
+      padding: 1.1rem 1rem 0.7rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.13s, box-shadow 0.13s;
+      filter: grayscale(1) contrast(1.1);
+      position: relative;
+    }
+    .person-card:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 6px 18px 0 #0004;
+      filter: grayscale(0.2) contrast(1.2);
+      z-index: 2;
+    }
+    .person-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 0.7rem;
+      border: 2.5px solid #fff3;
+      background: #222;
+    }
+    .person-encrypted {
+      font-size: 1.08rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.2rem;
+      color: var(--text-main, #eee);
+      text-align: center;
+      word-break: break-all;
+    }
+    .person-meta {
+      font-size: 0.93rem;
+      color: #aaa;
+      text-align: center;
+      margin-bottom: 0.2rem;
+    }
+    .person-popup {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: #181818ee;
+      color: #fff;
+      border-radius: 1.2rem;
+      box-shadow: 0 8px 32px #0008;
+      padding: 2.2rem 2.2rem 1.5rem 2.2rem;
+      z-index: 9999;
+      min-width: 320px;
+      max-width: 95vw;
+      max-height: 90vh;
+      overflow-y: auto;
+      font-family: 'Fira Mono', 'JetBrains Mono', 'Consolas', monospace;
+      border: 2.5px solid #444;
+      display: none;
+      animation: popupIn 0.18s cubic-bezier(.7,1.7,.7,1.01);
+    }
+    @keyframes popupIn {
+      from { opacity: 0; transform: translate(-50%, -60%) scale(0.95); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+    .person-popup .close-btn {
+      position: absolute;
+      top: 0.7rem;
+      right: 1.1rem;
+      font-size: 1.5rem;
+      color: #fff9;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 2;
+      transition: color 0.13s;
+    }
+    .person-popup .close-btn:hover {
+      color: #ff5a5a;
+    }
+    @media (max-width: 600px) {
+      .person-popup { padding: 1.1rem 0.7rem; min-width: 0; }
+      .people-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+      .person-card { padding: 0.7rem 0.5rem 0.5rem 0.5rem; }
+      .person-img { width: 64px; height: 64px; }
+    }
+  </style>
+  <script>
+    // --- Data for Ordinary People ---
+    const ordinaryPeopleRaw = `ID:100025020637830
+Full Name:  Nitha Chea
+username:nitha.chea.3#
+College:  bbu
+City: btmc
+Contact info:
+Gender:f
+DOB:
+Creation date:
+social links:
+status: single
+Alias names: 
+The number of leaks:
+IMG:https://scontent.fpnh1-1.fna.fbcdn.net/v/t39.30808-1/515438265_1939572563553413_1114587538324136783_n.jpg?stp=dst-jpg_s160x160_tt6&_nc_cat=102&ccb=1-7&_nc_sid=79bf43&_nc_ohc=OJtTi6fTIVMQ7kNvwE5IiR5&_nc_oc=AdmpEih7-XPLd-tDmXbGeuFa1xll11Ck17mLrdA0T0LKTb74ZF4UBE6cl2j4KFSmU5Y&_nc_zt=24&_nc_ht=scontent.fpnh1-1.fna&_nc_gid=us-TPPlU0jdv3uS84Cac-A&oh=00_AfYOrt8dBT2Wfykj8Q3iMBtdyBw1OsAl4f3Y58hvzA8c6Q&oe=68D8C8E1
+other:
+
+ID:100013797181332
+Full Name:  Moeun Chamroeun
+username:/moeun.chamroeun.2025#
+College:  sect
+City:sr
+Contact info:
+Gender:m
+DOB:
+Creation date:2016
+social links:
+status: monk
+Alias names:
+The number of leaks:
+IMG:https://scontent.fpnh1-2.fna.fbcdn.net/v/t39.30808-1/492658356_2211117406024811_4936298124533231963_n.jpg?stp=c4.10.949.948a_dst-jpg_s200x200_tt6&_nc_cat=108&ccb=1-7&_nc_sid=e99d92&_nc_ohc=h7vogvQYSucQ7kNvwEPqhcB&_nc_oc=AdkD3oBGsaBWPWNx3quhEiZPVF5cKVlEY1dz_ZC_5oiTPgVQouapwP-bByqFIxYzHrA&_nc_zt=24&_nc_ht=scontent.fpnh1-2.fna&_nc_gid=_rq_eUqBQd78ccRymlMgQA&oh=00_AfbNsw8apnCdTrxhlAOb9TzbSjVgl_L8RJh7kn3pR7stPg&oe=68D8A90E
+other:
+
+ID:100007175085665
+Full Name:  Nao Heng  (នៅ ហេង)
+username:/nao.soheng#
+College:  ume kt
+City: kt
+Contact info:
+Gender:m
+DOB:
+Creation date:
+social links:
+status: maaried
+Alias names:
+The number of leaks:
+IMG:https://scontent.fpnh1-1.fna.fbcdn.net/v/t39.30808-6/488600928_3888226794759785_6615050343673639578_n.jpg?stp=dst-jpg_s160x160_tt6&_nc_cat=106&ccb=1-7&_nc_sid=e09983&_nc_ohc=4vP1pnOJbSQQ7kNvwGrpbFI&_nc_oc=Adlp6KRfRkUDE1ztiRrp9Engv6lGsVEYtfojTcml1R6YlT9Dotde9ee3Nt3Co48g8lc&_nc_zt=23&_nc_ht=scontent.fpnh1-1.fna&_nc_gid=w8j2DIEHHVEGeAGrplKIvg&oh=00_AfbPoJ-QNq_jFn1jeKtkBN25VJ39i2q5R4YuxQkrQJctzQ&oe=68D89C0D
+other:
+
+ID:100013628291417
+Full Name:  ប៉ាវ ពិសិដ្ឋ 
+username:/pavpiseth#
+College: ume  kt
+City: kt
+Contact info:
+Gender:m
+DOB:
+Creation date:
+social links:
+status: married
+Alias names:
+The number of leaks:
+IMG:https://scontent.fpnh1-2.fna.fbcdn.net/v/t39.30808-6/549724447_2263546727442915_4479509241268155034_n.jpg?stp=cp6_dst-jpg_s600x600_tt6&_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=m33wpFpR70sQ7kNvwGB3S78&_nc_oc=AdnWgfgaGRYkUUoueLbKVUlZpvJfICVGt7cfRMWC0ndUY0capWZAAi7sZS6vM--wDdo&_nc_zt=23&_nc_ht=scontent.fpnh1-2.fna&_nc_gid=7qtjBcfcxCfr259N_qP-Rg&oh=00_AfYb3beREX3cB3PNIJ78cqZ6pdYRVTjE90UVj4PV1266zw&oe=68D8B062
+other:
+
+ID:100081434285427
+Full Name:  ដេ វ៉ា
+username:/ug24y1h2br#
+College: rbhs  
+City:kt
+Contact info:
+Gender:m
+DOB:
+Creation date:
+social links:
+status: monk
+Alias names:
+The number of leaks:
+IMG:https://scontent.fpnh1-2.fna.fbcdn.net/v/t39.30808-6/476225580_624267296964408_8149943862244066944_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=110&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=uU-YGEZxv_0Q7kNvwE4X6eM&_nc_oc=Adn6Kt-NlifKus9m2VM4UibTFIGiPpt3f1ODP3o8r0fh0pDjZXJscyqoUAWPX2gG91k&_nc_zt=23&_nc_ht=scontent.fpnh1-2.fna&_nc_gid=jHjHoE61PqhqzX9JfrWD6g&oh=00_AfYHoaWScnw5WBeS1-kPT8_NrBIC-j-x_qb83pICKlVQyQ&oe=68D89BF4
+other:
+
+ID:100074240434157
+Full Name:  Vanna Thoy
+username:vannathoy26#
+College:  rbhs puc
+City:kt
+Contact info:
+Gender:m
+DOB:
+Creation date:
+social links:
+status: monk
+Alias names:
+The number of leaks:
+IMG:https://scontent.fpnh1-1.fna.fbcdn.net/v/t39.30808-6/481450280_651388984012444_7197942927804544828_n.jpg?stp=dst-jpg_s160x160_tt6&_nc_cat=107&ccb=1-7&_nc_sid=e09983&_nc_ohc=6qieTcKR5i4Q7kNvwGFGQTQ&_nc_oc=AdlgkgR-_tXmpd9UU9Xh1e3YBtPK-b6shhmraM8EI2N86sXyS1QiVPZfAWK_ydGGMLE&_nc_zt=23&_nc_ht=scontent.fpnh1-1.fna&_nc_gid=8iKX-MJ2ixfx4rIIljDoCA&oh=00_Afa3trJTxlGHL7YEXIx736D8wnx2tkS_KgrEFrdp1saggw&oe=68D899D9
+other:
+`;
+
+    // --- Parse Data ---
+    function parsePeople(raw) {
+      const people = [];
+      let current = {};
+      raw.split(/\n+/).forEach(line => {
+        if (/^ID:/.test(line)) {
+          if (Object.keys(current).length) people.push(current);
+          current = { id: line.replace('ID:', '').trim() };
+        } else if (line.includes(':')) {
+          const [k, ...v] = line.split(':');
+          current[k.trim().toLowerCase().replace(/ /g, '_')] = v.join(':').trim();
+        }
+      });
+      if (Object.keys(current).length) people.push(current);
+      return people.filter(p => p.full_name && p.img);
+    }
+
+    // --- Encrypt Name (show only first/last char, rest as *) ---
+    function encryptName(name) {
+      if (!name) return '';
+      const n = name.trim();
+      if (n.length <= 2) return n[0] + '*';
+      return n[0] + '*'.repeat(n.length - 2) + n[n.length - 1];
+    }
+
+    // --- Render Grid ---
+    function renderPeopleGrid() {
+      const people = parsePeople(ordinaryPeopleRaw);
+      // Shuffle for random rank
+      for (let i = people.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [people[i], people[j]] = [people[j], people[i]];
+      }
+      const grid = document.getElementById('ordinaryPeopleGrid');
+      grid.innerHTML = people.map((p, idx) => `
+        <div class="person-card" tabindex="0" data-idx="${idx}">
+          <img class="person-img" src="${p.img}" alt="${p.full_name}" loading="lazy" />
+          <div class="person-encrypted">${encryptName(p.full_name)}</div>
+          <div class="person-meta">${p.college || ''} ${p.city ? '· ' + p.city : ''}</div>
+          <div class="person-meta">${p.status || ''}</div>
+        </div>
+      `).join('');
+      // Card click handler
+      Array.from(grid.querySelectorAll('.person-card')).forEach(card => {
+        card.onclick = () => showPersonPopup(people[card.dataset.idx]);
+        card.onkeydown = e => { if (e.key === 'Enter' || e.key === ' ') showPersonPopup(people[card.dataset.idx]); };
+      });
+    }
+
+    // --- Popup ---
+    function showPersonPopup(person) {
+      const popup = document.getElementById('personPopup');
+      popup.innerHTML = `
+        <button class="close-btn" onclick="document.getElementById('personPopup').style.display='none'">&times;</button>
+        <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem;flex-wrap:wrap;">
+          <img src="${person.img}" alt="${person.full_name}" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:2.5px solid #fff3;background:#222;filter:grayscale(0.1);" />
+          <div>
+            <div style="font-size:1.2rem;font-weight:700;">${person.full_name}</div>
+            <div style="color:#aaa;font-size:1rem;">${person.college || ''} ${person.city ? '· ' + person.city : ''}</div>
+            <div style="color:#aaa;font-size:0.97rem;">${person.status || ''}</div>
+          </div>
+        </div>
+        <pre style="font-size:0.98rem;line-height:1.5;background:#222a;padding:1rem;border-radius:0.7rem;overflow-x:auto;">${Object.entries(person).map(([k,v]) => k+': '+v).join('\n')}</pre>
+      `;
+      popup.style.display = 'block';
+      setTimeout(() => { popup.focus && popup.focus(); }, 100);
+      // Close on outside click
+      window.onclick = function(e) {
+        if (e.target === popup) popup.style.display = 'none';
+      };
+      // Close on Esc
+      window.onkeydown = function(e) {
+        if (e.key === 'Escape') popup.style.display = 'none';
+      };
+    }
+
+    // --- Mount on Theme/Grid Demo page show ---
+    function observeThemeGridPage() {
+      const page = document.getElementById('page-theme');
+      const grid = document.getElementById('ordinaryPeopleGrid');
+      if (!page || !grid) return;
+      const show = () => {
+        if (page.classList.contains('active')) renderPeopleGrid();
+      };
+      // SPA: listen to hashchange or page show
+      window.addEventListener('hashchange', show);
+      // Initial
+      show();
+    }
+    document.addEventListener('DOMContentLoaded', observeThemeGridPage);
+  </script>
       </section>
     </div>
 
