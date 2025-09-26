@@ -1,43 +1,48 @@
 Mobile-first, fully responsive design.
-Technology stack: strictly HTML, CSS, and JavaScript only.
+Technology stack: strictly HTML, CSS, and JavaScript only. and should be link to index file for the project to work  Presently, 
 Prepare a professional, future-proof folder and file directory structure.
 
 Project Structure & Layouts:
-- Centered, sticky icon navigation bar (Home | Article | Resource | Matrix | Index)
-A navbar that changes width on scroll, responsive and animated.
-navbar
-responsive
-navigation
-layout 
+- no color for header and footer style 
+- Centered, sticky icon navigation bar (Home | Article | Resource | Matrix | Sort)
+A navbar that changes width on scroll up hide, scroll down show up, responsive and animated.
+Icons:
+- Use Font Awesome icon font.
+- all icons must be dark or black color.  
+- text must be dark or black color.
+
   - Icons:
-    - Home: fa-user-circle
-    - Article: fa-square-pen
-    - Resource: fa-solar-panel
-    - Matrix: fa-gamepad
-    - Index: fa-sort
+    - Home: <i class="fa-solid fa-house"></i>
+    - Article: <i class="fa-solid fa-feather"></i>
+    - Resource: <i class="fa-solid fa-passport"></i>
+    - Matrix: <i class="fa-solid fa-shapes"></i>
+    - Sort: <i class="fa-solid fa-signature"></i>
 Navigation:
 - All navigation between menu/navbar links must be client-side (no page refresh).
+- make sure mobile device responsive design
+- show the menu navbar  on mobile devices or pc theme the same  as desktop theme layout.
 
+expected future edit:
+- Home: Present bio and  etc.
 - Article: Blog, writing, notes.
-- Resource: Useful links, online courses, resources.
-- Matrix: Project demos, active projects.
-- Index: List of ordinary profile people, relatives.
+- Resource: Useful links, online courses, books.
+- Matrix: Project demos, active projects, resources with difference categories type tap.
+- Sort: List of ordinary profile people, relatives.
 
 
 Typography:
-- Fonts: Inter, JetBrains Mono, Noto Serif Khmer, Chenla
+- Fonts: Inter: default text in english, JetBrains Mono: numeric and code style, Noto Serif Khmer, Chenla: Khmer font. 
 
 Layout/Grid:
-- Use a consistent, professional grid system.
+- 1/2/3/4/5/6/7/8/9/10/11/12 columns.
 
-Icons:
-- Use Font Awesome 6 icon font.
+
 
 Footer:
+- social media icons (GitHub, X, TikTok, YouTube, Telegram) URL username: EIRSVi
+- and copyright, EIRSVi 2025. 
 
-- : social media icons (GitHub, X, TikTok, YouTube, Telegram) and copyright, EIRSVi 2025.
-
-Color System:
+Color System root:
 - polynesian-blue: #164EA6ff; (hsl(217, 76%, 37%))
 - jordy-blue: #8AB3F6ff; (hsl(217, 82%, 76%))
 - mustard: #FED765ff; (hsl(47, 98%, 71%))
@@ -45,7 +50,6 @@ Color System:
 - emerald: #81CB94ff; (hsl(140, 44%, 65%))
 - honeydew: #CEE9D6ff; (hsl(146, 47%, 86%))
 
-Card Themes (Strict Rules):
 Card Themes (Strict Rules):
 1. Only use these card theme color pairs for backgrounds:
    - coCard1 (text: white): polynesian-blue, jordy-blue
@@ -61,8 +65,30 @@ Card Themes (Strict Rules):
    - coCard2: mustard (#FED765ff) or jasmine (#FDE392ff)
    - coCard3: emerald (#81CB94ff) or honeydew (#CEE9D6ff)
 
+ just start homepage: test text lorum ipsum english khmer 
 
-Page Details:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 - Home: About, profile, and bio/skills.
   - Profile image: wavy circular border, image fits inside (see: https://raw.githubusercontent.com/EIRSVi/eirsvi/49cc3f197f8da64ac3d7bd0e7969b6708b95a4e0/assets/image/288bc158-5999-425d-846e-4c0824f2294e.svg)
   - Name: 'EIRSVi'
@@ -74,3 +100,4 @@ Page Details:
     - class: rounded-xl w-full h-auto border-2 border-[#4E5766] shadow-md bg-[#37404F]
     - loading="lazy"
 
+favicon: https://raw.githubusercontent.com/EIRSVi/eirsvi/refs/heads/docs/assets/image/288bc158-5999-425d-846e-4c0824f2294e.png
