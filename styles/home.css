@@ -7,38 +7,42 @@
 .profile-card {
   background: var(--honeydew);
   box-shadow: 0 2px 12px #0001;
-  border-radius: 2rem;
-  padding: 2rem 1.5rem;
-  max-width: 420px;
+  border-radius: 2.5rem;
+  padding: 3.2rem 2.2rem;
+  max-width: 540px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
+  gap: 2rem;
 }
 .profile-img-hex {
   position: relative;
-  width: 140px;
-  height: 140px;
+  width: 210px;
+  height: 210px;
 }
 .profile-img-hex svg {
   position: absolute;
   top: 0;
   left: 0;
+  width: 210px;
+  height: 210px;
   z-index: 1;
 }
-.profile-img-hex img {
+ .profile-img-hex img {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  width: 116px;
-  height: 116px;
+  top: 18px;
+  left: 18px;
+  width: 174px;
+  height: 174px;
   object-fit: cover;
   border-radius: 50%;
   z-index: 2;
+  pointer-events: none;
+  user-select: none;
 }
 .profile-card h1 {
-  font-size: 2.1rem;
+  font-size: 2.7rem;
   font-weight: 700;
   margin: 0;
 }
@@ -121,20 +125,21 @@
     padding: 1.1rem 0.3rem;
     max-width: 99vw;
     border-radius: 1.1rem;
+    gap: 1.1rem;
   }
   .profile-img-hex {
-    width: 90px;
-    height: 90px;
+    width: 110px;
+    height: 110px;
   }
   .profile-img-hex svg {
-    width: 90px;
-    height: 90px;
+    width: 110px;
+    height: 110px;
   }
   .profile-img-hex img {
-    width: 74px;
-    height: 74px;
-    top: 8px;
-    left: 8px;
+    width: 86px;
+    height: 86px;
+    top: 12px;
+    left: 12px;
   }
   .profile-card h1 {
     font-size: 1.3rem;
