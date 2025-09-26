@@ -1,0 +1,142 @@
+.home-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-card {
+  background: var(--honeydew);
+  box-shadow: 0 2px 12px #0001;
+  border-radius: 2rem;
+  padding: 2rem 1.5rem;
+  max-width: 420px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+.profile-img-hex {
+  position: relative;
+  width: 140px;
+  height: 140px;
+}
+.profile-img-hex svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.profile-img-hex img {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 116px;
+  height: 116px;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 2;
+}
+.profile-card h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin: 0;
+}
+.profile-card .profile-buttons {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.profile-card .profile-btn {
+  background: var(--jordy-blue);
+  color: #fff;
+  border: none;
+  border-radius: 1.2rem;
+  padding: 0.4rem 1.1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 1px 4px #0002;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.profile-card .profile-btn.location {
+  background: var(--emerald);
+  color: #111;
+}
+.profile-card .profile-btn.hireable {
+  background: var(--mustard);
+  color: #111;
+}
+.profile-card blockquote {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--polynesian-blue);
+  margin: 0.7rem 0 0.2rem 0;
+  text-align: center;
+}
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.7rem;
+  justify-content: center;
+  font-size: 0.98rem;
+}
+.skills-list span {
+  background: var(--jordy-blue);
+  color: #fff;
+  padding: 0.2rem 0.7rem;
+  border-radius: 1rem;
+}
+.profile-card .activity-graph {
+  width: 100%;
+  margin-top: 1.2rem;
+}
+.profile-card .activity-graph img {
+  border: 2px solid #4E5766;
+  box-shadow: 0 2px 8px #0002;
+  background: #37404F;
+  border-radius: 1rem;
+  width: 100%;
+  height: auto;
+}
+.profile-card .streak {
+  width: 100%;
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: center;
+}
+.profile-card .streak img {
+  max-width: 340px;
+  border: 2px solid #4E5766;
+  box-shadow: 0 2px 8px #0002;
+  background: #37404F;
+  border-radius: 1rem;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 600px) {
+  .profile-card {
+    padding: 1.1rem 0.3rem;
+    max-width: 99vw;
+    border-radius: 1.1rem;
+  }
+  .profile-img-hex {
+    width: 90px;
+    height: 90px;
+  }
+  .profile-img-hex svg {
+    width: 90px;
+    height: 90px;
+  }
+  .profile-img-hex img {
+    width: 74px;
+    height: 74px;
+    top: 8px;
+    left: 8px;
+  }
+  .profile-card h1 {
+    font-size: 1.3rem;
+  }
+}

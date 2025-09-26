@@ -108,22 +108,38 @@ do not writ in one page in index use js route fetch data
 
 
 
-
-
-
-
-
-
-
+ 
+```
 - Home: About, profile, and bio/skills.
-  - Profile image: wavy circular border, image fits inside (see: https://raw.githubusercontent.com/EIRSVi/eirsvi/49cc3f197f8da64ac3d7bd0e7969b6708b95a4e0/assets/image/288bc158-5999-425d-846e-4c0824f2294e.svg)
+ - center of  page, Home  page
+  - Profile image: fit inside a circle using assets/icons/Hexagon.svg
+  - User image: (see: https://raw.githubusercontent.com/EIRSVi/eirsvi/49cc3f197f8da64ac3d7bd0e7969b6708b95a4e0/assets/image/288bc158-5999-425d-846e-4c0824f2294e.svg)
+  - make the user image inside the svg fit inside the circle
   - Name: 'EIRSVi'
+ and design to button  like this usign fetch api 
+live user profile use api  to get data
+from github api https://api.github.com/users/eirsvi
+ - "public_repos": 9,
+  "public_gists": 44,
+  "followers": 42,
+  "following": 244, 
+  public_repos and  location   hireable   
+
   - Quote: "To Be Educated Is To Be Changed"
-  - Skills: List of technical and personal interests (HTML, CSS, JavaScript, Tailwind CSS, React, Linux, Java, Databases, Laravel, Git & GitHub, Postman, Network Configuration, IT Support, Body Language, Game Theory, Economics, MOBA, Chess)
+  - Skills: List technical and personal interests (HTML, CSS, JavaScript, Tailwind CSS, React, Linux, Java, Databases, Laravel, Git & GitHub, Postman, Network Configuration, IT Support, Body Language, Game Theory, Economics, MOBA, Chess)
   - GitHub activity graph (last 31 days): 
+  - GitHub Streak:
+    - mobile device view fit screen 
     - src="https://github-readme-activity-graph.vercel.app/graph?username=EIRSVi&theme=github-compact&custom_title=GitHub%20Activity%20(Last%2031%20days)&hide_border=true&area=true"
     - alt="EIRSVi's GitHub activity graph (last 31 days)"
     - class: rounded-xl w-full h-auto border-2 border-[#4E5766] shadow-md bg-[#37404F]
     - loading="lazy"
+    -
 
-favicon: https://raw.githubusercontent.com/EIRSVi/eirsvi/refs/heads/docs/assets/image/288bc158-5999-425d-846e-4c0824f2294e.png
+
+
+
+
+
+background:https://codepen.io/k3ch0o/details/pvvLvaY, https://codepen.io/sijad/pen/XJmZLgg
+card hover:https://codepen.io/aaroniker/pen/yLEPJXj, https://codepen.io/schwiiiii/pen/GgJPQvr, https://codepen.io/mandynicole/pen/JojJOZY

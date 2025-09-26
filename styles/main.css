@@ -31,6 +31,68 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
+  /* Add a stacking context for multiple pseudo-elements */
+  position: relative;
+}
+
+body:before,
+body:after,
+body::after2 {
+  content: '';
+  position: fixed;
+  pointer-events: none;
+  filter: blur(180px);
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+body:before {
+  background-color: rgba(0,0,0,0.18);
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+
+body:after {
+  background-color: rgba(255,255,255,0.32);
+  right: 0;
+  bottom: 0;
+  transform: translate(50%, 50%);
+}
+
+body::after2 {
+  background-color: #8AB3F6cc;
+  left: 50vw;
+  top: 100vh;
+  transform: translate(-50%, 0);
+}
+
+body:before,
+body:after {
+  content: '';
+  position: fixed;
+  pointer-events: none;
+  filter: blur(180px);
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+body:before {
+  background-color: hsla(140, 100%, 65%, 0.5);
+  left: 0;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+
+body:after {
+  background-color: hsla(170, 100%, 65%, 0.568);
+  right: 0;
+  bottom: 0;
+  transform: translate(50%, 50%);
 }
 
 #app {
@@ -104,7 +166,7 @@ body {
   left: 0;
   bottom: 0;
   width: 100vw;
-  background: none;
+  background: var(--honeydew);
   color: var(--text-dark);
   font-size: 0.8rem;
   font-family: var(--font-default);
@@ -115,6 +177,7 @@ body {
   height: 1.5rem;
   display: flex;
   align-items: center;
+  bottom: env(safe-area-inset-bottom, 0);
 }
 .marquee {
   display: flex;
