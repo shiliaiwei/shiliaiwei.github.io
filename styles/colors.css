@@ -1,0 +1,35 @@
+:root {
+  --polynesian-blue: #164EA6ff;
+  --jordy-blue: #8AB3F6ff;
+  --mustard: #FED765ff;
+  --jasmine: #FDE392ff;
+  --emerald: #81CB94ff;
+  --honeydew: #CEE9D6ff;
+  --text-dark: #111111;
+  --text-white: #fff;
+}
+
+/* Card themes */
+.coCard1 {
+  background: var(--polynesian-blue);
+  color: var(--text-white);
+  border-radius: 0;
+  border: 1px solid var(--polynesian-blue);
+}
+.coCard2 {
+  background: var(--mustard);
+  color: var(--text-dark);
+  font-weight: bold;
+  border-radius: 0;
+  border: 1px solid var(--mustard);
+}
+.coCard3 {
+  background: var(--emerald);
+  color: var(--text-dark);
+  border-radius: 0;
+  border: 1px solid var(--emerald);
+}
+.coCard3 a {
+  color: var(--polynesian-blue);
+  text-decoration: underline;
+}

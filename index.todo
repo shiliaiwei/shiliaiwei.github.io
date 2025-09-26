@@ -1,15 +1,21 @@
-Mobile-first, fully responsive design.
-Technology stack: strictly HTML, CSS, and JavaScript only. and should be link to index file for the project to work  Presently, 
-Prepare a professional, future-proof folder and file directory structure.
+Mobile-first, fully responsive design. remember to use the mobile-first approach. 
+
+favicon link source https://raw.githubusercontent.com/EIRSVi/eirsvi/refs/heads/docs/assets/image/288bc158-5999-425d-846e-4c0824f2294e.png 
+
+Technology stack: strictly HTML, CSS, and JavaScript only. 
+Prepare a professional, future-proof folder and file directory structure. such as components, pages, assets, styles, scripts, and static and more  for the future project.
+ 
+
 
 Project Structure & Layouts:
-- no color for header and footer style 
+- no color for header and footer style and make sure it fit screen size and responsive. their is not toolbar for navigation scroll down and up left and right.
 - Centered, sticky icon navigation bar (Home | Article | Resource | Matrix | Sort)
-A navbar that changes width on scroll up hide, scroll down show up, responsive and animated.
+A navbar that changes width on active page. 
 Icons:
 - Use Font Awesome icon font.
 - all icons must be dark or black color.  
-- text must be dark or black color.
+- Icons must be responsive and animated.
+- icon hover must be emerald color.
 
   - Icons:
     - Home: <i class="fa-solid fa-house"></i>
@@ -17,11 +23,11 @@ Icons:
     - Resource: <i class="fa-solid fa-passport"></i>
     - Matrix: <i class="fa-solid fa-shapes"></i>
     - Sort: <i class="fa-solid fa-signature"></i>
-Navigation:
+Navigation: 
 - All navigation between menu/navbar links must be client-side (no page refresh).
 - make sure mobile device responsive design
 - show the menu navbar  on mobile devices or pc theme the same  as desktop theme layout.
-
+-  make sure the menu navbar  is always visible. and don't show navbar title text below the icon. 
 expected future edit:
 - Home: Present bio and  etc.
 - Article: Blog, writing, notes.
@@ -31,22 +37,34 @@ expected future edit:
 
 
 Typography:
-- Fonts: Inter: default text in english, JetBrains Mono: numeric and code style, Noto Serif Khmer, Chenla: Khmer font. 
+- Fonts: Space Grotesk : default text in english, 
+- JetBrains Mono: numeric and code style, 
+- Noto Serif Khmer, Chenla: Khmer font. 
+- all text must be dark or black color.
+ 
 
-Layout/Grid:
-- 1/2/3/4/5/6/7/8/9/10/11/12 columns.
 
 
 
-Footer:
-- social media icons (GitHub, X, TikTok, YouTube, Telegram) URL username: EIRSVi
-- and copyright, EIRSVi 2025. 
+Footer: use Marquee style 
+-Marquee  Animation:  social media icons (GitHub, X, TikTok, YouTube, Telegram) URL username: EIRSVi and copyright, EIRSVi 2025. 
+- Uses  animation start from right to left and loop infinitely
+- When marquee moves completely offscreen, resets to start
+- always at the button of the page.
+- make it smaller: 
+- Pauses on hover, resumes when mouse leaves
+- js key function : Marquee('.marquee', 0.4) // Selector and speed parameter
+- example: when the user clicks on the social media icon, it will open a new tab with the URL. so the social media icon in marquee.    use color coCard2 
 
+
+remember this design is for mobile first. 
 Color System root:
 - polynesian-blue: #164EA6ff; (hsl(217, 76%, 37%))
 - jordy-blue: #8AB3F6ff; (hsl(217, 82%, 76%))
+
 - mustard: #FED765ff; (hsl(47, 98%, 71%))
 - jasmine: #FDE392ff; (hsl(48, 94%, 80%))
+
 - emerald: #81CB94ff; (hsl(140, 44%, 65%))
 - honeydew: #CEE9D6ff; (hsl(146, 47%, 86%))
 
@@ -56,7 +74,7 @@ Card Themes (Strict Rules):
    - coCard2 (text: black, bold): mustard, jasmine
    - coCard3 (text: black, links polynesian-blue): emerald, honeydew
 2. Text color: only white or dark (black/near-black).
-3. No gradients allowed.
+3. No gradients color  allowed.
 4. No other background or accent colors permitted.
 5. Links in coCard3: use polynesian-blue (#164EA6ff).
 6. All UI elements must strictly follow these color rules.
@@ -65,7 +83,15 @@ Card Themes (Strict Rules):
    - coCard2: mustard (#FED765ff) or jasmine (#FDE392ff)
    - coCard3: emerald (#81CB94ff) or honeydew (#CEE9D6ff)
 
- just start homepage: test text lorum ipsum english khmer 
+and start add example content data for each page 
+
+- Home: Present bio and  etc. example 
+- Article: example 
+- Resource:  example 
+- Matrix: example 
+- Sort:  example  
+
+do not writ in one page in index use js route fetch data 
 
 
 
@@ -88,7 +114,7 @@ Card Themes (Strict Rules):
 
 
 
- 
+
 - Home: About, profile, and bio/skills.
   - Profile image: wavy circular border, image fits inside (see: https://raw.githubusercontent.com/EIRSVi/eirsvi/49cc3f197f8da64ac3d7bd0e7969b6708b95a4e0/assets/image/288bc158-5999-425d-846e-4c0824f2294e.svg)
   - Name: 'EIRSVi'

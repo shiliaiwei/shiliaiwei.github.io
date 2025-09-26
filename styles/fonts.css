@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Noto+Serif+Khmer:wght@400;700&family=Chenla&display=swap');
+
+:root {
+  --font-default: 'Space Grotesk', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+  --font-khmer: 'Noto Serif Khmer', 'Chenla', serif;
+}
