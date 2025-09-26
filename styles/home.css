@@ -1,6 +1,6 @@
 .profile-card blockquote strong {
   font-weight: bold;
-  color: #fff;
+  color: #000000;
   letter-spacing: 0.01em;
   text-transform: uppercase;
 }
@@ -82,7 +82,7 @@
 .profile-card blockquote {
   font-size: 1.1rem;
   font-style: normal;
-  color: #1a2330;
+  color: #111;
   margin: 0.7rem 0 0.2rem 0;
   text-align: center;
 }
