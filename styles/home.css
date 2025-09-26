@@ -1,3 +1,9 @@
+.profile-card blockquote strong {
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
 .home-center {
   min-height: 100vh;
   display: flex;
@@ -6,7 +12,7 @@
 }
 .profile-card {
   background: var(--honeydew);
-  box-shadow: 0 2px 12px #0001;
+  /* box-shadow: 0 2px 12px #0001; */
   border-radius: 2.5rem;
   padding: 3.2rem 2.2rem;
   max-width: 540px;
@@ -75,10 +81,17 @@
 }
 .profile-card blockquote {
   font-size: 1.1rem;
-  font-style: italic;
-  color: var(--polynesian-blue);
+  font-style: normal;
+  color: #1a2330;
   margin: 0.7rem 0 0.2rem 0;
   text-align: center;
+}
+
+.quote-signature {
+  display: flex;
+  justify-content: center;
+  margin-top: -0.2rem;
+  margin-bottom: 0.7rem;
 }
 .skills-list {
   display: flex;
@@ -88,10 +101,19 @@
   font-size: 0.98rem;
 }
 .skills-list span {
-  background: var(--jordy-blue);
-  color: #fff;
-  padding: 0.2rem 0.7rem;
-  border-radius: 1rem;
+  display: inline-block;
+  font-size: 0.92rem;
+  border-radius: 12px;
+  border: 1.5px solid #7ecbff;
+  padding: 0.13rem 0.7rem;
+  color: #1a2a3a;
+  background: transparent;
+  margin: 0.13rem 0.22rem;
+  font-weight: 500;
+  transition: border-color 0.2s;
+}
+.skills-list span:hover {
+  border-color: #2196f3;
 }
 .profile-card .activity-graph {
   width: 100%;
@@ -121,11 +143,27 @@
   height: auto;
 }
 @media (max-width: 600px) {
+  html, body {
+    width: 100vw;
+    min-width: 0;
+    max-width: 100vw;
+    overflow-x: hidden !important;
+    box-sizing: border-box;
+  }
+  .home-center {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    box-sizing: border-box;
+  }
   .profile-card {
-    padding: 1.1rem 0.3rem;
-    max-width: 99vw;
+    padding: 1.1rem 0.1rem;
+    max-width: 100vw;
+    width: 100vw;
     border-radius: 1.1rem;
     gap: 1.1rem;
+    box-sizing: border-box;
   }
   .profile-img-hex {
     width: 110px;
@@ -143,5 +181,11 @@
   }
   .profile-card h1 {
     font-size: 1.3rem;
+  }
+  .skills-list {
+    max-width: 100vw;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-sizing: border-box;
   }
 }
