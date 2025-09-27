@@ -6,7 +6,7 @@
 				 
 				</div>
 
-				<span id="textOuter"><b class="dark_id">ID-</b><span id="randomId">#70220432</span></span>
+				<span id="textOuter"><b class="dark_id">ID-#</b><span id="randomId">100012627976416</span></span>
 
 				<div id="modal">
 					<span id="textInner">Active<b class="green-underscore">_</b> </span>
@@ -36,7 +36,7 @@
 			<span>Postman</span>
 			<span>Network Configuration</span>
 			<span>MikroTik</span>
-                     <span>Cisco</span>
+      <span>Cisco</span>
 			<span>Body Language</span>
 			<span>Game Theory</span>
 			<span>Economics</span>
@@ -105,7 +105,7 @@
   text-transform: uppercase;
   font-weight: 700;
   font-family: (--font-code);
-  font-size: 0.6rem;
+  font-size: 0.8rem;
 }
 #textOuter {
   color: #ff0050;
@@ -174,6 +174,29 @@
 }
 .green-underscore {
   color: #ff0050;
+  animation: blink-cursor 1s steps(1) infinite;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes blink-cursor {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
 }
 .dark_id {
   color: #222;
@@ -200,21 +223,6 @@ const updateAcronyms = () => {
   acr.textContent = newContent;
 }
 setInterval(updateAcronyms, 50);
-// Color toggle logic
-function toggleColor() {
-  const colorEls = [
-    document.getElementById('textOuter'),
-    document.getElementById('blurbContainer'),
-    document.getElementById('extra'),
-    document.querySelector('.green-underscore')
-  ];
-  colorEls.forEach(el => {
-    if (el) el.classList.toggle('color-green');
-  });
-  // Toggle modal:after via a class on #modal
-  document.getElementById('modal')?.classList.toggle('color-green');
-}
-setInterval(toggleColor, 3000);
 
 // Random ID update logic
 function generateRandomId() {
@@ -223,6 +231,12 @@ function generateRandomId() {
 }
 function updateRandomId() {
   const idSpan = document.getElementById('randomId');
+  if (idSpan) {
+    idSpan.textContent = generateRandomId();
+  }
+}
+setInterval(updateRandomId, 1000);
+</script>
   if (idSpan) {
     idSpan.textContent = generateRandomId();
   }
