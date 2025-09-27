@@ -142,6 +142,16 @@
   width: 100%;
   height: auto;
 }
+.signature-img {
+  height: 38px;
+  width: auto;
+  opacity: 0.85;
+  pointer-events: none;
+  user-select: none;
+}
+#container {
+  margin: auto;
+}
 @media (max-width: 600px) {
   html, body {
     width: 100vw;

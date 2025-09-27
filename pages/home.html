@@ -1,15 +1,26 @@
 <main class="home-center">
 	<section class="profile-card">
-		<div class="profile-img-hex">
-			<svg viewBox="0 0 277 301" width="240" height="240">
-				<path d="M108.103 8.24078C126.954 -2.64276 150.179 -2.64276 169.03 8.24078L246.169 52.7773C265.02 63.6609 276.633 83.7745 276.633 105.542V194.615C276.633 216.382 265.02 236.495 246.169 247.379L169.03 291.915C150.179 302.799 126.954 302.799 108.103 291.915L30.9635 247.379C12.1126 236.495 0.5 216.382 0.5 194.615V105.542C0.5 83.7745 12.1126 63.6609 30.9635 52.7773L108.103 8.24078Z" fill="#000"/>
-			</svg>
-			<img src="https:github.com/eirsvi.png" alt="EIRSVi profile" draggable="false" oncontextmenu="return false;" style="pointer-events:none;user-select:none;" />
+		<div id="container">
+			<div id="wrapper>
+				<div id="blurbContainer">
+					<span>EIRSVi Corporation</span>
+					<span id="acr">HTML CSS JS REACT LINUX JAVA DB LARAVEL</span>
+				</div>
+
+				<span id="textOuter">Public</span>
+
+				<div id="modal">
+					<span id="textInner">EIRSVi</span>
+					<div id="inner"></div>
+				</div>
+
+				<span id="extra"></span>
 		</div>
+		
 		<h1>EIRSVi</h1>
 			<blockquote><strong>To Be Educated Is To Be Changed</strong></blockquote>
 			<div class="quote-signature">
-				<img src="/assets/icons/signature.png" alt="Signature" style="height:38px;width:auto;opacity:0.85;pointer-events:none;user-select:none;" draggable="false" oncontextmenu="return false;" />
+				<img src="/assets/icons/signature.png" alt="Signature" class="signature-img" draggable="false" oncontextmenu="return false;" />
 			</div>
               
 		<div class="skills-list">
@@ -48,4 +59,131 @@
 	</section>
 </main>
 <link rel="stylesheet" href="/styles/home.css">
-<script src="/scripts/profile.js"></script>
+<!-- Add the border profile CSS below or in home.css -->
+<style>
+#container {
+  position: relative;
+  height: 200px;
+  aspect-ratio: 1;
+  perspective: 1000px;
+  margin:auto;
+}
+#wrapper {
+  transform: rotateX(-5deg) rotateY(10deg);
+}
+#modal {
+  background: green;
+  height: 200px;
+  aspect-ratio: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    6% 100%,
+    0 93%,
+    0 68%,
+    0 65%,
+    5% 60%,
+    5% 31%,
+    0 24%
+  );
+}
+#textInner {
+  position: absolute;
+  top: 4px;
+  color: white;
+  left: 8px;
+  z-index: 20;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+#textOuter {
+  color: red;
+  float: right;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+#blurbContainer {
+  position: absolute;
+  top: -18px;
+  display: flex;
+  color: green;
+  justify-content: flex-end;
+  font-size: 0.5rem;
+  min-width: 200px;
+  right: -23px;
+  gap: 7px;
+  width: 500px;
+}
+#blurbContainer :last-child {
+  width: 16px;
+  overflow-wrap: break-word;
+  font-size: 0.4rem;
+}
+#blurbContainer :first-child {
+  white-space: nowrap;
+}
+#extra {
+  height: 5px;
+  width: 40px;
+  background: red;
+  position: absolute;
+  right: 0;
+  margin-top: -1px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 37% 100%);
+}
+#modal:after {
+  width: 97%;
+  height: 8px;
+  background: red;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: "";
+}
+#inner {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    6% 100%,
+    0 93%,
+    0 68%,
+    0 65%,
+    5% 60%,
+    5% 31%,
+    0 24%
+  );
+  height: 99%;
+  width: 98%;
+  background: #000;
+  background: url("https://github.com/eirsvi.png") center/cover;
+}
+</style>
+<!-- Optionally add the JS for acronym animation -->
+<script>
+const acr = document.querySelector('#acr');
+const numAcronyms = 8;
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+const updateAcronyms = () => {
+  const words = acr.textContent.split(' ');
+  const shuffledWords = shuffleArray(words);
+  const newContent = shuffledWords.slice(0, numAcronyms).join(' ');
+  acr.textContent = newContent;
+}
+setInterval(updateAcronyms, 50);
+</script>

@@ -141,5 +141,184 @@ from github api https://api.github.com/users/eirsvi
 
 
 
-background:https://codepen.io/k3ch0o/details/pvvLvaY, https://codepen.io/sijad/pen/XJmZLgg
-card hover:https://codepen.io/aaroniker/pen/yLEPJXj, https://codepen.io/schwiiiii/pen/GgJPQvr, https://codepen.io/mandynicole/pen/JojJOZY
+background:https://codepen.io/k3ch0o/details/pvvLvaY
+https://codepen.io/sijad/pen/XJmZLgg
+
+card hover:https://codepen.io/aaroniker/pen/yLEPJXj, 
+https://codepen.io/schwiiiii/pen/GgJPQvr, 
+https://codepen.io/mandynicole/pen/JojJOZY
+profile border https://codepen.io/a7rarpress/pen/dygyyOw
+border https://codepen.io/codepenner-pen/pen/KvRxZe
+coner border ; https://codepen.io/max1128/pen/ZpeBbV
+shapre border ; https://codepen.io/iegc71/pen/PPwMNE
+youare being watch https://codepen.io/dianait-the-bold/pen/wjEjOr
+
+survilance ui https://codepen.io/matt-cannon/pen/XJWEZMQ
+CodePen Home
+Surveillance Simulation 2133 https://codepen.io/aeon-flexx-dead-girl/pen/GRbyaVd
+
+ceberpunk 3d style 
+https://codepen.io/reanukeaves/pen/KKBVjgP
+
+
+
+border profile :
+hoemapge 
+
+HTML
+
+<div id="container">
+  <div id="wrapper">
+  <div id="blurbContainer">
+    <span>Arasaka Corporation</span>
+    <span id="acr">ATA CGD CSAPGM LDD WZF ATA CGD CSAPGM LDD WZFATA CGD CSAPGM LDD WZF</span>
+  </div>
+  <span id="textOuter">Pacifica District</span>
+  <div id="modal">
+    <span id="textInner">Public</span>
+    <div id="inner">
+    </div>
+  </div>
+  <span id="extra"></span>
+    </div>
+</div>
+
+
+CSS
+
+
+#container {
+  position: relative;
+  height: 200px;
+  aspect-ratio: 1;
+  perspective: 1000px;
+}
+#wrapper {
+  transform: rotateX(-5deg) rotateY(10deg);
+}
+#modal {
+  background: green;
+  height: 200px;
+  aspect-ratio: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    6% 100%,
+    0 93%,
+    0 68%,
+    0 65%,
+    5% 60%,
+    5% 31%,
+    0 24%
+  );
+}
+#textInner {
+  position: absolute;
+  top: 4px;
+  color: white;
+  left: 8px;
+  z-index: 20;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+#textOuter {
+  color: red;
+  float: right;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+#blurbContainer {
+  position: absolute;
+  top: -18px;
+  display: flex;
+  color: green;
+  justify-content: flex-end;
+  font-size: 0.5rem;
+  min-width: 200px;
+  right: -23px;
+  gap: 7px;
+  width: 500px;
+}
+#blurbContainer :last-child {
+  width: 16px;
+  overflow-wrap: break-word;
+  font-size: 0.4rem;
+}
+#blurbContainer :first-child {
+  white-space: nowrap;
+}
+
+#extra {
+  height: 5px;
+  width: 40px;
+  background: red;
+  position: absolute;
+  right: 0;
+  margin-top: -1px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 37% 100%);
+}
+ #modal:after {
+  width: 97%;
+  height: 8px;
+  background: red;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: "";
+}
+#inner {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    6% 100%,
+    0 93%,
+    0 68%,
+    0 65%,
+    5% 60%,
+    5% 31%,
+    0 24%
+  );
+  height: 99%;
+  width: 98%;
+  background: #000;
+  background: url("https://avatars.githubusercontent.com/u/70220432?v=4")
+    center/ cover;
+}
+
+
+
+js 
+
+
+document.querySelector('#acr');
+const numAcronyms = 8;
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+const updateAcronyms = () => {
+  const words = acr.textContent.split(' ');
+  // shuffle the array of words
+  const shuffledWords = shuffleArray(words);
+
+  const newContent = shuffledWords.slice(0, numAcronyms).join(' ');
+
+  acr.textContent = newContent;
+}
+
+
+setInterval(updateAcronyms, 50);
