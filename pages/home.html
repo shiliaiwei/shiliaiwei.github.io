@@ -6,10 +6,10 @@
 				 
 				</div>
 
-				<span id="textOuter">VERIFYING<b class="green-underscore">_</b></span>
+				<span id="textOuter"><b class="dark_id">ID-</b><span id="randomId">#70220432</span></span>
 
 				<div id="modal">
-					<span id="textInner">Public</span>
+					<span id="textInner">Active<b class="green-underscore">_</b> </span>
 					<div id="inner"></div>
 				</div>
 
@@ -60,6 +60,11 @@
 <link rel="stylesheet" href="/styles/home.css">
 <!-- Add the border profile CSS below or in home.css -->
 <style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+.color-green {
+  color: green !important;
+  background: green !important;
+}
 #container {
   position: relative;
   height: 200px;
@@ -71,7 +76,7 @@
   transform: rotateX(-5deg) rotateY(10deg);
 }
 #modal {
-  background: #1eff00;
+  background:rgb(14, 172, 0)0;
   height: 200px;
   aspect-ratio: 1;
   position: relative;
@@ -99,7 +104,8 @@
   z-index: 20;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 0.8rem;
+  font-family: (--font-code);
+  font-size: 0.6rem;
 }
 #textOuter {
   color: #ff0050;
@@ -133,7 +139,7 @@
 #extra {
   height: 5px;
   width: 40px;
-  background: #ff0050;
+  background:#ff0050;
   position: absolute;
   right: 0;
   margin-top: -1px;
@@ -142,7 +148,7 @@
 #modal:after {
   width: 97%;
   height: 8px;
-  background: #ff0050;
+  background:  #ff0050;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -167,7 +173,13 @@
   background: url("https://github.com/eirsvi.png") center/cover;
 }
 .green-underscore {
-  color: rgb(10, 86, 250);
+  color: #ff0050;
+}
+.dark_id {
+  color: #222;
+}
+body, .profile-card, #textInner, #textOuter, .dark_id {
+  font-family: 'JetBrains Mono', monospace;
 }
 </style>
 <!-- Optionally add the JS for acronym animation -->
@@ -188,4 +200,32 @@ const updateAcronyms = () => {
   acr.textContent = newContent;
 }
 setInterval(updateAcronyms, 50);
+// Color toggle logic
+function toggleColor() {
+  const colorEls = [
+    document.getElementById('textOuter'),
+    document.getElementById('blurbContainer'),
+    document.getElementById('extra'),
+    document.querySelector('.green-underscore')
+  ];
+  colorEls.forEach(el => {
+    if (el) el.classList.toggle('color-green');
+  });
+  // Toggle modal:after via a class on #modal
+  document.getElementById('modal')?.classList.toggle('color-green');
+}
+setInterval(toggleColor, 3000);
+
+// Random ID update logic
+function generateRandomId() {
+  // 8-digit random number
+  return Math.floor(10000000 + Math.random() * 90000000);
+}
+function updateRandomId() {
+  const idSpan = document.getElementById('randomId');
+  if (idSpan) {
+    idSpan.textContent = generateRandomId();
+  }
+}
+setInterval(updateRandomId, 1000);
 </script>
