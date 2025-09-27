@@ -100,21 +100,7 @@
   justify-content: center;
   font-size: 0.10rem;
 }
-.skills-list span {
-  display: inline-block;
-  font-size: 0.90rem;
-  border-radius: 12px;
-  border: 2.5px dotted #00000049;
-  padding: 0.13rem 0.7rem;
-  color: #000000;
-  background: transparent;
-  margin: 0.13rem 0.22rem;
-  font-weight: 500;
-  transition: border-color 0.1s;
-}
-.skills-list span:hover {
-  border-color: #ff0050;
-}
+
 .profile-card .activity-graph {
   width: 100%;
   margin-top: 1.2rem;

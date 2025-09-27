@@ -324,3 +324,77 @@ const updateAcronyms = () => {
 
 
 setInterval(updateAcronyms, 50);
+
+
+
+
+
+button hover
+ <button class="btn primary">
+ <button>
+                                <span>HTML</span>
+                              </button>
+
+
+
+
+
+.btn {
+  padding: 5px;
+  text-align: center;
+  position: relative;
+  border: none;
+  background-color: transparent;
+  overflow: hidden;
+  min-width: 125px;
+  color: red);
+}
+
+
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn:after {
+  content: "";
+  width: 5%;
+  height: 1px;
+ 
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+}
+
+.btn:after,
+.btn:before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  background-color: transparent;
+  transition: 0.7s;
+} 
+
+.btn:after {
+  border-bottom: solid red 1px;
+  border-left: solid green 1px;
+  bottom: 0;
+  left: 0;
+}
+
+.btn:before {
+  border-top: solid green 1px;
+  border-right: solid red 1px;
+  top: 0;
+  right: 0;
+}
+
+.btn:hover:before,
+.btn:hover:after {
+  width: 100%;
+  height: 100%;
+  border-width: 1px;
+}
+
