@@ -22,6 +22,44 @@ function loadRoute(route) {
       document.getElementById('page-content').innerHTML = html;
       setActiveNav(route);
       window.scrollTo(0, 0);
+
+      // If loading home.html, inject permutation script
+      if (page.endsWith('home.html')) {
+        const permScript = document.createElement('script');
+        permScript.textContent = `
+function getPermutations(str) {
+  const results = [];
+  function permute(arr, l, r) {
+    if (l === r) {
+      results.push(arr.join(''));
+    } else {
+      for (let i = l; i <= r; i++) {
+        [arr[l], arr[i]] = [arr[i], arr[l]];
+        permute(arr, l + 1, r);
+        [arr[l], arr[i]] = [arr[i], arr[l]];
+      }
+    }
+  }
+  permute(str.split(''), 0, str.length - 1);
+  return Array.from(new Set(results));
+}
+const nameStr = 'EIRSVi';
+let perms = getPermutations(nameStr);
+perms = perms.filter(p => p.length === nameStr.length);
+perms.sort();
+const startIdx = perms.indexOf('SRIEVi');
+let idx = startIdx >= 0 ? startIdx : 0;
+function animatePermName() {
+  const el = document.getElementById('permName');
+  if (el) {
+    el.textContent = perms[idx];
+    idx = (idx + 1) % perms.length;
+  }
+}
+setInterval(animatePermName, 20);
+`;
+        document.getElementById('page-content').appendChild(permScript);
+      }
     });
 }
 

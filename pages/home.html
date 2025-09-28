@@ -339,11 +339,15 @@ let idx = startIdx >= 0 ? startIdx : 0;
 
 function animatePermName() {
   const el = document.getElementById('permName');
-  if (!el) return;
-  el.textContent = perms[idx];
-  idx = (idx + 1) % perms.length;
+  if (el) {
+    el.textContent = perms[idx];
+    idx = (idx + 1) % perms.length;
+  }
 }
-setInterval(animatePermName, 50);
+
+window.addEventListener('DOMContentLoaded', function() {
+  setInterval(animatePermName, 50);
+});
 const acr = document.querySelector('#acr');
 const numAcronyms = 8;
 function shuffleArray(array) {
