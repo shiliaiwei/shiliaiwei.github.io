@@ -9,8 +9,11 @@
 				<span id="textOuter"><b class="dark_id">ID-#</b><span id="randomId">100012627976416</span></span>
 
 				<div id="modal">
-					<span id="textInner">Active<b class="green-underscore">_</b> </span>
-					<div id="inner"></div>
+					<span id="textInner">detecting<b class="green-underscore">_</b> </span>
+          <div id="inner" style="position:relative;">
+            <div class="scan-overlay"></div>
+            <div class="scan-line"></div>
+          </div>
 				</div>
 
 				<span id="extra"></span>
@@ -101,7 +104,7 @@
   text-transform: uppercase;
   font-weight: 700;
   font-family: (--font-code);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 #textOuter {
   color: #ff0050;
@@ -260,6 +263,51 @@ body, .profile-card, #textInner, #textOuter, .dark_id {
 @keyframes bounce-triangle {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(8px); }
+}
+/* Surveillance scanning animation overlay */
+.scan-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+  background: none;
+  animation: scan-move 2s linear infinite;
+}
+
+@keyframes scan-move {
+  0% {
+    background-position: 0 -100px;
+  }
+  100% {
+    background-position: 0 100px;
+  }
+}
+
+.scan-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #ff0050;
+  box-shadow: 0 0 50px 3px #06f7ff, 0 0 50px 3px #0cffff;
+  border-radius: 1px;
+  z-index: 20;
+  animation: scan-line-move 2s linear infinite;
+}
+
+@keyframes scan-line-move {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: 90%;
+  }
+  100% {
+    top: 0%;
+  }
 }
 </style>
 <!-- Optionally add the JS for acronym animation -->
