@@ -81,7 +81,7 @@
   color: #111;
 }
 .profile-card blockquote {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-style: normal;
   color: #111;
   margin: 0.7rem 0 0.2rem 0;
@@ -91,17 +91,11 @@
 .quote-signature {
   display: flex;
   justify-content: center;
-  margin-top: -0.1rem;
-  margin-bottom: 0.1rem;
+  /* margin-top: -0.1rem; */
+  /* margin-left: 0.9rem;  */
+  /* margin-bottom: 0.1rem;  */
 }
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem 0.5rem;
-  justify-content: center;
-  font-size: 0.10rem;
-}
-
+ 
 .profile-card .activity-graph {
   width: 100%;
   margin-top: 1.2rem;
