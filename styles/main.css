@@ -27,7 +27,7 @@ body {
   margin: 0;
   font-family: var(--font-default);
   color: var(--text-dark);
-  background: var(--honeydew);
+  background: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,52 +36,7 @@ body {
   overflow-x: hidden;
 }
 
-body:before,
-body:after,
-body::after2 {
-  content: '';
-  position: fixed;
-  pointer-events: none;
-  filter: blur(180px);
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  z-index: 0;
-}
-
-body:before {
-  background-color: rgba(0,0,0,0.18);
-  left: 0;
-  top: 0;
-  transform: translate(-50%, -50%);
-}
-
-body:after {
-  background-color: rgba(255,255,255,0.32);
-  right: 0;
-  bottom: 0;
-  transform: translate(50%, 50%);
-}
-
-body::after2 {
-  background-color: #8AB3F6cc;
-  left: 50vw;
-  top: 100vh;
-  transform: translate(-50%, 0);
-}
-
-body:before,
-body:after {
-  content: '';
-  position: fixed;
-  pointer-events: none;
-  filter: blur(180px);
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  z-index: 0;
-}
-
+ 
 
 
 #app {

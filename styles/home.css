@@ -1,17 +1,4 @@
-/* Windows-style popup for threat notification */
-.poi-window {
-  background: #222;
-  color: #fff;
-  border: 2px solid #444;
-  border-radius: 8px;
-  box-shadow: 0 4px 24px #0008;
-  max-width: 340px;
-  width: 100%;
-  margin: 1.2rem auto 0 auto;
-  font-family: 'Segoe UI', 'Montserrat', 'Arial', sans-serif;
-  position: relative;
-  z-index: 10;
-}
+
 .poi-bg-dark {
   background: #222;
 }
@@ -162,8 +149,8 @@
 .quote-signature {
   display: flex;
   justify-content: center;
-  margin-top: -0.2rem;
-  margin-bottom: 0.4rem;
+  margin-top: -0.1rem;
+  margin-bottom: 0.1rem;
 }
 .skills-list {
   display: flex;
