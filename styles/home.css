@@ -122,6 +122,7 @@
   font-size: 2.7rem;
   font-weight: 700;
   margin: 0;
+  padding-top: 7px;
 }
 .profile-card .profile-buttons {
   display: flex;
@@ -162,7 +163,7 @@
   display: flex;
   justify-content: center;
   margin-top: -0.2rem;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.4rem;
 }
 .skills-list {
   display: flex;
