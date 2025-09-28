@@ -21,12 +21,21 @@
 			<div class="quote-signature">
 				<img src="/assets/icons/signature.png" alt="Signature" class="signature-img" draggable="false" oncontextmenu="return false;" />
 			</div>
-<div><p>[._.]</p></div>
-
-    
 		<div class="activity-graph">
 			<img src="https://github-readme-activity-graph.vercel.app/graph?username=EIRSVi&theme=github-compact&custom_title=GitHub%20Activity%20(Last%2031%20days)&hide_border=true&area=true" alt="EIRSVi's GitHub activity graph (last 31 days)" loading="lazy" />
 		</div>
+
+
+
+		<div class="github-followers-following" style="margin-top:16px;">
+			<img src="https://github-readme-stats.vercel.app/api?username=EIRSVi&show_icons=true&count_private=true&hide_border=true&theme=github_dark&hide_title=true" alt="GitHub Profile Stats" loading="lazy" />
+		</div>
+
+		<div class="github-profile-summary" style="margin-top:16px;">
+			<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=EIRSVi&theme=github_dark" alt="GitHub Profile Summary" loading="lazy" style="max-width:100%;width:400px;height:auto;display:block;margin:auto;" />
+		</div>
+
+
 		<div class="streak">
 			<img src="https://github-readme-streak-stats.herokuapp.com?user=EIRSVi&theme=github-dark-blue&hide_border=true" alt="GitHub Streak" loading="lazy" />
 		</div>
@@ -35,6 +44,7 @@
 			<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=EIRSVi&layout=compact&theme=github_dark&hide_border=true&hide_title=true" alt="Languages" loading="lazy" />
 
 		</div>
+	
               
               
 	</section>
@@ -189,6 +199,20 @@
   margin-left: 2px;
   animation: terminal-blink 1s steps(1) infinite;
   vertical-align: middle;
+}
+.github-profile-summary img {
+  max-width: 100%;
+  width: 400px;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+@media (max-width: 600px) {
+  .github-profile-summary img {
+    width: 98vw;
+    max-width: 98vw;
+    min-width: 0;
+  }
 }
 @keyframes blink-cursor {
   0%, 49% {

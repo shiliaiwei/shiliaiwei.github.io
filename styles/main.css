@@ -82,19 +82,7 @@ body:after {
   z-index: 0;
 }
 
-body:before {
-  background-color: hsla(140, 100%, 65%, 0.5);
-  left: 0;
-  top: 0;
-  transform: translate(-50%, -50%);
-}
 
-body:after {
-  background-color: hsla(170, 100%, 65%, 0.568);
-  right: 0;
-  bottom: 0;
-  transform: translate(50%, 50%);
-}
 
 #app {
   flex: 1 0 auto;
