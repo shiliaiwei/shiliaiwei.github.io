@@ -19,7 +19,7 @@
 				<span id="extra"></span>
 		</div>
 		
-		<h1>EIRSVi</h1>
+    <h1 id="permName">EIRSVi</h1>
 			<blockquote><strong>To Be Educated Is To Be Changed</strong></blockquote>
 			<div class="quote-signature">
 				<img src="/assets/icons/signature.png" alt="Signature" class="signature-img" draggable="false" oncontextmenu="return false;" />
@@ -312,6 +312,38 @@ body, .profile-card, #textInner, #textOuter, .dark_id {
 </style>
 <!-- Optionally add the JS for acronym animation -->
 <script>
+// Permutation animation for the name
+function getPermutations(str) {
+  const results = [];
+  function permute(arr, l, r) {
+    if (l === r) {
+      results.push(arr.join(''));
+    } else {
+      for (let i = l; i <= r; i++) {
+        [arr[l], arr[i]] = [arr[i], arr[l]];
+        permute(arr, l + 1, r);
+        [arr[l], arr[i]] = [arr[i], arr[l]];
+      }
+    }
+  }
+  permute(str.split(''), 0, str.length - 1);
+  return Array.from(new Set(results));
+}
+
+const nameStr = 'EIRSVi';
+let perms = getPermutations(nameStr);
+perms = perms.filter(p => p.length === nameStr.length);
+perms.sort();
+const startIdx = perms.indexOf('SRIEVi');
+let idx = startIdx >= 0 ? startIdx : 0;
+
+function animatePermName() {
+  const el = document.getElementById('permName');
+  if (!el) return;
+  el.textContent = perms[idx];
+  idx = (idx + 1) % perms.length;
+}
+setInterval(animatePermName, 50);
 const acr = document.querySelector('#acr');
 const numAcronyms = 8;
 function shuffleArray(array) {
