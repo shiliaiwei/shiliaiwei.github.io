@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Test</title>
+    <style>
+        body { background: #0d1117; color: white; font-family: Arial; padding: 2rem; }
+        button { background: #58a6ff; color: white; border: none; padding: 0.5rem 1rem; margin: 0.5rem; cursor: pointer; }
+        .result { margin: 1rem 0; padding: 1rem; background: #161b22; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Category Test</h1>
+    <button onclick="testAICategory()">Test AI Category</button>
+    <button onclick="listAllCategories()">List All Categories</button>
+    <button onclick="testRender()">Test Render Function</button>
+    
+    <div id="results"></div>
+    
+    <script src="/scripts/resource-cards.js"></script>
+    
+    <script>
+        function testAICategory() {
+            const results = document.getElementById('results');
+            
+            if (typeof resources === 'undefined') {
+                results.innerHTML = '<div class="result">Resources array not loaded!</div>';
+                return;
+            }
+            
+            const aiResources = resources.filter(res => 
+                res.categories && res.categories.includes('AI')
+            );
+            
+            results.innerHTML = `
+                <div class="result">
+                    <h3>AI Resources Found: ${aiResources.length}</h3>
+                    ${aiResources.slice(0, 10).map(res => `
+                        <div>• ${res.title} - Categories: ${res.categories?.join(', ')}</div>
+                    `).join('')}
+                    ${aiResources.length > 10 ? '<div>... and more</div>' : ''}
+                </div>
+            `;
+        }
+        
+        function listAllCategories() {
+            const results = document.getElementById('results');
+            
+            if (typeof resources === 'undefined') {
+                results.innerHTML = '<div class="result">Resources array not loaded!</div>';
+                return;
+            }
+            
+            const allCategories = new Set();
+            resources.forEach(res => {
+                if (res.categories) {
+                    res.categories.forEach(cat => allCategories.add(cat));
+                }
+            });
+            
+            const sortedCategories = Array.from(allCategories).sort();
+            
+            results.innerHTML = `
+                <div class="result">
+                    <h3>All Categories (${sortedCategories.length}):</h3>
+                    ${sortedCategories.map(cat => `<span style="background: #58a6ff; padding: 2px 6px; margin: 2px; border-radius: 3px; display: inline-block;">${cat}</span>`).join('')}
+                </div>
+            `;
+        }
+        
+        function testRender() {
+            const results = document.getElementById('results');
+            
+            if (typeof filterByCategories === 'function') {
+                const aiResults = filterByCategories(['AI']);
+                results.innerHTML = `
+                    <div class="result">
+                        <h3>Filter Test for AI: ${aiResults.length} results</h3>
+                        ${aiResults.slice(0, 5).map(res => `
+                            <div>• ${res.title} - Categories: ${res.categories?.join(', ')}</div>
+                        `).join('')}
+                    </div>
+                `;
+            } else {
+                results.innerHTML = '<div class="result">filterByCategories function not available!</div>';
+            }
+        }
+    </script>
+</body>
+</html>

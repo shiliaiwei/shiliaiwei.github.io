@@ -1,47 +1,89 @@
 // Add card color classes for cycling
 const cardColors = ['coCard1', 'coCard2', 'coCard3'];
 
-// Ultra simple search function
-function filterResources(searchTerm) {
-  console.log('FILTER CALLED WITH:', searchTerm);
+// Filter by multiple categories with prioritization
+function filterByCategories(selectedCategories) {
+  console.log('=== FILTER BY CATEGORIES ===');
+  console.log('Input:', selectedCategories);
+  console.log('Type:', typeof selectedCategories);
+  console.log('Is array:', Array.isArray(selectedCategories));
   
-  if (!searchTerm || searchTerm.trim() === '') {
-    console.log('NO SEARCH TERM - RETURNING ALL');
-    return resources;
+  if (!selectedCategories || selectedCategories.length === 0 || selectedCategories.includes('')) {
+    console.log('NO CATEGORIES - RETURNING ALL IN RANDOM ORDER');
+    const shuffled = shuffleArray(resources);
+    console.log('Returning', shuffled.length, 'shuffled resources');
+    return shuffled;
   }
   
-  const term = searchTerm.toLowerCase();
-  const results = [];
+  // Limit to maximum 2 categories
+  if (selectedCategories.length > 2) {
+    selectedCategories = selectedCategories.slice(0, 2);
+    console.log('LIMITED TO 2 CATEGORIES:', selectedCategories);
+  }
+  
+  const matchingResources = [];
+  const partialMatchResources = [];
+  const nonMatchingResources = [];
+  
+  console.log('Processing', resources.length, 'total resources...');
   
   for (let i = 0; i < resources.length; i++) {
     const resource = resources[i];
-    const title = resource.title.toLowerCase();
-    const desc = resource.description.toLowerCase();
+    const resourceCategories = resource.categories || [];
     
-    if (title.includes(term) || desc.includes(term)) {
-      results.push(resource);
-      console.log('FOUND MATCH:', resource.title);
+    // Count how many selected categories this resource matches
+    const matchCount = selectedCategories.filter(cat => resourceCategories.includes(cat)).length;
+    
+    if (matchCount === selectedCategories.length) {
+      // Matches all selected categories - highest priority
+      matchingResources.push(resource);
+      console.log('FULL MATCH:', resource.title, 'categories:', resourceCategories.join(', '));
+    } else if (matchCount > 0) {
+      // Matches some selected categories - medium priority
+      partialMatchResources.push(resource);
+      console.log('PARTIAL MATCH:', resource.title, 'matches', matchCount, 'categories');
+    } else {
+      // No matches - lowest priority
+      nonMatchingResources.push(resource);
     }
   }
   
-  console.log('TOTAL MATCHES:', results.length);
-  return results;
+  // Combine results with matching cards at the top
+  const prioritizedResults = [
+    ...shuffleArray(matchingResources),
+    ...shuffleArray(partialMatchResources),
+    ...shuffleArray(nonMatchingResources)
+  ];
+  
+  console.log('RESULTS SUMMARY:', {
+    fullMatches: matchingResources.length,
+    partialMatches: partialMatchResources.length,
+    nonMatches: nonMatchingResources.length,
+    total: prioritizedResults.length
+  });
+  
+  return prioritizedResults;
 }
 
-function renderCards(searchTerm = '') {
-  console.log('RENDER CALLED WITH:', searchTerm);
+function renderCards(categories = []) {
+  console.log('=== RENDER CARDS CALLED ===');
+  console.log('Input categories:', categories);
+  console.log('Categories type:', typeof categories);
+  console.log('Categories is array:', Array.isArray(categories));
   
   const grid = document.getElementById('resourceGrid');
   if (!grid) {
-    console.log('NO GRID FOUND!');
+    console.log('❌ NO GRID FOUND!');
     return;
   }
   
-  const filtered = filterResources(searchTerm);
+  const filtered = filterByCategories(categories);
+  console.log('Filtered results:', filtered.length);
+  
   grid.innerHTML = '';
   
-  if (filtered.length === 0 && searchTerm.trim() !== '') {
-    grid.innerHTML = '<div style="color: white; text-align: center; grid-column: 1/-1;">No results found</div>';
+  if (filtered.length === 0 && categories.length > 0 && !categories.includes('')) {
+    grid.innerHTML = '<div style="color: white; text-align: center; grid-column: 1/-1;">No resources found for the selected categories</div>';
     return;
   }
   
@@ -49,7 +91,22 @@ function renderCards(searchTerm = '') {
     const colorClass = cardColors[i % cardColors.length];
     const card = document.createElement('div');
     card.className = `card resource-card ${colorClass}`;
+    
+    // Add visual indicator for matching cards
+    let matchIndicator = '';
+    if (categories.length > 0 && !categories.includes('')) {
+      const resourceCategories = res.categories || [];
+      const matchCount = categories.filter(cat => resourceCategories.includes(cat)).length;
+      
+      if (matchCount === categories.length) {
+        matchIndicator = '<div class="match-indicator full-match">★ Perfect Match</div>';
+      } else if (matchCount > 0) {
+        matchIndicator = '<div class="match-indicator partial-match">◐ Partial Match</div>';
+      }
+    }
+    
     card.innerHTML = `
+      ${matchIndicator}
       <h3>${res.title}</h3>
       <p>${res.description}</p>
       <div class="resource-categories">
@@ -62,41 +119,86 @@ function renderCards(searchTerm = '') {
     grid.appendChild(card);
   });
   
-  // Add highlight animation for search results
-  if (searchTerm.trim()) {
-    setTimeout(() => {
-      document.querySelectorAll('.resource-card').forEach((card, index) => {
-        setTimeout(() => {
-          card.classList.add('search-highlight');
-          setTimeout(() => card.classList.remove('search-highlight'), 600);
-        }, index * 50);
-      });
-    }, 100);
-  }
-  
-  console.log('RENDERED', filtered.length, 'CARDS');
+  console.log('✅ RENDERED', filtered.length, 'CARDS');
 }
 
-// Simple setup
-function initSearch() {
-  console.log('INIT SEARCH CALLED');
+// Setup for button-based category filtering
+function initFilter() {
+  console.log('=== INIT FILTER CALLED ===');
   
-  const input = document.getElementById('resourceSearch');
-  if (!input) {
-    console.log('INPUT NOT FOUND!');
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  if (!categoryButtons.length) {
+    console.log('❌ CATEGORY BUTTONS NOT FOUND!');
     return;
   }
   
-  console.log('INPUT FOUND, ADDING LISTENER');
+  console.log('✅ FOUND', categoryButtons.length, 'CATEGORY BUTTONS');
   
-  input.addEventListener('input', function(e) {
-    console.log('INPUT EVENT TRIGGERED:', e.target.value);
-    renderCards(e.target.value);
+  let selectedCategories = [];
+  
+  categoryButtons.forEach((button, index) => {
+    console.log('Setting up button', index, ':', button.getAttribute('data-category'));
+    
+    button.addEventListener('click', function() {
+      const category = this.getAttribute('data-category');
+      console.log('=== BUTTON CLICKED ===');
+      console.log('Category:', category);
+      console.log('Button text:', this.textContent);
+      
+      // Handle "All" button
+      if (category === '') {
+        console.log('All button clicked - clearing selection');
+        selectedCategories = [];
+        updateButtonStates(categoryButtons, selectedCategories);
+        renderCards([]);
+        return;
+      }
+      
+      // Toggle category selection
+      if (selectedCategories.includes(category)) {
+        // Remove category
+        console.log('Removing category:', category);
+        selectedCategories = selectedCategories.filter(cat => cat !== category);
+      } else {
+        // Add category (max 2)
+        if (selectedCategories.length < 2) {
+          console.log('Adding category:', category);
+          selectedCategories.push(category);
+        } else {
+          console.log('Maximum categories reached');
+          alert('Maximum 2 categories can be selected at once.');
+          return;
+        }
+      }
+      
+      console.log('FINAL SELECTED CATEGORIES:', selectedCategories);
+      updateButtonStates(categoryButtons, selectedCategories);
+      renderCards(selectedCategories);
+    });
   });
   
-  input.addEventListener('keyup', function(e) {
-    console.log('KEYUP EVENT:', e.target.value);
-    renderCards(e.target.value);
+  console.log('✅ All button listeners added');
+}
+
+function updateButtonStates(buttons, selectedCategories) {
+  console.log('=== UPDATING BUTTON STATES ===');
+  console.log('Selected categories:', selectedCategories);
+  
+  buttons.forEach(button => {
+    const category = button.getAttribute('data-category');
+    
+    // Remove all state classes
+    button.classList.remove('active', 'selected');
+    
+    if (category === '' && selectedCategories.length === 0) {
+      // "All" button is active when no categories selected
+      button.classList.add('active');
+      console.log('Set "All" button as active');
+    } else if (selectedCategories.includes(category)) {
+      // Selected category buttons
+      button.classList.add('selected');
+      console.log('Set button', category, 'as selected');
+    }
   });
 }
 
@@ -112,15 +214,22 @@ function shuffleArray(array) {
 
 // Initialize everything
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM LOADED - STARTING INIT');
+  console.log('=== DOM LOADED - STARTING INIT ===');
   
-  // First render all cards
-  renderCards();
-  
-  // Then setup search
+  // Add extra delay to ensure everything is ready
   setTimeout(function() {
-    initSearch();
-  }, 500);
+    console.log('=== DELAYED INITIALIZATION ===');
+    
+    // First render all cards in random order
+    console.log('Step 1: Rendering initial cards...');
+    renderCards([]);
+    
+    // Then setup category filter
+    console.log('Step 2: Setting up filter...');
+    initFilter();
+    
+    console.log('=== INITIALIZATION COMPLETE ===');
+  }, 1000);
 });
 
 // Also try immediate setup
@@ -1736,38 +1845,86 @@ const resources = [
   }
 ];
 
-function setupResourceSearchSort() {
-  const searchInput = document.getElementById("resourceSearch");
-  const sortSelect = document.getElementById("resourceSort");
-  
-  if (searchInput) {
-    // Real-time search with debouncing for better performance
-    let searchTimeout;
-    searchInput.addEventListener("input", () => {
-      clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(() => {
-        renderResourceCards(searchInput.value, sortSelect.value);
-      }, 150); // Small delay to avoid too many calls while typing
-    });
-    
-    // Clear search on Escape key
-    searchInput.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        searchInput.value = "";
-        renderResourceCards("", sortSelect.value);
-      }
-    });
+// Make sure to render all cards initially in random order
+setTimeout(function() {
+  console.log('Auto-initializing cards in random order...');
+  if (typeof renderCards === 'function') {
+    renderCards([]);
   }
-  
-  if (sortSelect) {
-    sortSelect.addEventListener("change", () => {
-      renderResourceCards(searchInput ? searchInput.value : "", sortSelect.value);
-    });
-  }
+}, 100);
+
+// Also try immediate initialization when script loads
+if (document.readyState === 'loading') {
+  console.log('Document still loading, will wait...');
+} else {
+  console.log('Document already loaded, initializing immediately...');
+  setTimeout(function() {
+    renderCards([]);
+  }, 50);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Initial render with random order
-  renderResourceCards();
-  setupResourceSearchSort();
+// Debug: Log when script finishes loading
+console.log('=== RESOURCE SCRIPT LOADED ===');
+console.log('Resources array length:', resources ? resources.length : 'undefined');
+console.log('renderCards function available:', typeof renderCards);
+
+// Force render cards as final attempt
+setTimeout(function() {
+  console.log('=== FINAL FORCE RENDER ATTEMPT ===');
+  const grid = document.getElementById('resourceGrid');
+  console.log('Grid element found:', !!grid);
+  if (grid && resources && resources.length > 0) {
+    console.log('Forcing render of', resources.length, 'resources in random order');
+    renderCards([]);
+  } else {
+    console.log('Missing requirements:', {
+      grid: !!grid,
+      resources: !!(resources && resources.length),
+      resourcesLength: resources ? resources.length : 0
+    });
+  }
+}, 2000);
+
+// Add global test functions
+window.testCategoryFilter = function(category) {
+  console.log('=== GLOBAL TEST FOR CATEGORY:', category, '===');
+  if (typeof renderCards === 'function') {
+    renderCards([category]);
+  }
+  
+  // Also update button states manually
+  const buttons = document.querySelectorAll('.category-btn');
+  buttons.forEach(btn => {
+    btn.classList.remove('active', 'selected');
+    if (btn.getAttribute('data-category') === category) {
+      btn.classList.add('selected');
+    }
+  });
+};
+
+// Add click listener to test category buttons
+window.addEventListener('load', function() {
+  console.log('=== WINDOW LOADED - ADDING MANUAL LISTENERS ===');
+  
+  setTimeout(function() {
+    const buttons = document.querySelectorAll('.category-btn');
+    console.log('Found buttons for manual setup:', buttons.length);
+    
+    buttons.forEach((btn, index) => {
+      console.log('Button', index, ':', btn.textContent, 'category:', btn.getAttribute('data-category'));
+      
+      // Add manual click handler as backup
+      btn.addEventListener('click', function() {
+        const category = this.getAttribute('data-category');
+        console.log('=== MANUAL BACKUP CLICK ===');
+        console.log('Clicked category:', category);
+        
+        if (category === '') {
+          window.testCategoryFilter('');
+        } else {
+          window.testCategoryFilter(category);
+        }
+      });
+    });
+  }, 1000);
 });
