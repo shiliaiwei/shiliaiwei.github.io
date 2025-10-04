@@ -113,20 +113,27 @@
   }
   #resourceGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     justify-content: center;
     align-items: stretch;
-    margin-bottom: 2rem;
+    margin: 2rem auto;
     width: 100%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1400px;
+    padding: 0 1rem;
   }
   .resource-card {
     box-sizing: border-box;
     border-radius: 12px;
     border: 1.5px solid var(--border-color);
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    transition: box-shadow 0.18s, border 0.18s, transform 0.18s;
+    height: auto;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: var(--bg-secondary);
     box-shadow: 0 2px 12px rgba(0,0,0,0.4);
     padding: 1.1rem 1.2rem 1.2rem 1.2rem;
@@ -173,28 +180,32 @@
   }
   @media (max-width: 900px) {
     #resourceGrid {
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1rem;
+      padding: 0 0.5rem;
     }
     .resource-card {
       min-width: 0;
       max-width: 100vw;
       margin: 0 auto;
+      min-height: 260px;
     }
-    .search-container {
+    .filter-container {
       max-width: 400px;
     }
   }
   @media (max-width: 600px) {
     #resourceGrid {
       grid-template-columns: 1fr;
-      gap: 0.7rem;
+      gap: 1rem;
+      padding: 0 0.5rem;
     }
     .resource-card {
       min-width: 0;
       max-width: 100vw;
       margin: 0 auto;
-      padding: 0.9rem 0.7rem 1rem 0.7rem;
+      padding: 1.25rem;
+      min-height: 240px;
     }
     .resource-controls {
       margin: 1rem 0;
@@ -240,46 +251,252 @@
 <div id="resourceGrid"></div>
 
 <script>
-// Manual test functions to verify filtering works
-function manualTestAI() {
-  console.log('=== MANUAL AI TEST ===');
-  const aiButton = document.querySelector('[data-category="AI"]');
-  if (aiButton) {
-    console.log('Found AI button, clicking it...');
-    aiButton.click();
-  } else {
-    console.log('AI button not found!');
+// Immediate diagnostic check
+console.log('=== DIAGNOSTIC START ===');
+console.log('Page loaded at:', new Date().toLocaleTimeString());
+
+// Simple working filter system
+let currentSelectedCategory = '';
+
+// Simple shuffle function
+function shuffleArray(array) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
+  return shuffled;
 }
 
-function manualTestDesign() {
-  console.log('=== MANUAL DESIGN TEST ===');
-  const designButton = document.querySelector('[data-category="Design"]');
-  if (designButton) {
-    console.log('Found Design button, clicking it...');
-    designButton.click();
-  } else {
-    console.log('Design button not found!');
-  }
-}
-
-// Test after page loads
-setTimeout(function() {
-  console.log('=== PAGE LOAD TEST ===');
-  console.log('Resources available:', typeof resources !== 'undefined' ? resources.length : 'undefined');
-  console.log('renderCards function available:', typeof renderCards);
-  console.log('Category buttons found:', document.querySelectorAll('.category-btn').length);
+function filterAndSort(selectedCategory) {
+  console.log('=== FILTER AND SORT ===');
+  console.log('Selected category:', selectedCategory);
   
-  // Add test buttons for easy manual testing
-  const testDiv = document.createElement('div');
-  testDiv.style.cssText = 'position: fixed; top: 10px; right: 10px; z-index: 1000; background: rgba(0,0,0,0.8); padding: 10px; border-radius: 5px;';
-  testDiv.innerHTML = `
-    <button onclick="manualTestAI()" style="background: #22c55e; color: white; border: none; padding: 5px 10px; margin: 2px; border-radius: 3px; cursor: pointer;">Test AI</button>
-    <button onclick="manualTestDesign()" style="background: #f59e0b; color: white; border: none; padding: 5px 10px; margin: 2px; border-radius: 3px; cursor: pointer;">Test Design</button>
-    <button onclick="location.reload()" style="background: #ef4444; color: white; border: none; padding: 5px 10px; margin: 2px; border-radius: 3px; cursor: pointer;">Reload</button>
-  `;
-  document.body.appendChild(testDiv);
-}, 2000);
+  const grid = document.getElementById('resourceGrid');
+  if (!grid) {
+    console.log('❌ Grid not found!');
+    return;
+  }
+  
+  // Update current selection
+  currentSelectedCategory = selectedCategory;
+  
+  // Update button states
+  document.querySelectorAll('.category-btn').forEach(btn => {
+    const btnCategory = btn.getAttribute('data-category');
+    btn.classList.remove('active', 'selected');
+    
+    if (btnCategory === selectedCategory) {
+      if (selectedCategory === '') {
+        btn.classList.add('active');
+      } else {
+        btn.classList.add('selected');
+      }
+    }
+  });
+  
+  // Check if resources are available
+  if (typeof resources === 'undefined' || !resources.length) {
+    console.log('⚠️ Resources not available, showing test cards');
+    showTestCards(selectedCategory);
+    return;
+  }
+  
+  console.log('✅ Found', resources.length, 'total resources');
+  
+  let matchingResources = [];
+  let otherResources = [];
+  
+  // Separate matching and non-matching resources
+  resources.forEach(resource => {
+    const resourceCategories = resource.categories || [];
+    
+    if (selectedCategory === '' || resourceCategories.includes(selectedCategory)) {
+      matchingResources.push(resource);
+    } else {
+      otherResources.push(resource);
+    }
+  });
+  
+  console.log('Matching resources:', matchingResources.length);
+  console.log('Other resources:', otherResources.length);
+  
+  // Combine with matching resources on top
+  const sortedResources = [
+    ...shuffleArray(matchingResources),
+    ...shuffleArray(otherResources)
+  ];
+  
+  // Render all cards
+  grid.innerHTML = '';
+  
+  sortedResources.forEach((res, i) => {
+    const colorClass = ['coCard1', 'coCard2', 'coCard3'][i % 3];
+    const card = document.createElement('div');
+    card.className = `card resource-card ${colorClass}`;
+    
+    // Add match indicator for top results
+    let matchIndicator = '';
+    if (selectedCategory !== '' && i < matchingResources.length) {
+      matchIndicator = '<div class="match-indicator full-match">★ Top Match</div>';
+    }
+    
+    card.innerHTML = `
+      ${matchIndicator}
+      <h3>${res.title}</h3>
+      <p>${res.description}</p>
+      <div class="resource-categories">
+        ${(res.categories || []).slice(0,2).map(cat => `<span class="resource-category">${cat}</span>`).join('')}
+      </div>
+      <div class="button-container">
+        <a href="${res.url}" target="_blank" rel="noopener" class="resource-link">Source</a>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+  
+  console.log('✅ Rendered', sortedResources.length, 'cards with', matchingResources.length, 'top matches');
+}
+
+function showTestCards(selectedCategory) {
+  const grid = document.getElementById('resourceGrid');
+  
+  // Test cards for each category
+  const allTestCards = [
+    { title: "ChatGPT", description: "AI-powered conversational assistant", categories: ["AI"] },
+    { title: "Midjourney", description: "AI image generation tool", categories: ["AI", "Design"] },
+    { title: "Figma", description: "Collaborative design platform", categories: ["Design"] },
+    { title: "Adobe XD", description: "UI/UX design tool", categories: ["Design"] },
+    { title: "VS Code", description: "Code editor for developers", categories: ["Development"] },
+    { title: "GitHub", description: "Code repository platform", categories: ["Development"] },
+    { title: "Notion", description: "All-in-one productivity workspace", categories: ["Productivity"] },
+    { title: "Slack", description: "Team communication platform", categories: ["Productivity", "Social"] }
+  ];
+  
+  let matchingCards = [];
+  let otherCards = [];
+  
+  allTestCards.forEach(card => {
+    if (selectedCategory === '' || card.categories.includes(selectedCategory)) {
+      matchingCards.push(card);
+    } else {
+      otherCards.push(card);
+    }
+  });
+  
+  const sortedCards = [...matchingCards, ...otherCards];
+  
+  grid.innerHTML = '';
+  
+  sortedCards.forEach((card, i) => {
+    const cardElement = document.createElement('div');
+    cardElement.className = 'card resource-card coCard1';
+    
+    let matchIndicator = '';
+    if (selectedCategory !== '' && i < matchingCards.length) {
+      matchIndicator = '<div class="match-indicator full-match">★ Top Match</div>';
+    }
+    
+    cardElement.innerHTML = `
+      ${matchIndicator}
+      <h3>${card.title}</h3>
+      <p>${card.description}</p>
+      <div class="resource-categories">
+        ${card.categories.slice(0,2).map(cat => `<span class="resource-category">${cat}</span>`).join('')}
+      </div>
+      <div class="button-container">
+        <a href="#" class="resource-link">Demo Link</a>
+      </div>
+    `;
+    grid.appendChild(cardElement);
+  });
+  
+  console.log('✅ Test cards created with', matchingCards.length, 'top matches for:', selectedCategory);
+}
+
+// Force show some cards as backup
+function forceShowCards() {
+  console.log('=== FORCE SHOW CARDS ===');
+  const grid = document.getElementById('resourceGrid');
+  
+  if (!grid) {
+    console.log('❌ Grid not found!');
+    return;
+  }
+  
+  console.log('✅ Grid found, creating test cards...');
+  
+  // Create test cards to ensure grid works
+  const testCards = [
+    { title: "Test AI Card", description: "This is a test AI card to verify filtering works", url: "#", categories: ["AI"] },
+    { title: "Test Design Card", description: "This is a test Design card with longer description to test height consistency", url: "#", categories: ["Design"] },
+    { title: "Test Development Card", description: "Third test card for development", url: "#", categories: ["Development"] }
+  ];
+  
+  grid.innerHTML = '';
+  
+  testCards.forEach((card, i) => {
+    const cardElement = document.createElement('div');
+    cardElement.className = 'card resource-card coCard1';
+    cardElement.innerHTML = `
+      <div class="match-indicator full-match">🔧 Test Card</div>
+      <h3>${card.title}</h3>
+      <p>${card.description}</p>
+      <div class="resource-categories">
+        <span class="resource-category">${card.categories[0]}</span>
+      </div>
+      <div class="button-container">
+        <a href="${card.url}" class="resource-link">Test Link</a>
+      </div>
+    `;
+    grid.appendChild(cardElement);
+  });
+  
+  console.log('✅ Test cards created');
+}
+
+// Add click handlers to buttons
+function setupButtons() {
+  console.log('=== SETTING UP BUTTONS ===');
+  const buttons = document.querySelectorAll('.category-btn');
+  console.log('Found buttons:', buttons.length);
+  
+  buttons.forEach((btn, index) => {
+    const category = btn.getAttribute('data-category');
+    console.log(`Button ${index}: ${btn.textContent} -> ${category}`);
+    
+    // Remove existing listeners
+    btn.removeEventListener('click', btn._clickHandler);
+    
+    // Create new handler
+    btn._clickHandler = function(e) {
+      e.preventDefault();
+      console.log('🔥 Button clicked:', category);
+      filterAndSort(category);
+    };
+    
+    btn.addEventListener('click', btn._clickHandler);
+  });
+}
+
+// Run diagnostic checks
+setTimeout(function() {
+  console.log('=== RUNNING DIAGNOSTICS ===');
+  console.log('Resources available:', typeof resources !== 'undefined' ? resources?.length : 'undefined');
+  console.log('Grid element:', !!document.getElementById('resourceGrid'));
+  
+  // Setup button handlers
+  setupButtons();
+  
+  // If main script doesn't work, show test cards
+  if (typeof resources === 'undefined') {
+    console.log('⚠️ Main script not working, showing test cards...');
+    filterAndSort(''); // This will trigger showTestCards automatically
+  } else {
+    console.log('✅ Main script available, showing all resources...');
+    filterAndSort(''); // Show all resources initially
+  }
+}, 1000);
 </script>
 
 <script src="/scripts/resource-cards.js"></script>
