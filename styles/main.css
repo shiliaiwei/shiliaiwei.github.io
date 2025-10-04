@@ -1,3 +1,12 @@
+/* Resource controls label */
+.resource-label {
+  font-weight: bold;
+}
+/* Resource page title */
+.resource-title {
+  text-align: center;
+  margin-top: 2rem;
+}
 @media (max-width: 600px) {
   .footer-marquee .icon {
     font-size: 0.85rem;

@@ -60,6 +60,16 @@ setInterval(animatePermName, 20);
 `;
         document.getElementById('page-content').appendChild(permScript);
       }
+
+      // If loading resource.html, inject resource-cards.js
+      if (page.endsWith('resource.html')) {
+        const script = document.createElement('script');
+        script.src = '/scripts/resource-cards.js';
+        script.onload = function() {
+          if (typeof renderResourceCards === 'function') renderResourceCards();
+        };
+        document.getElementById('page-content').appendChild(script);
+      }
     });
 }
 
