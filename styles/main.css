@@ -36,7 +36,7 @@ body {
   margin: 0;
   font-family: var(--font-default);
   color: var(--text-dark);
-  background: #ffffff;
+  background: var(--bg-primary);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -89,14 +89,14 @@ body {
 }
 .navbar .nav-item.active {
   width: 4.2rem;
-  color: var(--polynesian-blue);
+  color: var(--accent-color);
 }
 .navbar .nav-item i {
   transition: color 0.2s, transform 0.2s;
   color: var(--text-dark);
 }
 .navbar .nav-item:hover i {
-  color: #ff0050;
+  color: var(--accent-color);
   transform: scale(1.15) rotate(-8deg);
 }
 
@@ -129,13 +129,13 @@ body {
 /* Footer Marquee */
 .footer-marquee {
   width: 100vw;
-  background: var(--honeydew);
+  background: var(--bg-secondary);
   color: var(--text-dark);
   font-size: 0.8rem;
   font-family: var(--font-default);
   font-weight: bold;
   z-index: 200;
-  /* border-top: 1px dotted rgb(28, 241, 0); */
+  border-top: 1px solid var(--border-color);
   overflow: hidden;
   height: 1.5rem;
   display: flex;
@@ -163,7 +163,7 @@ body {
   cursor: pointer;
 }
 .footer-marquee .icon:hover {
-  color: #ff0050;
+  color: var(--accent-color);
 }
 
 /* Card Example Styles */
@@ -171,8 +171,10 @@ body {
   margin: 1.2rem auto;
   max-width: 600px;
   padding: 1.2rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.24);
-  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
 }
 
 /* Typography */
@@ -184,9 +186,10 @@ h1, h2, h3, h4, h5, h6 {
 code, pre, .code {
   font-family: var(--font-code);
   color: var(--text-dark);
-  background: var(--honeydew);
-  border-radius: 3px;
+  background: var(--bg-tertiary);
+  border-radius: 6px;
   padding: 0.1em 0.4em;
+  border: 1px solid var(--border-color);
 }
 .khmer {
   font-family: var(--font-khmer);

@@ -1,21 +1,50 @@
 // Add card color classes for cycling
 const cardColors = ['coCard1', 'coCard2', 'coCard3'];
 
-function renderResourceCards(searchTerm = '', sortCategory = '') {
-  const grid = document.getElementById('resourceGrid');
-  if (!grid) return;
-  let filtered = resources.filter(r => {
-    const term = searchTerm.toLowerCase();
-    return (
-      r.title.toLowerCase().includes(term) ||
-      r.description.toLowerCase().includes(term) ||
-      (Array.isArray(r.categories) && r.categories.some(cat => cat.toLowerCase().includes(term)))
-    );
-  });
-  if (sortCategory && sortCategory !== '') {
-    filtered = filtered.filter(r => Array.isArray(r.categories) && r.categories.includes(sortCategory));
+// Ultra simple search function
+function filterResources(searchTerm) {
+  console.log('FILTER CALLED WITH:', searchTerm);
+  
+  if (!searchTerm || searchTerm.trim() === '') {
+    console.log('NO SEARCH TERM - RETURNING ALL');
+    return resources;
   }
+  
+  const term = searchTerm.toLowerCase();
+  const results = [];
+  
+  for (let i = 0; i < resources.length; i++) {
+    const resource = resources[i];
+    const title = resource.title.toLowerCase();
+    const desc = resource.description.toLowerCase();
+    
+    if (title.includes(term) || desc.includes(term)) {
+      results.push(resource);
+      console.log('FOUND MATCH:', resource.title);
+    }
+  }
+  
+  console.log('TOTAL MATCHES:', results.length);
+  return results;
+}
+
+function renderCards(searchTerm = '') {
+  console.log('RENDER CALLED WITH:', searchTerm);
+  
+  const grid = document.getElementById('resourceGrid');
+  if (!grid) {
+    console.log('NO GRID FOUND!');
+    return;
+  }
+  
+  const filtered = filterResources(searchTerm);
   grid.innerHTML = '';
+  
+  if (filtered.length === 0 && searchTerm.trim() !== '') {
+    grid.innerHTML = '<div style="color: white; text-align: center; grid-column: 1/-1;">No results found</div>';
+    return;
+  }
+  
   filtered.forEach((res, i) => {
     const colorClass = cardColors[i % cardColors.length];
     const card = document.createElement('div');
@@ -32,7 +61,74 @@ function renderResourceCards(searchTerm = '', sortCategory = '') {
     `;
     grid.appendChild(card);
   });
+  
+  // Add highlight animation for search results
+  if (searchTerm.trim()) {
+    setTimeout(() => {
+      document.querySelectorAll('.resource-card').forEach((card, index) => {
+        setTimeout(() => {
+          card.classList.add('search-highlight');
+          setTimeout(() => card.classList.remove('search-highlight'), 600);
+        }, index * 50);
+      });
+    }, 100);
+  }
+  
+  console.log('RENDERED', filtered.length, 'CARDS');
 }
+
+// Simple setup
+function initSearch() {
+  console.log('INIT SEARCH CALLED');
+  
+  const input = document.getElementById('resourceSearch');
+  if (!input) {
+    console.log('INPUT NOT FOUND!');
+    return;
+  }
+  
+  console.log('INPUT FOUND, ADDING LISTENER');
+  
+  input.addEventListener('input', function(e) {
+    console.log('INPUT EVENT TRIGGERED:', e.target.value);
+    renderCards(e.target.value);
+  });
+  
+  input.addEventListener('keyup', function(e) {
+    console.log('KEYUP EVENT:', e.target.value);
+    renderCards(e.target.value);
+  });
+}
+
+// Shuffle function
+function shuffleArray(array) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+// Initialize everything
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM LOADED - STARTING INIT');
+  
+  // First render all cards
+  renderCards();
+  
+  // Then setup search
+  setTimeout(function() {
+    initSearch();
+  }, 500);
+});
+
+// Also try immediate setup
+window.addEventListener('load', function() {
+  console.log('WINDOW LOADED - BACKUP INIT');
+  initSearch();
+});
+
 // Resource card data for resource.html
 const resources = [
   
@@ -1643,15 +1739,35 @@ const resources = [
 function setupResourceSearchSort() {
   const searchInput = document.getElementById("resourceSearch");
   const sortSelect = document.getElementById("resourceSort");
-  searchInput.addEventListener("input", () => {
-    renderResourceCards(searchInput.value, sortSelect.value);
-  });
-  sortSelect.addEventListener("change", () => {
-    renderResourceCards(searchInput.value, sortSelect.value);
-  });
+  
+  if (searchInput) {
+    // Real-time search with debouncing for better performance
+    let searchTimeout;
+    searchInput.addEventListener("input", () => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        renderResourceCards(searchInput.value, sortSelect.value);
+      }, 150); // Small delay to avoid too many calls while typing
+    });
+    
+    // Clear search on Escape key
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        searchInput.value = "";
+        renderResourceCards("", sortSelect.value);
+      }
+    });
+  }
+  
+  if (sortSelect) {
+    sortSelect.addEventListener("change", () => {
+      renderResourceCards(searchInput ? searchInput.value : "", sortSelect.value);
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Initial render with random order
   renderResourceCards();
   setupResourceSearchSort();
 });
