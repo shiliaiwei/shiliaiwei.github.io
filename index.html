@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SRIEVi | Operative Portfolio</title>
-    <meta name="description" content="Portfolio of SRIEVi - Machine Learning, Frontend/Backend Developer, and Systems Engineer.">
-    
+    <meta name="description"
+        content="Portfolio of SRIEVi - Machine Learning, Frontend/Backend Developer, and Systems Engineer.">
+
     <!-- Google Fonts: Chakra Petch for headers (Sci-Fi look), Inter for body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="app-container">
@@ -44,7 +53,7 @@
 
         <!-- Main Content Area -->
         <main class="hud-main">
-            
+
             <!-- SECTION: OPERATIVE STATUS (ABOUT) -->
             <section id="operative-status" class="hud-section active">
                 <div class="profile-grid">
@@ -57,82 +66,76 @@
                             <div class="profile-stats">
                                 <div class="stat-row">
                                     <span class="stat-label">STR</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 85%"></div></div>
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 85%"></div>
+                                    </div>
                                 </div>
                                 <div class="stat-row">
                                     <span class="stat-label">INT</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 98%"></div></div>
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 98%"></div>
+                                    </div>
                                 </div>
                                 <div class="stat-row">
                                     <span class="stat-label">AGI</span>
-                                    <div class="stat-bar"><div class="stat-fill" style="width: 70%"></div></div>
+                                    <div class="stat-bar">
+                                        <div class="stat-fill" style="width: 70%"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="bio-container">
                         <h1 class="section-title">OPERATIVE BRIEFING</h1>
                         <div class="bio-content">
                             <p class="bio-para">
-                                He holds a bachelor's degree in Technical and Vocational Education and Training from a public institution. His research advisor is Prof. [+$-*&#$#], and his professional interests include machine learning, frontend and backend development, and systems.
+                                He holds a bachelor's degree in Technical and Vocational Education and Training from a
+                                public institution. His research advisor is Prof. [+$-*&#$#], and his professional
+                                interests include machine learning, frontend and backend development, and systems.
                             </p>
                             <p class="bio-para">
-                                Beyond his technical work, he is deeply curious about the fundamental mechanisms of the world, both physical and digital. He pursues this curiosity through a broad range of hobbies, including reading, writing, listening, and coding, with the ultimate aim of developing a computational understanding of the world and intelligence.
+                                Beyond his technical work, he is deeply curious about the fundamental mechanisms of the
+                                world, both physical and digital. He pursues this curiosity through a broad range of
+                                hobbies, including reading, writing, listening, and coding, with the ultimate aim of
+                                developing a computational understanding of the world and intelligence.
                             </p>
                             <p class="bio-para">
-                                He is actively developing a high-performance and easy-to-use client inference system. His open-source contributions can be viewed on his GitHub homepage.
+                                He is actively developing a high-performance and easy-to-use client inference system.
+                                His open-source contributions can be viewed on his GitHub homepage.
                             </p>
                             <p class="bio-para">
-                                His first name is pronounced "Vi," and his Khmer name is វី. He grew up in Kratié, Cambodia.
+                                His first name is pronounced "Vi," and his Khmer name is វី. He grew up in Kratié,
+                                Cambodia.
                             </p>
                             <p class="bio-para">
-                                In his free time, he enjoys walking, going to the gym room, playing chess, and MOBA games. Mostly, He is often found in solitude, absorbed in internal dialogues about future plans and possibilities. he's rarely using or reacting to anyone, even with a smile. It's as if he was deeply hurt by someone from a past we will never know.
+                                In his free time, he enjoys walking, going to the gym room, playing chess, and MOBA
+                                games. Mostly, He is often found in solitude, absorbed in internal dialogues about
+                                future plans and possibilities. he's rarely using or reacting to anyone, even with a
+                                smile. It's as if he was deeply hurt by someone from a past we will never know.
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- SECTION: CASE FILES (PROJECTS) -->
+            <!-- SECTION: CASE FILES (TOOLS) -->
             <section id="case-files" class="hud-section">
-                <h1 class="section-title">ACTIVE CASE FILES</h1>
-                <div class="projects-grid">
-                    <!-- Project Card 1 -->
-                    <article class="project-card">
-                        <div class="project-header">
-                            <h3 class="project-title">CLIENT INFERENCE SYSTEM</h3>
-                            <span class="project-status">IN PROGRESS</span>
-                        </div>
-                        <p class="project-desc">High-performance, easy-to-use client inference system for edge devices. Optimized for low-latency environments.</p>
-                        <div class="project-tech">
-                            <span>C++</span><span>WebAssembly</span><span>WebGL</span>
-                        </div>
-                    </article>
+                <h1 class="section-title">TACTICAL TOOLS</h1>
 
-                    <!-- Project Card 2 -->
-                    <article class="project-card">
-                        <div class="project-header">
-                            <h3 class="project-title">HEXTECH UI KIT</h3>
-                            <span class="project-status">COMPLETED</span>
-                        </div>
-                        <p class="project-desc">A comprehensive UI library for building Sci-Fi/HUD interfaces with React and CSS Modules.</p>
-                        <div class="project-tech">
-                            <span>React</span><span>CSS</span><span>Storybook</span>
-                        </div>
-                    </article>
+                <!-- Category Navigation -->
+                <div class="tool-categories">
+                    <button class="cat-btn active" data-cat="all">ALL</button>
+                    <button class="cat-btn" data-cat="network">NETWORK</button>
+                    <button class="cat-btn" data-cat="converter">CONVERTER</button>
+                    <button class="cat-btn" data-cat="generator">GENERATOR</button>
+                    <button class="cat-btn" data-cat="crypto">CRYPTO</button>
+                    <button class="cat-btn" data-cat="game">GAME</button>
+                </div>
 
-                    <!-- Project Card 3 -->
-                    <article class="project-card">
-                        <div class="project-header">
-                            <h3 class="project-title">NEURAL NETWORK VISUALIZER</h3>
-                            <span class="project-status">ARCHIVED</span>
-                        </div>
-                        <p class="project-desc">Interactive 3D visualization of neural network layers and activations using Three.js.</p>
-                        <div class="project-tech">
-                            <span>Three.js</span><span>Python</span><span>TensorFlow</span>
-                        </div>
-                    </article>
+                <!-- Tool Display Area -->
+                <div class="tools-grid" id="tools-grid">
+                    <!-- Tools injected via JS -->
                 </div>
             </section>
 
@@ -170,25 +173,15 @@
                 </div>
             </section>
 
-            <!-- SECTION: UPLINK (CONTACT) -->
+            <!-- SECTION: UPLINK (RESOURCES) -->
             <section id="uplink" class="hud-section">
-                <h1 class="section-title">ESTABLISH UPLINK</h1>
-                <div class="contact-container">
-                    <p class="contact-intro">Secure channel available. Transmit data packets to the following coordinates.</p>
-                    
-                    <div class="contact-grid">
-                        <a href="#" class="contact-link">
-                            <span class="link-label">EMAIL</span>
-                            <span class="link-value">contact@eirsvi.dev</span>
-                        </a>
-                        <a href="https://github.com/eirsvi" class="contact-link">
-                            <span class="link-label">GITHUB</span>
-                            <span class="link-value">github.com/eirsvi</span>
-                        </a>
-                        <a href="#" class="contact-link">
-                            <span class="link-label">TELEGRAM</span>
-                            <span class="link-value">@eirsvi</span>
-                        </a>
+                <h1 class="section-title">INTEL DATABASE</h1>
+                <div class="resources-container">
+                    <div class="resource-search">
+                        <input type="text" id="resource-search" placeholder="SEARCH DATABASE...">
+                    </div>
+                    <div class="resource-grid" id="resource-grid">
+                        <!-- Resources generated by JS -->
                     </div>
                 </div>
             </section>
@@ -203,11 +196,10 @@
                     <a href="#">YOUTUBE</a>
                     <a href="https://github.com/eirsvi">GITHUB</a>
                     <a href="#">TIKTOK</a>
-                    <a href="#">XUHONGSHE</a>
+                    <a href="https://www.xiaohongshu.com/user/profile/68021c8c000000000d00b185">XUHONGSHE</a>
                     <a href="#">ARTSTATION</a>
-                    <a href="#">GOOGLE</a>
-                    <a href="#">SHCOLOR</a>
-                    <a href="#">TELEGRAM</a>
+                    <a href="https://scholar.google.com/citations?user=HcO_fhsAAAAJ&hl=en">GOOGLE SCHOLAR</a>
+                    <a href="https://t.me/eirsvi">TELEGRAM</a>
                 </div>
             </div>
         </footer>
@@ -215,4 +207,5 @@
 
     <script src="main.js"></script>
 </body>
+
 </html>
