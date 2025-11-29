@@ -321,7 +321,28 @@ const toolRegistry = [
                 const text = document.getElementById('qr-text').value;
                 const container = document.getElementById('qr-display');
                 container.innerHTML = "";
-                if (text) new QRCode(container, { text: text, width: 128, height: 128 });
+                if (text) {
+                    const qrWrapper = document.createElement('div');
+                    new QRCode(qrWrapper, { text: text, width: 128, height: 128 });
+                    container.appendChild(qrWrapper);
+
+                    // Add download button
+                    const downloadBtn = document.createElement('button');
+                    downloadBtn.className = 'download-btn';
+                    downloadBtn.textContent = 'DOWNLOAD QR CODE';
+                    downloadBtn.onclick = () => {
+                        setTimeout(() => {
+                            const canvas = qrWrapper.querySelector('canvas');
+                            if (canvas) {
+                                const link = document.createElement('a');
+                                link.download = 'qrcode.png';
+                                link.href = canvas.toDataURL();
+                                link.click();
+                            }
+                        }, 100);
+                    };
+                    container.appendChild(downloadBtn);
+                }
             });
         }
     },
