@@ -3,209 +3,361 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SRIEVi | Operative Portfolio</title>
-    <meta name="description"
-        content="Portfolio of SRIEVi - Machine Learning, Frontend/Backend Developer, and Systems Engineer.">
-
-    <!-- Google Fonts: Chakra Petch for headers (Sci-Fi look), Inter for body -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EIRSVi | HUD Portfolio</title>
+    <link rel="icon" type="image/png" href="src/profile/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Rajdhani:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-
-    <!-- External Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-
-    <div class="app-container">
-        <!-- Header / Navigation -->
+<body class="protected">
+    <div class="scanline"></div>
+    <div class="hud-container">
+        <!-- Header / Top Navigation -->
         <header class="hud-header">
-            <div class="logo-container">
-                <div class="logo-text">SRIEVi</div>
-                <div class="logo-sub">OPERATIVE_ID: 12A8@0129#124G</div>
+            <div class="header-decoration left">
+                <span class="deco-text">SYS.BOOT.SEQ_INIT</span>
             </div>
             <nav class="hud-nav">
-                <button class="nav-btn active" data-target="operative-status">
-                    <span class="btn-text">OPERATIVE STATUS</span>
-                    <span class="btn-decor"></span>
-                </button>
-                <button class="nav-btn" data-target="case-files">
-                    <span class="btn-text">CASE FILES</span>
-                    <span class="btn-decor"></span>
-                </button>
-                <button class="nav-btn" data-target="hextech-augments">
-                    <span class="btn-text">HEXTECH AUGMENTS</span>
-                    <span class="btn-decor"></span>
-                </button>
-                <button class="nav-btn" data-target="uplink">
-                    <span class="btn-text">UPLINK</span>
-                    <span class="btn-decor"></span>
-                </button>
+                <button class="nav-btn active" data-target="status">STATUS</button>
+                <button class="nav-btn" data-target="project">PROJECT</button>
+                <button class="nav-btn" data-target="cyborg">CYBORG</button>
+                <button class="nav-btn" data-target="uplink">UPLINK</button>
+                <button class="nav-btn" data-target="notes">NOTES</button>
             </nav>
+            <div class="header-decoration right">
+                <span class="deco-text" id="clock">00:00:00</span>
+            </div>
         </header>
 
         <!-- Main Content Area -->
         <main class="hud-main">
-
-            <!-- SECTION: OPERATIVE STATUS (ABOUT) -->
-            <section id="operative-status" class="hud-section active">
-                <div class="profile-grid">
-                    <div class="profile-card-container">
-                        <div class="profile-card">
-                            <div class="profile-image-wrapper">
-                                <img src="https://github.com/eirsvi.png" alt="SRIEVi Profile" class="profile-img">
-                                <div class="scan-line"></div>
+            <!-- STATUS SECTION -->
+            <section id="status" class="hud-section active">
+                <div class="status-grid">
+                    <!-- Column 1: Profile & Stats -->
+                    <div class="col-profile">
+                        <div class="profile-card fui-box">
+                            <div class="profile-img-container">
+                                <img src="src/profile/DaeWS0bjDfra8zYm.jpg" alt="User Profile" class="profile-img">
+                                <div class="scan-overlay"></div>
                             </div>
-                            <div class="profile-stats">
-                                <div class="stat-row">
-                                    <span class="stat-label">STR</span>
-                                    <div class="stat-bar">
-                                        <div class="stat-fill" style="width: 85%"></div>
+                            <div class="profile-name-container">
+                                <h1 class="glitch-text" data-text="EIRSVi">EIRSVi</h1>
+                                <div class="permutation-count" id="perm-count">000000</div>
+                            </div>
+                            <div class="status-badge">STATUS: OPERATIONAL</div>
+                        </div>
+
+                        <div class="stats-panel fui-box">
+                            <h3 class="panel-title">SPECIFICATIONS</h3>
+                            <div class="stat-row">
+                                <span>BIO CODE</span>
+                                <span class="stat-value">1248@0129#124G</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>GENDER</span>
+                                <span class="stat-value">MALE</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>SPECIES</span>
+                                <span class="stat-value">HOMO SAPIENS+</span>
+                            </div>
+                            <div class="stat-bars">
+                                <div class="stat-bar-row">
+                                    <span>STR</span>
+                                    <div class="bar-container">
+                                        <div class="bar-fill" style="width: 60%"></div>
                                     </div>
                                 </div>
-                                <div class="stat-row">
-                                    <span class="stat-label">INT</span>
-                                    <div class="stat-bar">
-                                        <div class="stat-fill" style="width: 98%"></div>
+                                <div class="stat-bar-row">
+                                    <span>INT</span>
+                                    <div class="bar-container">
+                                        <div class="bar-fill" style="width: 95%"></div>
                                     </div>
                                 </div>
-                                <div class="stat-row">
-                                    <span class="stat-label">AGI</span>
-                                    <div class="stat-bar">
-                                        <div class="stat-fill" style="width: 70%"></div>
+                                <div class="stat-bar-row">
+                                    <span>AGI</span>
+                                    <div class="bar-container">
+                                        <div class="bar-fill" style="width: 75%"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bio-container">
-                        <h1 class="section-title">OPERATIVE BRIEFING</h1>
-                        <div class="bio-content">
-                            <p class="bio-para">
-                                He holds a bachelor's degree in Technical and Vocational Education and Training from a
-                                public institution. His research advisor is Prof. [+$-*&#$#], and his professional
-                                interests include machine learning, frontend and backend development, and systems.
-                            </p>
-                            <p class="bio-para">
-                                Beyond his technical work, he is deeply curious about the fundamental mechanisms of the
-                                world, both physical and digital. He pursues this curiosity through a broad range of
-                                hobbies, including reading, writing, listening, and coding, with the ultimate aim of
-                                developing a computational understanding of the world and intelligence.
-                            </p>
-                            <p class="bio-para">
-                                He is actively developing a high-performance and easy-to-use client inference system.
-                                His open-source contributions can be viewed on his GitHub homepage.
-                            </p>
-                            <p class="bio-para">
-                                His first name is pronounced "Vi," and his Khmer name is វី. He grew up in Kratié,
-                                Cambodia.
-                            </p>
-                            <p class="bio-para">
-                                In his free time, he enjoys walking, going to the gym room, playing chess, and MOBA
-                                games. Mostly, He is often found in solitude, absorbed in internal dialogues about
-                                future plans and possibilities. he's rarely using or reacting to anyone, even with a
-                                smile. It's as if he was deeply hurt by someone from a past we will never know.
-                            </p>
+                    <!-- Column 2: Identification & Bio -->
+                    <div class="col-info">
+                        <div class="identification-panel fui-box">
+                            <h2 class="section-header">IDENTIFICATION // EIRSVi</h2>
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <span class="label">TYPE</span>
+                                    <span class="value">CYBORG-42 // EARTH-610</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="label">OCCUPATION</span>
+                                    <span class="value">FULL-STACK DEV / RESEARCHER</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="label">AFFILIATION</span>
+                                    <span class="value">RPITSSR</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bio-panel fui-box">
+                            <h3 class="panel-title">BIOMETRIC ANALYSIS & BIO</h3>
+                            <div class="bio-content">
+                                <p class="bio-text en">
+                                    "To Be Educated Is To Be Changed"
+                                </p>
+                                <p class="bio-text kh">
+                                    វី ជានិស្សិតកំពុងសិក្សាភាសាស្រាវជ្រាវអំពីទំនាក់ទំនងកុំព្យូទ័រ និងប្រព័ន្ធឌីជីថល
+                                    ក្រោមការណែនាំរបស់សាស្ត្រាចារ្យ [@&%#!*]។
+                                    គោលបំណងរបស់គាត់គឺការកសាងជំនាញវិជ្ជាជីវៈសំខាន់ៗ
+                                    ដោយប្រកាន់ខ្ជាប់នូវពាក្យស្លោកមួយឃ្លាថា៖ 'To Be Educated Is To Be Changed' (ការអប់រំ
+                                    គឺជាការផ្លាស់ប្តូរ)
+                                    ពាក្យមួយឃ្លានេះដោយសំយោគចេញពីការអានសៀវភៅទស្សនវិជ្ជានិងតថភាពជុំវិញ។
+                                </p>
+                            </div>
+                            <div class="decrypt-container">
+                                <span class="decrypt-code" id="decrypt-anim">11010110</span>
+                                <span class="decrypt-label">DECRYPTING...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: DNA & Online -->
+                    <div class="col-extra">
+                        <div class="dna-panel fui-box">
+                            <h3 class="panel-title">DNA PROFILING</h3>
+                            <div class="dna-visual">
+                                <!-- CSS only DNA helix simulation -->
+                                <div class="dna-strand"></div>
+                                <div class="dna-strand"></div>
+                                <div class="dna-strand"></div>
+                            </div>
+                            <div class="analysis-data">
+                                <div class="data-row"><span>METHOD 1</span><span>PCR</span></div>
+                                <div class="data-row"><span>METHOD 2</span><span>RFLP</span></div>
+                            </div>
+                        </div>
+
+                        <div class="online-profile fui-box">
+                            <h3 class="panel-title">ONLINE PROFILE</h3>
+                            <div class="profile-list">
+                                <div class="profile-item"><span>USERNAME</span><span>EIRSVi</span></div>
+                                <div class="profile-item"><span>REGISTER</span><span>2025-12-04</span></div>
+                                <div class="profile-item"><span>STATUS</span><span class="blink">ONLINE</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- SECTION: CASE FILES (TOOLS) -->
-            <section id="case-files" class="hud-section">
-                <h1 class="section-title">TACTICAL TOOLS</h1>
+            <!-- PROJECT SECTION -->
+            <section id="project" class="hud-section">
+                <div class="project-container">
+                    <div class="project-header">
+                        <h2 class="section-title">PROJECT HIGHLIGHTS</h2>
+                        <div class="deco-line"></div>
+                    </div>
 
-                <!-- Category Navigation -->
-                <div class="tool-categories">
-                    <button class="cat-btn active" data-cat="all">ALL</button>
-                    <button class="cat-btn" data-cat="network">NETWORK</button>
-                    <button class="cat-btn" data-cat="converter">CONVERTER</button>
-                    <button class="cat-btn" data-cat="generator">GENERATOR</button>
-                    <button class="cat-btn" data-cat="crypto">CRYPTO</button>
-                    <button class="cat-btn" data-cat="game">GAME</button>
-                </div>
+                    <div class="project-grid">
+                        <!-- Project Card 1 -->
+                        <div class="project-card fui-box">
+                            <div class="card-header">
+                                <span class="project-id">PRJ-01</span>
+                                <span class="project-status">ACTIVE</span>
+                            </div>
+                            <h3 class="project-title">HUD PORTFOLIO</h3>
+                            <p class="project-desc">Advanced FUI personal website with biometric integration and tool
+                                suite.</p>
+                            <div class="project-tech">
+                                <span>HTML5</span><span>CSS3</span><span>JS</span>
+                            </div>
+                            <a href="#" class="project-link">ACCESS DATA</a>
+                        </div>
 
-                <!-- Tool Display Area -->
-                <div class="tools-grid" id="tools-grid">
-                    <!-- Tools injected via JS -->
+                        <!-- Project Card 2 -->
+                        <div class="project-card fui-box">
+                            <div class="card-header">
+                                <span class="project-id">PRJ-02</span>
+                                <span class="project-status">STABLE</span>
+                            </div>
+                            <h3 class="project-title">CYBORG TOOLS</h3>
+                            <p class="project-desc">Suite of network analysis and cryptographic utilities.</p>
+                            <div class="project-tech">
+                                <span>CRYPTO</span><span>NET</span><span>WEB</span>
+                            </div>
+                            <a href="#" class="project-link">ACCESS DATA</a>
+                        </div>
+
+                        <!-- Project Card 3 -->
+                        <div class="project-card fui-box">
+                            <div class="card-header">
+                                <span class="project-id">PRJ-03</span>
+                                <span class="project-status">DEV</span>
+                            </div>
+                            <h3 class="project-title">NEURAL LINK</h3>
+                            <p class="project-desc">Experimental interface for brain-computer communication.</p>
+                            <div class="project-tech">
+                                <span>AI</span><span>NEURO</span><span>DATA</span>
+                            </div>
+                            <a href="#" class="project-link">ACCESS DATA</a>
+                        </div>
+                    </div>
+
+                    <div class="activity-section fui-box">
+                        <h3 class="panel-title">GITHUB ACTIVITY STREAM</h3>
+                        <div class="activity-graph-container">
+                            <!-- Simulated Graph -->
+                            <div class="graph-grid" id="github-graph">
+                                <!-- JS will populate this -->
+                            </div>
+                            <div class="graph-legend">
+                                <span>LESS</span>
+                                <div class="legend-box level-0"></div>
+                                <div class="legend-box level-1"></div>
+                                <div class="legend-box level-2"></div>
+                                <div class="legend-box level-3"></div>
+                                <div class="legend-box level-4"></div>
+                                <span>MORE</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <!-- SECTION: HEXTECH AUGMENTS (PROGRAM/SKILLS) -->
-            <section id="hextech-augments" class="hud-section">
-                <h1 class="section-title">INSTALLED AUGMENTS</h1>
-                <div class="skills-container">
-                    <div class="skill-category">
-                        <h3 class="category-title">CORE SYSTEMS</h3>
-                        <ul class="skill-list">
-                            <li>Machine Learning</li>
-                            <li>System Architecture</li>
-                            <li>Algorithm Design</li>
-                            <li>Data Structures</li>
-                        </ul>
+            <!-- CYBORG SECTION -->
+            <section id="cyborg" class="hud-section">
+                <div class="cyborg-container">
+                    <div class="cyborg-sidebar fui-box">
+                        <h3 class="panel-title">TOOLKIT</h3>
+                        <div class="tool-search">
+                            <input type="text" id="tool-search-input" placeholder="SEARCH TOOLS...">
+                        </div>
+                        <div class="tool-categories">
+                            <button class="cat-btn active" data-cat="all">ALL SYSTEMS</button>
+                            <button class="cat-btn" data-cat="network">NETWORK</button>
+                            <button class="cat-btn" data-cat="converter">CONVERTER</button>
+                            <button class="cat-btn" data-cat="generator">GENERATOR</button>
+                            <button class="cat-btn" data-cat="crypto">CRYPTO</button>
+                            <button class="cat-btn" data-cat="game">SIMULATION</button>
+                        </div>
                     </div>
-                    <div class="skill-category">
-                        <h3 class="category-title">FRONTEND PROTOCOLS</h3>
-                        <ul class="skill-list">
-                            <li>HTML5 / CSS3</li>
-                            <li>JavaScript (ES6+)</li>
-                            <li>React / Vue</li>
-                            <li>WebGL / Three.js</li>
-                        </ul>
+
+                    <div class="cyborg-content fui-box">
+                        <div class="tool-header">
+                            <h2 class="section-title" id="current-tool-cat">ALL SYSTEMS</h2>
+                            <div class="deco-line"></div>
+                        </div>
+                        <div class="tools-grid" id="tools-grid">
+                            <!-- Tools injected by JS -->
+                        </div>
                     </div>
-                    <div class="skill-category">
-                        <h3 class="category-title">BACKEND INFRASTRUCTURE</h3>
-                        <ul class="skill-list">
-                            <li>Node.js</li>
-                            <li>Python</li>
-                            <li>Go</li>
-                            <li>Database Management</li>
-                        </ul>
+                </div>
+
+                <!-- Tool Modal / Overlay -->
+                <div id="tool-modal" class="tool-modal">
+                    <div class="modal-content fui-box">
+                        <div class="modal-header">
+                            <h3 id="modal-title">TOOL NAME</h3>
+                            <button id="close-modal">X</button>
+                        </div>
+                        <div class="modal-body" id="modal-body">
+                            <!-- Tool Interface injected here -->
+                        </div>
+                        <div class="modal-footer">
+                            <div id="tool-output-area" class="output-area">
+                                <span class="output-label">OUTPUT:</span>
+                                <div class="output-value" id="tool-output">WAITING FOR INPUT...</div>
+                                <button id="copy-btn" class="action-btn">COPY RESULT</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- SECTION: UPLINK (RESOURCES) -->
+            <!-- UPLINK SECTION -->
             <section id="uplink" class="hud-section">
-                <h1 class="section-title">INTEL DATABASE</h1>
-                <div class="resources-container">
-                    <div class="resource-search">
-                        <input type="text" id="resource-search" placeholder="SEARCH DATABASE...">
+                <div class="uplink-container">
+                    <div class="uplink-header fui-box">
+                        <div class="header-top">
+                            <h2 class="section-title">DATA UPLINK</h2>
+                            <div class="uplink-stats">
+                                <span id="total-links">0 LINKS</span>
+                                <span class="blink">CONNECTED</span>
+                            </div>
+                        </div>
+                        <div class="uplink-controls">
+                            <input type="text" id="uplink-search" placeholder="SEARCH DATABASE...">
+                            <div class="uplink-filters">
+                                <button class="filter-btn active" data-filter="all">ALL</button>
+                                <button class="filter-btn" data-filter="ai">AI</button>
+                                <button class="filter-btn" data-filter="dev">DEV</button>
+                                <button class="filter-btn" data-filter="osint">OSINT</button>
+                                <button class="filter-btn" data-filter="design">DESIGN</button>
+                                <button class="filter-btn" data-filter="books">BOOKS</button>
+                                <button class="filter-btn" data-filter="tools">TOOLS</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="resource-grid" id="resource-grid">
-                        <!-- Resources generated by JS -->
+
+                    <div class="uplink-grid" id="uplink-grid">
+                        <!-- Links injected by JS -->
                     </div>
                 </div>
             </section>
 
+            <!-- NOTES SECTION -->
+            <section id="notes" class="hud-section">
+                <div class="notes-container">
+                    <div class="notes-sidebar fui-box">
+                        <h3 class="panel-title">ARCHIVE</h3>
+                        <div class="notes-list" id="notes-list">
+                            <!-- Notes List injected by JS -->
+                        </div>
+                    </div>
+                    <div class="notes-content fui-box">
+                        <div class="note-paper">
+                            <h2 class="note-title" id="note-title">SELECT A FILE</h2>
+                            <div class="note-meta" id="note-meta"></div>
+                            <div class="note-body" id="note-body">
+                                <p>ACCESSING SECURE ARCHIVES...</p>
+                                <p>PLEASE SELECT A DOCUMENT FROM THE LEFT PANEL.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <!-- Footer -->
         <footer class="hud-footer">
-            <div class="footer-content">
-                <div class="copyright">© 2025 SRIEVi. ALL RIGHTS RESERVED.</div>
-                <div class="social-links">
-                    <a href="#">YOUTUBE</a>
-                    <a href="https://github.com/eirsvi">GITHUB</a>
-                    <a href="#">TIKTOK</a>
-                    <a href="https://www.xiaohongshu.com/user/profile/68021c8c000000000d00b185">XUHONGSHE</a>
-                    <a href="#">ARTSTATION</a>
-                    <a href="https://scholar.google.com/citations?user=HcO_fhsAAAAJ&hl=en">GOOGLE SCHOLAR</a>
-                    <a href="https://t.me/eirsvi">TELEGRAM</a>
-                </div>
+            <div class="footer-links">
+                <a href="https://youtube.com/@eirsvi" target="_blank">YOUTUBE</a>
+                <a href="https://github.com/eirsvi" target="_blank">GITHUB</a>
+                <a href="https://x.com/eirsvi" target="_blank">X</a>
+                <a href="https://tiktok.com/@eirsvi" target="_blank">TIKTOK</a>
+                <a href="#" target="_blank">XUHONGSHE</a>
+                <a href="#" target="_blank">SCHOLAR</a>
+                <a href="https://t.me/eirsvi" target="_blank">TELEGRAM</a>
+            </div>
+            <div class="footer-deco">
+                <span>VER 2.0.45</span>
+                <span>SECURE CONNECTION</span>
             </div>
         </footer>
     </div>
 
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
