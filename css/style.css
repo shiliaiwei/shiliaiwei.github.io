@@ -235,7 +235,7 @@ img {
 /* Status Grid Layout */
 .status-grid {
     display: grid;
-    grid-template-columns: 300px 1fr 300px;
+    grid-template-columns: 300px 1fr;
     gap: 20px;
     height: 100%;
 }
@@ -335,10 +335,24 @@ img {
     position: relative;
 }
 
-.permutation-count {
+.permutation-label {
     font-size: 0.8rem;
     color: var(--secondary-color);
     font-family: var(--font-mono);
+    letter-spacing: 2px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .status-badge {
@@ -348,38 +362,6 @@ img {
     padding: 5px;
     font-weight: bold;
     font-size: 0.9rem;
-}
-
-/* Stats Panel */
-.stat-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    font-size: 0.8rem;
-    color: var(--dim-color);
-}
-
-.stat-value {
-    color: var(--text-color);
-}
-
-.stat-bar-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 5px;
-}
-
-.bar-container {
-    flex: 1;
-    height: 8px;
-    background: #222;
-    border: 1px solid #444;
-}
-
-.bar-fill {
-    height: 100%;
-    background: var(--secondary-color);
 }
 
 /* Identification & Bio */
@@ -413,45 +395,22 @@ img {
     color: var(--secondary-color);
 }
 
-.bio-text {
-    font-size: 0.9rem;
+.bio-content {
+    background: #000;
+    padding: 15px;
+    border: 1px solid #333;
+    font-family: 'Courier New', Courier, monospace;
+    color: #0f0;
+    min-height: 150px;
+    overflow: hidden;
+}
+
+.decrypt-effect {
+    white-space: pre-wrap;
     line-height: 1.5;
-    margin-bottom: 15px;
-    color: #ccc;
 }
 
-.bio-text.kh {
-    font-family: 'Hanuman', serif;
-    /* Fallback if not loaded, but browser usually handles */
-}
-
-.decrypt-container {
-    background: #111;
-    padding: 10px;
-    border: 1px dashed var(--primary-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.decrypt-code {
-    color: var(--primary-color);
-    font-family: var(--font-mono);
-    letter-spacing: 3px;
-}
-
-/* DNA & Online */
-.dna-visual {
-    height: 100px;
-    background: repeating-linear-gradient(90deg,
-            transparent,
-            transparent 10px,
-            rgba(0, 240, 255, 0.1) 10px,
-            rgba(0, 240, 255, 0.1) 20px);
-    margin-bottom: 15px;
-    border: 1px solid var(--dim-color);
-}
-
+/* Online Profile */
 .profile-list .profile-item {
     display: flex;
     justify-content: space-between;
@@ -473,8 +432,7 @@ img {
     }
 
     .col-profile,
-    .col-info,
-    .col-extra {
+    .col-info {
         width: 100%;
     }
 }
@@ -613,91 +571,6 @@ img {
 .project-link:hover {
     background: var(--primary-color);
     color: #000;
-}
-
-/* Activity Graph */
-.activity-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.activity-graph-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 10px;
-    border: 1px solid #222;
-}
-
-.graph-grid {
-    display: grid;
-    grid-template-columns: repeat(52, 1fr);
-    /* 52 weeks */
-    grid-template-rows: repeat(7, 1fr);
-    /* 7 days */
-    gap: 3px;
-    width: 100%;
-    height: 150px;
-}
-
-.graph-cell {
-    background: #161b22;
-    border-radius: 2px;
-}
-
-.graph-cell.level-1 {
-    background: #0e4429;
-}
-
-.graph-cell.level-2 {
-    background: #006d32;
-}
-
-.graph-cell.level-3 {
-    background: #26a641;
-}
-
-.graph-cell.level-4 {
-    background: #39d353;
-}
-
-.graph-legend {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin-top: 10px;
-    font-size: 0.7rem;
-    color: var(--dim-color);
-}
-
-.legend-box {
-    width: 10px;
-    height: 10px;
-    border-radius: 2px;
-}
-
-.legend-box.level-0 {
-    background: #161b22;
-}
-
-.legend-box.level-1 {
-    background: #0e4429;
-}
-
-.legend-box.level-2 {
-    background: #006d32;
-}
-
-.legend-box.level-3 {
-    background: #26a641;
-}
-
-.legend-box.level-4 {
-    background: #39d353;
 }
 
 /* Cyborg Section */
