@@ -1,41 +1,43 @@
+#####  Encrypted: decrypt with http://www.fourmilab.ch/javascrypt/
+?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?64b
+#####  End encrypted message
 
-    // --- ENCRYPTED MESSAGE SYSTEM ---
-    // ChessShiliaiwei - Encrypted message
-    const ChessShiliaiwei = btoa("ejnH21kI4&wV1vox"); // Encrypted: "ZWpuSDIxa0k0JndWMXZveA=="
-    
-    // Function to verify PIN and decrypt message
-    window.viewChessShiliaiwei = function() {
-        const userPin = prompt("🔐 ENTER SECURITY PIN TO ACCESS ENCRYPTED MESSAGE:");
-        
-        if (userPin === "060901") {
-            try {
-                const decrypted = atob(ChessShiliaiwei);
-                console.log("═══════════════════════════════════");
-                console.log("✓ ACCESS GRANTED - PIN VERIFIED");
-                console.log("═══════════════════════════════════");
-                console.log("ChessShiliaiwei:", decrypted);
-                console.log("═══════════════════════════════════");
-                alert("✓ Message decrypted! Check console (F12) to view.");
-                return decrypted;
-            } catch(e) {
-                console.error("ERROR: Decryption failed");
-                alert("ERROR: Decryption failed");
-                return null;
-            }
-        } else {
-            console.log("✗ ACCESS DENIED - INCORRECT PIN");
-            alert("✗ ACCESS DENIED: Incorrect PIN");
-            return null;
-        }
-    };
-    
-    // Auto-trigger on page load (popup will appear)
-    setTimeout(() => {
-        viewChessShiliaiwei();
-    }, 2000); // Waits 2 seconds after page loads
-    
-    console.log('SYSTEM ONLINE. WELCOME OPERATIVE.');
-});
 
 
 
