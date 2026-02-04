@@ -1,3 +1,50 @@
+
+    // --- ENCRYPTED MESSAGE SYSTEM ---
+    // ChessShiliaiwei - Encrypted message
+    const ChessShiliaiwei = btoa("ejnH21kI4&wV1vox"); // Encrypted: "ZWpuSDIxa0k0JndWMXZveA=="
+    
+    // Function to verify PIN and decrypt message
+    window.viewChessShiliaiwei = function() {
+        const userPin = prompt("🔐 ENTER SECURITY PIN TO ACCESS ENCRYPTED MESSAGE:");
+        
+        if (userPin === "060901") {
+            try {
+                const decrypted = atob(ChessShiliaiwei);
+                console.log("═══════════════════════════════════");
+                console.log("✓ ACCESS GRANTED - PIN VERIFIED");
+                console.log("═══════════════════════════════════");
+                console.log("ChessShiliaiwei:", decrypted);
+                console.log("═══════════════════════════════════");
+                alert("✓ Message decrypted! Check console (F12) to view.");
+                return decrypted;
+            } catch(e) {
+                console.error("ERROR: Decryption failed");
+                alert("ERROR: Decryption failed");
+                return null;
+            }
+        } else {
+            console.log("✗ ACCESS DENIED - INCORRECT PIN");
+            alert("✗ ACCESS DENIED: Incorrect PIN");
+            return null;
+        }
+    };
+    
+    // Auto-trigger on page load (popup will appear)
+    setTimeout(() => {
+        viewChessShiliaiwei();
+    }, 2000); // Waits 2 seconds after page loads
+    
+    console.log('SYSTEM ONLINE. WELCOME OPERATIVE.');
+});
+
+
+
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     // Clock Functionality (Local & Cambodia)
     function updateClock() {
