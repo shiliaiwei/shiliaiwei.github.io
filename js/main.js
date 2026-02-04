@@ -478,4 +478,54 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     console.log('SYSTEM ONLINE. WELCOME OPERATIVE.');
+
+    // --- ENCRYPTED CONSOLE LOG FEATURE ---
+    // Simple XOR encryption/decryption function
+    function xorEncrypt(text, key) {
+        let result = '';
+        for (let i = 0; i < text.length; i++) {
+            result += String.fromCharCode(text.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+        }
+        return result;
+    }
+
+    // Convert string to hex for obfuscation
+    function stringToHex(str) {
+        let hex = '';
+        for (let i = 0; i < str.length; i++) {
+            const charCode = str.charCodeAt(i);
+            const hexValue = charCode.toString(16);
+            hex += hexValue.padStart(2, '0');
+        }
+        return hex;
+    }
+
+    // Convert hex back to string
+    function hexToString(hex) {
+        let str = '';
+        for (let i = 0; i < hex.length; i += 2) {
+            const hexValue = hex.substr(i, 2);
+            const decimal = parseInt(hexValue, 16);
+            str += String.fromCharCode(decimal);
+        }
+        return str;
+    }
+
+    // Encrypted CHESSIQ value (encrypted with key "DECRYPT_KEY_2026")
+    const encryptedCHESSIQ = "212f2d1a6b613f167f632e0903465d4e";
+
+    // Global decryption function accessible from console
+    window.decryptCHESSIQ = function(key) {
+        try {
+            const encryptedBytes = hexToString(encryptedCHESSIQ);
+            const decrypted = xorEncrypt(encryptedBytes, key);
+            console.log('DECRYPTED MESSAGE:', decrypted);
+            return decrypted;
+        } catch (e) {
+            console.log('DECRYPTION FAILED. INVALID KEY.');
+            return null;
+        }
+    };
+
+    console.log('ENCRYPTED DATA DETECTED. USE decryptCHESSIQ("YOUR_KEY") TO DECRYPT.');
 });
