@@ -26,7 +26,9 @@
         </div>
 
         <!-- Main Image -->
-        <div class="poster-image-wrapper">
+        <div class="poster-image-wrapper"
+            onclick="document.querySelector('.hud-container').style.display='flex'; document.querySelector('.poster-container').style.display='none'"
+            style="cursor: pointer;">
             <picture>
                 <source srcset="src/profile/90x45645zx8987xz.png" media="(max-width: 768px)">
                 <img src="src/profile/profile-wb.png" alt="Portrait" class="poster-img">
@@ -66,8 +68,9 @@
                 <span class="deco-text">SYS.BOOT.SEQ_INIT</span>
             </div>
             <nav class="hud-nav">
-                <button class="nav-btn active" onclick="location.reload()">HOME</button> <!-- Reloads to poster -->
-                <button class="nav-btn" data-target="status">STATUS</button>
+                <!-- HOME Button Removed per request -->
+                <!-- <button class="nav-btn active" onclick="location.reload()">HOME</button> -->
+                <button class="nav-btn active" data-target="status">ACTIVATE</button> <!-- Active by default -->
                 <button class="nav-btn" data-target="project">PROJECT</button>
                 <button class="nav-btn" data-target="cyborg">CYBORG</button>
                 <button class="nav-btn" data-target="uplink">UPLINK</button>
