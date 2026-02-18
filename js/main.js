@@ -204,6 +204,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderPlaylist(filter = 'all') {
+        const soundcloudContainer = document.getElementById('soundcloud-player-container');
+        
+        // Handle 3in1 SoundCloud Playlist
+        if (filter === '3in1') {
+            if (isPlaying) pauseSong();
+            
+            playlistList.style.display = 'none';
+            if (soundcloudContainer) {
+                soundcloudContainer.style.display = 'block';
+                // Inject Iframe if not already present
+                if (!soundcloudContainer.innerHTML.trim()) {
+                    // Using resolved URL: https://soundcloud.com/srievi/sets/untitled-playlist
+                    const scUrl = "https://soundcloud.com/srievi/sets/untitled-playlist";
+                    const embedSrc = `https://w.soundcloud.com/player/?url=${encodeURIComponent(scUrl)}&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`;
+                    soundcloudContainer.innerHTML = `<iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="${embedSrc}"></iframe>`;
+                }
+            }
+            
+            // Update Player Status Info
+            titleEl.innerText = "SOUNDCLOUD";
+            artistEl.innerText = "3IN1 PLAYLIST";
+            
+            // Do not render local songs
+            currentPlaylist = [];
+            return;
+        }
+
+        // Restore Standard View
+        playlistList.style.display = ''; // Revert to CSS
+        if (soundcloudContainer) {
+            soundcloudContainer.style.display = 'none';
+            // Optional: clear iframe to stop playing when switching away? 
+            // Better to keep it but just hide it? If we hide it, it might keep playing in background.
+            // SoundCloud player usually stops if iframe is removed, or we can leave it.
+            // If user switches back to 'All', they probably want SC to stop.
+            soundcloudContainer.innerHTML = ''; // Clear to stop playback
+        }
+
         playlistList.innerHTML = '';
         
         let filteredSongs = musicData;
@@ -221,8 +259,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         currentPlaylist = filteredSongs;
-        // Reset index if current song is not in new playlist, or find it
-        // simplified: just reset to 0 or find playing song
+        // Reset index to start if switching filters (optional, or keep current if valid)
+        // If we switched from 3in1, we have no valid index, so reset.
+        if (currentSongIndex >= currentPlaylist.length) currentSongIndex = 0;
+
         
         currentPlaylist.forEach((song, index) => {
             const item = document.createElement('div');
@@ -248,6 +288,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             playlistList.appendChild(item);
         });
+
+        // If we just switched back from 3in1 and nothing is playing/loaded?
+        // We might want to load the first track of the new list if "audio.src" is empty or invalid.
+        // But audio element persists.
+        
+        // Ensure visual state is correct
+        updatePlaylistActive();
     }
 
     function updatePlaylistActive() {

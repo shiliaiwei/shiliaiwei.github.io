@@ -1,4 +1,0 @@
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/loasa/public_html/
-    - /bin/cp -R * $DEPLOYPATH
