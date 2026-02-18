@@ -1,7 +1,13 @@
 :root {
+    --poster-bg: #F2F0E9;
+    --poster-accent: #FF3300;
+    --poster-text: #1A1A1A;
     --primary-color: #ff0050;
+    /* Kept for subpages */
     --secondary-color: #00f0ff;
+    /* Kept for subpages */
     --bg-color: #050505;
+    /* Kept for subpages */
     --bg-dark: #000000;
     --text-color: #e0e0e0;
     --dim-color: #555;
@@ -11,6 +17,182 @@
 
     --font-mono: 'JetBrains Mono', monospace;
     --font-display: 'Rajdhani', sans-serif;
+    --font-chinese: "Microsoft YaHei", "SimHei", serif;
+    --font-khmer: 'Moul', serif;
+    /* Pali Moul style */
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Moul&display=swap');
+
+/* Poster Styles */
+.poster-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--poster-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    z-index: 10000;
+    /* On top of everything */
+}
+
+.poster-bg-text {
+    position: absolute;
+    top: 40%;
+    /* Moved up */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2%;
+    font-family: var(--font-chinese);
+    font-weight: 900;
+    font-size: 23vw;
+    color: #ff0050;
+    /* Updated to requested color */
+    /* text-stroke removed */
+    line-height: 1;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+.poster-bg-text span {
+    display: block;
+    height: 100%;
+}
+
+.poster-image-wrapper {
+    position: fixed;
+    /* Stick to bottom */
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100vh;
+    /* Changed from 95vh to 100vh for full coverage */
+    z-index: 2;
+    width: 100vw;
+    /* Full width container */
+    max-width: none;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* Restored */
+    pointer-events: none;
+    /* Restored */
+    /* Let clicks pass through to nav if needed */
+    mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 100%);
+}
+
+.poster-image-wrapper picture {
+    display: contents;
+}
+
+.poster-img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    /* Ensure whole image is visible */
+    max-width: 100%;
+    /* Don't overflow width */
+    filter: contrast(1.1) saturate(1.1);
+}
+
+/* Footer Details */
+.poster-footer {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 3;
+    color: var(--poster-accent);
+    font-family: var(--font-display);
+    text-transform: uppercase;
+}
+
+/* Khmer Text Overrides */
+.khmer-text .location,
+.khmer-text .id-check,
+.khmer-text .heritage {
+    font-family: var(--font-khmer);
+    font-size: 1rem;
+    /* Slightly larger for Khmer readability */
+    line-height: 1.6;
+}
+
+.footer-left,
+.footer-right {
+    max-width: 300px;
+}
+
+.footer-left,
+.footer-right {
+    max-width: 300px;
+}
+
+.poster-footer h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.poster-footer p {
+    font-size: 0.6rem;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    opacity: 0.8;
+    color: var(--poster-accent);
+    /* Ensure consistent color */
+}
+
+.location,
+.heritage {
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.id-check {
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* Navigation Button */
+.poster-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.poster-nav button {
+    background: transparent;
+    border: none;
+    color: var(--poster-accent);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.poster-nav button:hover {
+    opacity: 1;
+}
+
+/* Hide original scanline on poster */
+.poster-container~.scanline {
+    display: none;
 }
 
 * {
@@ -288,7 +470,8 @@ img {
 .profile-img-container {
     position: relative;
     width: 100%;
-    height: 250px;
+    height: 350px;
+    /* Increased height for portrait */
     overflow: hidden;
     border: 1px solid var(--dim-color);
     margin-bottom: 10px;
@@ -298,7 +481,13 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(100%) contrast(1.2);
+    /* Removed grayscale to keep the red visor visible */
+    filter: contrast(1.2) brightness(1.1);
+    transition: filter 0.3s ease;
+}
+
+.profile-card:hover .profile-img {
+    filter: contrast(1.3) brightness(1.2) drop-shadow(0 0 5px rgba(255, 0, 80, 0.5));
 }
 
 .scan-overlay {
@@ -307,9 +496,12 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, transparent 50%, rgba(0, 240, 255, 0.2) 51%, transparent 52%);
+    background: linear-gradient(to bottom, transparent 50%, rgba(255, 0, 80, 0.1) 51%, transparent 52%);
+    /* Changed to primary color */
     background-size: 100% 200%;
     animation: scan 3s linear infinite;
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 @keyframes scan {
@@ -325,14 +517,28 @@ img {
 .profile-name-container {
     text-align: center;
     margin-bottom: 10px;
+    position: relative;
 }
 
 .glitch-text {
-    font-size: 2.5rem;
+    font-size: 3rem;
+    /* Increased size */
     font-family: var(--font-display);
     color: var(--primary-color);
     text-transform: uppercase;
     position: relative;
+    text-shadow: 2px 2px 0px rgba(0, 240, 255, 0.3);
+}
+
+.chinese-name {
+    font-family: "Microsoft YaHei", "SimHei", sans-serif;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    letter-spacing: 0.2rem;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    text-shadow: 0 0 2px var(--secondary-color);
+    font-weight: 700;
 }
 
 .permutation-label {
@@ -516,9 +722,16 @@ img {
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(255, 0, 80, 0.2);
+    box-shadow: 0 5px 15px rgba(255, 0, 80, 0.4);
+    border-color: var(--secondary-color);
 }
 
+.project-card:hover .project-title {
+    color: var(--secondary-color);
+    text-shadow: 0 0 5px var(--secondary-color);
+}
+
+/* Restored Project Styles */
 .card-header {
     display: flex;
     justify-content: space-between;
@@ -598,10 +811,12 @@ img {
     padding: 10px;
     font-family: var(--font-mono);
     outline: none;
+    transition: all 0.3s;
 }
 
 #tool-search-input:focus {
     box-shadow: 0 0 10px rgba(255, 0, 80, 0.3);
+    background: rgba(255, 0, 80, 0.1);
 }
 
 .tool-categories {
@@ -619,6 +834,25 @@ img {
     cursor: pointer;
     font-family: var(--font-display);
     transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.cat-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: var(--primary-color);
+    transform: scaleY(0);
+    transition: transform 0.3s;
+}
+
+.cat-btn:hover::before,
+.cat-btn.active::before {
+    transform: scaleY(1);
 }
 
 .cat-btn:hover,
@@ -658,9 +892,28 @@ img {
     overflow: hidden;
 }
 
+.tool-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 20px 0;
+    border-color: transparent var(--dim-color) transparent transparent;
+    transition: border-color 0.3s;
+}
+
 .tool-card:hover {
     border-color: var(--secondary-color);
     background: rgba(0, 240, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.tool-card:hover::before {
+    border-color: transparent var(--secondary-color) transparent transparent;
 }
 
 .tool-card h4 {
@@ -1026,5 +1279,180 @@ img {
 
     .notes-content {
         padding: 20px;
+    }
+}
+
+/* =========================================
+   COMPREHENSIVE RESPONSIVENESS
+   ========================================= */
+
+/* Global Image Responsiveness */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tablet & Smaller Desktop (max-width: 1024px) */
+@media (max-width: 1024px) {
+
+    /* Poster: Adjust font size slightly */
+    .poster-bg-text {
+        font-size: 28vw;
+    }
+
+    /* HUD: Stack Status Grid */
+    .status-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .col-profile,
+    .col-info {
+        width: 100%;
+    }
+
+    /* HUD: Profile Image Height Adjust */
+    .profile-img-container {
+        height: 400px;
+        /* Taller on tablet to fill space */
+    }
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+
+    /* --- POSTER LAYOUT --- */
+    .poster-bg-text {
+        font-size: 22vw;
+        /* Fit width */
+        padding: 0 5px;
+        flex-direction: row;
+        /* Keep horizontal */
+    }
+
+
+
+    .poster-footer {
+        flex-direction: row;
+        justify-content: center;
+        /* Center align */
+        align-items: flex-end;
+        text-align: center;
+        bottom: 20px;
+        padding: 0 20px;
+        gap: 40px;
+        /* Gap between items */
+    }
+
+    .footer-left,
+    .footer-right {
+        text-align: center;
+        max-width: 45%;
+    }
+
+    .footer-right {
+        text-align: center;
+        /* Override right align */
+    }
+
+    /* Ensure desktop also has these styles if desired, but user asked specifically here? 
+       "remove this descript left and roght and alway make image resposive fulll size all device" 
+       was the previous prompt. 
+       Let's apply the mask globally in the main block too if needed, but this valid for mobile/responsive block.
+       Wait, I should check if the user wants this globally. "make it stay sentecer" usually implies globally.
+       I will apply this to the main class as well. */
+
+    .poster-footer h3 {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+
+    .poster-nav {
+        bottom: 5px;
+    }
+
+    /* --- HUD LAYOUT --- */
+    .hud-header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        clip-path: none;
+        border-bottom: 1px solid var(--primary-color);
+    }
+
+    .header-decoration {
+        display: none;
+    }
+
+    .hud-nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .nav-btn {
+        flex: 1 1 30%;
+        /* Grow to fill rows */
+        padding: 8px 5px;
+        font-size: 0.8rem;
+        text-align: center;
+        min-width: 80px;
+    }
+
+    .hud-footer {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    /* Sections */
+    .hud-section {
+        padding-bottom: 60px;
+        /* Space for scroll */
+    }
+
+    .profile-img-container {
+        height: 300px;
+        /* Standardize specific mobile height */
+    }
+
+    .glitch-text {
+        font-size: 2rem;
+    }
+
+    /* Cyborg Mobile */
+    .cyborg-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    .tool-categories {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 5px;
+        white-space: nowrap;
+    }
+
+    .cat-btn {
+        padding: 8px 15px;
+    }
+
+    /* Notes Mobile Overrides */
+    .notes-list {
+        padding-bottom: 10px;
+    }
+
+    .note-item {
+        background: #111;
+        margin-right: 5px;
     }
 }

@@ -16,15 +16,58 @@
 </head>
 
 <body class="protected">
-    <div class="scanline"></div>
-    <div class="hud-container">
+    <div class="poster-container">
+        <!-- Background Typography -->
+        <div class="poster-bg-text">
+            <span>史</span>
+            <span>力</span>
+            <span>爱</span>
+            <span>卫</span>
+        </div>
+
+        <!-- Main Image -->
+        <div class="poster-image-wrapper">
+            <picture>
+                <source srcset="src/profile/90x45645zx8987xz.png" media="(max-width: 768px)">
+                <img src="src/profile/profile-wb.png" alt="Portrait" class="poster-img">
+            </picture>
+        </div>
+
+        <!-- Minimal Footer Info (Static) -->
+        <!-- <div class="poster-footer">
+            <div class="footer-left">
+                <h3>Monk.x102836</h3>
+
+                <div class="location">Kratié<br>Cambodia</div>
+                <div class="id-check">២៥៤៥</div>
+            </div>
+
+            <div class="footer-right">
+                <h3>Student.x002558</h3>
+
+                <div class="heritage">To Be Educated<br>Is To Be Changed</div>
+                <div class="id-check">២៥៦៥</div>
+            </div>
+        </div> -->
+
+        <!-- Hidden Navigation (Accessible if needed) -->
+        <nav class="poster-nav">
+            <button
+                onclick="document.querySelector('.hud-container').style.display='flex'; document.querySelector('.poster-container').style.display='none'">ENTER
+                SYSTEM</button>
+        </nav>
+    </div>
+
+    <!-- Hidden HUD Container (Preserved for subpage access if user clicks 'Enter System') -->
+    <div class="hud-container" style="display: none;">
         <!-- Header / Top Navigation -->
         <header class="hud-header">
             <div class="header-decoration left">
                 <span class="deco-text">SYS.BOOT.SEQ_INIT</span>
             </div>
             <nav class="hud-nav">
-                <button class="nav-btn active" data-target="status">STATUS</button>
+                <button class="nav-btn active" onclick="location.reload()">HOME</button> <!-- Reloads to poster -->
+                <button class="nav-btn" data-target="status">STATUS</button>
                 <button class="nav-btn" data-target="project">PROJECT</button>
                 <button class="nav-btn" data-target="cyborg">CYBORG</button>
                 <button class="nav-btn" data-target="uplink">UPLINK</button>
@@ -44,12 +87,13 @@
                     <div class="col-profile">
                         <div class="profile-card fui-box">
                             <div class="profile-img-container">
-                                <img src="src/profile/DaeWS0bjDfra8zYm.jpg" alt="User Profile" class="profile-img">
-
+                                <img src="src/profile/70220432.png" alt="User Profile" class="profile-img">
+                                <div class="scan-overlay"></div>
                             </div>
                             <div class="profile-name-container">
                                 <h1 class="glitch-text" data-text="EIRSVi">EIRSVi</h1>
-
+                                <div class="chinese-name">史力爱卫</div>
+                                <div class="permutation-label">SYS.ID.VERIFIED</div>
                             </div>
                             <div class="status-badge">STATUS: OPERATIONAL</div>
                         </div>
@@ -58,6 +102,7 @@
                             <h3 class="panel-title">ONLINE PROFILE</h3>
                             <div class="profile-list">
                                 <div class="profile-item"><span>USERNAME</span><span>EIRSVi</span></div>
+                                <div class="profile-item"><span>CODENAME</span><span>史力爱卫</span></div>
                                 <div class="profile-item"><span>LOCATION</span><span>CAMBODIA (UTC+7)</span></div>
                                 <div class="profile-item"><span>LOCAL TIME</span><span
                                         id="cambodia-time">--:--:--</span></div>
