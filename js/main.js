@@ -90,64 +90,201 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 720 Permutations Animation (Start to End)
-    const glitchText = document.querySelector('.glitch-text');
-    if (glitchText) {
-        const targetText = "EIRSVi";
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const totalPermutations = 720; // 6! = 720
-        let count = 0;
-
-        // Function to generate a random permutation of the target text
-        function getRandomPermutation(str) {
-            const arr = str.split('');
-            for (let i = arr.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-            }
-            return arr.join('');
+    // --- MUSIC PLAYER LOGIC ---
+    const musicData = [
+        {
+            title: "x012",
+            artist: "Unknown",
+            src: "src/x0/x012.flac",
+            cat: "gym"
+        },
+        {
+            title: "落在生命里的光",
+            artist: "eirsvi4869",
+            src: "src/x0/" + encodeURIComponent("落在生命里的光@eirsvi4869.mp3"),
+            cat: "relax"
         }
+    ];
 
-        const permInterval = setInterval(() => {
-            count++;
-            if (count < totalPermutations) {
-                // Show random permutation
-                glitchText.innerText = getRandomPermutation(targetText);
-            } else {
-                // Final state
-                glitchText.innerText = targetText;
-                clearInterval(permInterval);
-            }
-        }, 10); // Fast cycling
+    let currentPlaylist = [...musicData];
+    let currentSongIndex = 0;
+    let isPlaying = false;
+    let audio = new Audio();
+
+    // Elements
+    const playBtn = document.getElementById('play');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const playIcon = document.getElementById('play-icon');
+    const pauseIcon = document.getElementById('pause-icon');
+    const progressContainer = document.getElementById('progress-container');
+    const progress = document.getElementById('progress');
+    const titleEl = document.getElementById('current-title');
+    const artistEl = document.getElementById('current-artist');
+    const timeCurrent = document.getElementById('current-time');
+    const timeDuration = document.getElementById('duration');
+    const playlistList = document.getElementById('playlist-list');
+    const playlistTabs = document.querySelectorAll('.playlist-tab');
+    const discCover = document.querySelector('.disc-cover');
+
+    function loadSong(song) {
+        titleEl.innerText = song.title;
+        artistEl.innerText = song.artist;
+        audio.src = song.src;
     }
 
-    // Bio Text Typing Animation
-    const bioDecrypt = document.getElementById('bio-decrypt');
-    if (bioDecrypt) {
-        const finalBio = "> INITIATING SYSTEM SCAN...\n> SUBJECT: EIRSVi\n> ORIGIN: Kratié, Cambodia\n> QUOTE: TO BE EDUCATED IS TO BE CHANGED\n> STATUS: RESEARCHING COMPUTER COMMUNICATION & DIGITAL SYSTEMS\n> INTERESTS: PSYCHOLOGY, PHILOSOPHY, CUES, STRATEGY, LLM, ...\n> GOAL: BUILDING PROFESSIONAL SKILLS\n> [DATA LOAD COMPLETE]";
+    function playSong() {
+        isPlaying = true;
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+        discCover.classList.add('playing');
+        audio.play().catch(e => console.error("Playback failed:", e));
+    }
 
-        bioDecrypt.innerHTML = ""; // Clear initial text
-        let i = 0;
+    function pauseSong() {
+        isPlaying = false;
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        discCover.classList.remove('playing');
+        audio.pause();
+    }
 
-        function typeWriter() {
-            if (i < finalBio.length) {
-                const char = finalBio.charAt(i);
-                if (char === '\n') {
-                    bioDecrypt.innerHTML += '<br>';
-                } else {
-                    bioDecrypt.innerHTML += char;
-                }
-                i++;
-                setTimeout(typeWriter, 20); // Typing speed
-            } else {
-                // Add blinking cursor at the end
-                bioDecrypt.innerHTML += '<span class="cursor"></span>';
-            }
+    function togglePlay() {
+        if (isPlaying) {
+            pauseSong();
+        } else {
+            playSong();
+        }
+    }
+
+    function prevSong() {
+        currentSongIndex--;
+        if (currentSongIndex < 0) {
+            currentSongIndex = currentPlaylist.length - 1;
+        }
+        loadSong(currentPlaylist[currentSongIndex]);
+        playSong();
+        updatePlaylistActive();
+    }
+
+    function nextSong() {
+        currentSongIndex++;
+        if (currentSongIndex > currentPlaylist.length - 1) {
+            currentSongIndex = 0;
+        }
+        loadSong(currentPlaylist[currentSongIndex]);
+        playSong();
+        updatePlaylistActive();
+    }
+
+    function updateProgress(e) {
+        const { duration, currentTime } = e.srcElement;
+        const progressPercent = (currentTime / duration) * 100;
+        progress.style.width = `${progressPercent}%`; // Set width directly on progress bar element
+        // Update custom CSS variable if needed for ::after pseudo-element
+        progress.style.setProperty('--progress-width', `${progressPercent}%`); 
+
+        // Time formatting
+        const formatTime = (time) => {
+            if (isNaN(time)) return "0:00";
+            const minutes = Math.floor(time / 60);
+            const seconds = Math.floor(time % 60);
+            return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        };
+
+        timeCurrent.innerText = formatTime(currentTime);
+        timeDuration.innerText = formatTime(duration);
+    }
+
+    function setProgress(e) {
+        const width = this.clientWidth;
+        const clickX = e.offsetX;
+        const duration = audio.duration;
+        audio.currentTime = (clickX / width) * duration;
+    }
+
+    function renderPlaylist(filter = 'all') {
+        playlistList.innerHTML = '';
+        
+        let filteredSongs = musicData;
+        if (filter !== 'all') {
+            filteredSongs = musicData.filter(song => song.cat === filter);
         }
 
-        // Start typing after a short delay
-        setTimeout(typeWriter, 500);
+        // Sort: Gym first, then Relax (if 'all' selected) - generic sort by cat
+        if (filter === 'all') {
+             filteredSongs.sort((a, b) => {
+                if (a.cat === 'gym' && b.cat !== 'gym') return -1;
+                if (a.cat !== 'gym' && b.cat === 'gym') return 1;
+                return 0;
+            });
+        }
+
+        currentPlaylist = filteredSongs;
+        // Reset index if current song is not in new playlist, or find it
+        // simplified: just reset to 0 or find playing song
+        
+        currentPlaylist.forEach((song, index) => {
+            const item = document.createElement('div');
+            item.classList.add('playlist-item');
+            if (song.src === audio.src) { // Simple check
+               item.classList.add('active');
+            }
+
+            item.innerHTML = `
+                <div class="playlist-item-info">
+                    <span class="item-title">${song.title}</span>
+                    <span class="item-artist">${song.artist}</span>
+                </div>
+                <div class="item-duration">${song.cat.toUpperCase()}</div>
+            `;
+
+            item.addEventListener('click', () => {
+                currentSongIndex = index;
+                loadSong(song);
+                playSong();
+                updatePlaylistActive();
+            });
+
+            playlistList.appendChild(item);
+        });
     }
+
+    function updatePlaylistActive() {
+        const items = document.querySelectorAll('.playlist-item');
+        items.forEach((item, index) => {
+            if (index === currentSongIndex) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    }
+
+    // Event Listeners
+    playBtn.addEventListener('click', togglePlay);
+    prevBtn.addEventListener('click', prevSong);
+    nextBtn.addEventListener('click', nextSong);
+    audio.addEventListener('timeupdate', updateProgress);
+    audio.addEventListener('ended', nextSong);
+    progressContainer.addEventListener('click', setProgress);
+
+    playlistTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            playlistTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const filter = tab.getAttribute('data-filter');
+            renderPlaylist(filter);
+            // Optionally, don't stop music when changing tabs, just update list
+        });
+    });
+
+    // Initial Load
+    renderPlaylist();
+    if (currentPlaylist.length > 0) {
+        loadSong(currentPlaylist[0]);
+    }
+
 
     // --- CYBORG TOOLS LOGIC ---
 

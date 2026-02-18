@@ -82,56 +82,68 @@
         <main class="hud-main">
             <!-- STATUS SECTION -->
             <section id="status" class="hud-section active">
-                <div class="status-grid">
-                    <!-- Column 1: Profile -->
-                    <div class="col-profile">
-                        <div class="profile-card fui-box">
-                            <div class="profile-img-container">
-                                <img src="src/profile/70220432.png" alt="User Profile" class="profile-img">
-                                <div class="scan-overlay"></div>
-                            </div>
-                            <div class="profile-name-container">
-                                <h1 class="glitch-text" data-text="EIRSVi">EIRSVi</h1>
-                                <div class="chinese-name">史力爱卫</div>
-                                <div class="permutation-label">SYS.ID.VERIFIED</div>
-                            </div>
-                            <div class="status-badge">STATUS: OPERATIONAL</div>
+                <div class="music-player-container">
+                    <!-- Player Area -->
+                    <div class="player-area fui-box">
+                        <div class="player-header">
+                            <span class="now-playing-label">NOW PLAYING</span>
+                            <span class="player-status-icon blink">● REC</span>
                         </div>
 
-                        <div class="online-profile fui-box">
-                            <h3 class="panel-title">ONLINE PROFILE</h3>
-                            <div class="profile-list">
-                                <div class="profile-item"><span>USERNAME</span><span>EIRSVi</span></div>
-                                <div class="profile-item"><span>CODENAME</span><span>史力爱卫</span></div>
-                                <div class="profile-item"><span>LOCATION</span><span>CAMBODIA (UTC+7)</span></div>
-                                <div class="profile-item"><span>LOCAL TIME</span><span
-                                        id="cambodia-time">--:--:--</span></div>
-                                <div class="profile-item"><span>STATUS</span><span class="blink">ONLINE</span></div>
+                        <div class="disc-area">
+                            <div class="disc-cover">
+                                <div class="disc-art"></div>
+                                <div class="disc-center"></div>
                             </div>
+                        </div>
+
+                        <div class="song-info">
+                            <h2 class="song-title" id="current-title">SELECT TRACK</h2>
+                            <p class="song-artist" id="current-artist">WAITING FOR INPUT...</p>
+                        </div>
+
+                        <div class="progress-container" id="progress-container">
+                            <div class="progress" id="progress"></div>
+                            <div class="time-info">
+                                <span id="current-time">0:00</span>
+                                <span id="duration">0:00</span>
+                            </div>
+                        </div>
+
+                        <div class="player-controls">
+                            <button class="control-btn" id="prev" title="Previous">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" fill="currentColor" />
+                                </svg>
+                            </button>
+                            <button class="control-btn play-btn" id="play" title="Play/Pause">
+                                <svg id="play-icon" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z" fill="currentColor" />
+                                </svg>
+                                <svg id="pause-icon" viewBox="0 0 24 24" style="display: none;">
+                                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" fill="currentColor" />
+                                </svg>
+                            </button>
+                            <button class="control-btn" id="next" title="Next">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" fill="currentColor" />
+                                </svg>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Column 2: Info & Bio -->
-                    <div class="col-info">
-
-
-                        <div class="bio-panel fui-box">
-                            <h3 class="panel-title">BIOMETRIC ANALYSIS & BIO</h3>
-                            <div class="bio-content">
-                                <div class="decrypt-text-container">
-                                    <p class="bio-text en decrypt-effect" id="bio-decrypt">
-                                        INITIATING BIO-SCAN...
-                                        SUBJECT: EIRSVi.
-                                        ORIGIN: Kratié, Cambodia.
-                                        MISSION: TO BE EDUCATED IS TO BE CHANGED.
-                                        ANALYZING CORE VALUES...
-                                        [LOADING DATA...]
-                                    </p>
-                                </div>
+                    <!-- Playlist Area -->
+                    <div class="playlist-area fui-box">
+                        <div class="playlist-header">
+                            <div class="playlist-tabs">
+                                <button class="playlist-tab active" data-filter="all">ALL</button>
+                                <button class="playlist-tab" data-filter="gym">GYM</button>
+                                <button class="playlist-tab" data-filter="relax">RELAX</button>
                             </div>
                         </div>
-
-
+                        <div class="playlist-list" id="playlist-list">
+                            <!-- Playlist items injected by JS -->
+                        </div>
                     </div>
                 </div>
             </section>
