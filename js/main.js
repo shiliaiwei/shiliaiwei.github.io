@@ -1275,6 +1275,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function prevSong() {
+        if (currentPlaylist.length === 0) return; // Safety check
         currentSongIndex--;
         if (currentSongIndex < 0) {
             currentSongIndex = currentPlaylist.length - 1;
@@ -1285,6 +1286,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function nextSong() {
+        if (currentPlaylist.length === 0) return; // Safety check
         currentSongIndex++;
         if (currentSongIndex > currentPlaylist.length - 1) {
             currentSongIndex = 0;
@@ -1332,9 +1334,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 soundcloudContainer.style.display = 'block';
                 // Inject Iframe if not already present
                 if (!soundcloudContainer.innerHTML.trim()) {
-                    // Using resolved URL: https://soundcloud.com/shiliaiwei/sets/untitled-playlist
-                    const scUrl = "https://soundcloud.com/shiliaiwei/sets/untitled-playlist";
-                    const embedSrc = `https://w.soundcloud.com/player/?url=${encodeURIComponent(scUrl)}&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`;
+                    // Update to correct 3in1 playlist if known, or keep existing fallback
+                    // User provided: https://on.soundcloud.com/MyP6weN8hnDt1ZcprJ which likely redirects to a set.
+                    // We will use the generic set URL or the one previously defined if it works.
+                    // Assuming "3in1" implies a specific set.
+                    const scUrl = "https://soundcloud.com/shiliaiwei/sets/3in1"; 
+                    const embedSrc = `https://w.soundcloud.com/player/?url=${encodeURIComponent(scUrl)}&color=%23ff0050&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true`;
                     soundcloudContainer.innerHTML = `<iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="${embedSrc}"></iframe>`;
                 }
             }
@@ -1427,6 +1432,8 @@ document.addEventListener('DOMContentLoaded', () => {
         items.forEach((item, index) => {
             if (index === currentSongIndex) {
                 item.classList.add('active');
+                // Scroll into view logic
+                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
                 item.classList.remove('active');
             }

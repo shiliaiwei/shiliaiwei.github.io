@@ -428,20 +428,53 @@ img {
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
         height: 100%;
-        /* Ensure container fits parent */
         overflow: hidden;
-        /* Prevent container itself from scrolling */
+        gap: 0; /* Remove gap to save space */
     }
 
     .player-area {
-        position: sticky;
-        /* Change from relative to sticky */
-        top: 0;
+        position: relative; /* Changed from sticky to relative for better flow control */
         z-index: 100;
-        /* Ensure it stays above playlist */
         background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
-        padding-bottom: 20px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        flex-shrink: 0; /* Prevent shrinking */
+    }
+
+    /* Compact Disc for Mobile */
+    .disc-area {
+        margin: 10px 0; /* Reduced margin */
+    }
+
+    .disc-cover {
+        width: 140px; /* Smaller disc */
+        height: 140px;
+    }
+
+    .disc-center {
+        width: 40px;
+        height: 40px;
+        border-width: 3px;
+    }
+
+    .song-info {
+        margin-bottom: 10px;
+        width: 90%;
+    }
+
+    .song-title {
+        font-size: 1.5rem;
+    }
+
+    .progress-container {
+        width: 90%;
+        margin-bottom: 15px;
+    }
+
+    .playlist-area {
+        overflow-y: auto; /* Ensure playlist scrolls */
+        padding-bottom: 60px; /* Space for footer/thumb */
     }
 }
 
