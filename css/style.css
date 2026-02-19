@@ -426,30 +426,43 @@ img {
     .music-player-container {
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr;
-        height: 100%; /* Ensure container fits parent */
-        overflow: hidden; /* Prevent container itself from scrolling */
+        height: 100%;
+        /* Ensure container fits parent */
+        overflow: hidden;
+        /* Prevent container itself from scrolling */
     }
 
     .player-area {
-        position: relative;
-        z-index: 10;
+        position: sticky;
+        /* Change from relative to sticky */
+        top: 0;
+        z-index: 100;
+        /* Ensure it stays above playlist */
         background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
-        box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
         padding-bottom: 20px;
-        /* Sticky behavior is inherent in grid layout if playlist scrolls independently */
     }
 }
 
 /* Playlist Item Animation */
 @keyframes slideInRight {
-    from { opacity: 0; transform: translateX(20px); }
-    to { opacity: 1; transform: translateX(0); }
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .playlist-item {
     animation: slideInRight 0.3s ease-out forwards;
-    opacity: 0; /* meaningful start state */
-    animation-delay: calc(var(--i) * 0.05s); /* Staggered delay handled by JS if var set, else default */
+    opacity: 0;
+    /* meaningful start state */
+    animation-delay: calc(var(--i) * 0.05s);
+    /* Staggered delay handled by JS if var set, else default */
 }
 
 /* Player Area */
@@ -511,12 +524,10 @@ img {
     width: 90%;
     height: 90%;
     border-radius: 50%;
-    background-image: repeating-radial-gradient(
-        #111 0, 
-        #111 2px, 
-        #222 3px, 
-        #222 4px
-    );
+    background-image: repeating-radial-gradient(#111 0,
+            #111 2px,
+            #222 3px,
+            #222 4px);
 }
 
 .disc-center {
@@ -529,8 +540,13 @@ img {
 }
 
 @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .song-info {
@@ -643,6 +659,11 @@ img {
 .playlist-area {
     display: flex;
     flex-direction: column;
+    min-height: 0;
+    /* Critical for nested flex scrolling */
+    height: 100%;
+    overflow: hidden;
+    /* Ensure only the list scrolls */
 }
 
 .playlist-header {
