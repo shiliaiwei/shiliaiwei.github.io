@@ -83,7 +83,8 @@
     justify-content: center;
     align-items: flex-end;
     /* Restored */
-    pointer-events: none;
+    pointer-events: auto;
+    /* Allow clicking on the image to enter */
     /* Restored */
     /* Let clicks pass through to nav if needed */
     mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 100%);
