@@ -82,17 +82,13 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    /* Restored */
-    pointer-events: auto;
-    /* Allow clicking on the image to enter */
-    /* Restored */
-    /* Let clicks pass through to nav if needed */
     mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 100%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 100%);
 }
 
 .poster-image-wrapper picture {
-    display: contents;
+    display: block;
+    height: 100%;
 }
 
 .poster-img {
@@ -429,52 +425,74 @@ img {
         grid-template-rows: auto 1fr;
         height: 100%;
         overflow: hidden;
-        gap: 0; /* Remove gap to save space */
+        gap: 0;
+        /* Remove gap to save space */
     }
 
     .player-area {
-        position: relative; /* Changed from sticky to relative for better flow control */
+        position: relative;
+        /* Changed from sticky to relative for better flow control */
         z-index: 100;
         background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
         padding-bottom: 10px;
         padding-top: 10px;
-        flex-shrink: 0; /* Prevent shrinking */
+        flex-shrink: 0;
+        /* Prevent shrinking */
     }
 
     /* Compact Disc for Mobile */
     .disc-area {
-        margin: 10px 0; /* Reduced margin */
+        margin: 5px 0;
+        /* Reduced margin */
     }
 
     .disc-cover {
-        width: 140px; /* Smaller disc */
-        height: 140px;
+        width: 80px;
+        /* Even smaller disc */
+        height: 80px;
     }
 
     .disc-center {
-        width: 40px;
-        height: 40px;
-        border-width: 3px;
+        width: 25px;
+        height: 25px;
+        border-width: 2px;
     }
 
     .song-info {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         width: 90%;
     }
 
     .song-title {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 
     .progress-container {
         width: 90%;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
+    }
+
+    .player-controls {
+        gap: 15px;
+        /* Smaller gap */
+    }
+
+    .control-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .play-btn {
+        width: 50px;
+        height: 50px;
     }
 
     .playlist-area {
-        overflow-y: auto; /* Ensure playlist scrolls */
-        padding-bottom: 60px; /* Space for footer/thumb */
+        overflow-y: auto;
+        /* Ensure playlist scrolls */
+        padding-bottom: 60px;
+        /* Space for footer/thumb */
     }
 }
 
