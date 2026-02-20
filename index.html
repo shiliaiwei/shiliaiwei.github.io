@@ -86,17 +86,28 @@
             <!-- STATUS SECTION -->
             <section id="status" class="hud-section active">
                 <div class="music-player-container">
+                    <!-- Mobile Navigation Tabs (Only visible on small screens) -->
+                    <div class="mobile-player-nav">
+                        <button class="mp-nav-btn active" data-view="player">
+                            <span>NOW PLAYING</span>
+                        </button>
+                        <button class="mp-nav-btn" data-view="playlist">
+                            <span>PLAYLIST</span>
+                        </button>
+                    </div>
+
                     <!-- Player Area -->
-                    <div class="player-area fui-box">
+                    <div class="player-area active-view" id="mobile-view-player">
+
                         <div class="player-header">
                             <span class="now-playing-label">NOW PLAYING</span>
-                            <span class="player-status-icon blink">● REC</span>
                         </div>
 
                         <div class="disc-area">
                             <div class="disc-cover">
-                                <div class="disc-art"></div>
-                                <div class="disc-center"></div>
+                                <div class="disc-art"
+                                    style="background-image: url('data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!--%20License%3A%20MLP.%20Made%20by%20Yandex%3A%20https%3A%2F%2Fgithub.com%2Fbem%2Fyandex-ui-icons%20--%3E%3Csvg%20width%3D%22800px%22%20height%3D%22800px%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M9.772%204.28c.56-.144%201.097.246%201.206.814.1.517-.263%201.004-.771%201.14A7%207%200%201%200%2019%2012.9c.009-.5.4-.945.895-1%20.603-.067%201.112.371%201.106.977L21%2013c0%20.107-.002.213-.006.32a.898.898%200%200%201%200%20.164l-.008.122a9%209%200%200%201-9.172%208.392A9%209%200%200%201%209.772%204.28z%22%20fill%3D%22%23ff0050%22%2F%3E%3Cpath%20d%3D%22M15.93%2013.753a4.001%204.001%200%201%201-6.758-3.581A4%204%200%200%201%2012%209c.75%200%201.3.16%202%20.53%200%200%20.15.09.25.17-.1-.35-.228-1.296-.25-1.7a58.75%2058.75%200%200%201-.025-2.035V2.96c0-.52.432-.94.965-.94.103%200%20.206.016.305.048l4.572%201.689c.446.145.597.23.745.353.148.122.258.27.33.446.073.176.108.342.108.801v1.16c0%20.518-.443.94-.975.94a.987.987%200%200%201-.305-.049l-1.379-.447-.151-.05c-.437-.14-.618-.2-.788-.26a5.697%205.697%200%200%201-.514-.207%203.53%203.53%200%200%201-.213-.107c-.098-.05-.237-.124-.521-.263L16%206l.011%207c0%20.255-.028.507-.082.753h.001z%22%20fill%3D%22%23ff0050%22%2F%3E%3C%2Fsvg%3E'); background-size: 60%; background-repeat: no-repeat; background-position: center; border-radius: 50%; background-color: transparent;">
+                                </div>
                             </div>
                         </div>
 
@@ -136,7 +147,7 @@
                     </div>
 
                     <!-- Playlist Area -->
-                    <div class="playlist-area fui-box">
+                    <div class="playlist-area fui-box" id="mobile-view-playlist">
                         <div class="playlist-header">
                             <div class="playlist-tabs">
                                 <button class="playlist-tab active" data-filter="all">ALL</button>

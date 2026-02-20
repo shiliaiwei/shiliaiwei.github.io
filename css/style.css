@@ -419,6 +419,19 @@ img {
     height: 100%;
 }
 
+/* Explicit Desktop Grid Ordering */
+@media (min-width: 1025px) {
+    .player-area {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .playlist-area {
+        grid-column: 1;
+        grid-row: 1;
+    }
+}
+
 @media (max-width: 1024px) {
     .music-player-container {
         grid-template-columns: 1fr;
@@ -517,6 +530,11 @@ img {
     /* Staggered delay handled by JS if var set, else default */
 }
 
+/* Global Hidden Elements for Desktop */
+.mobile-player-nav {
+    display: none;
+}
+
 /* Player Area */
 .player-area {
     display: flex;
@@ -525,7 +543,7 @@ img {
     justify-content: center;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .player-header {
@@ -547,13 +565,15 @@ img {
 }
 
 .disc-area {
-    margin: 40px 0;
+    margin: 3vh 0;
     position: relative;
 }
 
 .disc-cover {
-    width: 250px;
-    height: 250px;
+    width: 35vh;
+    height: 35vh;
+    max-width: 250px;
+    max-height: 250px;
     border-radius: 50%;
     background: radial-gradient(circle, #222 10%, #000 70%);
     border: 2px solid var(--dim-color);
@@ -591,6 +611,26 @@ img {
     border: 5px solid #000;
 }
 
+/* Simple Player Area Background Pulse Animation */
+@keyframes softPulseBg {
+    0% {
+        background-color: #111;
+    }
+
+    50% {
+        background-color: #1a050f;
+    }
+
+    /* Subtle red tint */
+    100% {
+        background-color: #111;
+    }
+}
+
+.player-area.playing {
+    animation: softPulseBg 4s infinite ease-in-out;
+}
+
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -602,7 +642,7 @@ img {
 }
 
 .song-info {
-    margin-bottom: 30px;
+    margin-bottom: 2vh;
     width: 80%;
 }
 
@@ -626,7 +666,7 @@ img {
 /* Progress Bar */
 .progress-container {
     width: 80%;
-    margin-bottom: 30px;
+    margin-bottom: 2vh;
 }
 
 .progress {
@@ -1609,7 +1649,9 @@ img {
         background: #111;
         margin-right: 5px;
     }
-}/* --- CRITICAL MOBILE OVERRIDES (MUST BE AT BOTTOM) --- */
+}
+
+/* --- CRITICAL MOBILE OVERRIDES (MUST BE AT BOTTOM) --- */
 @media (max-width: 1024px) {
     .music-player-container {
         grid-template-columns: 1fr;
@@ -1662,7 +1704,7 @@ img {
         font-size: 1.1rem;
         margin-bottom: 0px;
     }
-    
+
     .song-artist {
         font-size: 0.8rem;
     }
@@ -1671,7 +1713,7 @@ img {
         width: 90%;
         margin-bottom: 5px;
     }
-    
+
     .time-info {
         margin-top: 5px;
         font-size: 0.7rem;
@@ -1695,5 +1737,312 @@ img {
     .playlist-area {
         overflow-y: auto;
         padding-bottom: 60px;
+    }
+}
+
+/* =========================================
+   MOBILE UI REDESIGN: MUSIC PLAYER APP
+   ========================================= */
+@media (max-width: 768px) {
+
+    /* Container adjusts to feel like an app */
+    .music-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow: hidden;
+        background: #000;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Mobile Navigation Tabs (Bottom) */
+    .mobile-player-nav {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-top: 1px solid rgba(255, 0, 80, 0.3);
+        z-index: 200;
+        padding: 10px 0;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .mp-nav-btn {
+        background: none;
+        border: none;
+        color: var(--dim-color);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        font-family: var(--font-display);
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex: 1;
+        padding: 5px 0;
+    }
+
+    .mp-nav-btn.active {
+        color: var(--primary-color);
+    }
+
+    .mp-nav-btn.active span {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 5px rgba(255, 0, 80, 0.5));
+    }
+
+    /* Tab Switching Logic */
+    .player-area,
+    .playlist-area {
+        display: none;
+        width: 100%;
+        height: calc(100% - 65px);
+        /* Leave space for bottom nav */
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+        animation: fadeScaleIn 0.4s ease forwards;
+        padding-bottom: 20px;
+    }
+
+    .player-area.active-view,
+    .playlist-area.active-view {
+        display: flex;
+    }
+
+    @keyframes fadeScaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.98);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    /* Player Area (Glassmorphism & Redesign) */
+    .player-area {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(circle at top right, rgba(255, 0, 80, 0.1) 0%, transparent 60%),
+            linear-gradient(to bottom, #111 0%, #000 100%);
+        padding: 20px;
+        /* Disable the static max-height override from older tablet query to allow full height */
+        max-height: none;
+    }
+
+    .player-header {
+        top: 20px;
+        border-bottom: none;
+        font-size: 0.9rem;
+        font-family: var(--font-display);
+    }
+
+    /* Modernized Cover Art */
+    .disc-area {
+        margin: 10px 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+    }
+
+    .disc-cover {
+        width: 15vh;
+        height: 15vh;
+        max-width: 120px;
+        max-height: 120px;
+        border-radius: 50%;
+        /* Switch from circle to rounded square for app look */
+        background: linear-gradient(135deg, #2a2a2a 0%, #111 100%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 5px 15px rgba(255, 0, 80, 0.15);
+        animation: none;
+        /* Remove spin for premium feel, use subtle pulse instead */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.5s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Remove the FUI scanner and add a clean border pulse to the SVG */
+    .disc-cover.playing {
+        animation: pulse-cover 1.5s infinite alternate ease-in-out;
+        border-color: rgba(255, 0, 80, 0.6);
+    }
+
+    @keyframes pulse-cover {
+        0% {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 5px 15px rgba(255, 0, 80, 0.15);
+            transform: scale(1);
+        }
+
+        100% {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 0, 80, 0.4);
+            transform: scale(1.05);
+        }
+    }
+
+    .disc-art {
+        border-radius: 18px;
+        background-image: repeating-linear-gradient(45deg, #181818 0, #181818 2px, #222 3px, #222 4px);
+    }
+
+    .disc-center {
+        display: none;
+        /* Remove center hole for modern look */
+    }
+
+    /* Song Info */
+    .song-info {
+        margin-top: 5px;
+        margin-bottom: 15px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .song-title {
+        font-size: 1.0rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        margin-bottom: 2px;
+    }
+
+    .song-artist {
+        font-size: 0.8rem;
+        opacity: 0.8;
+    }
+
+    /* Progress modern */
+    .progress-container {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .progress {
+        height: 4px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+    }
+
+    .progress::after {
+        box-shadow: 0 0 8px var(--primary-color);
+    }
+
+    .time-info {
+        font-size: 0.75rem;
+        margin-top: 12px;
+        opacity: 0.7;
+    }
+
+    /* Controls Sizes for Samsung a06 / Touchable */
+    .player-controls {
+        gap: 15px;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+
+    .control-btn {
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: rgba(255, 255, 255, 0.03);
+    }
+
+    .control-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: none;
+        color: #fff;
+    }
+
+    .play-btn {
+        width: 70px;
+        height: 70px;
+        background: var(--primary-color);
+        color: #000;
+        box-shadow: 0 8px 20px rgba(255, 0, 80, 0.4);
+    }
+
+    .play-btn:hover {
+        background: white;
+        color: var(--primary-color);
+        box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Playlist Area Redesign */
+    .playlist-area {
+        background: #050505;
+        padding: 15px;
+    }
+
+    .playlist-header {
+        border-bottom: none;
+        margin-bottom: 10px;
+        padding-bottom: 0;
+    }
+
+    .playlist-tabs {
+        overflow-x: auto;
+        padding-bottom: 15px;
+        gap: 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .playlist-tab {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 8px 16px;
+        font-size: 0.85rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        white-space: nowrap;
+    }
+
+    .playlist-tab.active {
+        background: rgba(255, 0, 80, 0.15);
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+        text-shadow: none;
+    }
+
+    .playlist-list {
+        padding-right: 0;
+    }
+
+    .playlist-item {
+        border-radius: 12px;
+        margin-bottom: 8px;
+        border-bottom: none;
+        background: rgba(255, 255, 255, 0.02);
+        padding: 15px;
+    }
+
+    .playlist-item.active {
+        background: linear-gradient(90deg, rgba(255, 0, 80, 0.15) 0%, rgba(255, 0, 80, 0.02) 100%);
+        border-left: 4px solid var(--primary-color);
+    }
+
+    .item-title {
+        font-size: 1rem;
+        font-family: var(--font-display);
+        font-weight: 600;
+        margin-bottom: 4px;
     }
 }

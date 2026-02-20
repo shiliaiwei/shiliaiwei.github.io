@@ -1002,6 +1002,7 @@ document.addEventListener('DOMContentLoaded', () => {
         playIcon.style.display = 'none';
         pauseIcon.style.display = 'block';
         discCover.classList.add('playing');
+        document.querySelector('.player-area').classList.add('playing');
         audio.play().catch(e => console.error("Playback failed:", e));
     }
 
@@ -1010,6 +1011,7 @@ document.addEventListener('DOMContentLoaded', () => {
         playIcon.style.display = 'block';
         pauseIcon.style.display = 'none';
         discCover.classList.remove('playing');
+        document.querySelector('.player-area').classList.remove('playing');
         audio.pause();
     }
 
@@ -1209,6 +1211,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentPlaylist.length > 0) {
         loadSong(currentPlaylist[0]);
     }
+
+    // --- MOBILE PLAYER NAVIGATION LOGIC ---
+    const mobileNavBtns = document.querySelectorAll('.mp-nav-btn');
+    const mobileViewPlayer = document.getElementById('mobile-view-player');
+    const mobileViewPlaylist = document.getElementById('mobile-view-playlist');
+
+    mobileNavBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active from all nav btns
+            mobileNavBtns.forEach(b => b.classList.remove('active'));
+            // Add active to clicked nav btn
+            btn.classList.add('active');
+
+            const viewTarget = btn.getAttribute('data-view');
+
+            if (viewTarget === 'player') {
+                mobileViewPlaylist.classList.remove('active-view');
+                mobileViewPlayer.classList.add('active-view');
+            } else if (viewTarget === 'playlist') {
+                mobileViewPlayer.classList.remove('active-view');
+                mobileViewPlaylist.classList.add('active-view');
+            }
+        });
+    });
 
 
     // --- CYBORG TOOLS LOGIC ---
