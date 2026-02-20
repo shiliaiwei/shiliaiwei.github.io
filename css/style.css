@@ -1609,4 +1609,91 @@ img {
         background: #111;
         margin-right: 5px;
     }
+}/* --- CRITICAL MOBILE OVERRIDES (MUST BE AT BOTTOM) --- */
+@media (max-width: 1024px) {
+    .music-player-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+        height: 100%;
+        overflow: hidden;
+        gap: 0;
+    }
+
+    .player-area {
+        position: relative;
+        z-index: 100;
+        background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+        padding: 10px 0;
+        flex-shrink: 0;
+        max-height: 45vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .disc-area {
+        margin: 5px 0;
+        min-height: 80px;
+    }
+
+    .disc-cover {
+        width: 15vh;
+        height: 15vh;
+        min-width: 80px;
+        min-height: 80px;
+        max-width: 120px;
+        max-height: 120px;
+        margin: 0 auto;
+    }
+
+    .disc-center {
+        width: 30%;
+        height: 30%;
+        border-width: 2px;
+    }
+
+    .song-info {
+        margin-bottom: 0px;
+        width: 90%;
+    }
+
+    .song-title {
+        font-size: 1.1rem;
+        margin-bottom: 0px;
+    }
+    
+    .song-artist {
+        font-size: 0.8rem;
+    }
+
+    .progress-container {
+        width: 90%;
+        margin-bottom: 5px;
+    }
+    
+    .time-info {
+        margin-top: 5px;
+        font-size: 0.7rem;
+    }
+
+    .player-controls {
+        gap: 15px;
+        margin-bottom: 5px;
+    }
+
+    .control-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .play-btn {
+        width: 45px;
+        height: 45px;
+    }
+
+    .playlist-area {
+        overflow-y: auto;
+        padding-bottom: 60px;
+    }
 }
