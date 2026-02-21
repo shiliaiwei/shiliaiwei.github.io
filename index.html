@@ -13,6 +13,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Rajdhani:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <!-- p5.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
 </head>
 
 <body class="protected">
@@ -171,54 +173,62 @@
 
             <!-- PROJECT SECTION -->
             <section id="project" class="hud-section">
-                <div class="project-container">
-                    <div class="project-header">
-                        <h2 class="section-title">PROJECT HIGHLIGHTS</h2>
-                        <div class="deco-line"></div>
+                <div id="drone-map" class="drone-terminal">
+                    <div class="map-grid-bg"></div>
+                    <div class="radar-rings"></div>
+                    <div class="radar-sweep"></div>
+                    <!-- p5 Canvas Background -->
+                    <div id="p5-container" class="p5-bg"></div>
+
+                    <div class="drone-overlay"></div>
+                    <div class="drone-crosshair"></div>
+                    <div class="drone-coords" id="drone-coords">LAT: 00.0000 | LNG: 00.0000</div>
+
+                    <!-- Search & Filter Menu -->
+                    <div class="drone-search-panel">
+                        <div class="search-header">TARGET DATABASE</div>
+                        <input type="text" id="drone-search-input" placeholder="SEARCH ID/NAME/CITY..."
+                            autocomplete="off">
+                        <div class="drone-search-results" id="drone-search-results">
+                            <!-- Injected by JS -->
+                        </div>
                     </div>
 
-                    <div class="project-grid">
-                        <!-- Project Card 1 -->
-                        <div class="project-card fui-box">
-                            <div class="card-header">
-                                <span class="project-id">PRJ-01</span>
-                                <span class="project-status">ACTIVE</span>
-                            </div>
-                            <h3 class="project-title">HUD PORTFOLIO</h3>
-                            <p class="project-desc">Advanced FUI personal website with biometric integration and tool
-                                suite.</p>
-                            <div class="project-tech">
-                                <span>HTML5</span><span>CSS3</span><span>JS</span>
-                            </div>
-                            <a href="#" class="project-link">ACCESS DATA</a>
-                        </div>
+                    <div class="map-content" id="map-targets-container"></div>
+                </div>
 
-                        <!-- Project Card 2 -->
-                        <div class="project-card fui-box">
-                            <div class="card-header">
-                                <span class="project-id">PRJ-02</span>
-                                <span class="project-status">STABLE</span>
-                            </div>
-                            <h3 class="project-title">CYBORG TOOLS</h3>
-                            <p class="project-desc">Suite of network analysis and cryptographic utilities.</p>
-                            <div class="project-tech">
-                                <span>CRYPTO</span><span>NET</span><span>WEB</span>
-                            </div>
-                            <a href="#" class="project-link">ACCESS DATA</a>
+                <!-- Surveillance ID Card Modal -->
+                <div id="surveillance-card" class="surv-card hidden">
+                    <div class="surv-card-inner">
+                        <div class="surv-header">
+                            <span class="confidential-stamp">TOP SECRET // NOFORN</span>
+                            <button id="close-surv-card" class="close-surv-btn">[X]</button>
                         </div>
-
-                        <!-- Project Card 3 -->
-                        <div class="project-card fui-box">
-                            <div class="card-header">
-                                <span class="project-id">PRJ-03</span>
-                                <span class="project-status">DEV</span>
+                        <div class="surv-glitch-overlay"></div>
+                        <div class="surv-body">
+                            <div class="surv-photo-placeholder">
+                                <div class="scan-line-anim"></div>
+                                <span>NO IMAGE DATA</span>
                             </div>
-                            <h3 class="project-title">NEURAL LINK</h3>
-                            <p class="project-desc">Experimental interface for brain-computer communication.</p>
-                            <div class="project-tech">
-                                <span>AI</span><span>NEURO</span><span>DATA</span>
+                            <div class="surv-details">
+                                <p><strong>ID:</strong> <span id="surv-id">REDACTED</span></p>
+                                <p><strong>SUBJECT:</strong> <span id="surv-name">REDACTED</span> <span
+                                        class="redacted-hl"></span></p>
+                                <p><strong>HANDLE:</strong> <span id="surv-username">REDACTED</span></p>
+                                <p><strong>ALIAS:</strong> <span id="surv-alias">REDACTED</span></p>
+                                <p><strong>LOC:</strong> <span id="surv-city">REDACTED</span></p>
+                                <p><strong>EDU:</strong> <span id="surv-college">REDACTED</span></p>
+                                <p><strong>DOB:</strong> <span id="surv-dob">REDACTED</span></p>
+                                <p><strong>GENDER:</strong> <span id="surv-gender">REDACTED</span></p>
+                                <p><strong>STATUS:</strong> <span id="surv-status">REDACTED</span></p>
+                                <p><strong>CONTACT:</strong> <span id="surv-contact">REDACTED</span></p>
+                                <p><strong>LEAKS:</strong> <span id="surv-leaks">REDACTED</span></p>
                             </div>
-                            <a href="#" class="project-link">ACCESS DATA</a>
+                        </div>
+                        <div class="surv-footer">
+                            <span style="animation: target-blip 3s infinite; opacity: 0.8;">OP: Sentry Watch
+                                Byproduct</span>
+                            <span class="redact-stamp">REDACTED</span>
                         </div>
                     </div>
                 </div>
@@ -346,7 +356,7 @@
             </div>
         </footer>
     </div>
-
+    <script src="js/drone_data.js"></script>
     <script src="js/main.js"></script>
 </body>
 

@@ -2046,3 +2046,421 @@ img {
         margin-bottom: 4px;
     }
 }
+
+/* =========================================
+   DRONE MAP PROJECT UI
+   ========================================= */
+.drone-terminal {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    min-height: 400px;
+    background: #000;
+    border: 1px solid #333;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.drone-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.3;
+}
+
+.drone-crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.drone-crosshair::before,
+.drone-crosshair::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.drone-crosshair::before {
+    top: 0;
+    bottom: 0;
+    left: 49px;
+    width: 1px;
+}
+
+.drone-crosshair::after {
+    left: 0;
+    right: 0;
+    top: 49px;
+    height: 1px;
+}
+
+.drone-coords {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #fff;
+    font-size: 0.8rem;
+    z-index: 10;
+}
+
+.map-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.map-target {
+    position: absolute;
+    cursor: crosshair;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    animation: target-blip 1.5s infinite;
+    z-index: 10;
+}
+
+.target-dot {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #fff;
+    margin-bottom: 5px;
+}
+
+.target-name {
+    font-size: 0.7rem;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2px 4px;
+    border: 1px solid #fff;
+    white-space: nowrap;
+}
+
+@keyframes target-blip {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* p5 Canvas Background */
+.p5-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Drone Search Panel */
+.drone-search-panel {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 300px;
+    max-width: 80%;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-header {
+    background: #fff;
+    color: #000;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+#drone-search-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.85rem;
+    width: 100%;
+}
+
+#drone-search-input:focus {
+    outline: none;
+    border-bottom-color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.drone-search-results {
+    max-height: 200px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.drone-search-results::-webkit-scrollbar {
+    width: 5px;
+}
+
+.drone-search-results::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.search-result-item {
+    padding: 8px 10px;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-result-item:hover {
+    background: #fff;
+    color: #000;
+}
+
+.search-result-name {
+    font-weight: bold;
+}
+
+.search-result-id {
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .drone-search-panel {
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+    }
+}
+
+/* Surveillance ID Card Modal */
+.surv-card {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.surv-card.hidden {
+    display: none;
+}
+
+.surv-card-inner {
+    background: #fff;
+    color: #000;
+    width: 90%;
+    max-width: 500px;
+    border: 2px solid #000;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    padding: 2px;
+}
+
+.surv-header {
+    border-bottom: 2px solid #000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    background: #f0f0f0;
+}
+
+.confidential-stamp {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.close-surv-btn {
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.close-surv-btn:hover {
+    background: #333;
+}
+
+.surv-body {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    position: relative;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.05),
+            rgba(0, 0, 0, 0.05) 1px,
+            transparent 1px,
+            transparent 2px);
+}
+
+.surv-photo-placeholder {
+    width: 120px;
+    height: 150px;
+    background: #222;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    text-align: center;
+    font-size: 0.8rem;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.scan-line-anim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    animation: surv-scan 2s infinite linear;
+}
+
+@keyframes surv-scan {
+    0% {
+        top: -10px;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+.surv-details {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.surv-details p {
+    margin-bottom: 5px;
+    border-bottom: 1px dotted #ccc;
+    display: flex;
+    justify-content: space-between;
+}
+
+.surv-details strong {
+    width: 80px;
+    display: inline-block;
+}
+
+.redacted-hl {
+    background: #000;
+    color: #000;
+    display: inline-block;
+}
+
+.surv-footer {
+    border-top: 2px solid #000;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    font-weight: bold;
+    background: #f0f0f0;
+}
+
+.redact-stamp {
+    color: #000;
+    border: 2px solid #000;
+    padding: 2px 5px;
+    transform: rotate(-5deg);
+    display: inline-block;
+}
+
+/* Add slight random glitch effect */
+.surv-glitch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 50;
+    background: transparent;
+    animation: surv-flicker 0.15s infinite;
+    mix-blend-mode: overlay;
+}
+
+@keyframes surv-flicker {
+    0% {
+        background: rgba(0, 0, 0, 0);
+    }
+
+    50% {
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    100% {
+        background: rgba(0, 0, 0, 0);
+    }
+}
+
+/* Responsive ID Card */
+@media (max-width: 600px) {
+    .surv-body {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .surv-photo-placeholder {
+        margin-bottom: 15px;
+    }
+
+    .surv-details p {
+        flex-direction: column;
+        border-bottom: none;
+    }
+
+    .surv-details span {
+        font-weight: bold;
+        border-bottom: 1px dotted #ccc;
+        margin-bottom: 5px;
+        display: block;
+    }
+}

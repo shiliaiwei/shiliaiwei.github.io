@@ -1398,7 +1398,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // Tool Functions (Global scope for onclick access)
-    
+
     // IPv4 Subnet Calculator Math Helper
     function ip2int(ip) {
         return ip.split('.').reduce((int, oct) => (int << 8) + parseInt(oct, 10), 0) >>> 0;
@@ -1406,40 +1406,40 @@ document.addEventListener('DOMContentLoaded', () => {
     function int2ip(int) {
         return [(int >>> 24) & 255, (int >>> 16) & 255, (int >>> 8) & 255, int & 255].join('.');
     }
-    
+
     window.calculateIPv4 = () => {
         let ipInput = document.getElementById('ip-input').value.trim();
         let cidrInput = document.getElementById('cidr-input').value.trim();
         const output = document.getElementById('tool-output');
 
         try {
-            if(!ipInput) throw new Error("Please enter an IP Address.");
-            if(!cidrInput) cidrInput = '24'; // Default to /24
+            if (!ipInput) throw new Error("Please enter an IP Address.");
+            if (!cidrInput) cidrInput = '24'; // Default to /24
 
             // Automatically extract cidr if passed in the IP string (e.g. 192.168.1.1/24)
-            if(ipInput.includes('/')) {
+            if (ipInput.includes('/')) {
                 const parts = ipInput.split('/');
                 ipInput = parts[0];
                 cidrInput = parts[1];
             }
 
             let cidr = parseInt(cidrInput);
-            
+
             // If user inputted a subnet mask (e.g. 255.255.255.0) instead of CIDR
             if (cidrInput.includes('.')) {
                 let maskInt = ip2int(cidrInput);
                 let count = 0;
-                while(maskInt > 0) {
-                    if(maskInt & 1) count++;
+                while (maskInt > 0) {
+                    if (maskInt & 1) count++;
                     maskInt >>>= 1;
                 }
                 cidr = count;
             }
 
             if (isNaN(cidr) || cidr < 0 || cidr > 32) throw new Error("Invalid CIDR mask. Must be 0-32.");
-            
+
             const ipParts = ipInput.split('.');
-            if(ipParts.length !== 4 || ipParts.some(p => isNaN(parseInt(p)) || parseInt(p) < 0 || parseInt(p) > 255)) {
+            if (ipParts.length !== 4 || ipParts.some(p => isNaN(parseInt(p)) || parseInt(p) < 0 || parseInt(p) > 255)) {
                 throw new Error("Invalid IPv4 Address format.");
             }
 
@@ -1447,7 +1447,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const maskInt = cidr === 0 ? 0 : (~0 << (32 - cidr)) >>> 0;
             const networkInt = (ipInt & maskInt) >>> 0;
             const broadcastInt = networkInt | (~maskInt >>> 0);
-            
+
             const maxHosts = cidr >= 31 ? 0 : Math.pow(2, 32 - cidr) - 2;
             const wildcardInt = ~maskInt >>> 0;
 
@@ -1455,9 +1455,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const mask = int2ip(maskInt);
             const broadcast = int2ip(broadcastInt);
             const wildcard = int2ip(wildcardInt);
-            
+
             let firstHost = "N/A", lastHost = "N/A";
-            if(cidr <= 30) {
+            if (cidr <= 30) {
                 firstHost = int2ip(networkInt + 1);
                 lastHost = int2ip(broadcastInt - 1);
             }
@@ -1475,12 +1475,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <strong style="color:var(--primary-color)">WILDCARD MASK:</strong> ${wildcard}
                 </div>
             `;
-        } catch(e) {
+        } catch (e) {
             output.innerText = `[ERROR]: ${e.message}`;
         }
     };
 
-    const wordsList = ["abandon","ability","abnormal","about","above","absent","absorb","abstract","absurd","abuse","access","accident","account","accuse","achieve","acid","acoustic","acquire","across","act","action","actor","actress","actual","adapt","add","addict","address","adjust","admit","adult","advance","advice","aerobic","affair","afford","afraid","again","age","agent","agree","ahead","aim","air","airport","aisle","alarm","album","alcohol","alert","alien","all","alley","allow","almost","alone","alpha","already","also","alter","always","amateur","amazing","among","amount","amused","analyst","anchor","ancient","anger","angle","angry","animal","ankle","announce","annual","another","answer","antenna","antique","anxiety","any","apart","apology","appear","apple","approve","april","arch","arctic","area","arena","argue","arm","armed","armor","army","around","arrange","arrest","arrive","arrow","art","artefact","artist","artwork","ask","aspect","assault","asset","assist","assume","asthma","athlete","atom","attack","attend","attitude","attract","auction","audit","august","aunt","author","auto","autumn","average","avocado","avoid","awake","aware","away","awesome","awful","awkward","axis","baby","bachelor","bacon","badge","bag","balance","balcony","ball","bamboo","banana","banner","bar","barely","bargain","barrel","base","basic","basket","battle","beach","bean","beauty","because","become","beef","before","begin","behave","behind","believe","below","belt","bench","benefit","best","betray","better","between","beyond","bicycle","bid","bike","bind","biology","bird","birth","bitter","black","blade","blame","blank","blind","block","blood","blossom","blouse","blue","blur","board","boat","body","boil","bomb","bone","bonus","book","boost","border","boring","borrow","boss","bottom","bounce","box","boy","bracket","brain","brand","brass","brave","bread","breeze","brick","bridge","brief","bright","bring","brisk","broccoli","broken","bronze","broom","brother","brown","brush","bubble","buddy","budget","buffalo","build","bulb","bulk","bullet","bundle","bunker","burden","burger","burst","bus","business","busy","butter","buyer","buzz","cabbage","cabin","cable","cactus","cage","cake","call","calm","camera","camp","can","canal","cancel","candy","cannon","canoe","canvas","canyon","capable","capital","captain","car","carbon","card","cargo","carpet","carry","cart","case","cash","casino","castle","casual","cat","catalog","catch","category","cattle","caught","cause","caution","cave","ceiling","celery","cement","census","century","cereal","certain","chair","chalk","champion","change","chaos","chapter","charge","chase","chat","cheap","check","cheese","chef","cherry","chest","chicken","chief","child","chimney","choice","choose","chronic","chuckle","chunk","churn","cigar","cinnamon","circle","citizen","city","civil","claim","clap","clarify","claw","clay","clean","clerk","clever","click","client","cliff","climb","clinic","clip","clock","clog","close","cloth","cloud","clown","club","clump","cluster","clutch","coach","coast","coconut","code","coffee","coil","coin","collect","color","column","combine","come","comfort","comic","common","company","concert","conduct","confirm","congress","connect","consider","control","convince","cook","cool","copper","copy","coral","core","corn","correct","cost","cotton","couch","country","couple","course","cousin","cover","coyote","crack","cradle","craft","cram","crane","crash","crater","crawl","crazy","cream","credit","creek","crew","cricket","crime","crisp","critic","crop","cross","crouch","crowd","crucial","cruel","cruise","crumble","crunch","crush","cry","crystal","cube","culture","cup","cupboard","curious","current","curtain","curve","cushion","custom","cute","cycle","dad","damage","damp","dance","danger","daring","dash","daughter","dawn","day","deal","debate","debris","decade","december","decide","decline","decorate","decrease","deer","defense","define","defy","degree","delay","deliver","demand","demise","denial","dentist","deny","depart","depend","deposit","depth","deputy","derive","describe","desert","design","desk","despair","destroy","detail","detect","develop","device","devote","diagram","dial","diamond","diary","dice","diesel","diet","differ","digital","dignity","dilemma","dinner","dinosaur","direct","dirt","disagree","discover","disease","dish","dismiss","disorder","display","distance","divert","divide","divorce","dizzy","doctor","document","dog","doll","dolphin","domain","donate","donkey","donor","door","dose","double","dove","draft","dragon","drama","drastic","draw","dream","dress","drift","drill","drink","drip","drive","drop","drum","dry","duck","dumb","dune","during","dust","dutch","duty","dwarf","dynamic","eager","eagle","early","earn","earth","easily","east","easy","echo","ecology","economy","edge","edit","educate","effort","egg","eight","either","elbow","elder","electric","elegant","element","elephant","elevator","elite","else","embark","embody","embrace","emerge","emotion","employ","empower","empty","enable","enact","end","endless","endorse","enemy","energy","enforce","engage","engine","enhance","enjoy","enlist","enough","enrich","enroll","ensure","enter","entire","entry","envelope","episode","equal","equip","era","erase","erode","error","erupt","escape","essay","essence","estate","eternal","ethics","evidence","evil","evoke","evolve","exact","example","excess","exchange","excite","exclude","excuse","execute","exercise","exhaust","exhibit","exile","exist","exit","exotic","expand","expect","expire","explain","expose","express","extend","extra","eye","eyebrow","fabric","face","faculty","fade","faint","faith","fall","false","fame","family","famous","fan","fancy","fantasy","farm","fashion","fat","fatal","father","fatigue","fault","favorite","feature","february","federal","fee","feed","feel","female","fence","festival","fetch","fever","few","fiber","fiction","field","figure","file","film","filter","final","find","fine","finger","finish","fire","firm","first","fiscal","fish","fit","fitness","fix","flag","flame","flash","flat","flavor","flee","flight","flip","float","flock","floor","flower","fluid","flush","fly","foam","focus","fog","foil","fold","follow","food","foot","force","forest","forget","fork","fortune","forum","forward","fossil","foster","found","fox","fragile","frame","frequent","fresh","friend","fringe","frog","front","frost","frown","frozen","fruit","fuel","fun","funny","furnace","fury","future","gadget","gain","galaxy","gallery","game","gap","garage","garbage","garden","garlic","garment","gas","gasp","gate","gather","gauge","gaze","general","genius","genre","gentle","genuine","gesture","ghost","giant","gift","giggle","ginger","giraffe","girl","give","glad","glance","glare","glass","glide","glimpse","globe","gloom","glory","glove","glow","glue","goat","goddess","gold","good","goose","gorilla","gospel","gossip","govern","gown","grab","grace","grain","grant","grape","grass","gravity","great","green","grid","grief","grit","grocery","group","grow","grunt","guard","guess","guide","guilt","guitar","gun","gym","habit","hair","half","hammer","hamster","hand","happy","harbor","hard","harsh","harvest","hat","have","hawk","hazard","head","health","heart","heavy","hedgehog","height","hello","helmet","help","hen","hero","hidden","high","hill","hint","hip","hire","history","hobby","hockey","hold","hole","holiday","hollow","home","honey","hood","hope","horn","horror","horse","hospital","host","hotel","hour","hover","hub","huge","human","humble","humor","hundred","hungry","hunt","hurdle","hurry","hurt","husband","hybrid","ice","icon","idea","identify","idle","ignore","ill","illegal","illness","image","imitate","immense","immune","impact","impose","improve","impulse","inch","include","income","increase","index","indicate","indoor","industry","infant","inflict","inform","inhale","inherit","initial","inject","injury","inmate","inner","innocent","input","inquiry","insane","insect","inside","inspire","install","intact","interest","into","invest","invite","involve","iron","island","isolate","issue","item","ivory","jacket","jaguar","jar","jazz","jealous","jeans","jelly","jewel","job","join","joke","journey","joy","judge","juice","jump","jungle","junior","junk","just","kangaroo","keen","keep","ketchup","key","kick","kid","kidney","kind","kingdom","kiss","kit","kitchen","kite","kitten","kiwi","knee","knife","knock","know","lab","label","labor","ladder","lady","lake","lamp","language","laptop","large","later","latin","laugh","laundry","lava","law","lawn","lawsuit","layer","lazy","leader","leaf","learn","leave","lecture","left","leg","legal","legend","leisure","lemon","lend","length","lens","leopard","lesson","letter","level","liar","liberty","library","license","life","lift","light","like","limb","limit","link","lion","liquid","list","little","live","lizard","load","loan","logic","lonely","long","loop","loose","lord","loser","loss","lottery","loud","lounge","love","loyal","lucky","luggage","lumber","lunar","lunch","luxury","lyrics","machine","mad","magic","magnet","maid","mail","main","major","make","mammal","man","manage","mandate","mango","mansion","manual","maple","marble","march","margin","marine","market","marriage","mask","mass","master","match","material","math","matrix","matter","maximum","maze","meadow","mean","measure","meat","mechanic","medal","media","melody","melt","member","memory","mention","menu","mercy","merge","merit","merry","mesh","message","metal","method","middle","midnight","milk","million","mimic","mind","minimum","minor","minute","miracle","mirror","misery","miss","mistake","mix","mixed","mixture","mobile","model","modify","mom","moment","monitor","monkey","monster","month","moon","moral","more","morning","mosquito","mother","motion","motor","mountain","mouse","move","movie","much","muffin","mule","multiply","muscle","museum","mushroom","music","must","mutual","myself","mystery","myth","naive","name","napkin","narrow","nasty","nation","nature","near","neck","need","negative","neglect","neither","nephew","nerve","nest","net","network","neutral","never","news","next","nice","night","noble","noise","nominee","noodle","normal","north","nose","notable","note","nothing","notice","novel","now","nuclear","number","nurse","nut","oak","obey","object","oblige","obscure","observe","obtain","obvious","occur","ocean","october","odor","off","offer","office","often","oil","okay","old","olive","olympic","omit","once","one","onion","online","only","open","opera","opinion","oppose","option","orange","orbit","orchard","order","ordinary","organ","orient","original","orphan","ostrich","other","outdoor","outer","output","outside","oval","oven","over","own","owner","oxygen","oyster","ozone","pact","paddle","page","pair","palace","palm","panda","panel","panic","panther","paper","parade","parent","park","parrot","party","pass","patch","path","patient","patrol","pattern","pause","pave","payment","peace","peanut","pear","peasant","pelican","pen","penalty","pencil","people","pepper","perfect","permit","person","pet","phone","photo","phrase","physical","piano","picnic","picture","piece","pig","pigeon","pill","pilot","pink","pioneer","pipe","pistol","pitch","pizza","place","planet","plastic","plate","play","please","pledge","pluck","plug","plunge","poem","poet","point","polar","pole","police","pond","pony","pool","popular","portion","position","possible","post","potato","pottery","poverty","powder","power","practice","praise","predict","prefer","prepare","present","pretty","prevent","price","pride","primary","print","priority","prison","private","prize","problem","process","produce","profit","program","project","promote","proof","property","prosper","protect","proud","provide","public","pudding","pull","pulp","pulse","pumpkin","punch","pupil","puppy","purchase","purity","purpose","purse","push","put","puzzle","pyramid","quality","quantum","quarter","question","quick","quit","quiz","quote","rabbit","raccoon","race","rack","radar","radio","rail","rain","raise","rally","ramp","ranch","random","range","rapid","rare","rate","rather","raven","raw","razor","ready","real","reason","rebel","rebuild","recall","receive","recipe","record","recycle","reduce","reflect","reform","refuse","region","regret","regular","reject","relax","release","relief","rely","remain","remember","remind","remove","render","renew","rent","reopen","repair","repeat","replace","report","require","rescue","resemble","resist","resource","response","result","retire","retreat","return","reunion","reveal","review","reward","rhythm","rib","ribbon","rice","rich","ride","ridge","rifle","right","rigid","ring","riot","ripple","risk","ritual","rival","river","road","roast","robot","robust","rocket","romance","roof","rookie","room","rose","rotate","rough","round","route","royal","rubber","rude","rug","rule","run","runway","rural","sad","saddle","sadness","safe","sail","salad","salmon","salon","salt","salute","same","sample","sand","satisfy","satoshi","sauce","sausage","save","say","scale","scan","scare","scatter","scene","scheme","school","science","scissors","scorpion","scout","scrap","screen","script","scrub","sea","search","season","seat","second","secret","section","security","seed","seek","segment","select","sell","seminar","senior","sense","sentence","series","service","session","settle","setup","seven","shadow","shaft","shallow","share","shed","shell","sheriff","shield","shift","shine","ship","shiver","shock","shoe","shoot","shop","short","shoulder","shove","shrimp","shrug","shuffle","shy","sibling","sick","side","siege","sight","sign","silent","silk","silly","silver","similar","simple","since","sing","siren","sister","situate","six","size","skate","sketch","ski","skill","skin","skirt","skull","slab","slam","sleep","slide","slight","slip","slogan","slot","slow","slush","small","smart","smile","smoke","smooth","snack","snake","snap","sniff","snow","soap","soccer","social","sock","soda","soft","solar","soldier","solid","solution","solve","someone","song","soon","sorry","sort","soul","sound","soup","source","south","space","spare","spatial","spawn","speak","special","speed","spell","spend","sphere","spice","spider","spike","spin","spirit","split","spoil","sponsor","spoon","sport","spot","spray","spread","spring","spy","square","squeeze","squirrel","stable","stadium","staff","stage","stairs","stamp","stand","start","state","stay","steak","steel","stem","step","stereo","stick","still","sting","stock","stomach","stone","stool","story","stove","strategy","street","strike","strong","struggle","student","stuff","stumble","style","subject","submit","subway","success","such","sudden","suffer","sugar","suggest","suit","summer","sun","sunny","sunset","super","supply","supreme","sure","surface","surge","surprise","surround","survey","suspect","sustain","swallow","swamp","swap","swarm","swear","sweet","swift","swim","swing","switch","sword","symbol","symptom","syrup","system","table","tackle","tag","tail","talent","talk","tank","tape","target","task","taste","tattoo","taxi","teach","team","tell","ten","tenant","tennis","tent","term","test","text","thank","that","theme","then","theory","there","they","thing","this","thought","three","thrive","throw","thumb","thunder","ticket","tide","tiger","tilt","timber","time","tiny","tip","tired","tissue","title","toast","tobacco","today","toddler","toe","together","toilet","token","tomato","tomorrow","tone","tongue","tonight","tool","tooth","top","topic","topple","torch","tornado","tortoise","toss","total","tourist","toward","tower","town","toy","track","trade","traffic","tragic","train","transfer","trap","trash","travel","tray","treat","tree","trend","trial","tribe","trick","trigger","trim","trip","trophy","trouble","truck","true","truly","trumpet","trust","truth","try","tube","tuition","tumble","tuna","tunnel","turkey","turn","turtle","twelve","twenty","twice","twin","twist","two","type","typical","ugly","umbrella","unable","unaware","uncle","uncover","under","undo","unfair","unfold","unhappy","uniform","unique","unit","universe","unknown","unlock","until","unusual","unveil","update","upgrade","uphold","upon","upper","upset","urban","urge","usage","use","used","useful","useless","usual","utility","vacant","vacuum","vague","valid","valley","valve","van","vanish","vapor","various","vast","vault","vehicle","velvet","vendor","venture","venue","verb","verify","version","very","vessel","veteran","viable","vibrant","vicious","victory","video","view","village","vintage","violin","virtual","virus","visa","visit","visual","vital","vivid","vocal","voice","void","volcano","volume","vote","voyage","wage","wagon","wait","walk","wall","walnut","want","warfare","warm","warrior","wash","wasp","waste","water","wave","way","wealth","weapon","wear","weasel","weather","web","wedding","weekend","weird","welcome","west","wet","whale","what","wheat","wheel","when","where","whip","whisper","wide","width","wife","wild","will","win","window","wine","wing","wink","winner","winter","wire","wisdom","wise","wish","witness","wolf","woman","wonder","wood","wool","word","work","world","worry","worth","wrap","wreck","wrestle","wrist","write","wrong","yard","year","yellow","you","young","youth","zebra","zero","zone","zoo"];
+    const wordsList = ["abandon", "ability", "abnormal", "about", "above", "absent", "absorb", "abstract", "absurd", "abuse", "access", "accident", "account", "accuse", "achieve", "acid", "acoustic", "acquire", "across", "act", "action", "actor", "actress", "actual", "adapt", "add", "addict", "address", "adjust", "admit", "adult", "advance", "advice", "aerobic", "affair", "afford", "afraid", "again", "age", "agent", "agree", "ahead", "aim", "air", "airport", "aisle", "alarm", "album", "alcohol", "alert", "alien", "all", "alley", "allow", "almost", "alone", "alpha", "already", "also", "alter", "always", "amateur", "amazing", "among", "amount", "amused", "analyst", "anchor", "ancient", "anger", "angle", "angry", "animal", "ankle", "announce", "annual", "another", "answer", "antenna", "antique", "anxiety", "any", "apart", "apology", "appear", "apple", "approve", "april", "arch", "arctic", "area", "arena", "argue", "arm", "armed", "armor", "army", "around", "arrange", "arrest", "arrive", "arrow", "art", "artefact", "artist", "artwork", "ask", "aspect", "assault", "asset", "assist", "assume", "asthma", "athlete", "atom", "attack", "attend", "attitude", "attract", "auction", "audit", "august", "aunt", "author", "auto", "autumn", "average", "avocado", "avoid", "awake", "aware", "away", "awesome", "awful", "awkward", "axis", "baby", "bachelor", "bacon", "badge", "bag", "balance", "balcony", "ball", "bamboo", "banana", "banner", "bar", "barely", "bargain", "barrel", "base", "basic", "basket", "battle", "beach", "bean", "beauty", "because", "become", "beef", "before", "begin", "behave", "behind", "believe", "below", "belt", "bench", "benefit", "best", "betray", "better", "between", "beyond", "bicycle", "bid", "bike", "bind", "biology", "bird", "birth", "bitter", "black", "blade", "blame", "blank", "blind", "block", "blood", "blossom", "blouse", "blue", "blur", "board", "boat", "body", "boil", "bomb", "bone", "bonus", "book", "boost", "border", "boring", "borrow", "boss", "bottom", "bounce", "box", "boy", "bracket", "brain", "brand", "brass", "brave", "bread", "breeze", "brick", "bridge", "brief", "bright", "bring", "brisk", "broccoli", "broken", "bronze", "broom", "brother", "brown", "brush", "bubble", "buddy", "budget", "buffalo", "build", "bulb", "bulk", "bullet", "bundle", "bunker", "burden", "burger", "burst", "bus", "business", "busy", "butter", "buyer", "buzz", "cabbage", "cabin", "cable", "cactus", "cage", "cake", "call", "calm", "camera", "camp", "can", "canal", "cancel", "candy", "cannon", "canoe", "canvas", "canyon", "capable", "capital", "captain", "car", "carbon", "card", "cargo", "carpet", "carry", "cart", "case", "cash", "casino", "castle", "casual", "cat", "catalog", "catch", "category", "cattle", "caught", "cause", "caution", "cave", "ceiling", "celery", "cement", "census", "century", "cereal", "certain", "chair", "chalk", "champion", "change", "chaos", "chapter", "charge", "chase", "chat", "cheap", "check", "cheese", "chef", "cherry", "chest", "chicken", "chief", "child", "chimney", "choice", "choose", "chronic", "chuckle", "chunk", "churn", "cigar", "cinnamon", "circle", "citizen", "city", "civil", "claim", "clap", "clarify", "claw", "clay", "clean", "clerk", "clever", "click", "client", "cliff", "climb", "clinic", "clip", "clock", "clog", "close", "cloth", "cloud", "clown", "club", "clump", "cluster", "clutch", "coach", "coast", "coconut", "code", "coffee", "coil", "coin", "collect", "color", "column", "combine", "come", "comfort", "comic", "common", "company", "concert", "conduct", "confirm", "congress", "connect", "consider", "control", "convince", "cook", "cool", "copper", "copy", "coral", "core", "corn", "correct", "cost", "cotton", "couch", "country", "couple", "course", "cousin", "cover", "coyote", "crack", "cradle", "craft", "cram", "crane", "crash", "crater", "crawl", "crazy", "cream", "credit", "creek", "crew", "cricket", "crime", "crisp", "critic", "crop", "cross", "crouch", "crowd", "crucial", "cruel", "cruise", "crumble", "crunch", "crush", "cry", "crystal", "cube", "culture", "cup", "cupboard", "curious", "current", "curtain", "curve", "cushion", "custom", "cute", "cycle", "dad", "damage", "damp", "dance", "danger", "daring", "dash", "daughter", "dawn", "day", "deal", "debate", "debris", "decade", "december", "decide", "decline", "decorate", "decrease", "deer", "defense", "define", "defy", "degree", "delay", "deliver", "demand", "demise", "denial", "dentist", "deny", "depart", "depend", "deposit", "depth", "deputy", "derive", "describe", "desert", "design", "desk", "despair", "destroy", "detail", "detect", "develop", "device", "devote", "diagram", "dial", "diamond", "diary", "dice", "diesel", "diet", "differ", "digital", "dignity", "dilemma", "dinner", "dinosaur", "direct", "dirt", "disagree", "discover", "disease", "dish", "dismiss", "disorder", "display", "distance", "divert", "divide", "divorce", "dizzy", "doctor", "document", "dog", "doll", "dolphin", "domain", "donate", "donkey", "donor", "door", "dose", "double", "dove", "draft", "dragon", "drama", "drastic", "draw", "dream", "dress", "drift", "drill", "drink", "drip", "drive", "drop", "drum", "dry", "duck", "dumb", "dune", "during", "dust", "dutch", "duty", "dwarf", "dynamic", "eager", "eagle", "early", "earn", "earth", "easily", "east", "easy", "echo", "ecology", "economy", "edge", "edit", "educate", "effort", "egg", "eight", "either", "elbow", "elder", "electric", "elegant", "element", "elephant", "elevator", "elite", "else", "embark", "embody", "embrace", "emerge", "emotion", "employ", "empower", "empty", "enable", "enact", "end", "endless", "endorse", "enemy", "energy", "enforce", "engage", "engine", "enhance", "enjoy", "enlist", "enough", "enrich", "enroll", "ensure", "enter", "entire", "entry", "envelope", "episode", "equal", "equip", "era", "erase", "erode", "error", "erupt", "escape", "essay", "essence", "estate", "eternal", "ethics", "evidence", "evil", "evoke", "evolve", "exact", "example", "excess", "exchange", "excite", "exclude", "excuse", "execute", "exercise", "exhaust", "exhibit", "exile", "exist", "exit", "exotic", "expand", "expect", "expire", "explain", "expose", "express", "extend", "extra", "eye", "eyebrow", "fabric", "face", "faculty", "fade", "faint", "faith", "fall", "false", "fame", "family", "famous", "fan", "fancy", "fantasy", "farm", "fashion", "fat", "fatal", "father", "fatigue", "fault", "favorite", "feature", "february", "federal", "fee", "feed", "feel", "female", "fence", "festival", "fetch", "fever", "few", "fiber", "fiction", "field", "figure", "file", "film", "filter", "final", "find", "fine", "finger", "finish", "fire", "firm", "first", "fiscal", "fish", "fit", "fitness", "fix", "flag", "flame", "flash", "flat", "flavor", "flee", "flight", "flip", "float", "flock", "floor", "flower", "fluid", "flush", "fly", "foam", "focus", "fog", "foil", "fold", "follow", "food", "foot", "force", "forest", "forget", "fork", "fortune", "forum", "forward", "fossil", "foster", "found", "fox", "fragile", "frame", "frequent", "fresh", "friend", "fringe", "frog", "front", "frost", "frown", "frozen", "fruit", "fuel", "fun", "funny", "furnace", "fury", "future", "gadget", "gain", "galaxy", "gallery", "game", "gap", "garage", "garbage", "garden", "garlic", "garment", "gas", "gasp", "gate", "gather", "gauge", "gaze", "general", "genius", "genre", "gentle", "genuine", "gesture", "ghost", "giant", "gift", "giggle", "ginger", "giraffe", "girl", "give", "glad", "glance", "glare", "glass", "glide", "glimpse", "globe", "gloom", "glory", "glove", "glow", "glue", "goat", "goddess", "gold", "good", "goose", "gorilla", "gospel", "gossip", "govern", "gown", "grab", "grace", "grain", "grant", "grape", "grass", "gravity", "great", "green", "grid", "grief", "grit", "grocery", "group", "grow", "grunt", "guard", "guess", "guide", "guilt", "guitar", "gun", "gym", "habit", "hair", "half", "hammer", "hamster", "hand", "happy", "harbor", "hard", "harsh", "harvest", "hat", "have", "hawk", "hazard", "head", "health", "heart", "heavy", "hedgehog", "height", "hello", "helmet", "help", "hen", "hero", "hidden", "high", "hill", "hint", "hip", "hire", "history", "hobby", "hockey", "hold", "hole", "holiday", "hollow", "home", "honey", "hood", "hope", "horn", "horror", "horse", "hospital", "host", "hotel", "hour", "hover", "hub", "huge", "human", "humble", "humor", "hundred", "hungry", "hunt", "hurdle", "hurry", "hurt", "husband", "hybrid", "ice", "icon", "idea", "identify", "idle", "ignore", "ill", "illegal", "illness", "image", "imitate", "immense", "immune", "impact", "impose", "improve", "impulse", "inch", "include", "income", "increase", "index", "indicate", "indoor", "industry", "infant", "inflict", "inform", "inhale", "inherit", "initial", "inject", "injury", "inmate", "inner", "innocent", "input", "inquiry", "insane", "insect", "inside", "inspire", "install", "intact", "interest", "into", "invest", "invite", "involve", "iron", "island", "isolate", "issue", "item", "ivory", "jacket", "jaguar", "jar", "jazz", "jealous", "jeans", "jelly", "jewel", "job", "join", "joke", "journey", "joy", "judge", "juice", "jump", "jungle", "junior", "junk", "just", "kangaroo", "keen", "keep", "ketchup", "key", "kick", "kid", "kidney", "kind", "kingdom", "kiss", "kit", "kitchen", "kite", "kitten", "kiwi", "knee", "knife", "knock", "know", "lab", "label", "labor", "ladder", "lady", "lake", "lamp", "language", "laptop", "large", "later", "latin", "laugh", "laundry", "lava", "law", "lawn", "lawsuit", "layer", "lazy", "leader", "leaf", "learn", "leave", "lecture", "left", "leg", "legal", "legend", "leisure", "lemon", "lend", "length", "lens", "leopard", "lesson", "letter", "level", "liar", "liberty", "library", "license", "life", "lift", "light", "like", "limb", "limit", "link", "lion", "liquid", "list", "little", "live", "lizard", "load", "loan", "logic", "lonely", "long", "loop", "loose", "lord", "loser", "loss", "lottery", "loud", "lounge", "love", "loyal", "lucky", "luggage", "lumber", "lunar", "lunch", "luxury", "lyrics", "machine", "mad", "magic", "magnet", "maid", "mail", "main", "major", "make", "mammal", "man", "manage", "mandate", "mango", "mansion", "manual", "maple", "marble", "march", "margin", "marine", "market", "marriage", "mask", "mass", "master", "match", "material", "math", "matrix", "matter", "maximum", "maze", "meadow", "mean", "measure", "meat", "mechanic", "medal", "media", "melody", "melt", "member", "memory", "mention", "menu", "mercy", "merge", "merit", "merry", "mesh", "message", "metal", "method", "middle", "midnight", "milk", "million", "mimic", "mind", "minimum", "minor", "minute", "miracle", "mirror", "misery", "miss", "mistake", "mix", "mixed", "mixture", "mobile", "model", "modify", "mom", "moment", "monitor", "monkey", "monster", "month", "moon", "moral", "more", "morning", "mosquito", "mother", "motion", "motor", "mountain", "mouse", "move", "movie", "much", "muffin", "mule", "multiply", "muscle", "museum", "mushroom", "music", "must", "mutual", "myself", "mystery", "myth", "naive", "name", "napkin", "narrow", "nasty", "nation", "nature", "near", "neck", "need", "negative", "neglect", "neither", "nephew", "nerve", "nest", "net", "network", "neutral", "never", "news", "next", "nice", "night", "noble", "noise", "nominee", "noodle", "normal", "north", "nose", "notable", "note", "nothing", "notice", "novel", "now", "nuclear", "number", "nurse", "nut", "oak", "obey", "object", "oblige", "obscure", "observe", "obtain", "obvious", "occur", "ocean", "october", "odor", "off", "offer", "office", "often", "oil", "okay", "old", "olive", "olympic", "omit", "once", "one", "onion", "online", "only", "open", "opera", "opinion", "oppose", "option", "orange", "orbit", "orchard", "order", "ordinary", "organ", "orient", "original", "orphan", "ostrich", "other", "outdoor", "outer", "output", "outside", "oval", "oven", "over", "own", "owner", "oxygen", "oyster", "ozone", "pact", "paddle", "page", "pair", "palace", "palm", "panda", "panel", "panic", "panther", "paper", "parade", "parent", "park", "parrot", "party", "pass", "patch", "path", "patient", "patrol", "pattern", "pause", "pave", "payment", "peace", "peanut", "pear", "peasant", "pelican", "pen", "penalty", "pencil", "people", "pepper", "perfect", "permit", "person", "pet", "phone", "photo", "phrase", "physical", "piano", "picnic", "picture", "piece", "pig", "pigeon", "pill", "pilot", "pink", "pioneer", "pipe", "pistol", "pitch", "pizza", "place", "planet", "plastic", "plate", "play", "please", "pledge", "pluck", "plug", "plunge", "poem", "poet", "point", "polar", "pole", "police", "pond", "pony", "pool", "popular", "portion", "position", "possible", "post", "potato", "pottery", "poverty", "powder", "power", "practice", "praise", "predict", "prefer", "prepare", "present", "pretty", "prevent", "price", "pride", "primary", "print", "priority", "prison", "private", "prize", "problem", "process", "produce", "profit", "program", "project", "promote", "proof", "property", "prosper", "protect", "proud", "provide", "public", "pudding", "pull", "pulp", "pulse", "pumpkin", "punch", "pupil", "puppy", "purchase", "purity", "purpose", "purse", "push", "put", "puzzle", "pyramid", "quality", "quantum", "quarter", "question", "quick", "quit", "quiz", "quote", "rabbit", "raccoon", "race", "rack", "radar", "radio", "rail", "rain", "raise", "rally", "ramp", "ranch", "random", "range", "rapid", "rare", "rate", "rather", "raven", "raw", "razor", "ready", "real", "reason", "rebel", "rebuild", "recall", "receive", "recipe", "record", "recycle", "reduce", "reflect", "reform", "refuse", "region", "regret", "regular", "reject", "relax", "release", "relief", "rely", "remain", "remember", "remind", "remove", "render", "renew", "rent", "reopen", "repair", "repeat", "replace", "report", "require", "rescue", "resemble", "resist", "resource", "response", "result", "retire", "retreat", "return", "reunion", "reveal", "review", "reward", "rhythm", "rib", "ribbon", "rice", "rich", "ride", "ridge", "rifle", "right", "rigid", "ring", "riot", "ripple", "risk", "ritual", "rival", "river", "road", "roast", "robot", "robust", "rocket", "romance", "roof", "rookie", "room", "rose", "rotate", "rough", "round", "route", "royal", "rubber", "rude", "rug", "rule", "run", "runway", "rural", "sad", "saddle", "sadness", "safe", "sail", "salad", "salmon", "salon", "salt", "salute", "same", "sample", "sand", "satisfy", "satoshi", "sauce", "sausage", "save", "say", "scale", "scan", "scare", "scatter", "scene", "scheme", "school", "science", "scissors", "scorpion", "scout", "scrap", "screen", "script", "scrub", "sea", "search", "season", "seat", "second", "secret", "section", "security", "seed", "seek", "segment", "select", "sell", "seminar", "senior", "sense", "sentence", "series", "service", "session", "settle", "setup", "seven", "shadow", "shaft", "shallow", "share", "shed", "shell", "sheriff", "shield", "shift", "shine", "ship", "shiver", "shock", "shoe", "shoot", "shop", "short", "shoulder", "shove", "shrimp", "shrug", "shuffle", "shy", "sibling", "sick", "side", "siege", "sight", "sign", "silent", "silk", "silly", "silver", "similar", "simple", "since", "sing", "siren", "sister", "situate", "six", "size", "skate", "sketch", "ski", "skill", "skin", "skirt", "skull", "slab", "slam", "sleep", "slide", "slight", "slip", "slogan", "slot", "slow", "slush", "small", "smart", "smile", "smoke", "smooth", "snack", "snake", "snap", "sniff", "snow", "soap", "soccer", "social", "sock", "soda", "soft", "solar", "soldier", "solid", "solution", "solve", "someone", "song", "soon", "sorry", "sort", "soul", "sound", "soup", "source", "south", "space", "spare", "spatial", "spawn", "speak", "special", "speed", "spell", "spend", "sphere", "spice", "spider", "spike", "spin", "spirit", "split", "spoil", "sponsor", "spoon", "sport", "spot", "spray", "spread", "spring", "spy", "square", "squeeze", "squirrel", "stable", "stadium", "staff", "stage", "stairs", "stamp", "stand", "start", "state", "stay", "steak", "steel", "stem", "step", "stereo", "stick", "still", "sting", "stock", "stomach", "stone", "stool", "story", "stove", "strategy", "street", "strike", "strong", "struggle", "student", "stuff", "stumble", "style", "subject", "submit", "subway", "success", "such", "sudden", "suffer", "sugar", "suggest", "suit", "summer", "sun", "sunny", "sunset", "super", "supply", "supreme", "sure", "surface", "surge", "surprise", "surround", "survey", "suspect", "sustain", "swallow", "swamp", "swap", "swarm", "swear", "sweet", "swift", "swim", "swing", "switch", "sword", "symbol", "symptom", "syrup", "system", "table", "tackle", "tag", "tail", "talent", "talk", "tank", "tape", "target", "task", "taste", "tattoo", "taxi", "teach", "team", "tell", "ten", "tenant", "tennis", "tent", "term", "test", "text", "thank", "that", "theme", "then", "theory", "there", "they", "thing", "this", "thought", "three", "thrive", "throw", "thumb", "thunder", "ticket", "tide", "tiger", "tilt", "timber", "time", "tiny", "tip", "tired", "tissue", "title", "toast", "tobacco", "today", "toddler", "toe", "together", "toilet", "token", "tomato", "tomorrow", "tone", "tongue", "tonight", "tool", "tooth", "top", "topic", "topple", "torch", "tornado", "tortoise", "toss", "total", "tourist", "toward", "tower", "town", "toy", "track", "trade", "traffic", "tragic", "train", "transfer", "trap", "trash", "travel", "tray", "treat", "tree", "trend", "trial", "tribe", "trick", "trigger", "trim", "trip", "trophy", "trouble", "truck", "true", "truly", "trumpet", "trust", "truth", "try", "tube", "tuition", "tumble", "tuna", "tunnel", "turkey", "turn", "turtle", "twelve", "twenty", "twice", "twin", "twist", "two", "type", "typical", "ugly", "umbrella", "unable", "unaware", "uncle", "uncover", "under", "undo", "unfair", "unfold", "unhappy", "uniform", "unique", "unit", "universe", "unknown", "unlock", "until", "unusual", "unveil", "update", "upgrade", "uphold", "upon", "upper", "upset", "urban", "urge", "usage", "use", "used", "useful", "useless", "usual", "utility", "vacant", "vacuum", "vague", "valid", "valley", "valve", "van", "vanish", "vapor", "various", "vast", "vault", "vehicle", "velvet", "vendor", "venture", "venue", "verb", "verify", "version", "very", "vessel", "veteran", "viable", "vibrant", "vicious", "victory", "video", "view", "village", "vintage", "violin", "virtual", "virus", "visa", "visit", "visual", "vital", "vivid", "vocal", "voice", "void", "volcano", "volume", "vote", "voyage", "wage", "wagon", "wait", "walk", "wall", "walnut", "want", "warfare", "warm", "warrior", "wash", "wasp", "waste", "water", "wave", "way", "wealth", "weapon", "wear", "weasel", "weather", "web", "wedding", "weekend", "weird", "welcome", "west", "wet", "whale", "what", "wheat", "wheel", "when", "where", "whip", "whisper", "wide", "width", "wife", "wild", "will", "win", "window", "wine", "wing", "wink", "winner", "winter", "wire", "wisdom", "wise", "wish", "witness", "wolf", "woman", "wonder", "wood", "wool", "word", "work", "world", "worry", "worth", "wrap", "wreck", "wrestle", "wrist", "write", "wrong", "yard", "year", "yellow", "you", "young", "youth", "zebra", "zero", "zone", "zoo"];
 
     window.generatePass = () => {
         const type = document.getElementById('pass-type').value;
@@ -1493,17 +1493,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const incNum = document.getElementById('inc-num').checked;
             const incSym = document.getElementById('inc-sym').checked;
 
-            if(!incUpper && !incLower && !incNum && !incSym) {
+            if (!incUpper && !incLower && !incNum && !incSym) {
                 out.innerText = "MUST CHECK AT LEAST ONE OPTION";
                 return;
             }
 
             let chars = "";
             let pass = "";
-            if(incUpper) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            if(incLower) chars += "abcdefghijklmnopqrstuvwxyz";
-            if(incNum) chars += "0123456789";
-            if(incSym) chars += "!@#$%^&*()_+-=[]{}|;:,.<>?";
+            if (incUpper) chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            if (incLower) chars += "abcdefghijklmnopqrstuvwxyz";
+            if (incNum) chars += "0123456789";
+            if (incSym) chars += "!@#$%^&*()_+-=[]{}|;:,.<>?";
 
             for (let i = 0; i < len; i++) {
                 // Cryptographically secure RNG instead of Math.random
@@ -1516,7 +1516,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             let pass = "";
             const wordCount = Math.max(3, Math.min(len, 24)); // Limits for phrase length
-            for(let i=0; i<wordCount; i++){
+            for (let i = 0; i < wordCount; i++) {
                 let rVals = new Uint32Array(1);
                 window.crypto.getRandomValues(rVals);
                 let rnd = rVals[0] / (0xffffffff + 1);
@@ -1545,20 +1545,20 @@ document.addEventListener('DOMContentLoaded', () => {
             if (type === 'text') {
                 // Text to Bin, Hex, Dec
                 let bin = "", hex = "", dec = "";
-                for(let i=0; i<input.length; i++) {
+                for (let i = 0; i < input.length; i++) {
                     let c = input.charCodeAt(i);
                     bin += c.toString(2).padStart(8, '0') + " ";
                     hex += c.toString(16).padStart(2, '0') + " ";
                     dec += c.toString(10) + " ";
                 }
                 res = `BIN: ${bin.trim()}\nHEX: ${hex.trim()}\nDEC: ${dec.trim()}`;
-            } 
+            }
             else if (type === 'binary') {
                 // Bin to Text, Hex, Dec
                 let chars = input.split(/\s+/);
                 let text = "", hex = "", dec = "";
-                for(let b of chars) {
-                    if(!/^[01]+$/.test(b)) throw new Error("Invalid Binary Input");
+                for (let b of chars) {
+                    if (!/^[01]+$/.test(b)) throw new Error("Invalid Binary Input");
                     let n = parseInt(b, 2);
                     text += String.fromCharCode(n);
                     hex += n.toString(16).padStart(2, '0') + " ";
@@ -1572,8 +1572,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     chars = input.match(/.{1,2}/g);
                 }
                 let text = "", bin = "", dec = "";
-                for(let h of chars) {
-                    if(!/^[0-9a-fA-F]+$/.test(h)) throw new Error("Invalid Hex Input");
+                for (let h of chars) {
+                    if (!/^[0-9a-fA-F]+$/.test(h)) throw new Error("Invalid Hex Input");
                     let n = parseInt(h, 16);
                     text += String.fromCharCode(n);
                     bin += n.toString(2).padStart(8, '0') + " ";
@@ -1584,10 +1584,10 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (type === 'decimal') {
                 let chars = input.split(/\s|,/);
                 let text = "", bin = "", hex = "";
-                for(let d of chars) {
-                    if(!d.trim()) continue;
+                for (let d of chars) {
+                    if (!d.trim()) continue;
                     let n = parseInt(d, 10);
-                    if(isNaN(n)) throw new Error("Invalid Decimal Input");
+                    if (isNaN(n)) throw new Error("Invalid Decimal Input");
                     text += String.fromCharCode(n);
                     bin += n.toString(2).padStart(8, '0') + " ";
                     hex += n.toString(16).padStart(2, '0') + " ";
@@ -1596,7 +1596,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             out.innerText = res;
-        } catch(e) {
+        } catch (e) {
             out.innerText = "[CONVERSION ERROR]: " + e.message;
         }
     };
@@ -1607,7 +1607,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const input = document.getElementById('crypto-input').value.trim();
         const out = document.getElementById('tool-output');
 
-        if(!input) {
+        if (!input) {
             out.innerText = "PLEASE ENTER PAYLOAD.";
             return;
         }
@@ -1615,7 +1615,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             if (mode === 'encrypt') {
                 let xored = "";
-                for(let i=0; i<input.length; i++) {
+                for (let i = 0; i < input.length; i++) {
                     xored += String.fromCharCode(input.charCodeAt(i) ^ key.charCodeAt(i % key.length));
                 }
                 // Base 64 encode to make it printable
@@ -1624,12 +1624,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Decrypt
                 let decoded = decodeURIComponent(escape(atob(input)));
                 let res = "";
-                for(let i=0; i<decoded.length; i++) {
+                for (let i = 0; i < decoded.length; i++) {
                     res += String.fromCharCode(decoded.charCodeAt(i) ^ key.charCodeAt(i % key.length));
                 }
                 out.innerText = res;
             }
-        } catch(e) {
+        } catch (e) {
             out.innerText = "[CRYPTO ERROR]: Invalid payload or key.";
         }
     };
@@ -1655,7 +1655,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const type = document.getElementById('ident-type').value;
         const out = document.getElementById('tool-output');
         let rVals = new Uint32Array(1);
-        
+
         const getRnd = (arr) => {
             window.crypto.getRandomValues(rVals);
             return arr[Math.floor((rVals[0] / (0xffffffff + 1)) * arr.length)];
@@ -1674,7 +1674,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- HASH & KEY SYSTEM LOGIC ---
-    
+
     // Polyfill/Simple SHA-256 for browser (since SubtleCrypto is async, we use a simple synchronous implementation for the UI or we can use the async properly)
     async function sha256(message) {
         // encode as UTF-8
@@ -1708,7 +1708,7 @@ document.addEventListener('DOMContentLoaded', () => {
             out.innerText = "KEY-" + key;
         } else if (mode === 'sha256') {
             const input = document.getElementById('hash-input').value;
-            if(!input) {
+            if (!input) {
                 out.innerText = "PLEASE ENTER PAYLOAD.";
                 return;
             }
@@ -1716,7 +1716,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const hash = await sha256(input);
                 out.innerText = hash;
-            } catch(e) {
+            } catch (e) {
                 out.innerText = "ERROR CALCULATING HASH.";
             }
         }
@@ -1727,9 +1727,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.initGravitySim = () => {
         const container = document.getElementById('p5-container');
         if (!container) return;
-        
+
         // Prevent multiple instances
-        if(window.gravitySimP5) {
+        if (window.gravitySimP5) {
             window.gravitySimP5.remove();
         }
 
@@ -1772,7 +1772,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.vel.add(this.acc);
                     this.pos.add(this.vel);
                     this.acc.mult(0);
-                    
+
                     if (p.frameCount % 5 === 0) {
                         this.path.push(this.pos.copy());
                         if (this.path.length > 50) this.path.shift();
@@ -1787,7 +1787,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     p.noFill();
                     p.stroke(this.color.levels[0], this.color.levels[1], this.color.levels[2], 100);
                     p.beginShape();
-                    for(let v of this.path) {
+                    for (let v of this.path) {
                         p.vertex(v.x, v.y);
                     }
                     p.endShape();
@@ -1806,27 +1806,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 let canvas = p.createCanvas(container.clientWidth, container.clientHeight);
                 canvas.parent('p5-container');
                 document.getElementById('p5-loading').style.display = 'none';
-                
+
                 // Central Star
-                bodies.push(new Body(p.width/2, p.height/2, 0, 0, 100, p.color('#ff0050')));
+                bodies.push(new Body(p.width / 2, p.height / 2, 0, 0, 100, p.color('#ff0050')));
                 // Planet 1
-                bodies.push(new Body(p.width/2, p.height/2 - 100, 1.2, 0, 10, p.color('#00ffcc')));
+                bodies.push(new Body(p.width / 2, p.height / 2 - 100, 1.2, 0, 10, p.color('#00ffcc')));
                 // Planet 2
-                bodies.push(new Body(p.width/2 + 150, p.height/2, 0, -1, 5, p.color('#fff')));
-                
+                bodies.push(new Body(p.width / 2 + 150, p.height / 2, 0, -1, 5, p.color('#fff')));
+
                 // Mouse controls
                 canvas.mousePressed(() => {
                     if (p.mouseButton === p.LEFT) {
-                        bodies.push(new Body(p.mouseX, p.mouseY, p.random(-1,1), p.random(-1,1), p.random(2, 15), p.color(p.random(100,255), p.random(100,255), 255)));
+                        bodies.push(new Body(p.mouseX, p.mouseY, p.random(-1, 1), p.random(-1, 1), p.random(2, 15), p.color(p.random(100, 255), p.random(100, 255), 255)));
                     } else if (p.mouseButton === p.RIGHT) {
-                        if(bodies.length > 1) bodies.pop(); // Remove last added except star
+                        if (bodies.length > 1) bodies.pop(); // Remove last added except star
                     }
                 });
             };
 
             p.draw = () => {
                 p.background(0, 50); // fade effect
-                
+
                 for (let i = 0; i < bodies.length; i++) {
                     for (let j = 0; j < bodies.length; j++) {
                         if (i !== j) {
@@ -1850,7 +1850,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-const toolsGrid = document.getElementById('tools-grid');
+    const toolsGrid = document.getElementById('tools-grid');
     const toolModal = document.getElementById('tool-modal');
     const modalTitle = document.getElementById('modal-title');
     const modalBody = document.getElementById('modal-body');
@@ -2213,6 +2213,50 @@ const toolsGrid = document.getElementById('tools-grid');
 
     const notes = [
         {
+            id: 4,
+            title: 'IF OUR LOVE IS TRUE, IT LASTS FOREVER',
+            date: '2026-02-21',
+            content: `
+<p>DEAR MISS,</p>
+
+<p>WITH THE UTMOST RESPECT AND HUMILITY, I WRITE TO OFFER MY MOST SINCERE AND HEARTFELT APOLOGY FOR THE INAPPROPRIATE ACTIONS I COMMITTED IN THE PAST. I FULLY ACKNOWLEDGE THAT MY BEHAVIOR CONSTITUTED A VIOLATION OF YOUR PRIVACY AND CAUSED YOU EMOTIONAL DISTRESS, DISRUPTING YOUR PEACE OF MIND AND SENSE OF PERSONAL SAFETY. FOR THIS, I AM DEEPLY SORRY.</p>
+
+<p>ALTHOUGH I HAVE LONG HELD A PERSONAL INTEREST IN THE ANALYSIS OF DIGITAL—I LOVE TO RESEARCH, LIKE A THESIS OR DISSERTATION, EVERYTHING RELATED TO MY CASE PROJECT OPERATION—I NOW RECOGNIZE—CLEARLY AND WITHOUT EXCUSE—THAT INTELLECTUAL CURIOSITY MUST NEVER OVERRIDE THE SANCTITY OF ANOTHER PERSON’S BOUNDARIES, DIGNITY, OR EMOTIONAL WELL-BEING.</p>
+
+<p>I CROSSED A LINE THAT SHOULD NEVER HAVE BEEN APPROACHED. I ACCEPT FULL RESPONSIBILITY FOR THE CONSEQUENCES OF MY ACTIONS.</p>
+
+<p>THROUGH PAINFUL INTROSPECTION, I HAVE COME TO A SOBERING REALIZATION: FROM THIS MOMENT FORWARD, I WILL MAINTAIN A DECISIVE DISTANCE FROM ALL FORMS OF CONTACT. I WILL HONOR YOUR PRIVACY, AND THAT OF THOSE CLOSE TO YOU, WITH UNWAVERING RESPECT. THIS EXPERIENCE HAS BECOME A DEFINING LESSON—A CONSTANT REMINDER OF THE IMPORTANCE OF ETHICAL RESTRAINT, EMOTIONAL INTELLIGENCE, AND THE SACREDNESS OF PERSONAL AUTONOMY.</p>
+
+<p>I DO NOT EXPECT FORGIVENESS, NOR DO I PRESUME TO DESERVE IT. HOWEVER, I HOPE THAT, IN TIME, YOU MAY RECOGNIZE THE SINCERITY OF MY REMORSE.</p>
+
+<p><strong>IF OUR LOVE IS TRUE, IT WILL LAST FOREVER.</strong></p>
+
+<p>AS A GESTURE OF ACCOUNTABILITY, I WILL WITHDRAW COMPLETELY AND FOCUS ON THE CULTIVATION OF A MORE PRINCIPLED SELF—SO AS NEVER TO CAUSE HARM AGAIN.</p>
+
+<p>IF I MAY, I WOULD LIKE TO SHARE SOMETHING THAT HAS LINGERED IN THE QUIETEST CHAMBERS OF MY HEART. YOU WERE THE FIRST TO GUIDE ME THROUGH WHAT I NOW KNOW AS THE "ART OF LOVE’S DEATH." YOU AWAKENED IN ME A RAW SPECTRUM OF PSYCHOLOGICAL INTENSITY: INFATUATION... OBSESSION... INSTABILITY... CHAOS... INTERNAL CONFLICT… I STILL CARRY THE SIGNAL OF THAT SPECIFIC MOMENT—THE MOMENT YOU ASKED, "DO YOU HAVE FEELINGS FOR ME?" YOU SAID IT, THEN YOU SUDDENLY CLOSED THE DOOR SO THAT I COULDN'T QUESTION YOU.</p>
+
+<p>YOUR TIMING WAS A MASTERSTROKE OF HUMAN NATURE—A MOVE MADE BY SOMEONE WHO HAS BEEN INDEPENDENT AND STRATEGIC SINCE CHILDHOOD. I ADMIRE THAT SHARP, MYSTERIOUS INTELLIGENCE. I MUST CONFESS THAT, FOR A TIME, I WAS CAUGHT IN A LOOP OF HIGH-MAGNITUDE REWARDS; THERE WERE TWO TIMES YOU CAUGHT ME, IMPERFECTLY. YOUR JOB IS REALLY, REALLY GOOD; I WAS SURPRISED.</p>
+
+<p>EVERY TIME YOUR NAME APPEARED AS A NOTIFICATION, IT TRIGGERED A SURGE OF DOPAMINE—A "FEELING REWARD" MORE PROFOUND THAN ANY I HAVE EVER EXPERIENCED. IT WAS THE BEST FEELING I EVER HAD, YET IT WAS ALSO THE MOST DANGEROUS.</p>
+
+<p>I REALIZE NOW THAT YOU ARE THE GENUINE PLAYER ON THIS BOARD. IN THIS GAME OF STRATEGY AND COUNTER-MOVE, I HAVE LEARNED THE LOGIC OF THE PIECES. I SEE NOW THAT THE ROOK MUST NEVER TOUCH OR BE NEAR THE PAWN. THE ROOK DOES NOT CHASE REACTIONS; IT DOES NOT ANNOY. THE ROOK SIMPLY WAITS. MY PIECE HAS BEEN EXECUTED BY THE MOVE YOU MADE, AND I LET THE KING MOVE ON—RESPECTING THE JOURNEY OF THE ONE WHO REACHED THE FINAL SQUARE.</p>
+
+<p>EVEN IF ONLY BRIEFLY, I FELT WHAT IT WAS LIKE TO LIVE WITH LOVE FLOWING THROUGH ME. IT WAS BEAUTIFUL. IT WAS OVERWHELMING. AND IT WAS UNSUSTAINABLE.</p>
+
+<p>IN THE COLLAPSE OF THAT ILLUSION, I HAVE COME TO UNDERSTAND THE DIFFERENCE BETWEEN LOVE THAT LIBERATES AND ATTACHMENT THAT CONSUMES. THIS LETTER IS NOT A PLEA FOR RECONCILIATION. IT IS A SOLEMN VOW: TO NEVER AGAIN ALLOW MY EMOTIONS TO OVERRIDE THE RESPECT AND DIGNITY EVERY PERSON DESERVES.</p>
+
+<p>THANK YOU FOR THE LESSONS, EVEN THE ONES TAUGHT IN SILENCE. THEY WILL ECHO WITHIN ME FOR A LIFETIME. IN ALL HONESTY, PERHAPS THE GREATEST MISTAKE WAS OUR MEETING ITSELF, WASN'T IT?</p>
+
+<p>I WISH YOU THE BEST FUTURE, THAT YOU MEET THE RIGHT PERSON, AND FIND HAPPINESS IN THE COMING YEAR.</p>
+
+<p>DISTANCE. I HAVE DEFINITIVELY STEPPED OUTSIDE THE ALGORITHM, BEYOND THE COMPUTER SIMULATION.</p>
+
+<p>GOOD LUCK, YOUR LADY. WITH SINCERE RESPECT AND REMORSE.</p>
+
+<p><strong>史力爱卫</strong></p>
+            `
+        },
+        {
             id: 1,
             title: 'GAME THEORY',
             date: '2026-02-21',
@@ -2320,6 +2364,224 @@ const toolsGrid = document.getElementById('tools-grid');
             event.preventDefault();
         }
     });
+
+    // --- DRONE MAP LOGIC ---
+    const mapContainer = document.getElementById('drone-map');
+    const targetsContainer = document.getElementById('map-targets-container');
+    const coordsOverlay = document.getElementById('drone-coords');
+    const survCard = document.getElementById('surveillance-card');
+    const closeSurvBtn = document.getElementById('close-surv-card');
+
+    if (mapContainer && typeof getDroneTargets === 'function') {
+        const targetsData = getDroneTargets();
+
+        function redactText(text) {
+            if (!text || text.trim() === '') return "CONTEXT UNKNOWN";
+            const parts = text.split(/[ \t]+/);
+            return parts.map(p => {
+                if (p.length <= 1) return p.toUpperCase();
+                return p.charAt(0).toUpperCase() + '*'.repeat(Math.max(3, p.length - 1));
+            }).join(' ');
+        }
+
+        function populateCard(target) {
+            document.getElementById('surv-id').innerText = target.id || "REDACTED";
+            document.getElementById('surv-name').innerText = redactText(target.name);
+            document.getElementById('surv-username').innerText = redactText(target.username);
+            document.getElementById('surv-alias').innerText = redactText(target.alias);
+            document.getElementById('surv-city').innerText = redactText(target.city);
+            document.getElementById('surv-college').innerText = redactText(target.college);
+            document.getElementById('surv-dob').innerText = redactText(target.dob);
+            document.getElementById('surv-gender').innerText = redactText(target.gender);
+            document.getElementById('surv-status').innerText = redactText(target.status);
+            document.getElementById('surv-contact').innerText = redactText(target.contact);
+            document.getElementById('surv-leaks').innerText = target.leaks ? target.leaks : "0 DETECTED";
+
+            // Show modal
+            survCard.classList.remove('hidden');
+        }
+
+        if (closeSurvBtn) {
+            closeSurvBtn.addEventListener('click', () => {
+                survCard.classList.add('hidden');
+            });
+        }
+
+        // Auto update coords
+        setInterval(() => {
+            const lat = (Math.random() * 180 - 90).toFixed(4);
+            const lng = (Math.random() * 360 - 180).toFixed(4);
+            if (coordsOverlay) coordsOverlay.innerText = `LAT: ${lat} | LNG: ${lng}`;
+        }, 1000);
+
+        function spawnTarget() {
+            if (!targetsData || targetsData.length === 0) return;
+            // Only spawn if Project section is active to save resources
+            const projectSec = document.getElementById('project');
+            if (projectSec && !projectSec.classList.contains('active')) return;
+
+            const target = targetsData[Math.floor(Math.random() * targetsData.length)];
+
+            const el = document.createElement('div');
+            el.className = 'map-target';
+
+            // Random position (keep away from edges)
+            const x = 10 + Math.random() * 80;
+            const y = 10 + Math.random() * 80;
+            el.style.left = `${x}%`;
+            el.style.top = `${y}%`;
+
+            el.innerHTML = `
+                <div class="target-dot"></div>
+                <div class="target-name">${redactText(target.name)}</div>
+            `;
+
+            el.addEventListener('click', () => {
+                populateCard(target);
+            });
+
+            targetsContainer.appendChild(el);
+
+            // Remove after 3-5 seconds
+            setTimeout(() => {
+                if (el.parentNode) {
+                    el.parentNode.removeChild(el);
+                }
+            }, 3000 + Math.random() * 2000);
+        }
+
+        // Spawn targets at intervals
+        setInterval(spawnTarget, 1500);
+        // Initial spawn
+        spawnTarget();
+        spawnTarget();
+        // --- SEARCH PANEL LOGIC ---
+        const searchInput = document.getElementById('drone-search-input');
+        const searchResults = document.getElementById('drone-search-results');
+
+        function renderSearchResults(query) {
+            if (!searchResults) return;
+            searchResults.innerHTML = '';
+
+            if (!query || query.trim() === '') return;
+
+            const q = query.toLowerCase();
+            const filtered = targetsData.filter(t => {
+                return (t.id && t.id.toLowerCase().includes(q)) ||
+                    (t.name && t.name.toLowerCase().includes(q)) ||
+                    (t.city && t.city.toLowerCase().includes(q)) ||
+                    (t.college && t.college.toLowerCase().includes(q)) ||
+                    (t.username && t.username.toLowerCase().includes(q));
+            }).slice(0, 15); // Limit to top 15 results
+
+            if (filtered.length === 0) {
+                searchResults.innerHTML = `<div style="padding:10px;color:red;font-size:0.8rem;">0 MATCHES FOUND</div>`;
+                return;
+            }
+
+            filtered.forEach(t => {
+                const row = document.createElement('div');
+                row.className = 'search-result-item';
+                row.innerHTML = `
+                    <span class="search-result-name">${redactText(t.name)}</span>
+                    <span class="search-result-id">ID:${t.id ? t.id.substring(0, 8) + '...' : 'UNKNOWN'}</span>
+                `;
+                row.addEventListener('click', () => {
+                    populateCard(t);
+                    searchInput.value = '';
+                    searchResults.innerHTML = '';
+                });
+                searchResults.appendChild(row);
+            });
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                renderSearchResults(e.target.value);
+            });
+        }
+
+        // --- P5 GRAVITY EARTH BACKGROUND ---
+        if (typeof p5 !== 'undefined' && document.getElementById('p5-container')) {
+            const earthSketch = (p) => {
+                let angle = 0;
+                let dots = [];
+                let container;
+
+                p.setup = () => {
+                    container = document.getElementById('p5-container');
+                    let canvas = p.createCanvas(container.offsetWidth, container.offsetHeight, p.WEBGL);
+                    canvas.parent('p5-container');
+
+                    // Generate points on a sphere
+                    let r = p.min(p.width, p.height) * 0.35;
+                    for (let i = 0; i < 400; i++) {
+                        let lat = p.asin(p.random(-1, 1));
+                        let lon = p.random(p.TWO_PI);
+                        let x = r * p.cos(lat) * p.cos(lon);
+                        let y = r * p.cos(lat) * p.sin(lon);
+                        let z = r * p.sin(lat);
+                        dots.push(p.createVector(x, y, z));
+                    }
+                };
+
+                p.draw = () => {
+                    p.clear(); // Transparent background
+
+                    // Only draw if project section is visible to save battery
+                    const projectSec = document.getElementById('project');
+                    if (projectSec && !projectSec.classList.contains('active')) return;
+
+                    // Fix size if the canvas was created while the container was hidden
+                    if (p.width === 0 || p.height === 0 || (container && container.offsetWidth > 0 && Math.abs(p.width - container.offsetWidth) > 10)) {
+                        if (container && container.offsetWidth > 0) {
+                            p.resizeCanvas(container.offsetWidth, container.offsetHeight);
+                            // Regenerate dots for the new size
+                            dots = [];
+                            let r = p.min(p.width, p.height) * 0.35;
+                            for (let i = 0; i < 400; i++) {
+                                let lat = p.asin(p.random(-1, 1));
+                                let lon = p.random(p.TWO_PI);
+                                let x = r * p.cos(lat) * p.cos(lon);
+                                let y = r * p.cos(lat) * p.sin(lon);
+                                let z = r * p.sin(lat);
+                                dots.push(p.createVector(x, y, z));
+                            }
+                        }
+                    }
+
+                    p.rotateY(angle);
+                    p.rotateX(angle * 0.2);
+                    p.rotateZ(angle * 0.1);
+
+                    // Draw satellites/dots
+                    p.stroke(255, 180);
+                    p.strokeWeight(2);
+                    p.beginShape(p.POINTS);
+                    for (let v of dots) {
+                        p.vertex(v.x, v.y, v.z);
+                    }
+                    p.endShape();
+
+                    // Draw subtle wireframe sphere representing Earth gravity well
+                    p.stroke(255, 15);
+                    p.strokeWeight(1);
+                    p.noFill();
+                    p.sphere(p.min(p.width, p.height) * 0.35, 16, 16);
+
+                    angle += 0.003;
+                };
+
+                p.windowResized = () => {
+                    if (container) {
+                        p.resizeCanvas(container.offsetWidth, container.offsetHeight);
+                    }
+                };
+            };
+
+            new p5(earthSketch);
+        }
+    }
 
     console.log('SYSTEM ONLINE. WELCOME OPERATIVE.');
 });
