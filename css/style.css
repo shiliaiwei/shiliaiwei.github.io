@@ -564,51 +564,67 @@ img {
     color: var(--primary-color);
 }
 
-.disc-area {
+/* Visualizer Canvas */
+.visualizer-canvas {
+    width: 100%;
+    height: 15vh;
+    min-height: 100px;
+    max-height: 200px;
     margin: 3vh 0;
-    position: relative;
+    border-radius: 8px;
+    background: radial-gradient(circle, #0a0005 0%, #000 100%);
+    box-shadow: 0 0 15px rgba(255, 0, 80, 0.1);
+    border: 1px solid rgba(255, 0, 80, 0.2);
 }
 
-.disc-cover {
-    width: 35vh;
-    height: 35vh;
-    max-width: 250px;
-    max-height: 250px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #222 10%, #000 70%);
-    border: 2px solid var(--dim-color);
-    position: relative;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 0, 80, 0.2);
+/* Gym Time Tracker */
+.gym-tracker {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    animation: spin 10s linear infinite;
-    animation-play-state: paused;
+    justify-content: center;
+    margin-bottom: 2vh;
+    padding: 10px 20px;
+    background: rgba(255, 0, 80, 0.05);
+    border: 1px solid rgba(255, 0, 80, 0.4);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 0, 80, 0.2);
 }
 
-.disc-cover.playing {
-    animation-play-state: running;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 30px rgba(255, 0, 80, 0.4);
+.gym-tracker.hidden {
+    display: none;
 }
 
-.disc-art {
-    width: 90%;
-    height: 90%;
-    border-radius: 50%;
-    background-image: repeating-radial-gradient(#111 0,
-            #111 2px,
-            #222 3px,
-            #222 4px);
+.tracker-label {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--dim-color);
+    letter-spacing: 2px;
 }
 
-.disc-center {
-    position: absolute;
-    width: 80px;
-    height: 80px;
+.tracker-time {
+    font-family: var(--font-mono);
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 5px 0;
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+.tracker-btn {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-family: var(--font-mono);
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.tracker-btn:hover {
     background: var(--primary-color);
-    border-radius: 50%;
-    border: 5px solid #000;
+    color: #000;
 }
 
 /* Simple Player Area Background Pulse Animation */
@@ -621,7 +637,6 @@ img {
         background-color: #1a050f;
     }
 
-    /* Subtle red tint */
     100% {
         background-color: #111;
     }
@@ -629,16 +644,6 @@ img {
 
 .player-area.playing {
     animation: softPulseBg 4s infinite ease-in-out;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
 }
 
 .song-info {
