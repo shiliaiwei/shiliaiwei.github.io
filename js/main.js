@@ -71,12 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Navigation Logic
     const navBtns = document.querySelectorAll('.nav-btn');
     const sections = document.querySelectorAll('.hud-section');
+    const defaultView = document.getElementById('default-view');
 
     navBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             // Remove active class from all buttons and sections
             navBtns.forEach(b => b.classList.remove('active'));
             sections.forEach(s => s.classList.remove('active'));
+            if (defaultView) defaultView.classList.remove('active');
 
             // Add active class to clicked button
             btn.classList.add('active');
@@ -1296,6 +1298,75 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'Footer.design', url: 'https://www.footer.design/', cat: 'design' },
         { name: 'Flowbase.co', url: 'https://www.flowbase.co/illustrations', cat: 'design' },
         { name: 'Coderocket.app', url: 'https://www.coderocket.app/', cat: 'dev' },
+        { name: 'UIball Loaders', url: 'https://uiball.com/ldrs/', cat: 'dev', desc: 'Free animated loaders & spinners for web.' },
+        { name: 'ZType', url: 'https://zty.pe/', cat: 'tools', desc: 'Space action game driven by typing.' },
+        { name: 'Logo Diffusion', url: 'https://logodiffusion.com/', cat: 'ai', desc: 'Generate custom logos using AI.' },
+        { name: 'Napkin AI', url: 'https://www.napkin.ai/', cat: 'ai', desc: 'Visual note-taking and idea exploration.' },
+        { name: 'Coddy', url: 'https://coddy.tech/landing/python', cat: 'dev', desc: 'Learn Python with interactive coding.' },
+        { name: 'Entertrained', url: 'https://entertrained.app/', cat: 'tools', desc: 'Educational entertainment platform.' },
+        { name: 'StartMyCar', url: 'https://www.startmycar.com/', cat: 'tools', desc: 'Car manuals, diagrams, and repair guides.' },
+        { name: 'Stirling', url: 'https://www.stirling.com/', cat: 'tools', desc: 'Engineering & technology tools.' },
+        { name: 'TypingBird', url: 'https://typingbird.com/', cat: 'tools', desc: 'Clean, simple typing practice platform.' },
+        { name: 'OLMOCR', url: 'https://olmocr.allenai.org/', cat: 'ai', desc: 'Open Source OCR by Allen AI.' },
+        { name: 'Exercism', url: 'https://exercism.org/', cat: 'dev', desc: 'Free coding exercises and mentorship.' },
+        { name: 'trace.moe', url: 'https://trace.moe/', cat: 'ai', desc: 'Search anime scenes by image.' },
+        { name: 'The Bezier Game', url: 'https://bezier.method.ac/', cat: 'design', desc: 'Learn to use the pen tool.' },
+        { name: 'Shape Type', url: 'https://shape.method.ac/', cat: 'design', desc: 'A letter shaping typography game.' },
+        { name: 'Emergent', url: 'https://app.emergent.sh/', cat: 'ai', desc: 'Create AI-powered tools.' },
+        { name: 'Text Behind Image', url: 'https://textbehindimage.com/', cat: 'design', desc: 'Easily place text behind objects in images.' },
+        { name: 'PhET', url: 'https://phet.colorado.edu/', cat: 'tools', desc: 'Interactive science and math simulations.' },
+        { name: 'Natively', url: 'https://natively.dev/', cat: 'dev', desc: 'Convert web apps to native iOS/Android.' },
+        { name: 'Subasish Course', url: 'https://subasish.github.io/pages/course1/', cat: 'dev', desc: 'Computer science course material.' },
+        { name: 'Seeing Theory', url: 'https://seeing-theory.brown.edu/', cat: 'tools', desc: 'Visual introduction to probability and statistics.' },
+        { name: 'My 90s TV', url: 'https://90s.myretrotvs.com/', cat: 'tools', desc: 'Retro 90s television simulator.' },
+        { name: 'Recraft', url: 'https://www.recraft.ai/', cat: 'ai', desc: 'Generate and edit vector art with AI.' },
+        { name: 'TopoExport', url: 'https://app.topoexport.com/', cat: 'tools', desc: 'Export high-res topographic maps.' },
+        { name: 'Flourish', url: 'https://flourish.studio/', cat: 'design', desc: 'Beautiful data visualizations.' },
+        { name: 'React Bits', url: 'https://reactbits.dev/', cat: 'dev', desc: 'React patterns, techniques, tips and tricks.' },
+        { name: 'PlayPhrase', url: 'https://www.playphrase.me/', cat: 'tools', desc: 'Search movie quotes and play clips.' },
+        { name: 'The Toymaker', url: 'https://www.thetoymaker.com/', cat: 'tools', desc: 'Free printable paper toys.' },
+        { name: 'Anime.js', url: 'https://animejs.com/', cat: 'dev', desc: 'Lightweight JS animation library.' },
+        { name: 'Zoo', url: 'https://zoo.dev/', cat: 'dev', desc: 'Design platform for physical products.' },
+        { name: 'MindLuster', url: 'https://www.mindluster.com/', cat: 'books', desc: 'Free online courses with certificates.' },
+        { name: 'CarCareKiosk', url: 'https://www.carcarekiosk.com/', cat: 'tools', desc: 'Free how-to car repair videos.' },
+        { name: 'AutoDraw', url: 'https://www.autodraw.com/', cat: 'ai', desc: 'Fast drawing tool with AI guessing.' },
+        { name: 'Space Type', url: 'https://spacetypegenerator.com/', cat: 'design', desc: 'Generate kinetic 3D typography.' },
+        { name: 'PNGImg', url: 'https://pngimg.com/', cat: 'design', desc: 'Large collection of free PNG images.' },
+        { name: 'BioDigital', url: 'https://human.biodigital.com/login?returnUrl=/explore', cat: 'tools', desc: 'Interactive 3D anatomy platform.' },
+        { name: 'Meta AI Demos', url: 'https://www.aidemos.meta.com/segment-anything/editor/convert-image-to-3d', cat: 'ai', desc: 'Convert image to 3D with Meta AI.' },
+        { name: 'Beadifier', url: 'https://beadifier.eremes.xyz/', cat: 'design', desc: 'Turn images into perler bead patterns.' },
+        { name: 'Collax', url: 'https://collax.app/try', cat: 'tools', desc: 'Useful web tools and utilities.' },
+        { name: 'Artkit', url: 'https://artkit.cc/baby-track', cat: 'tools', desc: 'Track and monitor habits/progress.' },
+        { name: 'Free Design Tool', url: 'https://freedesigntool.online/', cat: 'design', desc: 'Online graphic design creator.' },
+        { name: 'Dead Rabbit', url: 'https://deadrabbit.collax.app/', cat: 'tools', desc: 'Creative utility tool.' },
+        { name: 'UI Layouts', url: 'https://tools.ui-layouts.com/', cat: 'design', desc: 'CSS layout generators and tools.' },
+        { name: 'Anvaka', url: 'https://anvaka.github.io/', cat: 'dev', desc: 'Fascinating data visualizations.' },
+        { name: 'Project Gutenberg', url: 'https://www.gutenberg.org/', cat: 'books', desc: 'Library of free eBooks.' },
+        { name: 'Welib', url: 'https://welib.st/', cat: 'books', desc: 'Online library and reading platform.' },
+        { name: 'Welbi', url: 'https://www.welbi.com/', cat: 'tools', desc: 'Recreational programming tools.' },
+        { name: 'HomeByMe', url: 'https://home.by.me/en/', cat: 'design', desc: 'Free 3D home design software.' },
+        { name: 'GeneratePrompt', url: 'https://generateprompt.ai/en', cat: 'ai', desc: 'Help enhance prompts.' },
+        { name: 'PromptCowboy', url: 'https://www.promptcowboy.ai/', cat: 'ai', desc: 'AI Prompt enhancements.' },
+        { name: 'DeepSeek Chat', url: 'https://chat.deepseek.com/', cat: 'ai', desc: 'DeepSeek AI Chat.' },
+        { name: 'Grok', url: 'https://grok.com/', cat: 'ai', desc: 'Grok AI by xAI.' },
+        { name: 'Qwen Chat', url: 'https://chat.qwen.ai/', cat: 'ai', desc: 'Qwen AI Chat.' },
+        { name: 'Stitch by Google', url: 'https://stitch.withgoogle.com/', cat: 'dev', desc: 'Google Stitch.' },
+        { name: 'Tencent Yuanbao', url: 'https://yuanbao.tencent.com/chat/', cat: 'ai', desc: 'Yuanbao AI Chat by Tencent.' },
+        { name: 'ChatGPT', url: 'https://chatgpt.com/', cat: 'ai', desc: 'The most visited AI platform globally. Features the o-series models.' },
+        { name: 'Google Gemini', url: 'https://gemini.google.com/', cat: 'ai', desc: 'Built into the Google ecosystem. Famous for its Deep Research mode.' },
+        { name: 'Claude', url: 'https://claude.ai/', cat: 'ai', desc: 'The industry favorite for high-level reasoning and clean coding.' },
+        { name: 'Microsoft Copilot', url: 'https://copilot.microsoft.com/', cat: 'ai', desc: 'The professional standard for office work. Integrated directly into Word, Excel.' },
+        { name: 'Perplexity AI', url: 'https://www.perplexity.ai/', cat: 'ai', desc: 'A source-first search engine. Every answer includes clickable citations.' },
+        { name: 'NotebookLM', url: 'https://notebooklm.google.com/', cat: 'ai', desc: 'A specialized tool grounded in your own data.' },
+        { name: 'Elicit', url: 'https://elicit.com/', cat: 'ai', desc: 'A high-end research assistant for university students and scientists.' },
+        { name: 'Adobe Firefly', url: 'https://www.adobe.com/products/firefly.html', cat: 'design', desc: 'The Safe-for-Work creative AI. Trained only on licensed content.' },
+        { name: 'Google Veo / Sora 2', url: 'https://labs.google/fx/tools/veo', cat: 'ai', desc: 'Generate realistic, physics-compliant video clips from simple text prompts.' },
+        { name: 'Runway', url: 'https://runwayml.com/', cat: 'design', desc: 'A professional video suite used by filmmakers for motion brush editing.' },
+        { name: 'Cursor', url: 'https://cursor.com/', cat: 'dev', desc: 'An AI-first code editor for vibe coding.' },
+        { name: 'v0.dev', url: 'https://v0.dev/', cat: 'dev', desc: 'Generates high-quality React and Tailwind CSS code based on screenshots or text.' },
+        { name: 'GitHub Copilot', url: 'https://github.com/features/copilot', cat: 'dev', desc: 'The auto-complete for the worlds code.' },
+        { name: 'ElevenLabs', url: 'https://elevenlabs.io/', cat: 'tools', desc: 'The global standard for AI voice. Used for dubbing movies.' },
+        { name: 'Gamma', url: 'https://gamma.app/', cat: 'tools', desc: 'An AI that builds entire presentations in seconds.' }
     ];
 
     const uplinkGrid = document.getElementById('uplink-grid');
@@ -1327,6 +1398,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div>
                     <div class="link-title">${link.name}</div>
                     <div class="link-url">${new URL(link.url).hostname}</div>
+                    ${link.desc ? `<div class="link-desc" style="font-size: 0.75rem; color: var(--dim-color); margin-top: 5px; opacity: 0.8;">${link.desc}</div>` : ''}
                 </div>
                 <div class="link-cat">${link.cat.toUpperCase()}</div>
             `;
@@ -1358,9 +1430,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const notes = [
         {
-            id: 4,
+            id: 96,
             title: 'IF OUR LOVE IS TRUE, IT LASTS FOREVER',
-            date: '2026-02-21',
+            date: '2026-01-01',
             content: `
 <p>DEAR MISS,</p>
 

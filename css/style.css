@@ -344,6 +344,16 @@ img {
     display: block;
 }
 
+/* Default Video Background */
+.default-video-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    opacity: 0.85;
+    filter: brightness(0.9) contrast(1.1);
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
