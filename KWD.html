@@ -6,6 +6,7 @@
     <title>KWD Script Training</title>
     <link rel="icon" type="image/png" href="src/profile/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>@import url('https://fonts.googleapis.com/css2?family=Hanuman:wght@400;700&display=swap');</style>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -778,6 +779,41 @@
 
         /* English only - hide Khmer content */
         .style-4 .script-km { display: none; }
+
+        /* Khmer mode */
+        .style-4.khmer .script-en { display: none; }
+        .style-4.khmer .script-km { display: block; }
+        .style-4.khmer .section-script,
+        .style-4.khmer .speaker-name,
+        .style-4.khmer .section-title,
+        .style-4.khmer .brand-text h1,
+        .style-4.khmer .brand-text p,
+        .style-4.khmer .doc-title h2,
+        .style-4.khmer .doc-title p {
+            font-family: 'Hanuman', serif;
+        }
+        .style-4.khmer .section-script { font-size: 8pt; line-height: 1.8; }
+
+        /* Lang switcher */
+        .style-4 .lang-switch {
+            position: fixed;
+            bottom: 30px;
+            right: 100px;
+            display: flex;
+            gap: 4px;
+            z-index: 100;
+        }
+        .style-4 .lang-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #000;
+            background: #fff;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .style-4 .lang-btn.active { background: #000; color: #fff; }
 
         /* Print styles */
         @media print {
@@ -1666,16 +1702,25 @@
                             <span class="section-number">1</span>
                             <div class="section-meta">
                                 <div class="speaker-name">Y. Danai</div>
-                                <div class="section-title">The Hook & The Problem</div>
+                                <div class="section-title script-en">The Hook &amp; The Problem</div>
+                                <div class="section-title script-km">ការទាក់ទាញ និងបញ្ហា</div>
                             </div>
                         </div>
-                        <div class="section-script">
+                        <div class="section-script script-en">
                             <p>Hello global Technovation community… and welcome to Cambodia.</p>
                             <p>Every day, lives are lost on our roads. Not because people don't care… but because they were never truly engaged enough to learn how to stay safe.</p>
                             <p>So we asked ourselves a powerful question: What if learning road safety could actually save lives — not someday… but today?</p>
                             <p>We are Team Kesararam With Digital — five young girls with one shared mission: to protect our generation.</p>
                             <p>Our digital world moves fast… but traditional learning hasn't. Paper manuals are ignored. Lessons are forgotten.</p>
                             <p>So we didn't just build a platform. We built a new way to experience survival.</p>
+                        </div>
+                        <div class="section-script script-km">
+                            <p>សួស្តីសហគមន៍ Technovation ពិភពលោក… និងស្វាគមន៍មកកម្ពុជា។</p>
+                            <p>រាល់ថ្ងៃ មានជីវិតបាត់បង់នៅលើផ្លូវរបស់យើង។ មិនមែនព្រោះមនុស្សមិនខ្វល់ទេ… ប៉ុន្តែព្រោះពួកគេមិនដែលចូលរួមពិតប្រាកដគ្រប់គ្រាន់ ដើម្បីរៀនរស់នៅដោយសុវត្ថិភាព។</p>
+                            <p>ដូច្នេះយើងបានសួរខ្លួនឯងនូវសំណួរដ៏មានឥទ្ធិពល៖ ចុះបើការរៀនសុវត្ថិភាពផ្លូវអាចជួយសង្គ្រោះជីវិតបាន — មិនមែននៅថ្ងៃណាមួយ… ប៉ុន្តែថ្ងៃនេះ?</p>
+                            <p>យើងជាក្រុម Kesararam With Digital — ក្មេងស្រីប្រាំនាក់ ដែលមានបេសកកម្មមួយ៖ ការពារជំនាន់របស់យើង។</p>
+                            <p>ពិភពឌីជីថលរបស់យើងផ្លាស់ប្តូររហ័ស… ប៉ុន្តែការរៀនបែបប្រពៃណីមិនទាន់ទេ។ សៀវភៅណែនាំក្រដាសត្រូវបានមិនអើពើ។ មេរៀនត្រូវបានភ្លេច។</p>
+                            <p>ដូច្នេះយើងមិនបានបង្កើតតែវេទិកាប៉ុណ្ណោះទេ។ យើងបានបង្កើតវិធីថ្មីដើម្បីទទួលបានបទពិសោធន៍នៃការរស់រានមានជីវិត។</p>
                         </div>
                     </div>
 
@@ -1759,10 +1804,11 @@
                             <span class="section-number">5</span>
                             <div class="section-meta">
                                 <div class="speaker-name">S. Runamara</div>
-                                <div class="section-title">SDGs & Business Model</div>
+                                <div class="section-title script-en">SDGs &amp; Business Model</div>
+                                <div class="section-title script-km">គោលដៅ SDGs និងគំរូអាជីវកម្ម</div>
                             </div>
                         </div>
-                        <div class="section-script">
+                        <div class="section-script script-en">
                             <p>Our business model is simple — but powerful.</p>
                             <p>Access is one hundred percent free for students. Always.</p>
                             <p>We operate in direct alignment with UN SDG Four — Quality Education, SDG Five — Gender Equality, and SDG Eleven — Sustainable Cities.</p>
@@ -1774,6 +1820,18 @@
                             <p>Our infrastructure today runs at zero cost using free-tier technology — so every dollar we earn goes straight back into expanding the platform.</p>
                             <p>The Way of Safety is built to reach you — wherever you go.</p>
                         </div>
+                        <div class="section-script script-km">
+                            <p>គំរូអាជីវកម្មរបស់យើងគឺសាមញ្ញ — ប៉ុន្តែមានឥទ្ធិពល។</p>
+                            <p>ការចូលប្រើគឺឥតគិតថ្លៃ ១០០ ភាគរយសម្រាប់សិស្ស។ ជានិច្ច។</p>
+                            <p>យើងដំណើរការស្របតាម SDG ទី ៤ របស់អង្គការសហប្រជាជាតិ — ការអប់រំប្រកបដោយគុណភាព, SDG ទី ៥ — សមភាពយេនឌ័រ, និង SDG ទី ១១ — ទីក្រុងប្រកបដោយចីរភាព។</p>
+                            <p>ព្រោះក្មេងស្រីពីសាលាវត្តជាកន្លែងរបស់ពួកគេក្នុងបច្ចេកវិទ្យា។</p>
+                            <p>ដើម្បីបង្កើតផលប៉ះពាល់យូរអង្វែង យើងត្រូវការប្រព័ន្ធអេកូត្រឹមត្រូវ។</p>
+                            <p>យើងកំពុងចាប់ផ្តើមក្នុងស្រុកនៅសាលាបឋមសិក្សាកេសរារាម។</p>
+                            <p>គោលដៅភាពជាដៃគូរបស់យើងរួមមានសាលាបើកបរ គ្រូបង្រៀន សាលារដ្ឋ និងឯកជន និង NGO ក្នុងស្រុក។</p>
+                            <p>សម្រាប់ចំណូល — សាលាបើកបរ និងស្ថាប័នបង់ប្រាក់សម្រាប់ dashboard គ្រូ និងឧបករណ៍មាតិកា។</p>
+                            <p>ហេដ្ឋារចនាសម្ព័ន្ធរបស់យើងថ្ងៃនេះដំណើរការដោយគ្មានថ្លៃដោយប្រើបច្ចេកវិទ្យា free-tier — ដូច្នេះរាល់ដុល្លារដែលយើងរកបានត្រូវបានវិនិយោគត្រឡប់ទៅក្នុងការពង្រីកវេទិកា។</p>
+                            <p>ផ្លូវនៃសុវត្ថិភាពត្រូវបានបង្កើតឡើងដើម្បីទៅដល់អ្នក — គ្រប់ទីកន្លែងដែលអ្នកទៅ។</p>
+                        </div>
                     </div>
 
                     <!-- Section 6 -->
@@ -1782,10 +1840,11 @@
                             <span class="section-number">6</span>
                             <div class="section-meta">
                                 <div class="speaker-name">All Members</div>
-                                <div class="section-title">The Outro</div>
+                                <div class="section-title script-en">The Outro</div>
+                                <div class="section-title script-km">សេចក្តីសន្និដ្ឋាន</div>
                             </div>
                         </div>
-                        <div class="section-script">
+                        <div class="section-script script-en">
                             <p>We researched the community.</p>
                             <p>We understood the psychology.</p>
                             <p>We mastered the tech.</p>
@@ -1793,6 +1852,15 @@
                             <p>We are Kesararam With Digital.</p>
                             <p>And this is… The Way of Safety!</p>
                             <p>Join us… and try it now at KesararamWithDigital.tech.</p>
+                        </div>
+                        <div class="section-script script-km">
+                            <p>យើងបានស្រាវជ្រាវសហគមន៍។</p>
+                            <p>យើងបានយល់ពីចិត្តវិទ្យា។</p>
+                            <p>យើងបានស្ទាត់ជំនាញបច្ចេកវិទ្យា។</p>
+                            <p>យើងបានបង្កើតយុទ្ធសាស្ត្រ។</p>
+                            <p>យើងជា Kesararam With Digital។</p>
+                            <p>ហើយនេះគឺ… ផ្លូវនៃសុវត្ថិភាព!</p>
+                            <p>ចូលរួមជាមួយយើង… ហើយសាកល្បងឥឡូវនៅ KesararamWithDigital.tech។</p>
                         </div>
                     </div>
                 </div>
@@ -1804,6 +1872,12 @@
         <button class="print-btn" onclick="window.print()">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
         </button>
+
+        <!-- Language Switcher -->
+        <div class="lang-switch">
+            <button class="lang-btn active" data-lang="en">EN</button>
+            <button class="lang-btn" data-lang="km">ខ្មែរ</button>
+        </div>
     </div>
 
     <script>
@@ -1818,6 +1892,21 @@
                 const sec = Math.floor(s % 60);
                 return m + ':' + (sec < 10 ? '0' : '') + sec;
             }
+
+            // Lang switcher for Style 4
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const lang = btn.dataset.lang;
+                    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const style4 = document.getElementById('style4');
+                    if (lang === 'km') {
+                        style4.classList.add('khmer');
+                    } else {
+                        style4.classList.remove('khmer');
+                    }
+                });
+            });
 
             // Style switching
             document.querySelectorAll('.style-btn').forEach(btn => {
