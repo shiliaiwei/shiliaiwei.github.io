@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KWD — Technical Pitch Script</title>
+    <link rel="icon" type="image/png" href="src/profile/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #fff; color: #000; font-family: 'Inter', sans-serif; min-height: 100vh; }
+
+        .top-bar {
+            position: fixed; top: 0; left: 0; right: 0; height: 52px;
+            background: #000; display: flex; align-items: center;
+            justify-content: space-between; padding: 0 24px; z-index: 100;
+        }
+        .top-bar .brand { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: #fff; letter-spacing: 0.15em; text-transform: uppercase; }
+        .top-bar a { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: #888; text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; }
+        .top-bar a:hover { color: #fff; }
+
+        .page { max-width: 860px; margin: 0 auto; padding: 80px 24px 80px; }
+
+        .page-header { border-bottom: 3px solid #000; padding-bottom: 24px; margin-bottom: 60px; }
+        .page-header h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
+        .page-header p { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: #666; letter-spacing: 0.12em; text-transform: uppercase; }
+
+        .script-card { margin-bottom: 80px; }
+
+        .card-label { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; }
+        .speaker-num { font-family: 'Space Mono', monospace; font-size: 4rem; font-weight: 700; line-height: 1; }
+        .speaker-meta { border-left: 4px solid #000; padding-left: 16px; }
+        .speaker-name { font-size: 1.25rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+        .section-name { font-family: 'Space Mono', monospace; font-size: 0.65rem; color: #888; text-transform: uppercase; letter-spacing: 0.12em; margin-top: 2px; }
+        .time-tag { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: #aaa; margin-top: 4px; }
+
+        .teleprompter { background: #000; padding: 40px 32px; }
+        .script-line { font-size: 1.2rem; line-height: 1.9; color: #fff; text-align: center; padding: 4px 16px; }
+        .script-line.direction { font-size: 0.72rem; color: #555; font-style: italic; font-family: 'Space Mono', monospace; letter-spacing: 0.05em; margin: 8px 0 2px; }
+        .script-line.pause { color: #444; font-size: 0.75rem; font-family: 'Space Mono', monospace; letter-spacing: 0.1em; }
+        .script-line.empty { height: 18px; }
+
+        .audio-controls {
+            display: flex; align-items: center; gap: 20px;
+            padding: 20px 32px; background: #f0f0f0;
+            border: 2px solid #000; border-top: none;
+        }
+        .play-btn {
+            width: 56px; height: 56px; border: 3px solid #000;
+            background: #fff; cursor: pointer; display: flex;
+            align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .play-btn:hover { background: #000; }
+        .play-btn:hover svg { fill: #fff; }
+        .play-btn svg { width: 24px; height: 24px; fill: #000; }
+        .play-btn.playing { background: #000; }
+        .play-btn.playing svg { fill: #fff; }
+        .play-btn .pause-icon { display: none; }
+        .play-btn.playing .play-icon { display: none; }
+        .play-btn.playing .pause-icon { display: block; }
+
+        .progress-wrapper { flex: 1; }
+        .progress-bar { height: 6px; background: #ccc; cursor: pointer; margin-bottom: 8px; }
+        .progress-fill { height: 100%; background: #000; width: 0%; }
+        .time-info { display: flex; justify-content: space-between; font-family: 'Space Mono', monospace; font-size: 0.7rem; color: #666; }
+
+        .page-footer { margin-top: 60px; padding-top: 32px; border-top: 1px solid #ddd; text-align: center; }
+        .page-footer img { width: 28px; opacity: 0.2; margin-bottom: 8px; }
+        .page-footer p { font-family: 'Space Mono', monospace; font-size: 0.6rem; color: #bbb; }
+
+        @media (max-width: 600px) {
+            .page { padding: 72px 16px 60px; }
+            .page-header h1 { font-size: 1.75rem; }
+            .speaker-num { font-size: 2.5rem; }
+            .teleprompter { padding: 24px 14px; }
+            .script-line { font-size: 1rem; }
+            .audio-controls { padding: 14px 16px; flex-wrap: wrap; }
+            .progress-wrapper { width: 100%; order: 3; }
+        }
+        ::selection { background: #000; color: #fff; }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <span class="brand">KWD — Technical Pitch Script</span>
+    <a href="KWD.html">← Back to KWD</a>
+</div>
+
+<div class="page">
+
+    <header class="page-header">
+        <h1>TECHNICAL<br>PITCH SCRIPT</h1>
+        <p>Teleprompter Mode &nbsp;•&nbsp; Kesararam With Digital &nbsp;•&nbsp; 2:45 – 2:55</p>
+    </header>
+
+    <!-- CARD 1 -->
+    <article class="script-card" data-audio="voice/pt/Y. Danai pitch techni.mp3">
+        <div class="card-label">
+            <span class="speaker-num">01</span>
+            <div class="speaker-meta">
+                <div class="speaker-name">Y. Danai</div>
+                <div class="section-name">The Hook &amp; The Problem</div>
+                <div class="time-tag">0:00 – 0:35</div>
+            </div>
+        </div>
+        <div class="teleprompter">
+            <div class="script-line direction">[ Look directly into camera. Warm but serious. ]</div>
+            <div class="script-line">Hello global Technovation community…</div>
+            <div class="script-line pause">[ slight pause ]</div>
+            <div class="script-line">…and welcome to Cambodia.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ Drop your voice. Steady. Let this land. ]</div>
+            <div class="script-line">Every day, lives are lost on our roads.</div>
+            <div class="script-line pause">[ pause — one full beat ]</div>
+            <div class="script-line">Not because people don't care…</div>
+            <div class="script-line">but because they were never truly engaged enough to learn how to stay safe.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ Lift slightly. Like asking yourself for the first time. ]</div>
+            <div class="script-line">So we asked ourselves a powerful question:</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ Slower. Deliberate. Every word counts. ]</div>
+            <div class="script-line">What if learning road safety could actually save lives —</div>
+            <div class="script-line">not someday…</div>
+            <div class="script-line pause">[ pause ]</div>
+            <div class="script-line">but today?</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ Proud. Grounded. This is your identity. ]</div>
+            <div class="script-line">We are Team Kesararam With Digital —</div>
+            <div class="script-line">five young girls with one shared mission:</div>
+            <div class="script-line">to protect our generation.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ Measured. A little weight here. ]</div>
+            <div class="script-line">Our digital world moves fast…</div>
+            <div class="script-line">but traditional learning hasn't.</div>
+            <div class="script-line">Paper manuals are ignored.</div>
+            <div class="script-line">Lessons are forgotten.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ Strong finish. Deep voice. Believe it. ]</div>
+            <div class="script-line">So we didn't just build a platform.</div>
+            <div class="script-line">We built a new way to experience survival.</div>
+        </div>
+        <div class="audio-controls">
+            <button class="play-btn">
+                <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <div class="progress-wrapper">
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+                <div class="time-info"><span class="current-time">0:00</span><span class="duration">0:00</span></div>
+            </div>
+        </div>
+        <audio preload="metadata"></audio>
+    </article>
+
+    <!-- CARD 2 -->
+    <article class="script-card" data-audio="voice/pt/C. Kanika pitch tec.mp3">
+        <div class="card-label">
+            <span class="speaker-num">02</span>
+            <div class="speaker-meta">
+                <div class="speaker-name">C. Kanika</div>
+                <div class="section-name">Why We Are Different</div>
+                <div class="time-tag">0:35 – 0:55</div>
+            </div>
+        </div>
+        <div class="teleprompter">
+            <div class="script-line direction">[ annoyed ]</div>
+            <div class="script-line">Before we built anything — we asked:</div>
+            <div class="script-line">what already exists?</div>
+            <div class="script-line empty"></div>
+            <div class="script-line pause">[ short pause ]</div>
+            <div class="script-line">Paper manuals.</div>
+            <div class="script-line">Static PDFs.</div>
+            <div class="script-line">Khmer only.</div>
+            <div class="script-line">No audio.</div>
+            <div class="script-line">No interaction.</div>
+            <div class="script-line">No gamification.</div>
+            <div class="script-line">Nothing designed for how our generation actually learns.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line pause">[ long pause ]</div>
+            <div class="script-line direction">[ proud ]</div>
+            <div class="script-line">Kesararam With Digital is the only bilingual,</div>
+            <div class="script-line">gamified, AI-assisted driving theory platform</div>
+            <div class="script-line">built specifically for Cambodian students.</div>
+        </div>
+        <div class="audio-controls">
+            <button class="play-btn">
+                <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <div class="progress-wrapper">
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+                <div class="time-info"><span class="current-time">0:00</span><span class="duration">0:00</span></div>
+            </div>
+        </div>
+        <audio preload="metadata"></audio>
+    </article>
+
+    <!-- CARD 3 -->
+    <article class="script-card" data-audio="voice/pt/L. Many pitch techni.mp3">
+        <div class="card-label">
+            <span class="speaker-num">03</span>
+            <div class="speaker-meta">
+                <div class="speaker-name">L. Many</div>
+                <div class="section-name">Research Methodology</div>
+                <div class="time-tag">0:55 – 1:20</div>
+            </div>
+        </div>
+        <div class="teleprompter">
+            <div class="script-line direction">[ calm ]</div>
+            <div class="script-line">We would not build under unclear or secretive conditions.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ thoughtful ]</div>
+            <div class="script-line">We conducted careful research —</div>
+            <div class="script-line">deep surveys and interviews</div>
+            <div class="script-line">with students… parents… teachers…</div>
+            <div class="script-line">and even our local police station.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line pause">[ long pause ]</div>
+            <div class="script-line">Their feedback was clear:</div>
+            <div class="script-line">safety education must be engaging,</div>
+            <div class="script-line">accessible,</div>
+            <div class="script-line">and modern.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ confident ]</div>
+            <div class="script-line">Based on that direct community voice —</div>
+            <div class="script-line">we structured our platform into eight complete educational categories,</div>
+            <div class="script-line">making sure every key traffic rule is covered.</div>
+        </div>
+        <div class="audio-controls">
+            <button class="play-btn">
+                <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <div class="progress-wrapper">
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+                <div class="time-info"><span class="current-time">0:00</span><span class="duration">0:00</span></div>
+            </div>
+        </div>
+        <audio preload="metadata"></audio>
+    </article>
+
+    <!-- CARD 4 -->
+    <article class="script-card" data-audio="voice/pt/R. Neun pitch technica.mp3">
+        <div class="card-label">
+            <span class="speaker-num">04</span>
+            <div class="speaker-meta">
+                <div class="speaker-name">R. Neun</div>
+                <div class="section-name">The Psychological Reward Engine</div>
+                <div class="time-tag">1:20 – 1:55</div>
+            </div>
+        </div>
+        <div class="teleprompter">
+            <div class="script-line direction">[ warm ] [ a little energy ]</div>
+            <div class="script-line">To change how our generation behaves —</div>
+            <div class="script-line">we engineered a psychological reward engine.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ inviting ]</div>
+            <div class="script-line">Welcome to… The Way of Safety.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ build pace slightly ]</div>
+            <div class="script-line">Inside our eight categories, students don't just read.</div>
+            <div class="script-line">They interact with image infographics.</div>
+            <div class="script-line">They use our voice audio reading feature — for full accessibility.</div>
+            <div class="script-line pause">[ short pause ]</div>
+            <div class="script-line">And we used gamification</div>
+            <div class="script-line">to transform learning into an addictive game mode.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ leaning in ]</div>
+            <div class="script-line">When students take our interactive quizzes —</div>
+            <div class="script-line">they earn a high score on our live public leaderboard.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ slower ]</div>
+            <div class="script-line">But the real magic?</div>
+            <div class="script-line pause">[ short pause ]</div>
+            <div class="script-line">Students can claim their digital scores</div>
+            <div class="script-line">for physical stationery rewards… from their own teachers.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ warm ] [ genuine ]</div>
+            <div class="script-line">We successfully bridged online learning</div>
+            <div class="script-line">with real-world rewards that feel earned.</div>
+        </div>
+        <div class="audio-controls">
+            <button class="play-btn">
+                <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <div class="progress-wrapper">
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+                <div class="time-info"><span class="current-time">0:00</span><span class="duration">0:00</span></div>
+            </div>
+        </div>
+        <audio preload="metadata"></audio>
+    </article>
+
+    <!-- CARD 5 -->
+    <article class="script-card" data-audio="voice/pt/S. Runamara pitch tecn.mp3">
+        <div class="card-label">
+            <span class="speaker-num">05</span>
+            <div class="speaker-meta">
+                <div class="speaker-name">S. Runamara</div>
+                <div class="section-name">SDGs &amp; Business Model</div>
+                <div class="time-tag">1:55 – 2:25</div>
+            </div>
+        </div>
+        <div class="teleprompter">
+            <div class="script-line direction">[ thoughtful ]</div>
+            <div class="script-line">Our business model is simple — but powerful.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ clears throat ]</div>
+            <div class="script-line">Access is one hundred percent free for students.</div>
+            <div class="script-line">Always.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ proudly ]</div>
+            <div class="script-line">We operate in direct alignment with</div>
+            <div class="script-line">UN SDG Four — Quality Education,</div>
+            <div class="script-line">SDG Five — Gender Equality,</div>
+            <div class="script-line">and SDG Eleven — Sustainable Cities.</div>
+            <div class="script-line">Because young girls from monastery schools belong in technology.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ firmly ]</div>
+            <div class="script-line">To create lasting impact, we need the right ecosystem.</div>
+            <div class="script-line">We are starting locally at Kesararam Primary School.</div>
+            <div class="script-line">Our partnership targets include driving schools, instructors,</div>
+            <div class="script-line">public and private schools, and local NGOs.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ confident ]</div>
+            <div class="script-line">For revenue — driving schools and institutions</div>
+            <div class="script-line">pay for teacher dashboards and content tools.</div>
+            <div class="script-line">Our infrastructure today runs at zero cost using free-tier technology —</div>
+            <div class="script-line">so every dollar we earn goes straight back into expanding the platform.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ deep voice ]</div>
+            <div class="script-line">The Way of Safety is built to reach you —</div>
+            <div class="script-line">wherever you go.</div>
+        </div>
+        <div class="audio-controls">
+            <button class="play-btn">
+                <svg class="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="pause-icon" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+            <div class="progress-wrapper">
+                <div class="progress-bar"><div class="progress-fill"></div></div>
+                <div class="time-info"><span class="current-time">0:00</span><span class="duration">0:00</span></div>
+            </div>
+        </div>
+        <audio preload="metadata"></audio>
+    </article>
+
+    <!-- CARD 6 — no audio file -->
+    <article class="script-card">
+        <div class="card-label">
+            <span class="speaker-num">06</span>
+            <div class="speaker-meta">
+                <div class="speaker-name">All Members</div>
+                <div class="section-name">The Outro</div>
+                <div class="time-tag">2:25 – 2:55</div>
+            </div>
+        </div>
+        <div class="teleprompter">
+            <div class="script-line direction">[ Each girl: steady, one beat between each line ]</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ thoughtful ]</div>
+            <div class="script-line">We researched the community.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ thoughtful ]</div>
+            <div class="script-line">We understood the psychology.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ thoughtful ]</div>
+            <div class="script-line">We mastered the tech.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ thoughtful ]</div>
+            <div class="script-line">We built the strategy.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ full conviction — like you mean it completely ]</div>
+            <div class="script-line">We are Kesararam With Digital.</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ joyful — let yourselves smile — land it together ]</div>
+            <div class="script-line">And this is…</div>
+            <div class="script-line pause">[ short pause ]</div>
+            <div class="script-line">The Way of Safety!</div>
+            <div class="script-line empty"></div>
+            <div class="script-line direction">[ warm smile — direct to camera ]</div>
+            <div class="script-line">Join us… and try it now at KesararamWithDigital.tech.</div>
+        </div>
+    </article>
+
+    <footer class="page-footer">
+        <img src="kwd-black-nobg_zicjml.svg" alt="">
+        <p>Kesararam With Digital © 2024 &nbsp;•&nbsp; Technical Pitch Script</p>
+    </footer>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    let currentAudio = null;
+    let currentCard = null;
+
+    function fmt(s) {
+        if (isNaN(s)) return '0:00';
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    document.querySelectorAll('.script-card[data-audio]').forEach(card => {
+        const audio = card.querySelector('audio');
+        const playBtn = card.querySelector('.play-btn');
+        const bar = card.querySelector('.progress-bar');
+        const fill = card.querySelector('.progress-fill');
+        const cur = card.querySelector('.current-time');
+        const dur = card.querySelector('.duration');
+
+        audio.src = card.dataset.audio;
+
+        audio.addEventListener('loadedmetadata', () => { dur.textContent = fmt(audio.duration); });
+
+        playBtn.addEventListener('click', () => {
+            if (currentAudio && currentAudio !== audio) {
+                currentAudio.pause();
+                currentCard.querySelector('.play-btn').classList.remove('playing');
+            }
+            if (audio.paused) {
+                audio.play();
+                playBtn.classList.add('playing');
+                currentAudio = audio;
+                currentCard = card;
+            } else {
+                audio.pause();
+                playBtn.classList.remove('playing');
+            }
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            fill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+            cur.textContent = fmt(audio.currentTime);
+        });
+
+        bar.addEventListener('click', e => {
+            const rect = bar.getBoundingClientRect();
+            audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
+        });
+
+        audio.addEventListener('ended', () => {
+            playBtn.classList.remove('playing');
+            fill.style.width = '0%';
+            cur.textContent = '0:00';
+        });
+    });
+});
+</script>
+</body>
+</html>
