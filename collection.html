@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>史力爱卫</title>
+    <link rel="icon" type="image/png" href="src/profile/favicon.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- p5.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  </head>
+
+  <body class="protected">
+    <div class="poster-container">
+      <!-- Background Typography -->
+      <div class="poster-bg-text">
+        <span>史</span>
+        <span>力</span>
+        <span>爱</span>
+        <span>卫</span>
+      </div>
+
+      <!-- Main Image 史力爱卫  -->
+      <div class="poster-image-wrapper">
+        <picture
+          onclick="
+            document.querySelector('.hud-container').style.display = 'flex';
+            document.querySelector('.poster-container').style.display = 'none';
+          "
+          style="cursor: pointer"
+        >
+          <source
+            srcset="src/profile/90x45645zx8987xz.png"
+            media="(max-width: 768px)"
+          />
+          <img
+            src="src/profile/profile-wb.png"
+            alt="Portrait"
+            class="poster-img"
+          />
+        </picture>
+      </div>
+
+      <!-- Minimal Footer Info (Static) -->
+      <!-- <div class="poster-footer">
+            <div class="footer-left">
+                <h3>Monk.x102836</h3>
+
+                <div class="location">Kratié<br>Cambodia</div>
+                <div class="id-check">២៥៤៥</div>
+            </div>
+
+            <div class="footer-right">
+                <h3>Student.x002558</h3>
+
+                <div class="heritage">To Be Educated<br>Is To Be Changed</div>
+                <div class="id-check">២៥៦៥</div>
+            </div>
+        </div> -->
+
+      <!-- Hidden Navigation (Removed per request) -->
+      <!-- <nav class="poster-nav">
+            <button
+                onclick="document.querySelector('.hud-container').style.display='flex'; document.querySelector('.poster-container').style.display='none'">ENTER
+                SYSTEM</button>
+        </nav> -->
+    </div>
+
+    <!-- Hidden HUD Container (Preserved for subpage access if user clicks 'Enter System') -->
+    <div class="hud-container" style="display: none">
+      <!-- Header / Top Navigation -->
+      <header class="hud-header">
+        <div class="header-decoration left">
+          <span class="deco-text">SYS.BOOT.SEQ_INIT</span>
+        </div>
+        <nav class="hud-nav">
+          <!-- HOME Button Removed per request -->
+          <!-- <button class="nav-btn active" onclick="location.reload()">HOME</button> -->
+          <button class="nav-btn" data-target="project">PROJECT</button>
+          <button class="nav-btn" data-target="cyborg">CYBORG</button>
+          <button class="nav-btn" data-target="uplink">UPLINK</button>
+          <button class="nav-btn" data-target="notes">NOTES</button>
+        </nav>
+        <div class="header-decoration right">
+          <span class="deco-text" id="clock">00:00:00</span>
+        </div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main class="hud-main">
+        <!-- DEFAULT VIDEO SECTION -->
+        <section id="default-view" class="hud-section active">
+          <video
+            src="src/profile/shiliaiwei.mp4"
+            autoplay
+            loop
+            muted
+            playsinline
+            class="default-video-bg"
+          ></video>
+        </section>
+
+        <!-- STATUS SECTION -->
+        <section id="status" class="hud-section">
+          <div class="music-player-container">
+            <!-- YouTube Player Iframe (Hidden) -->
+            <div
+              id="youtube-player"
+              style="position: absolute; width: 1px; height: 1px; top: -9999px"
+            ></div>
+
+            <!-- Mobile Navigation Tabs (Only visible on small screens) -->
+            <div class="mobile-player-nav">
+              <button class="mp-nav-btn active" data-view="player">
+                <span>NOW PLAYING</span>
+              </button>
+              <button class="mp-nav-btn" data-view="playlist">
+                <span>PLAYLIST</span>
+              </button>
+            </div>
+
+            <!-- Player Area -->
+            <div class="player-area active-view" id="mobile-view-player">
+              <!-- Visualizer Canvas -->
+              <canvas
+                id="spectrum-visualizer"
+                class="visualizer-canvas"
+              ></canvas>
+
+              <div class="player-header">
+                <span class="now-playing-label">NOW PLAYING</span>
+              </div>
+
+              <!-- Gym Time Tracker (Hidden by default) -->
+              <div id="gym-tracker" class="gym-tracker hidden">
+                <div class="tracker-label">BREAK TIME</div>
+                <div class="tracker-time" id="tracker-time">00:00</div>
+                <button id="reset-tracker" class="tracker-btn">RESET</button>
+              </div>
+
+              <div class="song-info">
+                <h2 class="song-title" id="current-title">SELECT PLAYLIST</h2>
+                <p class="song-artist" id="current-artist">
+                  WAITING FOR YOUTUBE...
+                </p>
+              </div>
+
+              <div class="progress-container" id="progress-container">
+                <div class="progress" id="progress"></div>
+                <div class="time-info">
+                  <span id="current-time">0:00</span>
+                  <span id="duration">0:00</span>
+                </div>
+              </div>
+
+              <div class="player-controls">
+                <button class="control-btn" id="prev" title="Previous">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" fill="currentColor" />
+                  </svg>
+                </button>
+                <button
+                  class="control-btn play-btn"
+                  id="play"
+                  title="Play/Pause"
+                >
+                  <svg id="play-icon" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" fill="currentColor" />
+                  </svg>
+                  <svg
+                    id="pause-icon"
+                    viewBox="0 0 24 24"
+                    style="display: none"
+                  >
+                    <path
+                      d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+                <button class="control-btn" id="next" title="Next">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Playlist Area -->
+            <div class="playlist-area fui-box" id="mobile-view-playlist">
+              <div class="playlist-header">
+                <div class="playlist-tabs">
+                  <button class="playlist-tab active" data-filter="gym">
+                    GYM
+                  </button>
+                  <button class="playlist-tab" data-filter="dopamine">
+                    DOPAMINE
+                  </button>
+                  <button class="playlist-tab" data-filter="work">WORK</button>
+                </div>
+              </div>
+              <div class="playlist-list" id="playlist-list">
+                <div
+                  class="yt-loading-status"
+                  style="
+                    text-align: center;
+                    color: var(--primary-color);
+                    margin-top: 20px;
+                  "
+                >
+                  CONNECTING TO YOUTUBE...
+                </div>
+                <!-- YouTube Tracks will be injected here -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PROJECT SECTION -->
+        <section id="project" class="hud-section">
+          <div id="drone-map" class="drone-terminal">
+            <div class="map-grid-bg"></div>
+            <div class="radar-rings"></div>
+            <div class="radar-sweep"></div>
+            <!-- p5 Canvas Background -->
+            <div id="p5-container" class="p5-bg"></div>
+
+            <div class="drone-overlay"></div>
+            <div class="drone-crosshair"></div>
+            <div class="drone-coords" id="drone-coords">
+              LAT: 00.0000 | LNG: 00.0000
+            </div>
+
+            <!-- Search & Filter Menu -->
+            <div class="drone-search-panel">
+              <div class="search-header">TARGET DATABASE</div>
+              <input
+                type="text"
+                id="drone-search-input"
+                placeholder="SEARCH ID/NAME/CITY..."
+                autocomplete="off"
+              />
+              <div class="drone-search-results" id="drone-search-results">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+
+            <div class="map-content" id="map-targets-container"></div>
+          </div>
+
+          <!-- Surveillance ID Card Modal -->
+          <div id="surveillance-card" class="surv-card hidden">
+            <div class="surv-card-inner">
+              <div class="surv-header">
+                <span class="confidential-stamp">TOP SECRET // NOFORN</span>
+                <button id="close-surv-card" class="close-surv-btn">[X]</button>
+              </div>
+              <div class="surv-glitch-overlay"></div>
+              <div class="surv-body">
+                <div class="surv-photo-placeholder">
+                  <div class="scan-line-anim"></div>
+                  <span>NO IMAGE DATA</span>
+                </div>
+                <div class="surv-details">
+                  <p><strong>ID:</strong> <span id="surv-id">REDACTED</span></p>
+                  <p>
+                    <strong>SUBJECT:</strong>
+                    <span id="surv-name">REDACTED</span>
+                    <span class="redacted-hl"></span>
+                  </p>
+                  <p>
+                    <strong>HANDLE:</strong>
+                    <span id="surv-username">REDACTED</span>
+                  </p>
+                  <p>
+                    <strong>ALIAS:</strong>
+                    <span id="surv-alias">REDACTED</span>
+                  </p>
+                  <p>
+                    <strong>LOC:</strong> <span id="surv-city">REDACTED</span>
+                  </p>
+                  <p>
+                    <strong>EDU:</strong>
+                    <span id="surv-college">REDACTED</span>
+                  </p>
+                  <p>
+                    <strong>DOB:</strong> <span id="surv-dob">REDACTED</span>
+                  </p>
+                  <p>
+                    <strong>GENDER:</strong>
+                    <span id="surv-gender">REDACTED</span>
+                  </p>
+                  <p>
+                    <strong>STATUS:</strong>
+                    <span id="surv-status">REDACTED</span>
+                  </p>
+                  <p>
+                    <strong>CONTACT:</strong>
+                    <span id="surv-contact">REDACTED</span>
+                  </p>
+                  <p>
+                    <strong>LEAKS:</strong>
+                    <span id="surv-leaks">REDACTED</span>
+                  </p>
+                </div>
+              </div>
+              <div class="surv-footer">
+                <span style="animation: target-blip 3s infinite; opacity: 0.8"
+                  >OP: Sentry Watch Byproduct</span
+                >
+                <span class="redact-stamp">REDACTED</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CYBORG SECTION -->
+        <section id="cyborg" class="hud-section">
+          <div class="cyborg-container">
+            <div class="cyborg-sidebar fui-box">
+              <h3 class="panel-title">TOOLKIT</h3>
+              <div class="tool-search">
+                <input
+                  type="text"
+                  id="tool-search-input"
+                  placeholder="SEARCH TOOLS..."
+                />
+              </div>
+              <div class="tool-categories">
+                <button class="cat-btn active" data-cat="all">
+                  ALL SYSTEMS
+                </button>
+                <button class="cat-btn" data-cat="network">NETWORK</button>
+                <button class="cat-btn" data-cat="converter">CONVERTER</button>
+                <button class="cat-btn" data-cat="generator">GENERATOR</button>
+                <button class="cat-btn" data-cat="crypto">CRYPTO</button>
+                <button class="cat-btn" data-cat="game">SIMULATION</button>
+              </div>
+            </div>
+
+            <div class="cyborg-content fui-box">
+              <div class="tool-header">
+                <h2 class="section-title" id="current-tool-cat">ALL SYSTEMS</h2>
+                <div class="deco-line"></div>
+              </div>
+              <div class="tools-grid" id="tools-grid">
+                <!-- Tools injected by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Tool Modal / Overlay -->
+          <div id="tool-modal" class="tool-modal">
+            <div class="modal-content fui-box">
+              <div class="modal-header">
+                <h3 id="modal-title">TOOL NAME</h3>
+                <button id="close-modal">X</button>
+              </div>
+              <div class="modal-body" id="modal-body">
+                <!-- Tool Interface injected here -->
+              </div>
+              <div class="modal-footer">
+                <div id="tool-output-area" class="output-area">
+                  <span class="output-label">OUTPUT:</span>
+                  <div class="output-value" id="tool-output">
+                    WAITING FOR INPUT...
+                  </div>
+                  <button id="copy-btn" class="action-btn">COPY RESULT</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- UPLINK SECTION -->
+        <section id="uplink" class="hud-section">
+          <div class="uplink-container">
+            <div class="uplink-header fui-box">
+              <div class="header-top">
+                <h2 class="section-title">DATA UPLINK</h2>
+                <div class="uplink-stats">
+                  <span id="total-links">0 LINKS</span>
+                  <span class="blink">CONNECTED</span>
+                </div>
+              </div>
+              <div class="uplink-controls">
+                <input
+                  type="text"
+                  id="uplink-search"
+                  placeholder="SEARCH DATABASE..."
+                />
+                <div class="uplink-filters">
+                  <button class="filter-btn active" data-filter="all">
+                    ALL
+                  </button>
+                  <button class="filter-btn" data-filter="ai">AI</button>
+                  <button class="filter-btn" data-filter="dev">DEV</button>
+                  <button class="filter-btn" data-filter="osint">OSINT</button>
+                  <button class="filter-btn" data-filter="design">
+                    DESIGN
+                  </button>
+                  <button class="filter-btn" data-filter="books">BOOKS</button>
+                  <button class="filter-btn" data-filter="tools">TOOLS</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="uplink-grid" id="uplink-grid">
+              <!-- Links injected by JS -->
+            </div>
+          </div>
+        </section>
+
+        <!-- NOTES SECTION -->
+        <section id="notes" class="hud-section">
+          <div class="notes-container">
+            <div class="notes-sidebar fui-box">
+              <h3 class="panel-title">ARCHIVE</h3>
+              <div class="notes-list" id="notes-list">
+                <!-- Notes List injected by JS -->
+              </div>
+            </div>
+            <div class="notes-content fui-box">
+              <div class="note-paper">
+                <h2 class="note-title" id="note-title">SELECT A FILE</h2>
+                <div class="note-meta" id="note-meta"></div>
+                <div class="note-body" id="note-body">
+                  <p>ACCESSING SECURE ARCHIVES...</p>
+                  <p>PLEASE SELECT A DOCUMENT FROM THE LEFT PANEL.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="hud-footer">
+        <div class="footer-links">
+          <a href="https://x.com/shiliaiwei" target="_blank">X</a>
+          <a href="https://music.youtube.com/" target="_blank">YOUTUBE</a>
+          <a href="https://github.com/shiliaiwei" target="_blank">GITHUB</a>
+          <a href="https://tiktok.com/@shiliaiwei" target="_blank">TIKTOK</a>
+          <a href="https://xuhongshe.com/" target="_blank">XUHONGSHE</a>
+          <a href="https://www.chess.com/member/shiliaiwei" target="_blank"
+            >CHESS</a
+          >
+          <a href="https://t.me/shiliaiwei" target="_blank">TELEGRAM</a>
+        </div>
+        <div class="footer-deco">
+          <span>VER 2.0.45</span>
+          <span>SECURE CONNECTION</span>
+        </div>
+      </footer>
+    </div>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="js/drone_data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
