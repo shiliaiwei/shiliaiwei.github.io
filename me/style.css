@@ -511,3 +511,59 @@ body {
         width: 100%;
     }
 }
+
+@media (max-width: 600px) {
+    .top-nav {
+        padding: 16px;
+    }
+
+    .nav-container {
+        width: 100%;
+        justify-content: space-around;
+        padding: 6px;
+        border-radius: 24px;
+    }
+
+    .nav-item {
+        padding: 8px 12px;
+        font-size: 12px;
+        flex: 1;
+        justify-content: center;
+        border-radius: 18px;
+        gap: 4px;
+    }
+
+    .nav-item .material-symbols-outlined {
+        font-size: 18px;
+    }
+
+    .main-container {
+        padding: 0 16px 32px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-name {
+        font-size: 20px;
+    }
+
+    .badges-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+
+    .interests-section {
+        padding: 20px;
+    }
+
+    .tag {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
