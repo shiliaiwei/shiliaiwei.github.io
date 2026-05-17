@@ -12,7 +12,7 @@ const candidate = {
   email: "contact@shiliaiwei.dev",
   github: "github.com/shiliaiwei",
   linkedin: "linkedin.com/in/shiliaiwei",
-  photo: "src/profile/profile-wb.png",
+  photo: "https://github.com/shiliaiwei.png",
 };
 
 const cvTypes = [
